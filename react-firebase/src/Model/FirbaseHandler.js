@@ -6,7 +6,7 @@ import * as K from "../Constants.js";
 
 /*** wavBase.users queries ***/
 // Insert a new user into the database.
-function insertUser(id, usernmae, password, email, first_name, last_name) {
+function insertUser(id, username, password, email, first_name, last_name) {
     // These values will later be specified by the user.
     let biography = "";
     let profile_picture = "";

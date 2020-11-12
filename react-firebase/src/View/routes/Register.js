@@ -16,8 +16,6 @@ const Register = ({ history }) => {
             email,
             password,
             verify,  // Verification for password.
-            first_name, // Optional value.
-            last_name  // Optional value.
         } = event.target.elements;
         console.log("Adding user");
         /*
@@ -25,14 +23,9 @@ const Register = ({ history }) => {
             Maybe this insert query should be delegated to FirebaseHandler.js
             inorder to better conform to MVC design pattern.
          */
-        if (email.value.len === 0) {
-            alert("Please enter a valid email address!");
-        }
         console.log(password.value + "|" + verify.value);
         if (password.value === verify.value) {
-            console.log("user verified");
-            first_name.value = checkName(first_name.value);
-            last_name.value = checkName(last_name.value);
+            console.log("Password verified.");
             try {
                 db
                     .auth()
@@ -43,11 +36,8 @@ const Register = ({ history }) => {
                 db.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         db.database().ref('users/' + user.uid).set({
-                            id : user.uid,
                             username: username.value,
                             email: email.value,
-                            first_name: first_name.value,
-                            last_name: last_name.value,
                             biography: K.empty,
                             profile_picture: K.empty,
                             followers: K.empty,
@@ -56,6 +46,7 @@ const Register = ({ history }) => {
                     }
                 });
                 history.push("/");
+
             } catch (error) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -73,13 +64,6 @@ const Register = ({ history }) => {
         } else {
             alert("Please make sure your password matches!");
         }
-    }
-
-    function checkName(name) {
-        if (!name) {
-            name = K.empty;
-        }
-        return name;
     }
 
     const redirectLogIn = () => {
@@ -112,19 +96,9 @@ const Register = ({ history }) => {
                     <input name="verify" type="password" required="required" placeholder="Re-enter Password" />
                 </label>
                 <br />
-                <label>
-                    First Name (Optional)
-                    <input name="first_name" type="text" placeholder="First Name" />
-                </label>
-                <br />
-                <label>
-                    Last Name (Optional)
-                    <input name="last_name" type="text" placeholder="Last Name" />
-                </label>
-                <br />
                 <button type="submit">Register</button>
             </form>
-            <button onClick={redirectLogIn}>Already have an account?</button>
+            <li onClick={redirectLogIn}>Already have an account?</li>
         </div>
     );
 };

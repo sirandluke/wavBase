@@ -2,7 +2,7 @@
     Login.js
     TODO: Sign in with username
  */
-import React, { useContect } from "react";
+import React, { useContent } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
@@ -32,9 +32,9 @@ const Login = ({history}) => {
                     .signInWithEmailAndPassword(email, password.value);
                 history.push("/");
             } else {
-                // TODO: Login with username ane password.
+                // TODO: Login with username and password.
                 let username = email_or_username.value;
-                var firebaseRef = db.database().ref("users");
+                let firebaseRef = db.database().ref("users");
                 firebaseRef
                     .orderByChild("username")
                     .equalTo(username)
@@ -91,7 +91,7 @@ const Login = ({history}) => {
                 <br />
                 <button type="submit">Login</button>
                 <br />
-                <button onClick={redirectRegister}>Don't have an account?</button>
+                <li onClick={redirectRegister}>Don't have an account?</li>
             </form>
         </div>
     );
