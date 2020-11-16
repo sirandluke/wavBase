@@ -1,7 +1,7 @@
 /*
     FirebaseHandler.js
  */
-import db from "./base";
+import db from "./base.js";
 import * as K from "../Constants.js";
 
 /*** wavBase.users queries ***/
@@ -17,8 +17,31 @@ function insertUser(id, usernmae, password, email, first_name, last_name) {
 }
 
 // Get a user from the the database.
-function getUser() {
+export function getUserByEmail(email) {
+    try {
+        let uid = "";
+        let ref = db.database().ref("users");
 
+        ref
+            .orderByChild("email")
+            .equalTo(email)
+            .on("value", function(snapshot) {
+                console.log(snapshot.key); // Nothing logged??
+
+                snapshot.forEach(function(child) {
+                    console.log(child.key); // Nothing logged??
+                    uid = child.key;
+                });
+
+            }, function(error) {
+                console.error(error); // No error returned?
+            });
+
+        ref.off();
+        return uid;
+    } catch(error) {
+        console.log(error.message);
+    }
 }
 
 // Update a user's fields in the database.
@@ -66,4 +89,4 @@ function deleteProjFolder(id) { }
 
 /*** wavBase.tags queries ***/
 
-
+export default {getUserByEmail};

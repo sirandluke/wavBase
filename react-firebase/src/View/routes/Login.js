@@ -10,6 +10,21 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
+import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+
+/**
+ * Tests if UID is successfully retrieved via email
+ * @param {*} email 
+ */
+function uidTest(email) {
+    let uid = FirebaseHandler.getUserByEmail(email);
+
+    if (uid === "") {
+        console.log("FAILURE: EMPTY UID");
+    } else {
+        console.log("SUCCESS: UID = " + uid);
+    }
+}
 
 const Login = ({history}) => {
 
@@ -86,12 +101,20 @@ const Login = ({history}) => {
                 </label>
                 <br />
                 <label>
-                    <input name="password" type="password" required="required" placeholder="Password" />
+                    <input 
+                        name="password" 
+                        type="password" 
+                        required="required" 
+                        placeholder="Password" />
                 </label>
                 <br />
                 <button type="submit">Login</button>
                 <br />
                 <button onClick={redirectRegister}>Don't have an account?</button>
+                <br />
+                <br />
+                <br />
+                <button onClick={() => uidTest("r4li@ucsd.edu")}>TEST UID RETRIEVAL</button>
             </form>
         </div>
     );

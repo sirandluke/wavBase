@@ -6,7 +6,7 @@ import firebase from "firebase";
 const db = firebase.initializeApp({
     apiKey: "AIzaSyCAsj0sKvrY1hqtXZYS_GbPyehKPXOzZ6Y",
     authDomain: "wavbasedb-9a679.firebaseapp.com",
-    databaseURL: "https://wavbasedb-9a679.firebaseio.com",
+    databaseURL: "https://wavbasedb-9a679.firebaseio.com/",
     projectId: "wavbasedb-9a679",
     storageBucket: "wavbasedb-9a679.appspot.com",
     messagingSenderId: "707190956098",
