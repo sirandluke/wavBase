@@ -1,0 +1,35 @@
+body {
+    background-color: rgba(152, 193, 217, 0.15);
+}
+
+label {
+
+}
+.register_button {
+    border: none;
+    border-radius: 6px;
+    background-color: #00A3E7;
+    color: white;
+    padding: 5px 55px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.register_button:hover {
+    background-color: #8BFFC2;
+    color: black;
+}
+
+.link_button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

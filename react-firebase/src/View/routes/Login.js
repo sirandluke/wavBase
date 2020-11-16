@@ -10,6 +10,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
+import './Login.css';
 
 const Login = ({history}) => {
 
@@ -89,9 +90,9 @@ const Login = ({history}) => {
                     <input name="password" type="password" required="required" placeholder="Password" />
                 </label>
                 <br />
-                <button type="submit">Login</button>
+                <button class="login_button" type="submit">Login</button>
                 <br />
-                <li onClick={redirectRegister}>Don't have an account?</li>
+                 <button class="link_button" onClick={redirectRegister}>Don't have an account?</button>
             </form>
         </div>
     );

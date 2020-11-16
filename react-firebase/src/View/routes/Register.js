@@ -6,7 +6,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";
-
+import './Register.css'
 const Register = ({ history }) => {
 
     const handleRegister = (event) => {
@@ -77,28 +77,28 @@ const Register = ({ history }) => {
             <h2>Register an Account</h2>
             <form onSubmit={handleRegister}>
                 <label>
-                    Email
-                    <input name="email" type="email" required="required" placeholder="Email" />
-                </label>
-                < br />
-                <label>
-                    Username
+                    Username <br/>
                     <input name="username" type="text" required="required" placeholder="Username" />
                 </label>
                 <br />
                 <label>
-                    Password
+                    Email <br/>
+                    <input name="email" type="email" required="required" placeholder="Email" />
+                </label>
+                < br />
+                <label>
+                    Password <br/>
                     <input name="password" type="password" required="required" placeholder="Password" />
                 </label>
                 <br />
                 <label>
-                    Re-enter Password
+                    Re-enter Password <br/>
                     <input name="verify" type="password" required="required" placeholder="Re-enter Password" />
                 </label>
                 <br />
-                <button type="submit">Register</button>
+                <button class="register_button" type="submit">Register</button>
             </form>
-            <li onClick={redirectLogIn}>Already have an account?</li>
+            <button class="link_button" onClick={redirectLogIn}>Already have an account?</button>
         </div>
     );
 };
