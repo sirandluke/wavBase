@@ -6,7 +6,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";
-
+import './Register.css'
 const Register = ({ history }) => {
 
     const handleRegister = (event) => {
@@ -16,8 +16,6 @@ const Register = ({ history }) => {
             email,
             password,
             verify,  // Verification for password.
-            first_name, // Optional value.
-            last_name  // Optional value.
         } = event.target.elements;
         console.log("Adding user");
         /*
@@ -25,14 +23,9 @@ const Register = ({ history }) => {
             Maybe this insert query should be delegated to FirebaseHandler.js
             inorder to better conform to MVC design pattern.
          */
-        if (email.value.len === 0) {
-            alert("Please enter a valid email address!");
-        }
         console.log(password.value + "|" + verify.value);
         if (password.value === verify.value) {
-            console.log("user verified");
-            first_name.value = checkName(first_name.value);
-            last_name.value = checkName(last_name.value);
+            console.log("Password verified.");
             try {
                 db
                     .auth()
@@ -43,11 +36,8 @@ const Register = ({ history }) => {
                 db.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         db.database().ref('users/' + user.uid).set({
-                            id : user.uid,
                             username: username.value,
                             email: email.value,
-                            first_name: first_name.value,
-                            last_name: last_name.value,
                             biography: K.empty,
                             profile_picture: K.empty,
                             followers: K.empty,
@@ -56,6 +46,7 @@ const Register = ({ history }) => {
                     }
                 });
                 history.push("/");
+
             } catch (error) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -75,13 +66,6 @@ const Register = ({ history }) => {
         }
     }
 
-    function checkName(name) {
-        if (!name) {
-            name = K.empty;
-        }
-        return name;
-    }
-
     const redirectLogIn = () => {
         history.push("/");
     }
@@ -93,38 +77,28 @@ const Register = ({ history }) => {
             <h2>Register an Account</h2>
             <form onSubmit={handleRegister}>
                 <label>
-                    Email
-                    <input name="email" type="email" required="required" placeholder="Email" />
-                </label>
-                < br />
-                <label>
-                    Username
+                    Username <br/>
                     <input name="username" type="text" required="required" placeholder="Username" />
                 </label>
                 <br />
                 <label>
-                    Password
+                    Email <br/>
+                    <input name="email" type="email" required="required" placeholder="Email" />
+                </label>
+                < br />
+                <label>
+                    Password <br/>
                     <input name="password" type="password" required="required" placeholder="Password" />
                 </label>
                 <br />
                 <label>
-                    Re-enter Password
+                    Re-enter Password <br/>
                     <input name="verify" type="password" required="required" placeholder="Re-enter Password" />
                 </label>
                 <br />
-                <label>
-                    First Name (Optional)
-                    <input name="first_name" type="text" placeholder="First Name" />
-                </label>
-                <br />
-                <label>
-                    Last Name (Optional)
-                    <input name="last_name" type="text" placeholder="Last Name" />
-                </label>
-                <br />
-                <button type="submit">Register</button>
+                <button class="register_button" type="submit">Register</button>
             </form>
-            <button onClick={redirectLogIn}>Already have an account?</button>
+            <button class="link_button" onClick={redirectLogIn}>Already have an account?</button>
         </div>
     );
 };

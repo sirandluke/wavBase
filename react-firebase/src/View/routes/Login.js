@@ -2,7 +2,7 @@
     Login.js
     TODO: Sign in with username
  */
-import React, { useContect } from "react";
+import React, { useContent } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
@@ -11,20 +11,7 @@ import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
-
-/**
- * Tests if UID is successfully retrieved via email
- * @param {*} email 
- */
-function uidTest(email) {
-    let uid = FirebaseHandler.getUserByEmail(email);
-
-    if (uid === "") {
-        console.log("FAILURE: EMPTY UID");
-    } else {
-        console.log("SUCCESS: UID = " + uid);
-    }
-}
+import './Login.css';
 
 const Login = ({history}) => {
 
@@ -47,9 +34,9 @@ const Login = ({history}) => {
                     .signInWithEmailAndPassword(email, password.value);
                 history.push("/");
             } else {
-                // TODO: Login with username ane password.
+                // TODO: Login with username and password.
                 let username = email_or_username.value;
-                var firebaseRef = db.database().ref("users");
+                let firebaseRef = db.database().ref("users");
                 firebaseRef
                     .orderByChild("username")
                     .equalTo(username)
@@ -108,13 +95,9 @@ const Login = ({history}) => {
                         placeholder="Password" />
                 </label>
                 <br />
-                <button type="submit">Login</button>
+                <button class="login_button" type="submit">Login</button>
                 <br />
-                <button onClick={redirectRegister}>Don't have an account?</button>
-                <br />
-                <br />
-                <br />
-                <button onClick={() => uidTest("r4li@ucsd.edu")}>TEST UID RETRIEVAL</button>
+                <button class="link_button" onClick={redirectRegister}>Don't have an account?</button>
             </form>
         </div>
     );

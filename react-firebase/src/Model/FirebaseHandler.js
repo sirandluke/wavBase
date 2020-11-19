@@ -6,7 +6,7 @@ import * as K from "../Constants.js";
 
 /*** wavBase.users queries ***/
 // Insert a new user into the database.
-function insertUser(id, usernmae, password, email, first_name, last_name) {
+function insertUser(id, username, password, email, first_name, last_name) {
     // These values will later be specified by the user.
     let biography = "";
     let profile_picture = "";
@@ -14,31 +14,34 @@ function insertUser(id, usernmae, password, email, first_name, last_name) {
     let following = "";
 
     // db insert query.
+    
 }
 
-// Get a user from the the database.
-export function getUserByEmail(email) {
+/**
+ * Queries for user id based on email passed in
+ * @param {string} email 
+ * @param {function} callback
+ */
+export function getUserByEmail(email, callback) {
     try {
         let uid = "";
-        let ref = db.database().ref("users");
+        let ref = db.database().ref();
 
-        ref
-            .orderByChild("email")
-            .equalTo(email)
-            .on("value", function(snapshot) {
-                console.log(snapshot.key); // Nothing logged??
+        // Sort children by email and query matching email; store in snapshot
+        ref.child('users').orderByChild('email').equalTo(email).once("value", (snapshot) => {
 
-                snapshot.forEach(function(child) {
-                    console.log(child.key); // Nothing logged??
-                    uid = child.key;
-                });
-
-            }, function(error) {
-                console.error(error); // No error returned?
+            // Data entry in snapshot should contain table for this user
+            snapshot.forEach((entry) => {
+                uid = entry.key;
             });
 
-        ref.off();
-        return uid;
+            // Callback once finish processing snapshot data
+            callback(uid);
+
+        }, function(error) {
+            console.error(error);
+        });
+
     } catch(error) {
         console.log(error.message);
     }

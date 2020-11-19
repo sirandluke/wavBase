@@ -3,6 +3,7 @@
  */
 import firebase from "firebase";
 
+// noinspection SpellCheckingInspection
 const db = firebase.initializeApp({
     apiKey: "AIzaSyCAsj0sKvrY1hqtXZYS_GbPyehKPXOzZ6Y",
     authDomain: "wavbasedb-9a679.firebaseapp.com",
