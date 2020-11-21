@@ -15,7 +15,6 @@ test("Returns user id corresponding to email", done => {
 
   test("Update node value", done => {
     let randomVal = Math.floor(Math.random() * 100);
-    console.log(randomVal);
 
     function callback(data) {
       try {

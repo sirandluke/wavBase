@@ -10,29 +10,29 @@ const ref = db.database().ref();
 
 /**
  * Creates a data entry for new user
- * @param {element} username 
- * @param {element} password 
- * @param {element} email 
- * @param {element} first_name 
- * @param {element} last_name 
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} email 
+ * @param {string} first_name 
+ * @param {string} last_name 
  */
 export function createUser(username, password, email, first_name, last_name) {
     // Creates user id with email and password values
     db
     .auth()
     .createUserWithEmailAndPassword(
-        email.value,
-        password.value
+        email,
+        password
     );
 
     // Sets child values for user id
     db.auth().onAuthStateChanged(function (user) {
         if (user) {
             db.database().ref('users/' + user.uid).set({
-                username: username.value,
-                email: email.value,
-                first_name: first_name.value,
-                last_name: last_name.value,
+                username: username,
+                email: email,
+                first_name: first_name,
+                last_name: last_name,
                 biography: K.empty,
                 profile_picture: K.empty,
                 followers: K.empty,
@@ -91,8 +91,19 @@ export function updateUser(updatePath, updateVal, callback) {
     }
 }
 
-// Delete user a user from the database. (????)
-function deleteUser(id) { }
+/**
+ * Deletes user by user id
+ * @param {string} id 
+ */
+export function deleteUser(id) { 
+    try {
+        ref.child("users/" + id).remove().then(() => {
+            console.log("Deleted " + id);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
 
 /*** wavBase.repositories queries ***/
 // Insert a new repository into the database.
