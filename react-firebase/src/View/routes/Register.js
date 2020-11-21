@@ -32,8 +32,8 @@ const Register = ({ history }) => {
             console.log("Password verified.");
 
             try {
-                // Creates user via FirebaseHandler using returned elements
-                FirebaseHandler.createUser(username, password, email, first_name, last_name);
+                // Creates user via FirebaseHandler using returned element values
+                FirebaseHandler.createUser(username.value, password.value, email.value, first_name.value, last_name.value);
                 history.push("/");
             } catch (error) {
                 const errorCode = error.code;
