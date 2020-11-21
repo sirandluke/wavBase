@@ -5,16 +5,41 @@ import db from "./base.js";
 import * as K from "../Constants.js";
 
 /*** wavBase.users queries ***/
-// Insert a new user into the database.
-function insertUser(id, username, password, email, first_name, last_name) {
-    // These values will later be specified by the user.
-    let biography = "";
-    let profile_picture = "";
-    let followers = "";
-    let following = "";
 
-    // db insert query.
-    
+const ref = db.database().ref();
+
+/**
+ * Creates a data entry for new user
+ * @param {element} username 
+ * @param {element} password 
+ * @param {element} email 
+ * @param {element} first_name 
+ * @param {element} last_name 
+ */
+export function createUser(username, password, email, first_name, last_name) {
+    // Creates user id with email and password values
+    db
+    .auth()
+    .createUserWithEmailAndPassword(
+        email.value,
+        password.value
+    );
+
+    // Sets child values for user id
+    db.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.database().ref('users/' + user.uid).set({
+                username: username.value,
+                email: email.value,
+                first_name: first_name.value,
+                last_name: last_name.value,
+                biography: K.empty,
+                profile_picture: K.empty,
+                followers: K.empty,
+                following: K.empty,
+            });
+        }
+    });
 }
 
 /**
@@ -25,7 +50,6 @@ function insertUser(id, username, password, email, first_name, last_name) {
 export function getUserByEmail(email, callback) {
     try {
         let uid = "";
-        let ref = db.database().ref();
 
         // Sort children by email and query matching email; store in snapshot
         ref.child('users').orderByChild('email').equalTo(email).once("value", (snapshot) => {
@@ -37,18 +61,35 @@ export function getUserByEmail(email, callback) {
 
             // Callback once finish processing snapshot data
             callback(uid);
-
-        }, function(error) {
-            console.error(error);
         });
-
     } catch(error) {
         console.log(error.message);
     }
 }
 
-// Update a user's fields in the database.
-function updateUser(id) { }
+/**
+ * Updates value for user based on parameters
+ * @param {string} updatePath e.g. "users/uid/biography" to update the biography field of a user
+ * @param {*} updateVal 
+ * @param {function} callback 
+ */
+export function updateUser(updatePath, updateVal, callback) { 
+    try {
+        // Specifies where to update and what value to use
+        var updates = {};
+        updates[updatePath] = updateVal;
+
+        // Writes to the nodes specified
+        ref.update(updates);
+
+        // Passes updated value through callback
+        ref.child(updatePath).once("value", (snapshot) => {
+            callback(snapshot.val());
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
 
 // Delete user a user from the database. (????)
 function deleteUser(id) { }
@@ -92,4 +133,3 @@ function deleteProjFolder(id) { }
 
 /*** wavBase.tags queries ***/
 
-export default {getUserByEmail};

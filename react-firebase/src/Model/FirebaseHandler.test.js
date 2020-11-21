@@ -12,3 +12,19 @@ test("Returns user id corresponding to email", done => {
   
     FirebaseHandler.getUserByEmail("test@ucsd.edu", callback);
   });
+
+  test("Update node value", done => {
+    let randomVal = Math.floor(Math.random() * 100);
+    console.log(randomVal);
+
+    function callback(data) {
+      try {
+        expect(data).toBe(randomVal);
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }
+  
+    FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
+  });
