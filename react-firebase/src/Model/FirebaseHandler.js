@@ -3,6 +3,7 @@
  */
 import db from "./base.js";
 import * as K from "../Constants.js";
+import {DateToString} from "./Date";
 
 /*** wavBase.users queries ***/
 
@@ -106,15 +107,44 @@ export function deleteUser(id) {
 }
 
 /*** wavBase.repositories queries ***/
-// Insert a new repository into the database.
-function insertRepository(id, user_id, tags_id, name, bpm, key, description) {
-    // These values will later be specified by the user / system.
-    let snapshots = "";
-    let repo_likes = "";
-    let comments = "";
-    let thumbnail = "";
 
-    // Put time stamp in database: upload_date: firebase.firestore.FieldValue.serverTimestamp();
+/**
+ * Insert a new repository into the wavBase/repositories.
+ * @param {string} tags_id
+ * @param {string} repo_name
+ * @param {string} bpm
+ * @param {string} key
+ * @param {string} description
+ */
+export function insertRepository(tags_id, repo_name, bpm,
+                                 key, description) {
+    console.log("Creating a new Repository");
+    try {
+        db.auth().onAuthStateChanged(function ( user){
+            if (user) {
+                let firebaseRef = db.database().ref("repositories/")
+                firebaseRef.push({
+                    user_id: user.uid,
+                    name: repo_name,
+                    bpm: bpm,
+                    key: key,
+                    description: description,
+                    snapshots: K.empty,
+                    repo_likes: K.empty,
+                    comments: K.empty,
+                    thumbnail: K.default_repo_png,  // set default repository image.
+                    upload_date: DateToString()
+                })
+                firebaseRef.off();
+            }
+        })
+    }
+    catch (error){
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+        alert(K.unknown_err);
+    }
 }
 
 // Update a repository's fields in the database.
