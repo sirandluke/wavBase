@@ -35,7 +35,7 @@ export function createUser(username, password, email, first_name, last_name) {
                 first_name: first_name,
                 last_name: last_name,
                 biography: K.empty,
-                profile_picture: K.empty,
+                profile_picture: K.empty,  // Replace with: K.default_user_png when merged to master.
                 followers: K.empty,
                 following: K.empty,
             });
@@ -132,8 +132,8 @@ export function insertRepository(tags_id, repo_name, bpm,
                     snapshots: K.empty,
                     repo_likes: K.empty,
                     comments: K.empty,
-                    thumbnail: K.default_repo_png,  // set default repository image.
-                    upload_date: DateToString()
+                    thumbnail: K.empty, // replace with K.default_repo_png,  // set default repository image.
+                    upload_date: K.empty // replace with DateToString() when merged.
                 })
                 firebaseRef.off();
             }
