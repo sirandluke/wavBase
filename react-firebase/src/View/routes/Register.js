@@ -7,46 +7,34 @@ import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";
 import './Register.css'
+import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+
 const Register = ({ history }) => {
 
     const handleRegister = (event) => {
         event.preventDefault();
+
+        // Returns HTML elements from register form
         const {
             username,
             email,
+            first_name,
+            last_name,
             password,
             verify,  // Verification for password.
         } = event.target.elements;
+
         console.log("Adding user");
-        /*
-            TODO: Delegate to db handler?
-            Maybe this insert query should be delegated to FirebaseHandler.js
-            inorder to better conform to MVC design pattern.
-         */
         console.log(password.value + "|" + verify.value);
+
+        // Verifies if user correctly re-entered password when registering
         if (password.value === verify.value) {
             console.log("Password verified.");
-            try {
-                db
-                    .auth()
-                    .createUserWithEmailAndPassword(
-                        email.value,
-                        password.value
-                    );
-                db.auth().onAuthStateChanged(function (user) {
-                    if (user) {
-                        db.database().ref('users/' + user.uid).set({
-                            username: username.value,
-                            email: email.value,
-                            biography: K.empty,
-                            profile_picture: K.empty,
-                            followers: K.empty,
-                            following: K.empty,
-                        });
-                    }
-                });
-                history.push("/");
 
+            try {
+                // Creates user via FirebaseHandler using returned element values
+                FirebaseHandler.createUser(username.value, password.value, email.value, first_name.value, last_name.value);
+                history.push("/");
             } catch (error) {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -76,6 +64,16 @@ const Register = ({ history }) => {
             <h1>{K.app_name}</h1>
             <h2>Register an Account</h2>
             <form onSubmit={handleRegister}>
+                <label>
+                    First Name <br/>
+                    <input name="first_name" type="text" required="required" placeholder="First Name" />
+                </label>
+                <br />
+                <label>
+                    Last Name <br/>
+                    <input name="last_name" type="text" required="required" placeholder="Last Name" />
+                </label>
+                <br />
                 <label>
                     Username <br/>
                     <input name="username" type="text" required="required" placeholder="Username" />

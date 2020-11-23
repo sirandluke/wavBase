@@ -1,42 +1,150 @@
 /*
     FirebaseHandler.js
  */
-import db from "./base";
+import db from "./base.js";
 import * as K from "../Constants.js";
+import {DateToString} from "./Date";
 
 /*** wavBase.users queries ***/
-// Insert a new user into the database.
-function insertUser(id, username, password, email, first_name, last_name) {
-    // These values will later be specified by the user.
-    let biography = "";
-    let profile_picture = "";
-    let followers = "";
-    let following = "";
 
-    // db insert query.
+const ref = db.database().ref();
+
+/**
+ * Creates a data entry for new user
+ * @param {string} username 
+ * @param {string} password 
+ * @param {string} email 
+ * @param {string} first_name 
+ * @param {string} last_name 
+ */
+export function createUser(username, password, email, first_name, last_name) {
+    // Creates user id with email and password values
+    db
+    .auth()
+    .createUserWithEmailAndPassword(
+        email,
+        password
+    );
+
+    // Sets child values for user id
+    db.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.database().ref('users/' + user.uid).set({
+                username: username,
+                email: email,
+                first_name: first_name,
+                last_name: last_name,
+                biography: K.empty,
+                profile_picture: K.empty,  // Replace with: K.default_user_png when merged to master.
+                followers: K.empty,
+                following: K.empty,
+            });
+        }
+    });
 }
 
-// Get a user from the the database.
-function getUser() {
+/**
+ * Queries for user id based on email passed in
+ * @param {string} email 
+ * @param {function} callback
+ */
+export function getUserByEmail(email, callback) {
+    try {
+        let uid = "";
 
+        // Sort children by email and query matching email; store in snapshot
+        ref.child('users').orderByChild('email').equalTo(email).once("value", (snapshot) => {
+
+            // Data entry in snapshot should contain table for this user
+            snapshot.forEach((entry) => {
+                uid = entry.key;
+            });
+
+            // Callback once finish processing snapshot data
+            callback(uid);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
 }
 
-// Update a user's fields in the database.
-function updateUser(id) { }
+/**
+ * Updates value for user based on parameters
+ * @param {string} updatePath e.g. "users/uid/biography" to update the biography field of a user
+ * @param {*} updateVal 
+ * @param {function} callback 
+ */
+export function updateUser(updatePath, updateVal, callback) { 
+    try {
+        // Specifies where to update and what value to use
+        var updates = {};
+        updates[updatePath] = updateVal;
 
-// Delete user a user from the database. (????)
-function deleteUser(id) { }
+        // Writes to the nodes specified
+        ref.update(updates);
+
+        // Passes updated value through callback
+        ref.child(updatePath).once("value", (snapshot) => {
+            callback(snapshot.val());
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
+/**
+ * Deletes user by user id
+ * @param {string} id 
+ */
+export function deleteUser(id) { 
+    try {
+        ref.child("users/" + id).remove().then(() => {
+            console.log("Deleted " + id);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
 
 /*** wavBase.repositories queries ***/
-// Insert a new repository into the database.
-function insertRepository(id, user_id, tags_id, name, bpm, key, description) {
-    // These values will later be specified by the user / system.
-    let snapshots = "";
-    let repo_likes = "";
-    let comments = "";
-    let thumbnail = "";
 
-    // Put time stamp in database: upload_date: firebase.firestore.FieldValue.serverTimestamp();
+/**
+ * Insert a new repository into the wavBase/repositories.
+ * @param {string} tags_id
+ * @param {string} repo_name
+ * @param {string} bpm
+ * @param {string} key
+ * @param {string} description
+ */
+export function insertRepository(tags_id, repo_name, bpm,
+                                 key, description) {
+    console.log("Creating a new Repository");
+    try {
+        db.auth().onAuthStateChanged(function ( user){
+            if (user) {
+                let firebaseRef = db.database().ref("repositories/")
+                firebaseRef.push({
+                    user_id: user.uid,
+                    name: repo_name,
+                    bpm: bpm,
+                    key: key,
+                    description: description,
+                    snapshots: K.empty,
+                    repo_likes: K.empty,
+                    comments: K.empty,
+                    thumbnail: K.empty, // replace with K.default_repo_png,  // set default repository image.
+                    upload_date: K.empty // replace with DateToString() when merged.
+                })
+                firebaseRef.off();
+            }
+        })
+    }
+    catch (error){
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage)
+        alert(K.unknown_err);
+    }
 }
 
 // Update a repository's fields in the database.
@@ -65,5 +173,4 @@ function deleteProjFolder(id) { }
 /*** wavBase.comments queries ***/
 
 /*** wavBase.tags queries ***/
-
 

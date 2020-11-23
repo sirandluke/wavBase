@@ -10,6 +10,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
+import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import './Login.css';
 
 const Login = ({history}) => {
@@ -87,12 +88,16 @@ const Login = ({history}) => {
                 </label>
                 <br />
                 <label>
-                    <input name="password" type="password" required="required" placeholder="Password" />
+                    <input 
+                        name="password" 
+                        type="password" 
+                        required="required" 
+                        placeholder="Password" />
                 </label>
                 <br />
                 <button class="login_button" type="submit">Login</button>
                 <br />
-                 <button class="link_button" onClick={redirectRegister}>Don't have an account?</button>
+                <button class="link_button" onClick={redirectRegister}>Don't have an account?</button>
             </form>
         </div>
     );
