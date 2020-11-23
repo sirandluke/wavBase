@@ -20,7 +20,8 @@ function App() {
                     <PrivateRoute exact path="/" component={ Home } />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
-                    <Route exact path="/newrepo" component={NewRepo} />
+                    <PrivateRoute exact path="/newrepo" component={NewRepo} />
+
                 </div>
             </Router>
         </AuthProvider>

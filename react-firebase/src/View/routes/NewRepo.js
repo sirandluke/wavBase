@@ -15,10 +15,10 @@ const NewRepo = ({ history }) => {
             description
         } = event.target.elements;
         // TODO: Tags query
-        // insertRepository(K.empty, repo_name.value, bpm.value, key.value, description.value)  // Creat repo.
-        history.push("/Repository");
 
-        // TODO: Reroute to repository
+        if (insertRepository(K.empty, repo_name.value, bpm.value, key.value, description.value)) {  // Call insert repo.
+            history.push("/Repository");
+        }
     }
 
     return(
