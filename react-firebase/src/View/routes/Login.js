@@ -2,7 +2,7 @@
     Login.js
     TODO: Sign in with username
  */
-import React, { useContent } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
@@ -26,7 +26,9 @@ const Login = ({history}) => {
             inorder to better conform to MVC design pattern.
          */
         try {
+            console.log("yee")
             if (isEmail(email_or_username)) {
+                console.log("yee2")
                 // Login with email and password.
                 let email = email_or_username.value;
                 db
@@ -34,6 +36,7 @@ const Login = ({history}) => {
                     .signInWithEmailAndPassword(email, password.value);
                 history.push("/");
             } else {
+                console.log("yee3")
                 // TODO: Login with username and password.
                 let username = email_or_username.value;
                 let firebaseRef = db.database().ref("users");
@@ -59,14 +62,19 @@ const Login = ({history}) => {
         }
     }
 
+    const { currentUser } = useContext(AuthContext);
+    if (currentUser) {
+        return <Redirect to="/" />;
+    }
+
     /*
         Check's if user input is an email address.
         @input: s -> String
         @output: bool
      */
     function isEmail(s) {
-        const exp = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        return exp.test(s);
+        const exp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return exp.test(s.value);
     }
 
     const redirectRegister = () => {
