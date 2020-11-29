@@ -29,24 +29,10 @@ const Register = ({ history }) => {
         if (password.value === verify.value) {
             console.log("Password verified.");
 
-            try {
                 // Creates user via FirebaseHandler using returned element values
                 FirebaseHandler.createUser(username.value, password.value, email.value);
                 history.push("/");
-            } catch (error) {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                if (errorCode === 'auth/weak-password') {
-                    alert('The password is too weak! Please Try a different one.');
-                } else if (errorCode === 'auth/email-already-in-use') {
-                    alert('An account already exists with this email!')
-                } else if (errorCode === 'auth/invalid-email') {
-                    alert('Please enter a valid email address!');
-                } else {
-                    console.log(errorMessage);
-                    alert(K.unknown_err);
-                }
-            }
+
         } else {
             alert("Please make sure your password matches!");
         }

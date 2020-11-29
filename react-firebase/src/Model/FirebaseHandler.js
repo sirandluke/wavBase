@@ -17,26 +17,41 @@ const ref = db.database().ref();
  */
 export function createUser(username, password, email) {
     // Creates user id with email and password values
-    db
-    .auth()
-    .createUserWithEmailAndPassword(
-        email,
-        password
-    );
+    try {
+        db
+            .auth()
+            .createUserWithEmailAndPassword(
+                email,
+                password
+            );
 
-    // Sets child values for user id
-    db.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            db.database().ref('users/' + user.uid).set({
-                username: username,
-                email: email,
-                biography: K.empty,
-                profile_picture: K.default_user_png,
-                followers: K.empty,
-                following: K.empty,
-            });
+        // Sets child values for user id
+        db.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                db.database().ref('users/' + user.uid).set({
+                    username: username,
+                    email: email,
+                    biography: K.empty,
+                    profile_picture: K.default_user_png,
+                    followers: K.empty,
+                    following: K.empty,
+                });
+            }
+        });
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/weak-password') {
+            alert('The password is too weak! Please Try a different one.');
+        } else if (errorCode === 'auth/email-already-in-use') {
+            alert('An account already exists with this email!')
+        } else if (errorCode === 'auth/invalid-email') {
+            alert('Please enter a valid email address!');
+        } else {
+            console.log(errorMessage);
+            alert(K.unknown_err);
         }
-    });
+    }
 }
 
 /**
