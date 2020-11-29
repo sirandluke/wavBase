@@ -16,7 +16,6 @@ import './Login.css';
 
 const Login = ({history}) => {
 
-
     const handleLogin = (event) =>
     {
         event.preventDefault();

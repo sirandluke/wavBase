@@ -18,8 +18,6 @@ const Register = ({ history }) => {
         const {
             username,
             email,
-            first_name,
-            last_name,
             password,
             verify,  // Verification for password.
         } = event.target.elements;
@@ -33,7 +31,7 @@ const Register = ({ history }) => {
 
             try {
                 // Creates user via FirebaseHandler using returned element values
-                FirebaseHandler.createUser(username.value, password.value, email.value, first_name.value, last_name.value);
+                FirebaseHandler.createUser(username.value, password.value, email.value);
                 history.push("/");
             } catch (error) {
                 const errorCode = error.code;
