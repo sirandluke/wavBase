@@ -5,6 +5,7 @@ import Home from "./View/routes/Home";
 import Login from "./View/routes/Login";
 import Register from "./View/routes/Register";
 import NewRepo from "./View/routes/NewRepo";
+import Search from "./View/routes/SearchResults";
 
 
 import PrivateRoute from "./View/auth/PrivateRoute";
@@ -21,7 +22,7 @@ function App() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
-
+                    <Route exact path="/search" component={Search} />
                 </div>
             </Router>
         </AuthProvider>

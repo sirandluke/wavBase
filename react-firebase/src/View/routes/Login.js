@@ -15,8 +15,7 @@ import './Login.css';
 
 const Login = ({history}) => {
 
-    const handleLogin = (event) =>
-    {
+    const handleLogin = (event) => {
         event.preventDefault();
         const {email_or_username, password} = event.target.elements;
 
@@ -26,9 +25,7 @@ const Login = ({history}) => {
             inorder to better conform to MVC design pattern.
          */
         try {
-            console.log("yee")
             if (isEmail(email_or_username)) {
-                console.log("yee2")
                 // Login with email and password.
                 let email = email_or_username.value;
                 db
@@ -36,7 +33,6 @@ const Login = ({history}) => {
                     .signInWithEmailAndPassword(email, password.value);
                 history.push("/");
             } else {
-                console.log("yee3")
                 // TODO: Login with username and password.
                 let username = email_or_username.value;
                 let firebaseRef = db.database().ref("users");
