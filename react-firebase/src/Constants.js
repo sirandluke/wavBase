@@ -21,13 +21,19 @@ export const empty = "" // Specifies omitted fields in db.
 
 /* FIREBASE TABLE NAMES */
 export const user_tab = "users";
-export const repo_tab = "repository";
-export const snapshot_tab = "snapshot"
+export const repo_tab = "repositories";
+export const snapshot_tab = "snapshots"
 export const proj_folder_path = "project_folder";
 export const like_tab= "like";
 export const comment_tab = "comment";
 export const tags_tab = "tags";
 
+
+/* FIREBASE REAL TIME DB PATHS */
+
+/* FIREBASE STORAGE PATHS */
+export const default_user_png = "defaults/test_user.png"
+export const default_repo_png = "defaults/default_repo_thumbnail.png"
 
 /* ERROR MESSAGES */
 export const unknown_err = "Uh Oh! Something went wrong. Please try again.";

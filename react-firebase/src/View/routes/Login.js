@@ -11,6 +11,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
+import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import './Login.css';
 
 const Login = ({history}) => {

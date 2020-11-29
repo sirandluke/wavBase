@@ -5,7 +5,12 @@ import logo from "../../Images/wavBase_logo.png";
 
 // TODO: render searchbar, likes, (add more)
 
-const Home = () => {
+const Home = ({history}) => {
+    const redirectCreateRepo = () => {
+        history.push("/newrepo");
+    }
+
+
     return (
         <div className="container">
             <h1>Home</h1>
@@ -13,6 +18,7 @@ const Home = () => {
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50" />
                 <ul>
+                    <button onClick={redirectCreateRepo}>Create Repository</button>
                     <li>Repositories</li>
                     <li>Likes</li>
                     <button onClick={() => db.auth().signOut()}>Sign Out</button>
