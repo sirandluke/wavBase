@@ -1,14 +1,43 @@
 import React, {useState} from "react";
 import db from "../../Model/base";
 import "../../App.css";
+import DropzoneUpload from "./DropzoneUpload";
 
 const UploadSnapshot = () => {
 
     const [folder, setFolder] = useState(null);
 
-    const handleUpload = e => {
+    const handleUpload = (e) => {
+        e.preventDefault();
         const {snapshotDesc} = e.target.elements;
-        readMultipleFiles();
+
+        // Push all audio files to firestore.
+        const files = folder;
+        let filePaths = [];
+        Object.keys(files).forEach(i => {  // For each file, push to firestore.
+            const file = files[i];
+            const reader = new FileReader();
+            let storageSnapRef = db.storage().ref('snapshots/' + file.name)
+            storageSnapRef.put(file).then(() => {
+                const storageRef = db.storage().ref('/snapshots');
+                storageRef.child(file.name).getMetadata().then(metaData => {
+                    filePaths.push(metaData.getDownloadURL)
+                    console.log("Pushed: " + file.name.toString());  // Add URLs to files to array.
+                    })
+                })
+        });
+        console.log("here");
+        // TODO: MAKE ASYNC.
+        
+        // Push audio file URLs, snapshot description, and datetime to RT db.
+        let snapShotRef = db.database().ref("snapshots/");
+        snapShotRef.push({
+            description: snapshotDesc,
+            files: filePaths.toString()
+        });
+    }
+
+    const handleRealTimeDB = (fileString, snapshotDesc) => {
 
     }
 
@@ -43,16 +72,6 @@ const UploadSnapshot = () => {
 
 
     const readMultipleFiles = () => {
-        const files = folder;
-        Object.keys(files).forEach(i => {
-            const file = files[i];
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                //server call for uploading or reading the files one-by-one
-                //by using 'reader.result' or 'file'
-            }
-            console.log("Uploaded" + file.name.toString());
-        })
     };
     console.log("folder: ", folder);
 

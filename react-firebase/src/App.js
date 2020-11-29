@@ -11,6 +11,7 @@ import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
+import Repository from "./View/routes/Repository";
 
 function App() {
     return(
@@ -21,6 +22,7 @@ function App() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
+                    <Route exact path={"/repo"} component={Repository} />
 
                 </div>
             </Router>
