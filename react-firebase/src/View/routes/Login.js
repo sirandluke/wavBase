@@ -1,6 +1,7 @@
 /*
     Login.js
-    TODO: Sign in with username
+    TODO: Sign in & reset password with username
+    TODO: [RISK] unstable reset password & login functionality
  */
 import React, { useContent } from "react";
 import { Redirect } from "react-router-dom";
@@ -126,7 +127,6 @@ const Login = ({history}) => {
                     <br />
                     <button className="button" type="submit">Sign in</button>
                     <br />
-                    {/*TODO*/}
                     <button className="button" id="resetPW">Forgot Password / Username?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
