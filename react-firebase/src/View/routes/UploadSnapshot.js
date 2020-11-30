@@ -6,40 +6,38 @@ import DropzoneUpload from "./DropzoneUpload";
 const UploadSnapshot = () => {
 
     const [folder, setFolder] = useState(null);
+    let filePaths = [];
 
     const handleUpload = (e) => {
         e.preventDefault();
         const {snapshotDesc} = e.target.elements;
 
+        uploadStorage().then( () => {  // Upload files to storage, then push to Real Time db.
+            // Push audio file URLs, snapshot description, and datetime to RT db.
+            let snapShotRef = db.database().ref("snapshots/");
+            snapShotRef.push({
+                description: snapshotDesc,
+                files: filePaths.toString()
+            });
+        })
+    }
+
+    async function uploadStorage() {
         // Push all audio files to firestore.
         const files = folder;
-        let filePaths = [];
         Object.keys(files).forEach(i => {  // For each file, push to firestore.
             const file = files[i];
-            const reader = new FileReader();
             let storageSnapRef = db.storage().ref('snapshots/' + file.name)
             storageSnapRef.put(file).then(() => {
                 const storageRef = db.storage().ref('/snapshots');
                 storageRef.child(file.name).getMetadata().then(metaData => {
-                    filePaths.push(metaData.getDownloadURL)
-                    console.log("Pushed: " + file.name.toString());  // Add URLs to files to array.
-                    })
+                    filePaths.push(metaData.getDownloadURL)  // Add URLs to files array.
+                    console.log("Pushed: " + file.name.toString());
                 })
-        });
-        console.log("here");
-        // TODO: MAKE ASYNC.
-        
-        // Push audio file URLs, snapshot description, and datetime to RT db.
-        let snapShotRef = db.database().ref("snapshots/");
-        snapShotRef.push({
-            description: snapshotDesc,
-            files: filePaths.toString()
+            })
         });
     }
 
-    const handleRealTimeDB = (fileString, snapshotDesc) => {
-
-    }
 
     const handleChange = e => {
         if (e.currentTarget.files) {
