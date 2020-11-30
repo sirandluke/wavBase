@@ -9,7 +9,9 @@ const Home = ({history}) => {
     const redirectCreateRepo = () => {
         history.push("/newrepo");
     }
-
+    const redirectProfile = () => {
+        history.push("/profile");
+    }
 
     return (
         <div className="container">
@@ -19,6 +21,7 @@ const Home = ({history}) => {
                 <img src={logo} alt="wavBase Logo" width="50" height="50" />
                 <ul>
                     <button onClick={redirectCreateRepo}>Create Repository</button>
+                    <button onClick={redirectProfile}>Profile</button>
                     <li>Repositories</li>
                     <li>Likes</li>
                     <button onClick={() => db.auth().signOut()}>Sign Out</button>
