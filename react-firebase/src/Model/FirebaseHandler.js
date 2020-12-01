@@ -32,8 +32,8 @@ export function createUser(username, password, email) {
                 email: email,
                 biography: K.empty,
                 profile_picture: K.default_user_png,
-                followers: K.empty,
-                following: K.empty,
+                followers: 0,
+                following: 0,
             });
         }
     });
@@ -90,13 +90,24 @@ export function updateUser(updatePath, updateVal, callback) {
 
 /**
  * Deletes user by user id
- * @param {string} id 
+ * @param {string} uid 
  */
-export function deleteUser(id) { 
+export function deleteUser(uid) { 
     try {
-        ref.child("users/" + id).remove().then(() => {
-            console.log("Deleted " + id);
+        // Removes UID from Firebase
+        ref.child("users/" + uid).remove().then(() => {
+            console.log("Deleted " + uid);
         });
+
+        // Deletes all repositories tied to user
+        function callback(listOfRepo) {
+            for (let i = 0; i < listOfRepo.length; i++) {
+                deleteRepository(listOfRepo[i]);
+            }
+        }
+
+        // Finds list of repositories tied to user
+        findRepositories(uid,callback);
     } catch(error) {
         console.log(error.message);
     }
@@ -144,11 +155,59 @@ export function insertRepository(tags_id, repo_name, bpm,
     }
 }
 
+/**
+ * Finds all repositories tied to a user id
+ * @param {string} uid 
+ * @param {function} callback 
+ */
+export function findRepositories(uid, callback) {
+    try {
+        // Sort children by email and query matching email; store in snapshot
+        ref.child('repositories').orderByChild('user_id').equalTo(uid).once("value", (snapshot) => {
+            let repos = [];
+
+            // Data entry in snapshot should contain table for this user
+            snapshot.forEach((entry) => {
+                repos = repos.concat([entry.key]);
+            });
+
+            // Callback once finish processing snapshot data
+            callback(repos);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
 // Update a repository's fields in the database.
-function updateRepository() { }
+export function updateRepository(updatePath, updateVal, callback) { 
+    try {
+        // Specifies where to update and what value to use
+        var updates = {};
+        updates[updatePath] = updateVal;
+
+        // Writes to the nodes specified
+        ref.update(updates);
+
+        // Passes updated value through callback
+        ref.child(updatePath).once("value", (snapshot) => {
+            callback(snapshot.val());
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
 
 // Delete a Repository.
-function deleteRepository() { }
+export function deleteRepository(repo_id) { 
+    try {
+        ref.child("repositories/" + repo_id).remove().then(() => {
+            console.log("Deleted " + repo_id);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
 
 /*** wavBase.snapshots queries ***/
 
@@ -170,4 +229,3 @@ function deleteProjFolder(id) { }
 /*** wavBase.comments queries ***/
 
 /*** wavBase.tags queries ***/
-
