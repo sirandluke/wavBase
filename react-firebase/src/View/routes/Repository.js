@@ -1,20 +1,24 @@
+import React, {Component} from "react";
+import "../../App.css";
+import * as K from '../../Constants';
+import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
-const repository = ({ history }) => {
+const Repository = ({ history }) => {
     let audio;
     const audioSource= 'https://firebasestorage.googleapis.com/v0/b/wavbasedb-9a679.appspot.com/o/test_audio%2Ftest_piano.mp3?alt=media&token=e3dce63f-0aab-4d68-be39-39893c759e8e';
 
-    export function playAudio(source) {
+    function playAudio(source) {
         if (audio == null) {
             audio = new Audio(source);
         }
         audio.play();
     }
 
-    export function pauseAudio() {
+    function pauseAudio() {
         audio.pause();
     }
 
-    export function stopAudio() {
+    function stopAudio() {
         audio.pause();
         audio.currentTime = 0;
     }
@@ -31,7 +35,7 @@ const repository = ({ history }) => {
             <button onClick={stopAudio}>Stop</button>
         </div>
     );
-}
+};
 
 
-export default repository;
+export default Repository;

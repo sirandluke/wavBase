@@ -23,7 +23,8 @@ const Home = ({history}) => {
                 <img src={logo} alt="wavBase Logo" width="50" height="50" />
                 <ul>
                     <button onClick={redirectCreateRepo}>Create Repository</button>
-                    <button onClick={redirectRepo}>Repositories</button>
+                    <button onClick={redirectRepo}>TestRepositories</button>
+                    <li>Repositories</li>
                     <li>Likes</li>
                     <button onClick={() => db.auth().signOut()}>Sign Out</button>
                 </ul>
