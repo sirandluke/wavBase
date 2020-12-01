@@ -16,10 +16,11 @@ const Profile = ({ history }) => {
 
     let uid = db.auth().currentUser.uid;
     let userRef = db.database().ref('users/' + uid);
-    let username, profile_picture_path;
+    let username, profile_picture_path, user_email;
     userRef.on('value', (snapshot) =>{
         username = snapshot.val().username;
         profile_picture_path = snapshot.val().profile_picture;
+        user_email = snapshot.val().email;
     })
 
     let storage = db.storage();
@@ -75,6 +76,15 @@ const Profile = ({ history }) => {
         document.getElementById('new_bio').value = "";
     }
 
+    const resetPassword = () => {
+        db.auth().sendPasswordResetEmail(user_email).then(function() {
+            console.log("Password Reset Email sent to:" + user_email);
+        }).catch(function(error) {
+            console.log("Password Reset Email not sent successfully");
+        });
+    }
+
+
 
     return (
         <div>
@@ -111,6 +121,7 @@ const Profile = ({ history }) => {
                 <br/>
                 <input type="submit" value="Update"/>
             </form>
+            <button onClick={resetPassword}>Reset Password</button>
             <DropdownButton id="dropdown-basic-button" title="User">
                 <Dropdown.Item as="button" >My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
