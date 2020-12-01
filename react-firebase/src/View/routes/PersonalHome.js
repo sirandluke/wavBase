@@ -43,6 +43,4 @@ const PersonalHome = ({history}) => {
     );
 }
 
-
-
 export default PersonalHome;

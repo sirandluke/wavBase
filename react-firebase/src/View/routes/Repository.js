@@ -1,7 +1,29 @@
 import React, {Component} from "react";
+import ReactDOM from 'react-dom';
 import "../../App.css";
 import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+
+export class playbutton extends React.Component {
+    constructor() {
+        super();
+        this.state = {isPlaying: false};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isPlaying: !prevState.Playing
+        }));
+
+    }
+
+    render() {
+        return (
+            <button onClick={this.handleClick}>{this.state.isPlaying ? 'Play' : 'Pause'}</button>
+        );
+    }
+}
 
 const Repository = ({ history }) => {
     let audio;
@@ -27,15 +49,22 @@ const Repository = ({ history }) => {
         playAudio(audioSource);
     }
 
+    function redirectHome() {
+        history.push("/");
+    }
+
 
     return (
         <div>
             <button onClick={handlePlay}>Play</button>
             <button onClick={pauseAudio}>Pause</button>
             <button onClick={stopAudio}>Stop</button>
+            <ul>
+                <li>snapshot 1</li>
+            </ul>
+            <button onClick={redirectHome}>Go back to Home!</button>
         </div>
     );
 };
-
 
 export default Repository;
