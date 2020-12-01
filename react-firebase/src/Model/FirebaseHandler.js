@@ -14,6 +14,8 @@ const ref = db.database().ref();
  * @param {string} username 
  * @param {string} password 
  * @param {string} email 
+ * @param {string} first_name 
+ * @param {string} last_name 
  */
 export function createUser(username, password, email) {
     // Creates user id with email and password values
@@ -30,10 +32,12 @@ export function createUser(username, password, email) {
             db.database().ref('users/' + user.uid).set({
                 username: username,
                 email: email,
+                first_name: K.empty,
+                last_name: K.empty,
                 biography: K.empty,
                 profile_picture: K.default_user_png,
-                followers: 0,
-                following: 0,
+                followers: K.empty,
+                following: K.empty,
             });
         }
     });
@@ -90,24 +94,13 @@ export function updateUser(updatePath, updateVal, callback) {
 
 /**
  * Deletes user by user id
- * @param {string} uid 
+ * @param {string} id 
  */
-export function deleteUser(uid) { 
+export function deleteUser(id) { 
     try {
-        // Removes UID from Firebase
-        ref.child("users/" + uid).remove().then(() => {
-            console.log("Deleted " + uid);
+        ref.child("users/" + id).remove().then(() => {
+            console.log("Deleted " + id);
         });
-
-        // Deletes all repositories tied to user
-        function callback(listOfRepo) {
-            for (let i = 0; i < listOfRepo.length; i++) {
-                deleteRepository(listOfRepo[i]);
-            }
-        }
-
-        // Finds list of repositories tied to user
-        findRepositories(uid,callback);
     } catch(error) {
         console.log(error.message);
     }
@@ -157,59 +150,11 @@ export function insertRepository(tags_id, repo_name, bpm,
     }
 }
 
-/**
- * Finds all repositories tied to a user id
- * @param {string} uid 
- * @param {function} callback 
- */
-export function findRepositories(uid, callback) {
-    try {
-        // Sort children by email and query matching email; store in snapshot
-        ref.child('repositories').orderByChild('user_id').equalTo(uid).once("value", (snapshot) => {
-            let repos = [];
-
-            // Data entry in snapshot should contain table for this user
-            snapshot.forEach((entry) => {
-                repos = repos.concat([entry.key]);
-            });
-
-            // Callback once finish processing snapshot data
-            callback(repos);
-        });
-    } catch(error) {
-        console.log(error.message);
-    }
-}
-
 // Update a repository's fields in the database.
-export function updateRepository(updatePath, updateVal, callback) { 
-    try {
-        // Specifies where to update and what value to use
-        var updates = {};
-        updates[updatePath] = updateVal;
-
-        // Writes to the nodes specified
-        ref.update(updates);
-
-        // Passes updated value through callback
-        ref.child(updatePath).once("value", (snapshot) => {
-            callback(snapshot.val());
-        });
-    } catch(error) {
-        console.log(error.message);
-    }
-}
+function updateRepository() { }
 
 // Delete a Repository.
-export function deleteRepository(repo_id) { 
-    try {
-        ref.child("repositories/" + repo_id).remove().then(() => {
-            console.log("Deleted " + repo_id);
-        });
-    } catch(error) {
-        console.log(error.message);
-    }
-}
+function deleteRepository() { }
 
 /*** wavBase.snapshots queries ***/
 
