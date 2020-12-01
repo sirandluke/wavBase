@@ -9,6 +9,16 @@ import {DateToString} from "./Date";
 
 const ref = db.database().ref();
 
+export function getData(path, callback) {
+    try{
+        ref.child(path).once("value", (snapshot) => {
+            callback(snapshot.val());
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
 /**
  * Creates a data entry for new user
  * @param {string} username 

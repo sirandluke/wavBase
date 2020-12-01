@@ -57,3 +57,16 @@ test("Returns user id corresponding to email", done => {
   
     FirebaseHandler.updateRepository("repositories/-MNSRGgpRojJFru31lkO/description", randomVal, callback);
   });
+
+  test("Get data given a path", done => {
+    function callback(data) {
+      try {
+        expect(data).toBe("test");
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }
+  
+    FirebaseHandler.getData("users/Ou1rLY45A7WYesB35btqGUxQgs82/username", callback);
+  });
