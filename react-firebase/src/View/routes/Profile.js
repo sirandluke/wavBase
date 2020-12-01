@@ -71,7 +71,8 @@ const Profile = ({ history }) => {
             });
             console.log('New Bio: ' + new_bio);
         }
-
+        document.getElementById('new_username').value = "";
+        document.getElementById('new_bio').value = "";
     }
 
 
