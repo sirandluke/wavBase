@@ -1,6 +1,7 @@
 /*
     Login.js
-    TODO: Sign in with username
+    TODO: Sign in & reset password with username
+    TODO: [RISK] unstable reset password & login functionality
  */
 import React, { useContent } from "react";
 import { Redirect } from "react-router-dom";
@@ -73,32 +74,64 @@ const Login = ({history}) => {
         history.push("/register");
     }
 
+    window.onload=function() {
+        const resetPW = document.getElementById('resetPW');
+        const idField = document.getElementById('identity');
+
+        // alert(resetPW);
+        const resetPWFunction = () => {
+            alert('resetPTFunc called')
+            if (isEmail(idField.value)) {
+                alert('is email');
+                db.auth().sendPasswordResetEmail(idField.value)
+                    .then(() => {
+                        alert('Password Reset Email Sent Successfully!');
+                        console.log('Password Reset Email Sent Successfully!');
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
+            }
+        }
+
+        if (resetPW)
+            resetPW.addEventListener('click', resetPWFunction);
+    }
+
     return(
-        <div className="centered">
-            <img src={logo} alt="wavBase Logo" width="100" height="100" />
-            <h1>{K.app_name}</h1>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <label>
-                    <input
-                        name="email_or_username"
-                        type="text"
-                        required="required"
-                        placeholder="Enter your email or username" />
-                </label>
-                <br />
-                <label>
-                    <input 
-                        name="password" 
-                        type="password" 
-                        required="required" 
-                        placeholder="Password" />
-                </label>
-                <br />
-                <button class="login_button" type="submit">Login</button>
-                <br />
-                <button class="link_button" onClick={redirectRegister}>Don't have an account?</button>
-            </form>
+        <div>
+            <div className="login_left">
+                <img className="login_logo" src={logo} alt="wavBase Logo" width="209" height="187" />
+                <hr className="separator"/>
+                <p className="login_quote">Collaborate and share with music creators all over the world!</p>
+            </div>
+
+            <div className="login_right">
+                <h1 className="signIn_header">Sign in to wavBase</h1>
+                {/*<h1>{K.app_name}</h1>*/}
+                {/*<h2>Login</h2>*/}
+                <form onSubmit={handleLogin}>
+                    <label>
+                        <input
+                            className="signIn_form"
+                            id="identity"
+                            name="email_or_username"
+                            type="text"
+                            required="required"
+                            placeholder=" Username / Email" />
+                    </label>
+                    <br />
+                    <label>
+                        <input className="signIn_form" name="password" type="password" required="required" placeholder=" Password" />
+                    </label>
+                    <br />
+                    <button className="button" type="submit">Sign in</button>
+                    <br />
+                    <button className="button" id="resetPW">Forgot Password / Username?</button>
+                    <hr className="separator"/>
+                    <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
+                </form>
+            </div>
         </div>
     );
 };

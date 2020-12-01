@@ -2,12 +2,75 @@ body {
     background-color: rgba(152, 193, 217, 0.15);
 }
 
-label {
+.nav_bar {
+    height: 10%;
+    width: 100%;
+    background-color: #355070;
+}
+
+.nav_bar_logo {
+    border-radius: 100%;
+    height: 66px;
+    width: 66px;
+    margin-left: 20px;
+    background-color: white;
 
 }
+
+.search_bar {
+    float: right;
+    position: absolute;
+    left: 120px;
+    top: 17px;
+    width: 371px;
+    height: 40px;
+}
+
+.search_input {
+    border-radius: 10px;
+}
+
+.signIn_btn {
+    float: right;
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    right: 30px;
+    top: 15px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.signIn_btn:hover {
+    background-color: aliceblue;
+}
+
+.register_form {
+    position: absolute;
+    /*left: 140px;*/
+    left: 10%;
+    top: 120px;
+    background-color: white;
+    padding: 30px 20px 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.2),0 7px 5px 0 rgba(0,0,0,0.1);
+    z-index:2;
+}
+
+.register_input {
+    border-radius: 5px;
+    border-color: darkgrey;
+    border-style: solid;
+    height: 30px;
+    width: 240px;
+    margin: 5px 0px 20px 0px;
+    padding-left: 10px;
+}
+
 .register_button {
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
+    height: 40px;
     background-color: #00A3E7;
     color: white;
     padding: 5px 55px;
@@ -18,18 +81,102 @@ label {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2),0 7px 5px 0 rgba(0,0,0,0.1);
 }
 
 .register_button:hover {
-    background-color: #8BFFC2;
-    color: black;
+    background-color: lightskyblue;
+    /*color: black;*/
 }
 
-.link_button {
-    background: none!important;
-    border: none;
-    padding: 0!important;
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
+.upperRight_text {
+    position: absolute;
+    height: 295px;
+    left: 550px;
+    top: 120px;
+    /*background-color: pink;*/
+    padding-right: 70px;
+    z-index:2;
 }
+
+h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 55px;
+    line-height: 80px;
+    margin: 0px;
+}
+
+p1 {
+    padding-right: 300px;
+}
+
+.lowerRight_text {
+    position: absolute;
+    left: 550px;
+    top: 450px;
+    position: absolute;
+
+    background-color: white;
+    border-radius: 10px;
+    padding: 0px 40px 30px 40px;
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,0.2),0 7px 5px 0 rgba(0,0,0,0.1);
+}
+
+.wave_shape {
+    z-index: 1;
+
+}
+
+h2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 60px;
+    margin: 0px;
+}
+
+.footer {
+    height: 50px;
+    float: bottom;
+    position: relative;
+    top: 235px;
+    width: 100%;
+    /*background-color: pink;*/
+}
+
+.company {
+    margin-left: 20px;
+    padding-top: 20px;
+    float: left;
+}
+
+.social_media {
+    float: right;
+}
+
+.fa-facebook,.fa-twitter {
+    padding-top: 15px;
+    font-size: 30px;
+    width: 60px;
+    height: 45px;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px;
+    background: #00A3E7;
+    color: white;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+/*.link_button {*/
+/*    background: none!important;*/
+/*    border: none;*/
+/*    padding: 0!important;*/
+/*    color: blue;*/
+/*    text-decoration: underline;*/
+/*    cursor: pointer;*/
+/*}*/

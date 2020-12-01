@@ -14,10 +14,8 @@ const ref = db.database().ref();
  * @param {string} username 
  * @param {string} password 
  * @param {string} email 
- * @param {string} first_name 
- * @param {string} last_name 
  */
-export function createUser(username, password, email, first_name, last_name) {
+export function createUser(username, password, email) {
     // Creates user id with email and password values
     db
     .auth()
@@ -32,8 +30,6 @@ export function createUser(username, password, email, first_name, last_name) {
             db.database().ref('users/' + user.uid).set({
                 username: username,
                 email: email,
-                first_name: first_name,
-                last_name: last_name,
                 biography: K.empty,
                 profile_picture: K.default_user_png,
                 followers: K.empty,
