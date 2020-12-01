@@ -17,7 +17,7 @@ const NewRepo = ({ history }) => {
         // TODO: Tags query
 
         if (insertRepository(K.empty, repo_name.value, bpm.value, key.value, description.value)) {  // Call insert repo.
-            history.push("/Repository");
+            history.push("/repository");
         }
     }
 
