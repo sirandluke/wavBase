@@ -1,9 +1,9 @@
 import '../App.css';
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import db from "./base";
 import ReactPlayer from "react-player";
 import * as K from "../Constants";
-
+/* Do not delete
 const PlayButton = (props) => {
     const [audio, loadAudio] = useState("");
     const storage= db.storage();
@@ -44,3 +44,31 @@ const PlayButton = (props) => {
 }
 
 export default PlayButton;
+*/
+
+export class PlayButton extends Component {
+    constructor(props) {
+        super(props);
+
+        /* const [audio, loadAudio] = useState("");
+        const storage= db.storage();
+        const storageRef = storage.ref(); */
+    }
+
+    render() {
+        return (
+            <div>
+                <ReactPlayer
+                    url={this.props.audio}
+                    width="400px"
+                    height="50px"
+                    playing={false}
+                    controls={true}
+                    volume={1}
+                    progressInterval={5000}
+                    pip={true}
+                />
+            </div>
+        );
+    }
+}

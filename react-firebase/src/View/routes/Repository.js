@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "../../App.css";
 import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import {PlayButton} from "../../Model/PlayButton";
 
 export class playbutton extends React.Component {
     constructor() {
@@ -59,10 +60,7 @@ const Repository = ({ history }) => {
             <button onClick={handlePlay}>Play</button>
             <button onClick={pauseAudio}>Pause</button>
             <button onClick={stopAudio}>Stop</button>
-            <ul>
-                <li>snapshot 1</li>
-            </ul>
-            <button onClick={redirectHome}>Go back to Home!</button>
+            < PlayButton audio={audioSource} />
         </div>
     );
 };
