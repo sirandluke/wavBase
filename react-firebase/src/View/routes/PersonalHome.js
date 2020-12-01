@@ -1,4 +1,6 @@
 import React from "react";
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Model/base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
@@ -12,7 +14,7 @@ const PersonalHome = ({history}) => {
     //let name, email, photoUrl, uid, emailVerified;
     let name = "YYY";
     if (user != null) {
-        name = user.email;
+        name = user.displayName;
     }
 
     const redirectCreateRepo = () => {
@@ -31,6 +33,11 @@ const PersonalHome = ({history}) => {
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50" />
                 <h2>Hello {name}</h2>
+                    <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    </DropdownButton>
                 <ul>
                     <button onClick={redirectCreateRepo}>Create Repository</button>
                     <button onClick={redirectRepo}>TestRepositories</button>
