@@ -117,24 +117,22 @@ export function insertRepository(tags_id, repo_name, bpm,
                                  key, description) {
     console.log("Creating a new Repository");
     try {
-        db.auth().onAuthStateChanged(function ( user){
-            if (user) {
-                let firebaseRef = db.database().ref("repositories/")
-                firebaseRef.push({
-                    user_id: user.uid,
-                    name: repo_name,
-                    bpm: bpm,
-                    key: key,
-                    description: description,
-                    snapshots: K.empty,
-                    repo_likes: K.empty,
-                    comments: K.empty,
-                    thumbnail: K.default_repo_png,  // set default repository image.
-                    upload_date: DateToString()
-                })
-                firebaseRef.off();
-            }
+        let uid = db.auth().currentUser.uid
+        let firebaseRef = db.database().ref("repositories/")
+        firebaseRef.push({
+            user_id: uid,
+            name: repo_name,
+            bpm: bpm,
+            key: key,
+            description: description,
+            snapshots: K.empty,
+            repo_likes: 0,
+            comments: K.empty,
+            thumbnail: K.default_repo_png,  // set default repository image.
+            upload_date: DateToString()
         })
+        firebaseRef.off();
+
         return 1;  // Insert Successful
     }
     catch (error){
