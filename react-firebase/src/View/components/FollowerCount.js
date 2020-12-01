@@ -7,7 +7,7 @@ export class FollowerCount extends Component{
 
     return(
             <div>
-                <img src={this.props.profile_picture} c />
+                <img src={this.props.profile_picture} />
                 <p>{this.props.followers} followers · {this.props.following} following</p>
             </div>
         )

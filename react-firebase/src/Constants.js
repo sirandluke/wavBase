@@ -10,10 +10,12 @@
 
 // Name of application
 
-/* APP NAME & LOGOS */
+/* APP NAME & IMAGES */
 export const app_name = "wavBase";
 
 export const logo_path = "Images/wavBase_logo.png"
+
+export const loading_gif = "Images/loading.gif"
 
 /* RULES */
 export const empty = "" // Specifies omitted fields in db.
