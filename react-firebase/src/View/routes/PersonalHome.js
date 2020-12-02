@@ -29,7 +29,7 @@ const PersonalHome = ({history}) => {
             username = snapshot.val().username;
             profile_picture_path = snapshot.val().profile_picture;
             user_email = snapshot.val().email;
-        })
+        });
         name = username;
     }
 
@@ -37,7 +37,7 @@ const PersonalHome = ({history}) => {
     storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
         let img = document.getElementById('profile_avatar');
         img.src = url;
-    })
+    });
 
     let repo_paths = [];
     let repo_ref = db.database().ref().child('repositories');
@@ -48,7 +48,7 @@ const PersonalHome = ({history}) => {
             );
             console.log(entry.key);
         });
-    })
+    });
 
     return (
         <div className="container">
@@ -56,7 +56,7 @@ const PersonalHome = ({history}) => {
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
                 <h2>Hello {name}</h2>
-                <img id="profile_avatar" width={50} height={50}/>
+                <img id='profile_avatar' src='' width={50} height={50}/>
                 <HashRouter>
                     <DropdownButton id="dropdown-basic-button" title="User">
                         <Dropdown.Item as="button"><NavLink to='/profile'>My Profile</NavLink></Dropdown.Item>

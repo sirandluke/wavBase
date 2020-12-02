@@ -77,7 +77,7 @@ const Profile = ({ history }) => {
 
     return (
         <div>
-            <img id="profile_picture" width={125} height={125}/>
+            <img id='profile_picture' src='' width={125} height={125}/>
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
