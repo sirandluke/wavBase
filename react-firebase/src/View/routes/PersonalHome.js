@@ -16,7 +16,7 @@ import IndividualRepository from "./IndividualRepository";
 
 // TODO: render searchbar, likes, (add more)
 
-const PersonalHome = ({history}) => {
+const PersonalHome = () => {
 
     let user = db.auth().currentUser;
     let name, profile_picture_path, user_email;
