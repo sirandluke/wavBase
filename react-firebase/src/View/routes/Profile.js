@@ -23,8 +23,7 @@ const Profile = ({ history }) => {
         user_email = snapshot.val().email;
     })
 
-    let storage = db.storage();
-    let storageRef = storage.ref();
+    let storageRef = db.storage().ref();
     storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
         let img = document.getElementById('profile_picture');
         img.src = url;
@@ -67,8 +66,7 @@ const Profile = ({ history }) => {
         }
         if (new_bio !== "") {
             userRef.update({
-                first_name: new_bio.split(' ')[0],
-                last_name: new_bio.split(' ')[1]
+                biography: new_bio
             });
             console.log('New Bio: ' + new_bio);
         }

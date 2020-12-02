@@ -15,6 +15,8 @@ import { AuthProvider} from "./View/auth/Auth";
 import './App.css';
 
 function App() {
+    const repo_path = ['/a'];
+
     return(
         <AuthProvider>
             <Router>
@@ -25,6 +27,7 @@ function App() {
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
                     <PrivateRoute exact path="/repository" component={Repository} />
                     <PrivateRoute exact path="/profile" component={Profile} />
+                    <Route exact path={repo_path} component={Repository}/>
                 </div>
             </Router>
         </AuthProvider>
