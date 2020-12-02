@@ -32,7 +32,7 @@ const PersonalHome = () => {
         profile_picture_path = val;
     }
     FirebaseHandler.getData(pro_pic_path, get_picture_path);
-    
+
     if (profile_picture_path != null) {
         let storageRef = db.storage().ref();
         storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
@@ -42,15 +42,16 @@ const PersonalHome = () => {
     }
 
     let repo_paths = [];
-    let repo_ref = db.database().ref().child('repositories');
-    repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
-        snapshot.forEach((entry) => {
+    function handleRepo(id_list) {
+        id_list.forEach(entry => {
             repo_paths.push(
-                <PrivateRoute exact path={'/' + entry.key} component={() => IndividualRepository(entry.key)}/>
+                <PrivateRoute exact path={'/' + entry} component={() => IndividualRepository(entry)}/>
             );
-            console.log(entry.key);
-        });
-    });
+            console.log(entry);
+        })
+    }
+    FirebaseHandler.findRepositories(uid, handleRepo);
+
 
     return (
         <div className="container">
