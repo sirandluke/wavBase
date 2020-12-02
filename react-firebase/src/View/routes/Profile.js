@@ -29,15 +29,6 @@ const Profile = ({ history }) => {
         img.src = url;
     })
 
-
-    const redirectHome = () => {
-        history.push("/");
-    }
-
-    const redirectRepo = () => {
-        history.push("/repository");
-    }
-
     const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
@@ -86,7 +77,7 @@ const Profile = ({ history }) => {
 
     return (
         <div>
-            <img id="profile_picture" width={100} height={100}/>
+            <img id="profile_picture" width={125} height={125}/>
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
@@ -120,12 +111,6 @@ const Profile = ({ history }) => {
                 <input type="submit" value="Update"/>
             </form>
             <button onClick={resetPassword}>Reset Password</button>
-            <DropdownButton id="dropdown-basic-button" title="User">
-                <Dropdown.Item as="button" >My Profile</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
-            </DropdownButton>
-            <button onClick={redirectHome}>Go Back to Home!</button>
         </div>
     );
 }

@@ -7,16 +7,12 @@ import {PlayButton} from "../../Model/PlayButton";
 
 function IndividualRepository(uid) {
 
-    const history = useHistory();
-
-    const returnHome = () => {
-        history.push("/");
-    }
+    //const history = useHistory();
 
     return (
         <div>
             <h1>{uid}</h1>
-            <button onClick={returnHome}>Go Home</button>
+            <button>Go Home</button>
         </div>
     );
 }
