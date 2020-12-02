@@ -7,11 +7,26 @@ import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
-import RepoModuleInProfile from "../../Model/RepoModuleInProfile";
 
 // TODO: render searchbar, likes, (add more)
 
 const PersonalHome = ({history}) => {
+
+    const redirectCreateRepo = () => {
+        history.push("/newrepo");
+    }
+
+    const redirectRepo = () => {
+        history.push("/repository");
+    }
+
+    const redirectProfile = () => {
+        history.push("/profile");
+    }
+
+    function red(target) {
+        history.push("/a");
+    }
 
     let audioSource = 'https://firebasestorage.googleapis.com/v0/b/wavbasedb-9a679.appspot.com/o/test_audio%2Ftest_piano.mp3?alt=media&token=e3dce63f-0aab-4d68-be39-39893c759e8e';
 
@@ -29,21 +44,7 @@ const PersonalHome = ({history}) => {
         name = username;
     }
 
-    const redirectCreateRepo = () => {
-        history.push("/newrepo");
-    }
 
-    const redirectRepo = () => {
-        history.push("/");
-    }
-
-    const redirectProfile = () => {
-        history.push("/profile");
-    }
-
-    function red(target) {
-        history.push("/" + target);
-    }
 
 
     let repo_links = [];
