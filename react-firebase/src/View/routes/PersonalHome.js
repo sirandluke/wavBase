@@ -2,10 +2,18 @@ import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Model/base";
-import "../../App.css";
+import "./PersonalHome.css";
 import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+
+import {ProfileInfo} from "../auth/HomePageComponents/ProfileInfo";
+import {RepositoryList} from "../auth/HomePageComponents/RepositoryList";
+import {sine_wave_1} from "../../Images/sine_wave_1.png"
+
+
+
+import Repository from "./Repository";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}) => {
@@ -39,23 +47,31 @@ const PersonalHome = ({history}) => {
 
 
     return (
-        <div className="container">
-            <h1>Home</h1>
-            <div className="nav">
-                <h2>wavBase</h2>
-                <img src={logo} alt="wavBase Logo" width="50" height="50"/>
-                <h2>Hello {name}</h2>
+        <div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+            <div className="nav_bar">
+                <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <DropdownButton id="dropdown-basic-button" title="User">
-                    <Dropdown.Item as="button" onClick={redirectProfile}>My Profile</Dropdown.Item>
-                    <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
-                    <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
+                    <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
+                    <br />
                 </DropdownButton>
+            </div>
+
+            <div className="profile_info">
+                <ProfileInfo />
+            </div>
+
+            <div className="repository_lists">
                 <ul>
-                    <button onClick={redirectCreateRepo}>Create Repository</button>
-                    <li>Repositories</li>
-                    <li>Likes</li>
+                    <button onClick={ redirectCreateRepo }>Create Repository</button>
                 </ul>
             </div>
+
         </div>
     );
 }

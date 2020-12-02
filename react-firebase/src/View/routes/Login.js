@@ -27,7 +27,7 @@ const Login = ({history}) => {
             inorder to better conform to MVC design pattern.
          */
         try {
-            if (isEmail(email_or_username)) {
+            if (isEmail(email_or_username.value)) {
                 // Login with email and password.
                 let email = email_or_username.value;
                 db
