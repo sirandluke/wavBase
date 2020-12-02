@@ -1,15 +1,11 @@
 import React, {Component} from "react";
 import "../../App.css";
-import * as K from '../../Constants';
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
 import db from "../../Model/base";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import {HashRouter, NavLink} from "react-router-dom";
+
+import {HashRouter, NavLink, Router} from "react-router-dom";
 import PrivateRoute from "../auth/PrivateRoute";
-import Profile from "./Profile";
-import NewRepo from "./NewRepo";
+import IndividualRepository from "./IndividualRepository";
 
 const Repository = () => {
 
@@ -31,9 +27,11 @@ const Repository = () => {
     }
 
     let repo_links = [];
+    let repo_paths = [];
     let repo_ref = db.database().ref().child('repositories');
     repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
         snapshot.forEach((entry) => {
+            repo_paths.push('/' + entry.key);
             repo_links.push(
                 <box>
                     <h2><NavLink to={'/' + entry.key}>{entry.val().name}</NavLink></h2>
@@ -48,6 +46,8 @@ const Repository = () => {
         <div>
             <HashRouter>
                 <button onClick><NavLink to='/newrepo'>Create Repository</NavLink></button>
+                <div>
+                </div>
             </HashRouter>
             <ul>
                 <li>Repositories</li>

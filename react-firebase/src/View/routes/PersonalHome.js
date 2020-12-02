@@ -10,8 +10,9 @@ import {PlayButton} from "../../Model/PlayButton";
 import Route, {HashRouter, NavLink} from "react-router-dom";
 import PrivateRoute from "../auth/PrivateRoute";
 import Profile from "./Profile";
-import Repository, {red} from "./Repository";
+import Repository from "./Repository";
 import NewRepo from "./NewRepo";
+import IndividualRepository from "./IndividualRepository";
 
 // TODO: render searchbar, likes, (add more)
 
@@ -38,6 +39,17 @@ const PersonalHome = ({history}) => {
         img.src = url;
     })
 
+    let repo_paths = [];
+    let repo_ref = db.database().ref().child('repositories');
+    repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
+        snapshot.forEach((entry) => {
+            repo_paths.push(
+                <PrivateRoute exact path={'/' + entry.key} component={() => IndividualRepository(entry.key)}/>
+            );
+            console.log(entry.key);
+        });
+    })
+
     return (
         <div className="container">
             <div className="nav">
@@ -55,6 +67,7 @@ const PersonalHome = ({history}) => {
                         <PrivateRoute exact path='/' component={Repository}/>
                         <PrivateRoute exact path='/profile' component={Profile}/>
                         <PrivateRoute exact path='/newrepo' component={NewRepo}/>
+                        {repo_paths}
                     </div>
                 </HashRouter>
 

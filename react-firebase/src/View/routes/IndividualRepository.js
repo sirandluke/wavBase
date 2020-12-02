@@ -5,9 +5,7 @@ import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
 
-function IndividualRepository(uid) {
-
-    //const history = useHistory();
+const IndividualRepository = (uid) => {
 
     return (
         <div>
