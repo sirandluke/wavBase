@@ -23,23 +23,21 @@ const PersonalHome = () => {
     let name;
     function get_name(val) {
         name = val;
+        console.log(name);
+        document.getElementById('username').innerText = 'Hello ' + name;
     }
     FirebaseHandler.getData(user_name_path, get_name);
 
     const pro_pic_path = 'users/' + uid + "/profile_picture";
-    let profile_picture_path;
     function get_picture_path(val) {
-        profile_picture_path = val;
-    }
-    FirebaseHandler.getData(pro_pic_path, get_picture_path);
-
-    if (profile_picture_path != null) {
+        console.log(val);
         let storageRef = db.storage().ref();
-        storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
+        storageRef.child(val).getDownloadURL().then(function (url) {
             let img = document.getElementById('profile_avatar');
             img.src = url;
         });
     }
+    FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     let repo_paths = [];
     function handleRepo(id_list) {
@@ -52,13 +50,14 @@ const PersonalHome = () => {
     }
     FirebaseHandler.findRepositories(uid, handleRepo);
 
+    //<img id='profile_avatar' src='' width={50} height={50}/>
 
     return (
         <div className="container">
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
-                <h2>Hello {name}</h2>
+                <h2 id="username">Hello</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
                 <HashRouter>
                     <DropdownButton id="dropdown-basic-button" title="User">

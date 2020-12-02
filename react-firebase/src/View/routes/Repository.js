@@ -6,6 +6,7 @@ import db from "../../Model/base";
 import {HashRouter, NavLink, Router} from "react-router-dom";
 import PrivateRoute from "../auth/PrivateRoute";
 import IndividualRepository from "./IndividualRepository";
+import * as FirebaseHandler from "../../Model/FirebaseHandler";
 
 export const audioSource = 'https://firebasestorage.googleapis.com/v0/b/wavbasedb-9a679.appspot.com/o/test_audio%2Ftest_piano.mp3?alt=media&token=e3dce63f-0aab-4d68-be39-39893c759e8e';
 const Repository = () => {
@@ -25,6 +26,20 @@ const Repository = () => {
             console.log(entry.key);
         });
     })
+
+    /*const uid = db.auth().currentUser.uid;
+    let repo_links = [];
+    function handleRepo(id_list) {
+        id_list.forEach(entry => {
+            repo_links.push(
+                <box>
+                    <h2><NavLink to={'/' + entry.key}>{entry.val().name}</NavLink></h2>
+                </box>
+            );
+            console.log(entry.key);
+        })
+    }
+    FirebaseHandler.findRepositories(uid, handleRepo);*/
 
     return (
         <div>
