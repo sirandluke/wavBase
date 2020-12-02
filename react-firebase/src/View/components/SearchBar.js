@@ -14,45 +14,43 @@ class SearchBar extends Component {
     }
 
     render() {
+        //performs callback on array of UIDs with usernames containing the search query
         const findMatchingUsers = (query, callback) => {
+            let uids = [];
             const ref = db.database().ref();
             ref.child("users").once("value", (snapshot) => {
                 snapshot.forEach((user) => {
                     let uid = user.key;
                     let username = user.child("username").val().toString();
                     if (username.toLowerCase().includes(query.toLowerCase())) {
-                        callback(uid);
+                        uids.push(uid);
                     }
                 });
             });
+            callback(uids);
         }
 
+        //performs callback on array of UIDs with repository names containing the search query
         const findMatchingRepos = (query, callback) => {
+            let rids = []
             const ref = db.database().ref();
             ref.child("repositories").once("value", (snapshot) => {
-                snapshot.forEach((user) => {
-                    let uid = user.key;
-                    let username = user.child("name").val().toString();
-                    if (username.toLowerCase().includes(query.toLowerCase())) {
-                        callback(uid);
+                snapshot.forEach((repo) => {
+                    let rid = repo.key;
+                    let reponame = repo.child("name").val().toString();
+                    if (reponame.toLowerCase().includes(query.toLowerCase())) {
+                        rids.push(rid)
                     }
                 });
             });
+            callback(rids)
         }
 
         const handleSearch = (event) => {
             event.preventDefault();
             const {query} = event.target.elements;
-            findMatchingUsers(query.value, collectUserResults);
-            findMatchingRepos(query.value, collectRepoResults);
-        }
-
-        const collectUserResults = (uid) => {
-            
-        }
-
-        const collectRepoResults = (uid) => {
-            
+            findMatchingUsers(query.value, ()=>{}); //add functionality to generate 
+            findMatchingRepos(query.value, ()=>{});
         }
 
         return(
