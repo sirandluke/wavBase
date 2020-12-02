@@ -6,12 +6,13 @@ import db from "../../Model/base";
 import {HashRouter, NavLink, Router} from "react-router-dom";
 import PrivateRoute from "../auth/PrivateRoute";
 import IndividualRepository from "./IndividualRepository";
+import {repo_paths, repo_ref, current_uid} from "./PersonalHome";
 
 const Repository = () => {
 
     let audioSource = 'https://firebasestorage.googleapis.com/v0/b/wavbasedb-9a679.appspot.com/o/test_audio%2Ftest_piano.mp3?alt=media&token=e3dce63f-0aab-4d68-be39-39893c759e8e';
 
-    let user = db.auth().currentUser;
+   /* let user = db.auth().currentUser;
     let name, profile_picture_path, user_email;
     let uid;
     if (user != null) {
@@ -24,14 +25,13 @@ const Repository = () => {
             user_email = snapshot.val().email;
         })
         name = username;
-    }
+    }*/
 
     let repo_links = [];
-    let repo_paths = [];
-    let repo_ref = db.database().ref().child('repositories');
-    repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
+    //let repo_paths = [];
+    //let repo_ref = db.database().ref().child('repositories');
+    repo_ref.orderByChild('user_id').equalTo(current_uid).on('value', (snapshot) => {
         snapshot.forEach((entry) => {
-            repo_paths.push('/' + entry.key);
             repo_links.push(
                 <box>
                     <h2><NavLink to={'/' + entry.key}>{entry.val().name}</NavLink></h2>

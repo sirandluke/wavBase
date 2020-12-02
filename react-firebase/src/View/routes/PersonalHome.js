@@ -17,11 +17,11 @@ import IndividualRepository from "./IndividualRepository";
 // TODO: render searchbar, likes, (add more)
 export const user = db.auth().currentUser;
 export let name, profile_picture_path, user_email;
-export let uid;
+export let current_uid;
 if (user != null) {
     let username;
-    uid = user.uid;
-    let userRef = db.database().ref('users/' + uid);
+    current_uid = user.uid;
+    let userRef = db.database().ref('users/' + current_uid);
     userRef.on('value', (snapshot) => {
         username = snapshot.val().username;
         profile_picture_path = snapshot.val().profile_picture;
@@ -38,7 +38,7 @@ storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
 
 let repo_paths = [];
 export const repo_ref = db.database().ref().child('repositories');
-repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
+repo_ref.orderByChild('user_id').equalTo(current_uid).on('value', (snapshot) => {
     snapshot.forEach((entry) => {
         repo_paths.push(
             <PrivateRoute exact path={'/' + entry.key} component={() => IndividualRepository(entry.key)}/>
