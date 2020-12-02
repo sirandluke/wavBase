@@ -15,46 +15,49 @@ import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 
 // TODO: render searchbar, likes, (add more)
-export const user = db.auth().currentUser;
-export let name, profile_picture_path, user_email;
-export let current_uid;
-if (user != null) {
-    let username;
-    current_uid = user.uid;
-    let userRef = db.database().ref('users/' + current_uid);
-    userRef.on('value', (snapshot) => {
-        username = snapshot.val().username;
-        profile_picture_path = snapshot.val().profile_picture;
-        user_email = snapshot.val().email;
-    });
-    name = username;
-}
-
-export const storageRef = db.storage().ref();
-storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
-    let img = document.getElementById('profile_avatar');
-    img.src = url;
-});
-
-let repo_paths = [];
-export const repo_ref = db.database().ref().child('repositories');
-repo_ref.orderByChild('user_id').equalTo(current_uid).on('value', (snapshot) => {
-    snapshot.forEach((entry) => {
-        repo_paths.push(
-            <PrivateRoute exact path={'/' + entry.key} component={() => IndividualRepository(entry.key)}/>
-        );
-        console.log(entry.key);
-    });
-});
 
 const PersonalHome = () => {
+
+    let user = db.auth().currentUser;
+    let name, profile_picture_path, user_email;
+    let uid;
+    if (user != null) {
+        let username;
+        uid = db.auth().currentUser.uid;
+        let userRef = db.database().ref('users/' + uid);
+        userRef.on('value', (snapshot) => {
+            username = snapshot.val().username;
+            profile_picture_path = snapshot.val().profile_picture;
+            user_email = snapshot.val().email;
+        });
+        name = username;
+    }
+
+    if (profile_picture_path != null) {
+        let storageRef = db.storage().ref();
+        storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
+            let img = document.getElementById('profile_avatar');
+            img.src = url;
+        });
+    }
+
+    let repo_paths = [];
+    let repo_ref = db.database().ref().child('repositories');
+    repo_ref.orderByChild('user_id').equalTo(uid).on('value', (snapshot) => {
+        snapshot.forEach((entry) => {
+            repo_paths.push(
+                <PrivateRoute exact path={'/' + entry.key} component={() => IndividualRepository(entry.key)}/>
+            );
+            console.log(entry.key);
+        });
+    });
 
     return (
         <div className="container">
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
-                <h2>Hello {name}!</h2>
+                <h2>Hello {name}</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
                 <HashRouter>
                     <DropdownButton id="dropdown-basic-button" title="User">

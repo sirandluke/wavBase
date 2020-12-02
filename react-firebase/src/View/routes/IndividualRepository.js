@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import {useHistory} from 'react-router-dom';
 import "../../App.css";
 import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
+import {audioSource} from "./Repository";
 
-const IndividualRepository = (uid) => {
+const IndividualRepository = (repo_id) => {
 
     return (
         <div>
-            <h1>{uid}</h1>
-            <button>Go Home</button>
+            <h1>{repo_id}</h1>
+            <PlayButton audio={audioSource}/>
         </div>
     );
 }
