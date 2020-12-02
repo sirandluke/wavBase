@@ -18,21 +18,21 @@ import IndividualRepository from "./IndividualRepository";
 
 const PersonalHome = () => {
 
-    let user = db.auth().currentUser;
-    let name, profile_picture_path, user_email;
-    let uid;
-    if (user != null) {
-        let username;
-        uid = db.auth().currentUser.uid;
-        let userRef = db.database().ref('users/' + uid);
-        userRef.on('value', (snapshot) => {
-            username = snapshot.val().username;
-            profile_picture_path = snapshot.val().profile_picture;
-            user_email = snapshot.val().email;
-        });
-        name = username;
+    const uid = db.auth().currentUser.uid;
+    const user_name_path = 'users/' + uid + "/username";
+    let name;
+    function get_name(val) {
+        name = val;
     }
+    FirebaseHandler.getData(user_name_path, get_name);
 
+    const pro_pic_path = 'users/' + uid + "/profile_picture";
+    let profile_picture_path;
+    function get_picture_path(val) {
+        profile_picture_path = val;
+    }
+    FirebaseHandler.getData(pro_pic_path, get_picture_path);
+    
     if (profile_picture_path != null) {
         let storageRef = db.storage().ref();
         storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
