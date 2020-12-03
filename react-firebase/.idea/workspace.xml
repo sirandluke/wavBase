@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/components/RepoDisplayComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/RepoDisplayComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoDisplayComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Results.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,40 +130,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606814483723" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606963072678">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606976586244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606963072678" />
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606976586244" />
     <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1606815173836">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
-    <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1606963159074">
+    <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1606976645681">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606963159074" />
-    <state width="1878" height="157" key="GridCell.Tab.0.center" timestamp="1606963159074">
+    <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606976645681" />
+    <state width="1878" height="157" key="GridCell.Tab.0.center" timestamp="1606976645681">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606963159074" />
-    <state width="1878" height="157" key="GridCell.Tab.0.left" timestamp="1606963159074">
+    <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606976645681" />
+    <state width="1878" height="157" key="GridCell.Tab.0.left" timestamp="1606976645680">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606963159074" />
-    <state width="1878" height="157" key="GridCell.Tab.0.right" timestamp="1606963159074">
+    <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606976645680" />
+    <state width="1878" height="157" key="GridCell.Tab.0.right" timestamp="1606976645681">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606963159074" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/View/routes/Repository.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606976645681" />
   </component>
 </project>

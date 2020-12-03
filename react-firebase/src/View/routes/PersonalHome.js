@@ -13,14 +13,14 @@ import Repository from "./Repository";
 import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
-import SearchResults from "./SearchResults";
-import ResultsInterface, {Results} from "./Results";
+import ResultsInterface from "./ResultsInterface";
 
 // TODO: render searchbar, likes, (add more)
 
 const PersonalHome = () => {
 
-    const uid = db.auth().currentUser.uid;
+    const user = db.auth().currentUser;
+    const uid = user.uid;
     const user_name_path = 'users/' + uid + "/username";
     let name;
 

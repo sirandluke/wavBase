@@ -20,7 +20,7 @@ const Repository = () => {
             repo_paths.push('/' + entry.key);
             repo_links.push(
                    //<li><h2><NavLink to={'/' + entry.key}>{entry.val().name}</NavLink></h2></li>
-                <RepoDisplayComponent uid={entry.key} name={entry.val().name}></RepoDisplayComponent>
+                <RepoDisplayComponent id={entry.key} name={entry.val().name}></RepoDisplayComponent>
             );
             console.log(entry.key);
         });
@@ -29,7 +29,7 @@ const Repository = () => {
     return (
         <div>
             <HashRouter>
-                <button onClick><NavLink to='/newrepo'>Create Repository</NavLink></button>
+                <button><NavLink to='/newrepo'>Create Repository</NavLink></button>
                 <div>
                 </div>
             </HashRouter>

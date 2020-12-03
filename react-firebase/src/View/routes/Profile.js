@@ -18,7 +18,7 @@ const Profile = () => {
     const uid = db.auth().currentUser.uid;
     const userRef = db.database().ref('users/' + uid);
     let username, profile_picture_path, user_email;
-    userRef.on('value', (snapshot) =>{
+    userRef.on('value', (snapshot) => {
         username = snapshot.val().username;
         profile_picture_path = snapshot.val().profile_picture;
         user_email = snapshot.val().email;
@@ -26,13 +26,17 @@ const Profile = () => {
 
     const pro_pic_path = 'users/' + uid + "/profile_picture";
     const storageRef = db.storage().ref();
+
     function get_picture_path(val) {
         console.log(val);
         storageRef.child(val).getDownloadURL().then(function (url) {
             let img = document.getElementById('profile_picture');
-            img.src = url;
+            if (img != null) {
+                img.src = url;
+            }
         });
     }
+
     FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     const handleUploadPicture = (event) => {
@@ -42,13 +46,12 @@ const Profile = () => {
         let picture_storage = storageRef.child(picture_path);
         let picture = document.getElementById('picture').files[0];
         console.log(picture);
-        picture_storage.put(picture).then(function(snapshot) {
+        picture_storage.put(picture).then(function (snapshot) {
             console.log('New Profile Picture Uploaded');
         });
         userRef.update({
             profile_picture: picture_path
         });
-
     }
 
     const handleInfoUpdate = (event) => {
@@ -72,13 +75,13 @@ const Profile = () => {
     }
 
     const resetPassword = () => {
-        db.auth().sendPasswordResetEmail(user_email).then(function() {
+
+        db.auth().sendPasswordResetEmail(user_email).then(function () {
             console.log("Password Reset Email sent to:" + user_email);
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Password Reset Email not sent successfully");
         });
     }
-
 
 
     return (
