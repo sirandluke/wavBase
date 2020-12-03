@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {FollowerCount} from "./FollowerCount"
 import {NameBioFollowers} from "./NameBioFollowers";
-import db from "../../../Model/base";
-import loading from "../../../Images/loader.gif"
+import db from "../../Model/base";
+import loading from "../../Images/loader.gif"
 
 import "./ProfileInfo.css"
 
@@ -21,42 +21,29 @@ export class ProfileInfo extends Component {
         let uid = db.auth().currentUser.uid;
         this.firebaseRef = db.database().ref('users/' + uid);
         this.storageRef = db.storage().ref();
-
-        let that = this;
-        this.readUserInfo().then( () => {
-            that.renderProfilePicture().then((pfp) => {
-                document.getElementById('profile_picture').src = pfp;
-                this.setState({profile_picture_path: pfp})
-            });
-        });
     };
 
-    componentWillUnmount() {
-        this.firebaseRef.off();
-    }
-
-    async readUserInfo() {
-        await this.firebaseRef.on('value', async (snapshot) => {
-            const data =  await snapshot.val();
+    componentDidMount() {
+        this.firebaseRef.once('value',(snapshot) => {
+            const data = snapshot.val();
             console.log(data);
-            await this.setState({
+            this.setState({
                 username: data.username,
                 biography: data.biography,
                 followers: data.followers,
                 following: data.following,
                 profile_picture_path: data.profile_picture
             });
+        }).then(() => {
+            console.log(this.state.profile_picture_path);
+            this.storageRef.child(this.state.profile_picture_path).getDownloadURL().then( function (url) {
+                console.log(url);
+                let pfp = document.getElementById("profile_picture");
+                pfp.src = url;
+            }).catch( (error) => {
+                console.log(error)
+            });
         });
-    }
-
-    async renderProfilePicture() {
-        let pfp = this.state.profile_picture_path;
-        await this.storageRef.child(this.state.profile_picture_path).getDownloadURL().then( function (url) {
-            pfp = url;
-        }).catch(function (error) {
-            console.log(error)
-        });
-        return pfp;
     }
 
     render() {
