@@ -9,7 +9,7 @@ import {HashRouter, NavLink} from "react-router-dom";
 import {BrowserRouter} from 'react-router-dom'
 import PrivateRoute from "../auth/PrivateRoute";
 import Profile from "./Profile";
-import Repository from "./Repository";
+import Repository, {repo_page_path} from "./Repository";
 import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
@@ -59,22 +59,9 @@ const PersonalHome = () => {
 
     FirebaseHandler.findRepositories(uid, handleRepo);
 
-    //let search_results = 'Not success';
-    /*const handleSearch = (event) => {
-        event.preventDefault();
-        let search_input = document.getElementById("search_input").value;
-        if (search_input != '') {
-            search_results.push(search_input);
-            console.log(search_input);
-        }
-        history.push('/search_result');
-    }*/
-
-    function handleSearch() {
-
-    }
-
+    //const repo_paths = repo_page_path();
     const search_results_path = search_result_paths();
+    function handleClick() {}
 
     return (
         <div className="container">
@@ -82,7 +69,7 @@ const PersonalHome = () => {
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
                 {/*Search Bar Begin */}
-                <form onSubmit={handleSearch}>
+                <form onClick={handleClick}>
                     <label>
                         <input id='search_input' type="text" name="query"></input>
                     </label>
