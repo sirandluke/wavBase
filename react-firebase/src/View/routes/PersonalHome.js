@@ -14,6 +14,7 @@ import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
 import ResultsInterface from "./ResultsInterface";
+import SearchResultWithOptions from "../components/SearchResultWithOptions";
 
 // TODO: render searchbar, likes, (add more)
 

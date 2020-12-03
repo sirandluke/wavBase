@@ -1,6 +1,15 @@
 import React from "react";
 import db from "../../Model/base";
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
+import {ParseTags} from "../../Model/ParseTags";
+import {HashRouter, NavLink} from "react-router-dom";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import PrivateRoute from "../auth/PrivateRoute";
+import Repository from "./Repository";
+import Profile from "./Profile";
+import NewRepo from "./NewRepo";
+import SearchResultWithOptions from "../components/SearchResultWithOptions";
 
 const ResultsInterface = (search_input) => {
 
@@ -10,7 +19,7 @@ const ResultsInterface = (search_input) => {
         ref.child("users").on("value", (snapshot) => {
             snapshot.forEach((user) => {
                 let uid = user.key;
-                let username = user.child("username").val().toString();
+                let username = user.val().username;
                 if (username.toLowerCase().includes(query.toLowerCase())) {
                     uids.push(user);
                 }
@@ -20,15 +29,24 @@ const ResultsInterface = (search_input) => {
     }
 
     //performs callback on array of UIDs with repository names containing the search query
-    function findMatchingRepos(query, callback) {
+    function findMatchingRepos(value, query, callback) {
         let rids = [];
         const ref = db.database().ref();
-        ref.child("repositories").on("value", (snapshot) => {
+        ref.child('repositories').on("value", (snapshot) => {
             snapshot.forEach((repo) => {
-                let rid = repo.key;
-                let reponame = repo.child("name").val().toString();
-                if (reponame.toLowerCase().includes(query.toLowerCase())) {
-                    rids.push(repo);
+                //let rid = repo.key;
+                if (value === 'repositories') {
+                    let reponame = repo.val().name;
+                    if (reponame.toLowerCase().includes(query.toLowerCase())) {
+                        rids.push(repo);
+                    }
+                } else if (value === 'tags') {
+                    let repo_tags = repo.val().tags;
+                    console.log("tags = " + repo_tags);
+                    let tag = ParseTags(repo_tags);
+                    if (tag.includes(query)) {
+                        rids.push(repo);
+                    }
                 }
             });
         });
@@ -37,37 +55,11 @@ const ResultsInterface = (search_input) => {
 
     let user_results = [];
     let repo_results = [];
-    /*const storage_ref = db.database().ref();
-    const users_ref = storage_ref.child('users/');
-    const repos_ref = storage_ref.child('repositories/');
-    users_ref.child("users").on("value", (snapshot) => {
-        snapshot.forEach((user) => {
-            console.log(user.key);
-            let uid = user.key;
-            let username = user.child("username").val().toString();
-            if (username.toLowerCase().includes(search_input.toLowerCase())) {
-                user_results.push(
-                    <li>{uid}</li>
-                );
-            }
-        });
-    });
-
-    repos_ref.child("repositories").on("value", (snapshot) => {
-        snapshot.forEach((repo) => {
-            let rid = repo.key;
-            let repo_name = repo.child("name").val().toString();
-            if (repo_name.toLowerCase().includes(search_input.toLowerCase())) {
-                repo_results.push(
-                    <li>{rid}</li>
-                );
-            }
-        });
-    });*/
+    let tags_results = [];
 
 
     function getUsers(uids) {
-        console.log(uids);
+        //console.log(uids);
         uids.forEach((id) => {
             user_results.push(
                 <button>{id.val().username}</button>
@@ -77,8 +69,8 @@ const ResultsInterface = (search_input) => {
 
     findMatchingUsers(search_input, getUsers);
 
-    function getRepos(rids) {
-        console.log(rids);
+    function getReposByName(rids) {
+        //console.log(rids);
         rids.forEach((id) => {
             console.log("Found repo: " + id);
             repo_results.push(
@@ -87,20 +79,35 @@ const ResultsInterface = (search_input) => {
         });
     }
 
-    findMatchingRepos(search_input, getRepos);
+    function getReposByTags(rids) {
+        console.log(rids);
+        rids.forEach((id) => {
+            console.log("Found repo: " + id);
+            tags_results.push(
+                <RepoDisplayComponent id={id.key} name={id.val().name}/>
+            );
+        });
+    }
+
+    findMatchingRepos('repositories', search_input, getReposByName);
+    findMatchingRepos('tags', search_input, getReposByTags);
 
 
     return (
         <div>
-            <h2>User Search Results</h2>
-            <div>
-                {user_results}
-            </div>
-            <br />
-            <h2>Repository Search Results</h2>
-            <div>
-                {repo_results}
-            </div>
+            <HashRouter>
+                <DropdownButton id="dropdown-basic-button" title="Options">
+                    <Dropdown.Item as="button"><NavLink to='/search_result'>Users</NavLink></Dropdown.Item>
+                    <Dropdown.Item as="button"><NavLink
+                        to='/search_result/repositories'>Repositories</NavLink></Dropdown.Item>
+                    <Dropdown.Item as="button"><NavLink to='/search_result/tags'>Tags</NavLink></Dropdown.Item>
+                </DropdownButton>
+                <div>
+                    <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
+                    <PrivateRoute exact path='/search_result/repositories' component={() => SearchResultWithOptions('Repositories', repo_results)}/>
+                    <PrivateRoute exact path='/search_result/tags' component={() => SearchResultWithOptions('Tags', tags_results)}/>
+                </div>
+            </HashRouter>
         </div>
     );
 }
