@@ -50,7 +50,7 @@ export class ProfileInfo extends Component {
 
         return (
             <div>
-                <img id="profile_picture" src={loading} alt="Profile Picture" width="40px" height="40px"/>
+                <img className="user_profile_picture" id="profile_picture" src={loading} alt="Profile Picture"/>
                 <NameBioFollowers
                     username={this.state.username}
                     biography={this.state.biography}

@@ -51,7 +51,7 @@ class RepositoryList extends Component {
         const repoElement = this.state.repos.map(repos =>
             <tr key={ repos.repo_id }>
                 <td style={ {width: '200px', textAlign: 'left'} }>
-                    <button name="repo_links" onClick={() => this.redirectToRepo(repos.repo_id)}>
+                    <button className="repo_button" name="repo_links" onClick={() => this.redirectToRepo(repos.repo_id)}>
                         { repos.name }
                     </button>
                 </td>
@@ -59,12 +59,13 @@ class RepositoryList extends Component {
         );
 
         return (
-            <div style={{paddingTop: '20px'}}>
-                <table style={{border: '1px solid blue'}}>
+            <div style={{paddingTop: '20px', overflowY:'scroll', height:"65%"}}>
+                {/* <table style={{border: '1px solid blue'}}> */}
+                <table>
                     <thead>
-                    <tr>
+                    {/* <tr>
                         <th style={{textAlign:"left"}}>Your Repositories</th>
-                    </tr>
+                    </tr> */}
                     </thead>
                     <tbody>
                     {repoElement}

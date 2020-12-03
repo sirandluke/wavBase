@@ -92,28 +92,35 @@ body {
 .upperRight_text {
     position: absolute;
     height: 295px;
-    left: 550px;
-    top: 120px;
+    left: 600px;
+    top: 150px;
     /*background-color: pink;*/
-    padding-right: 70px;
+    padding-right: 12rem;
+    /* padding-left: 30px; */
     z-index:2;
 }
 
 h1 {
     font-style: normal;
     font-weight: bold;
-    font-size: 55px;
-    line-height: 80px;
+    /* padding-right: 30rem; */
+    font-size: 54px;
+    line-height: 60px;
     margin: 0px;
 }
 
 p1 {
-    padding-right: 300px;
+    /* padding-right: 300px; */
+    font-size: 20px;
+    /* padding-left: 30px; */
+}
+.bold_text{
+    font-weight: bold;
 }
 
 .lowerRight_text {
     position: absolute;
-    left: 550px;
+    left: 600px;
     top: 450px;
     position: absolute;
 

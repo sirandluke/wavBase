@@ -16,3 +16,21 @@
 .repo_links:hover {
     background-color: #3e8e41;
 }
+
+.repo_button{
+    border-radius: 0.5rem;
+    width: 450%;
+    background-color: transparent;
+    height: 5rem;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: left;
+}
+
+.repo_button:hover{
+    background-color: #355070;
+    color: white;
+    transition: 0.25s;
+}

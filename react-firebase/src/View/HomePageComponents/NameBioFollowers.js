@@ -6,7 +6,7 @@ export class NameBioFollowers extends Component{
     render(){
         return(
             <div>
-                <h3>{this.props.username}</h3>
+                <h3 style={{textAlign:'center', fontSize:'24px'}}>{this.props.username}</h3>
                 <FollowerCount
                     followers={this.props.followers}
                     following={this.props.following}
