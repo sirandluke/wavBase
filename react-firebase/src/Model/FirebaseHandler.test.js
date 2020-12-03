@@ -23,9 +23,10 @@ test("Update node value", done => {
     } catch (error) {
       done(error);
     }
-  
+
     FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
-  });
+  }
+});
 
   test("Fetch repository ids", done => {
     let test = ["-MNSRGgpRojJFru31lkO", "-MNSRKdqdKb1feg9siw1"];

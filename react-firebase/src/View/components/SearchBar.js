@@ -1,5 +1,5 @@
 import React, {Component, useContext} from 'react';
-import { Redirect } from "react-router-dom";
+import {HashRouter, NavLink, Redirect} from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import db from '../../Model/base';
 
@@ -59,7 +59,9 @@ class SearchBar extends Component {
                     <label>
                         <input type="text" name="query"></input>
                     </label>
-                    <button type="submit">Search</button>
+                    <HashRouter>
+                        <button type="submit"><NavLink to='/search_result'>Search</NavLink></button>
+                    </HashRouter>
                 </form>
             </div>
         );

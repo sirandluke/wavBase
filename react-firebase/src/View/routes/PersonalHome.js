@@ -4,15 +4,17 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Model/base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
-//import Home from "./Home";
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
-import {PlayButton} from "../../Model/PlayButton";
-import Route, {HashRouter, NavLink} from "react-router-dom";
+import {HashRouter, NavLink} from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom'
 import PrivateRoute from "../auth/PrivateRoute";
 import Profile from "./Profile";
 import Repository from "./Repository";
 import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
+import SearchBar from "../components/SearchBar";
+import SearchResults from "./SearchResults";
+import ResultsInterface from "./Results";
 
 // TODO: render searchbar, likes, (add more)
 
@@ -61,6 +63,7 @@ const PersonalHome = () => {
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
+                <SearchBar />
                 <h2 id="username">Hello</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
                 <HashRouter>
@@ -73,6 +76,7 @@ const PersonalHome = () => {
                         <PrivateRoute exact path='/' component={Repository}/>
                         <PrivateRoute exact path='/profile' component={Profile}/>
                         <PrivateRoute exact path='/newrepo' component={NewRepo}/>
+                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface('asdgas')} />
                         {repo_paths}
                     </div>
                 </HashRouter>
