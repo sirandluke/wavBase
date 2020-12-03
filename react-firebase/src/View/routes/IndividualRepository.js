@@ -22,23 +22,38 @@ const IndividualRepository = (repo_id) => {
     let name_to_display = 'Firebase too slow';
     let owner_name;
     const owner_ref = db.database().ref('users/' + owner_id);
-    owner_ref.on('value', (snapshot) =>{
+    owner_ref.on('value', (snapshot) => {
         owner_name = snapshot.val().username;
         name_to_display = owner_name + '/' + repo_name;
-        //window.location.reload(false);
     });
 
-    return (
-        <div>
-            <h2>{name_to_display}</h2>
-            <p>{description}</p>
-            <ul>
-                <li>Snapshot 1</li>
-                <li>Snapshot 2</li>
-            </ul>
-            <PlayButton audio={audioSource}/>
-        </div>
-    );
+    if (uid == owner_id) {
+        return (
+            <div>
+                <h2>{name_to_display}</h2>
+                <p>{description}</p>
+                <button>Edit</button>
+                <ul>
+                    <li>Snapshot 1</li>
+                    <li>Snapshot 2</li>
+                </ul>
+                <PlayButton audio={audioSource}/>
+            </div>
+        );
+    }
+    else {
+        return (
+            <div>
+                <h2>{name_to_display}</h2>
+                <p>{description}</p>
+                <ul>
+                    <li>Snapshot 3</li>
+                    <li>Snapshot 4</li>
+                </ul>
+                <PlayButton audio={audioSource}/>
+            </div>
+        );
+    }
 }
 
 export default IndividualRepository;

@@ -21,14 +21,17 @@ const PersonalHome = () => {
     const uid = db.auth().currentUser.uid;
     const user_name_path = 'users/' + uid + "/username";
     let name;
+
     function get_name(val) {
         name = val;
         console.log(name);
         document.getElementById('username').innerText = 'Hello ' + name;
     }
+
     FirebaseHandler.getData(user_name_path, get_name);
 
     const pro_pic_path = 'users/' + uid + "/profile_picture";
+
     function get_picture_path(val) {
         console.log(val);
         let storageRef = db.storage().ref();
@@ -37,6 +40,7 @@ const PersonalHome = () => {
             img.src = url;
         });
     }
+
     FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     let repo_paths = [];
