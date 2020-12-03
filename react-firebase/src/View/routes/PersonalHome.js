@@ -58,16 +58,20 @@ const PersonalHome = () => {
 
     FirebaseHandler.findRepositories(uid, handleRepo);
 
-    let search_results = ['a', 'c', 'd'];
-    const handleSearch = (event) => {
+    //let search_results = 'Not success';
+    /*const handleSearch = (event) => {
         event.preventDefault();
         let search_input = document.getElementById("search_input").value;
         if (search_input != '') {
             search_results.push(search_input);
             console.log(search_input);
         }
-    }
+        history.push('/search_result');
+    }*/
 
+    function handleSearch() {
+
+    }
 
     //<img id='profile_avatar' src='' width={50} height={50}/>
     //<PrivateRoute exact path='/search_result' component={() => ResultsInterface('asdgasdgs')} />
@@ -99,7 +103,7 @@ const PersonalHome = () => {
                         <PrivateRoute exact path='/' component={Repository}/>
                         <PrivateRoute exact path='/profile' component={Profile}/>
                         <PrivateRoute exact path='/newrepo' component={NewRepo}/>
-                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface(search_results)}/>
+                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface(document.getElementById("search_input").value)}/>
                         {repo_paths}
                     </div>
                 </HashRouter>
