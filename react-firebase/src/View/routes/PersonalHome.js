@@ -6,7 +6,7 @@ import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import {HashRouter, NavLink} from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import PrivateRoute from "../auth/PrivateRoute";
 import Profile from "./Profile";
 import Repository from "./Repository";
@@ -14,7 +14,7 @@ import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "./SearchResults";
-import ResultsInterface from "./Results";
+import ResultsInterface, {Results} from "./Results";
 
 // TODO: render searchbar, likes, (add more)
 
@@ -46,6 +46,7 @@ const PersonalHome = () => {
     FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     let repo_paths = [];
+
     function handleRepo(id_list) {
         id_list.forEach(entry => {
             repo_paths.push(
@@ -54,16 +55,38 @@ const PersonalHome = () => {
             console.log(entry);
         })
     }
+
     FirebaseHandler.findRepositories(uid, handleRepo);
 
+    let search_results = ['a', 'c', 'd'];
+    const handleSearch = (event) => {
+        event.preventDefault();
+        let search_input = document.getElementById("search_input").value;
+        if (search_input != '') {
+            search_results.push(search_input);
+            console.log(search_input);
+        }
+    }
+
+
     //<img id='profile_avatar' src='' width={50} height={50}/>
+    //<PrivateRoute exact path='/search_result' component={() => ResultsInterface('asdgasdgs')} />
 
     return (
         <div className="container">
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
-                <SearchBar />
+                {/*Search Bar Begin */}
+                <form onSubmit={handleSearch}>
+                    <label>
+                        <input id='search_input' type="text" name="query"></input>
+                    </label>
+                    <HashRouter>
+                        <button type="submit"><NavLink to='/search_result'>Search</NavLink></button>
+                    </HashRouter>
+                </form>
+                {/*Search Bar End */}
                 <h2 id="username">Hello</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
                 <HashRouter>
@@ -76,7 +99,7 @@ const PersonalHome = () => {
                         <PrivateRoute exact path='/' component={Repository}/>
                         <PrivateRoute exact path='/profile' component={Profile}/>
                         <PrivateRoute exact path='/newrepo' component={NewRepo}/>
-                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface('asdgas')} />
+                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface(search_results)}/>
                         {repo_paths}
                     </div>
                 </HashRouter>

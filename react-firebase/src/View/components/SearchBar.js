@@ -2,6 +2,8 @@ import React, {Component, useContext} from 'react';
 import {HashRouter, NavLink, Redirect} from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import db from '../../Model/base';
+import ResultsInterface from "../routes/Results";
+import PrivateRoute from "../auth/PrivateRoute";
 
 class SearchBar extends Component {
     constructor(props) {
