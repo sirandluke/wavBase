@@ -11,6 +11,20 @@ import Profile from "./Profile";
 import NewRepo from "./NewRepo";
 import SearchResultWithOptions from "../components/SearchResultWithOptions";
 
+let user_results = [];
+let repo_results = [];
+let tags_results = [];
+
+export const search_result_paths = () => (
+    <HashRouter>
+        <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
+        <PrivateRoute exact path='/search_result/repositories'
+                      component={() => SearchResultWithOptions('Repositories', repo_results)}/>
+        <PrivateRoute exact path='/search_result/tags'
+                      component={() => SearchResultWithOptions('Tags', tags_results)}/>
+    </HashRouter>
+);
+
 const ResultsInterface = (search_input) => {
 
     function findMatchingUsers(query, callback) {
@@ -53,11 +67,6 @@ const ResultsInterface = (search_input) => {
         callback(rids);
     }
 
-    let user_results = [];
-    let repo_results = [];
-    let tags_results = [];
-
-
     function getUsers(uids) {
         //console.log(uids);
         uids.forEach((id) => {
@@ -66,6 +75,10 @@ const ResultsInterface = (search_input) => {
             );
         });
     }
+
+    user_results = [];
+    repo_results = [];
+    tags_results = [];
 
     findMatchingUsers(search_input, getUsers);
 
@@ -92,7 +105,6 @@ const ResultsInterface = (search_input) => {
     findMatchingRepos('repositories', search_input, getReposByName);
     findMatchingRepos('tags', search_input, getReposByTags);
 
-
     return (
         <div>
             <HashRouter>
@@ -102,11 +114,6 @@ const ResultsInterface = (search_input) => {
                         to='/search_result/repositories'>Repositories</NavLink></Dropdown.Item>
                     <Dropdown.Item as="button"><NavLink to='/search_result/tags'>Tags</NavLink></Dropdown.Item>
                 </DropdownButton>
-                <div>
-                    <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
-                    <PrivateRoute exact path='/search_result/repositories' component={() => SearchResultWithOptions('Repositories', repo_results)}/>
-                    <PrivateRoute exact path='/search_result/tags' component={() => SearchResultWithOptions('Tags', tags_results)}/>
-                </div>
             </HashRouter>
         </div>
     );

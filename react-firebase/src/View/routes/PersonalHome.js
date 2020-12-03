@@ -13,7 +13,7 @@ import Repository from "./Repository";
 import NewRepo from "./NewRepo";
 import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
-import ResultsInterface from "./ResultsInterface";
+import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import SearchResultWithOptions from "../components/SearchResultWithOptions";
 
 // TODO: render searchbar, likes, (add more)
@@ -74,8 +74,7 @@ const PersonalHome = () => {
 
     }
 
-    //<img id='profile_avatar' src='' width={50} height={50}/>
-    //<PrivateRoute exact path='/search_result' component={() => ResultsInterface('asdgasdgs')} />
+    const search_results_path = search_result_paths();
 
     return (
         <div className="container">
@@ -104,8 +103,9 @@ const PersonalHome = () => {
                         <PrivateRoute exact path='/' component={Repository}/>
                         <PrivateRoute exact path='/profile' component={Profile}/>
                         <PrivateRoute exact path='/newrepo' component={NewRepo}/>
-                        <PrivateRoute exact path='/search_result' component={() => ResultsInterface(document.getElementById("search_input").value)}/>
+                        <PrivateRoute path='/search_result' component={() => ResultsInterface(document.getElementById("search_input").value)}/>
                         {repo_paths}
+                        {search_results_path}
                     </div>
                 </HashRouter>
 
