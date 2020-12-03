@@ -5,8 +5,9 @@ import "../../App.css";
 import db from "../../Model/base";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import * as FirebaseHandler from "../../Model/FirebaseHandler";
 
-const Profile = ({ history }) => {
+const Profile = () => {
 
     const [show, setShow] = useState(false);
 
@@ -14,8 +15,8 @@ const Profile = ({ history }) => {
     const handleShow = () => setShow(true);
 
 
-    let uid = db.auth().currentUser.uid;
-    let userRef = db.database().ref('users/' + uid);
+    const uid = db.auth().currentUser.uid;
+    const userRef = db.database().ref('users/' + uid);
     let username, profile_picture_path, user_email;
     userRef.on('value', (snapshot) =>{
         username = snapshot.val().username;
@@ -23,11 +24,16 @@ const Profile = ({ history }) => {
         user_email = snapshot.val().email;
     })
 
-    let storageRef = db.storage().ref();
-    storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
-        let img = document.getElementById('profile_picture');
-        img.src = url;
-    })
+    const pro_pic_path = 'users/' + uid + "/profile_picture";
+    const storageRef = db.storage().ref();
+    function get_picture_path(val) {
+        console.log(val);
+        storageRef.child(val).getDownloadURL().then(function (url) {
+            let img = document.getElementById('profile_picture');
+            img.src = url;
+        });
+    }
+    FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     const handleUploadPicture = (event) => {
         event.preventDefault();

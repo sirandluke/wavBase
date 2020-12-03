@@ -27,20 +27,6 @@ const Repository = () => {
         });
     })
 
-    /*const uid = db.auth().currentUser.uid;
-    let repo_links = [];
-    function handleRepo(id_list) {
-        id_list.forEach(entry => {
-            repo_links.push(
-                <box>
-                    <h2><NavLink to={'/' + entry.key}>{entry.val().name}</NavLink></h2>
-                </box>
-            );
-            console.log(entry.key);
-        })
-    }
-    FirebaseHandler.findRepositories(uid, handleRepo);*/
-
     return (
         <div>
             <HashRouter>
