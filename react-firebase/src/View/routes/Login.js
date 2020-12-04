@@ -74,6 +74,10 @@ const Login = ({history}) => {
         history.push("/register");
     }
 
+    const redirectResetPW = () => {
+        history.push("/reset_password");
+    }
+
     window.onload=function() {
         const resetPW = document.getElementById('resetPW');
         const idField = document.getElementById('identity');
@@ -108,8 +112,6 @@ const Login = ({history}) => {
 
             <div className="login_right">
                 <h1 className="signIn_header">Sign in to wavBase</h1>
-                {/*<h1>{K.app_name}</h1>*/}
-                {/*<h2>Login</h2>*/}
                 <form onSubmit={handleLogin}>
                     <label>
                         <input
@@ -127,7 +129,7 @@ const Login = ({history}) => {
                     <br />
                     <button className="button" type="submit">Sign in</button>
                     <br />
-                    <button className="button" id="resetPW">Forgot Password / Username?</button>
+                    <button className="button" onClick={redirectResetPW}>Forgot Password?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
                 </form>
