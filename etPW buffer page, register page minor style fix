@@ -1,0 +1,284 @@
+[33mcommit 6e177c9fc2c652e9d86021c23200c4fca1551df4[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 69ee2ed 7c017d7
+Author: abiliu0627 <49803310+abiliu0627@users.noreply.github.com>
+Date:   Fri Dec 4 01:29:31 2020 -0800
+
+    resetPW buffer page, register page minor style fix
+
+[33mcommit 69ee2ed123e77a335a112c4dd40e77f2a2bc72b2[m
+Author: abiliu0627 <49803310+abiliu0627@users.noreply.github.com>
+Date:   Thu Dec 3 23:28:23 2020 -0800
+
+    .
+
+[33mcommit 7c017d7a877f110838cffac318082746bf7567a2[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Thu Dec 3 23:17:34 2020 -0800
+
+    Handle public/private now
+
+[33mcommit be28190c20ed9c25513cf4c9c3f113375dc948db[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Thu Dec 3 03:13:31 2020 -0800
+
+    global route for repo page
+
+[33mcommit 9d8a29cd0b1da5d322df792efcb5a646757ebf5e[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Thu Dec 3 03:03:48 2020 -0800
+
+    able to filter search
+
+[33mcommit 8083170ca5ebe43b696b5eabd77e7fdc1126e12d[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Thu Dec 3 02:39:58 2020 -0800
+
+    Not working but add ParseTag.js
+
+[33mcommit f8532035746249c551c12a0fc25949bfb3857037[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Thu Dec 3 00:57:30 2020 -0800
+
+    search function added
+
+[33mcommit 2730910d22817301108ece4f996f3dea1f30b287[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 21:34:21 2020 -0800
+
+    New Component
+
+[33mcommit aadab6ee37b0165e51edc311b8c55a8e39d05860[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 20:36:56 2020 -0800
+
+    add search feature (in dev)
+
+[33mcommit 2c0182ea95d5248a49f8384accff59eb0f4684e8[m[33m ([m[1;31morigin/verywildteste[m[33m)[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 19:27:04 2020 -0800
+
+    add search bar
+
+[33mcommit f49886d5c3be678743869a914a025fb6e3635845[m
+Merge: b6a6a32 d1d0ef8
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 18:12:00 2020 -0800
+
+    Merge branch 'search' into verywildteste
+
+[33mcommit b6a6a323d6b7dab8ae6cf72ae9a1db8ee9abce51[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 18:10:45 2020 -0800
+
+    delete useless
+
+[33mcommit ef0a8184b7993fee0a70311db19a80d729bca566[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 18:05:58 2020 -0800
+
+    Anothe small modification
+
+[33mcommit d57f19a0413f014bb9de1dc3de1438da08b7a15d[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 17:23:27 2020 -0800
+
+    Modification in IndividualRepository.js and use Firebase Handler in Profile.js
+
+[33mcommit a23bf02b298d462ec2c643efbe195125338a6f21[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 05:48:26 2020 -0800
+
+    FB Handler #3
+
+[33mcommit 23942bd26ec51bb5b56738bf084a5a02a018c5bf[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 05:26:08 2020 -0800
+
+    FB handler use #2
+
+[33mcommit ab5ecc3352b7c945d456d1cf77667a4f9b0558e0[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 05:16:08 2020 -0800
+
+    use firebasehandler
+
+[33mcommit 99d095b4a5266b3a8604da46b90f69547e9b9520[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 05:01:55 2020 -0800
+
+    individual repository really worked now
+
+[33mcommit 712e8351638b3f133603de60e0d6e7da406c794c[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 04:48:56 2020 -0800
+
+    finally works again
+
+[33mcommit 7b5c4fc91c78cb97f2d9fc0fbf330a87ab960cb8[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 04:04:55 2020 -0800
+
+    global attempt #2
+
+[33mcommit 1c74bd0913acdc79ba65192dc888f5cc8866123e[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 03:59:28 2020 -0800
+
+    global attempt #1
+
+[33mcommit d083395b6ba001a6f3a453e5706bf9e3e70a19ff[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 03:53:53 2020 -0800
+
+    work
+
+[33mcommit ce6904f16dfffdabcf361744c8ba0099bd83eabc[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 03:50:25 2020 -0800
+
+    small modi
+
+[33mcommit b9e737736e6b5601f7daa4ae19c11a3e2b0c8c11[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 03:43:08 2020 -0800
+
+    individual repo worked
+
+[33mcommit f96e877d1e7a27b9412baa6ad8e095cc40c7c1c4[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 03:03:12 2020 -0800
+
+    make it work
+
+[33mcommit fd42f5f4786e36621da7b94da948bed213c822ce[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 02:56:39 2020 -0800
+
+    Brand New Single Page App
+
+[33mcommit d546da5cc9ce64c4cb7139af751e29c2a2eec505[m[33m ([m[1;31morigin/playsnippet[m[33m)[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Wed Dec 2 01:44:42 2020 -0800
+
+    add individualrepository.js
+
+[33mcommit d1d0ef8bdfa0f86f9f744ca4ad35db9a5439e9b1[m[33m ([m[1;31morigin/search[m[33m)[m
+Author: rameezhm <rmughal246@yahoo.com>
+Date:   Tue Dec 1 23:36:01 2020 -0800
+
+    changed find functions to perform callback on array of ids
+
+[33mcommit 0e15702ea9712f58cec046965999efd23c3b6539[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 22:29:35 2020 -0800
+
+    Added display repositories in home page
+
+[33mcommit b1e4ef87c289928d8f174f635a462ef334b6cd32[m
+Merge: b2c2d2b 3a423f1
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 14:37:29 2020 -0800
+
+    Added function to get data given a path
+
+[33mcommit b2c2d2bdb9fe5600a098537772663eec5868302b[m
+Merge: 0ec588b 0361683
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 14:36:56 2020 -0800
+
+    Merge branch 'master'
+
+[33mcommit 3a423f1dee319ecce13bc3a38adb4813e70f0b04[m
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 14:21:29 2020 -0800
+
+    Merge with 'Master'
+
+[33mcommit 0ec588b95eac539c6930939a8acfec0345716b9d[m
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 14:08:45 2020 -0800
+
+    Added function to get data at a path
+
+[33mcommit 0361683f119e0e22ecacf918abe4417287c8d319[m
+Merge: 88e6b2d 6fdeea4
+Author: MGalaxy1984 <47437204+MGalaxy1984@users.noreply.github.com>
+Date:   Tue Dec 1 06:36:33 2020 -0800
+
+    Merge pull request #8 from sirandluke/playsnippet
+    
+    Playsnippet
+
+[33mcommit 6fdeea47f70e31a673135f246a1c2d7c98231147[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 06:35:20 2020 -0800
+
+    Add eset email
+
+[33mcommit 2e2b675314b71510b130e14776f30eb09f2797e4[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 06:26:58 2020 -0800
+
+    Clear input after submit
+
+[33mcommit dafe897b7b89169e93f7ca186a64a578d8e88082[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 06:23:07 2020 -0800
+
+    Profile Page added
+
+[33mcommit 907fe62a10cddc14eebcee43cb3d46ae03ab9387[m
+Merge: 805ac77 88e6b2d
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 02:18:10 2020 -0800
+
+    Merge branch 'master' into playsnippet
+
+[33mcommit 805ac7779ad0f62ef2e9384d889ed5af276205b0[m
+Author: MGalaxy1984 <zhxie@ucsd.edu>
+Date:   Tue Dec 1 02:17:57 2020 -0800
+
+    profile page added
+
+[33mcommit 88e6b2ddaef11fb561d233c44e277b0a18870dbc[m
+Merge: 2cd6e82 51edd1f
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 01:54:05 2020 -0800
+
+    Merge branch 'fbhandler'
+
+[33mcommit 51edd1f8a48dff5f0275d1e0cb7a0c355213ba7a[m
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 01:51:12 2020 -0800
+
+    Added the repository query functions
+
+[33mcommit 2cd6e82e607840637ce88971fca7ab438347ccbd[m
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 01:43:36 2020 -0800
+
+    Revert "Merge branch 'master' of github.com:sirandluke/wavBase"
+    
+    This reverts commit b07b410c68beb67ac10d981e5b04fba4cbbbe2b7, reversing
+    changes made to 7aae80c73950ff099058e1db5c55b85b2cd50362.
+
+[33mcommit 4cf1fc0275219c87b8e9c0c0e8f29e90154c5cf8[m
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 01:42:55 2020 -0800
+
+    Revert "Added the repository query functions"
+    
+    This reverts commit 7aae80c73950ff099058e1db5c55b85b2cd50362.
+
+[33mcommit 42e612f6672cf51116fab3b33d36771da09e4a0e[m
+Author: Luke Sirand <lsirand@ucsd.edu>
+Date:   Tue Dec 1 01:42:26 2020 -0800
+
+    Updated the insertRepo query method to use currentUser instead of auth
+
+[33mcommit b07b410c68beb67ac10d981e5b04fba4cbbbe2b7[m
+Merge: 7aae80c ab19d12
+Author: Roy-A-Li <royl.usa@gmail.com>
+Date:   Tue Dec 1 01:40:47 2020 -0800
+
+    Merge branch 'master' of github.c

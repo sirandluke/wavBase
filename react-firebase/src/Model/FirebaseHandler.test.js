@@ -74,3 +74,29 @@ test("Update node value", done => {
   
     FirebaseHandler.getData("users/Ou1rLY45A7WYesB35btqGUxQgs82/username", callback);
   });
+
+  test("Current user follows another user", done => {
+    function callback(data) {
+      try {
+        expect(data).toBe(true);
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }
+  
+    FirebaseHandler.isFollowing("b1CeFr3r9Ma7azib7yB9qSL0hmI3", "RCOoQeYOzmOnDF8Rk17SAOaS7zn1", callback);
+  });
+
+  test("Current user does not follow another user", done => {
+    function callback(data) {
+      try {
+        expect(data).toBe(false);
+        done();
+      } catch (error) {
+        done(error);
+      }
+    }
+  
+    FirebaseHandler.isFollowing("3O8H72XkC6WigFhuYChqY7hGWmZ2", "RCOoQeYOzmOnDF8Rk17SAOaS7zn1", callback);
+  });
