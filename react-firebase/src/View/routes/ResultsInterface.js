@@ -48,19 +48,28 @@ const ResultsInterface = (search_input) => {
         const ref = db.database().ref();
         ref.child('repositories').on("value", (snapshot) => {
             snapshot.forEach((repo) => {
-                //let rid = repo.key;
+                let rid = repo.key;
+                let isValid = false;
                 if (value === 'repositories') {
                     let reponame = repo.val().name;
                     if (reponame.toLowerCase().includes(query.toLowerCase())) {
-                        rids.push(repo);
+                        console.log("repo_name = " + rid);
+                        isValid = true;
                     }
                 } else if (value === 'tags') {
                     let repo_tags = repo.val().tags;
-                    console.log("tags = " + repo_tags);
                     let tag = ParseTags(repo_tags);
                     if (tag.includes(query)) {
-                        rids.push(repo);
+                        console.log("tags = " + rid);
+                        isValid = true;
                     }
+                }
+                let is_private = repo.val().is_private;
+                if (is_private === 'T') {
+                    isValid = false;
+                }
+                if (isValid) {
+                    rids.push(repo);
                 }
             });
         });
