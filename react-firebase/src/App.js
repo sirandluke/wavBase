@@ -13,8 +13,12 @@ import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
+import IndividualRepository from "./View/routes/IndividualRepository";
 
 function App() {
+
+    let repo_path = ['/a'];
+
     return(
         <AuthProvider>
             <Router>
