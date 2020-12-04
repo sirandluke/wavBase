@@ -1,7 +1,7 @@
 import React, {Component, useContext} from 'react';
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
-import db from '../../Model/base';
+import db from '../../model/base';
 
 class RepoSearchResults extends Component {
 

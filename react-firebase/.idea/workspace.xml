@@ -19,7 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="" />
+    <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/NewRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/NewRepo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Register.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/ResultsInterface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +61,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,16 +70,19 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\wavBase\wavBase\react-firebase\src" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -96,6 +115,8 @@
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
+      <workItem from="1607084373353" duration="384000" />
+      <workItem from="1607086944181" duration="1639000" />
     </task>
     <servers />
   </component>
@@ -119,10 +140,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606814483723" />
-    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1606815173836">
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607088509861">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607088509861" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1607082936288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

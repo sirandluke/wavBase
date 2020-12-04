@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {insertRepository} from "../../Model/FirebaseHandler";
-import * as K from '../../Constants'
+import {insertRepository} from "../model/FirebaseHandler";
+import * as K from '../Constants'
 
 
 const NewRepo = ({ history }) => {

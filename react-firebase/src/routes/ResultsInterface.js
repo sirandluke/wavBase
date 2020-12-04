@@ -1,16 +1,16 @@
 import React from "react";
-import db from "../../Model/base";
-import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
-import {ParseTags} from "../../Model/ParseTags";
+import db from "../model/base";
+import {RepoDisplayComponent} from "../View/components/RepoDisplayComponent";
+import {ParseTags} from "../model/ParseTags";
 import {HashRouter, NavLink} from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import PrivateRoute from "../auth/PrivateRoute";
+import PrivateRoute from "../View/auth/PrivateRoute";
 import Repository from "./Repository";
 import Profile from "./Profile";
 import NewRepo from "./NewRepo";
-import SearchResultWithOptions from "../components/SearchResultWithOptions";
-import logo from "../../Images/wavBase_logo.png";
+import SearchResultWithOptions from "../View/components/SearchResultWithOptions";
+import logo from "../Images/wavBase_logo.png";
 import {search_input} from "./PersonalHome";
 
 let user_results = [];

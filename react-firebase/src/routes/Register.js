@@ -2,12 +2,12 @@
     Register.js
  */
 import React from 'react';
-import db from "../../Model/base";
-import "../../App.css";
-import * as K from "../../Constants";
-import logo from "../../Images/wavBase_logo.png";
+import db from "../model/base";
+import "../App.css";
+import * as K from "../Constants";
+import logo from "../Images/wavBase_logo.png";
 import './Register.css'
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import * as FirebaseHandler from "../model/FirebaseHandler.js";
 
 const Register = ({ history }) => {
 
