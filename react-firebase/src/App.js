@@ -13,8 +13,11 @@ import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
+import {search_result_paths} from "./View/routes/ResultsInterface";
 
 function App() {
+
+    const search_result_routes = search_result_paths();
     return(
         <AuthProvider>
             <Router>
@@ -25,6 +28,7 @@ function App() {
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
                     <PrivateRoute exact path="/repository" component={Repository} />
                     <PrivateRoute exact path="/profile" component={Profile} />
+                    {search_result_routes}
                 </div>
             </Router>
         </AuthProvider>

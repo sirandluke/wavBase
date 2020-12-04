@@ -5,7 +5,7 @@ import db from "../../Model/base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}) => {
@@ -18,11 +18,12 @@ const PersonalHome = ({history}) => {
         let username;
         let uid = db.auth().currentUser.uid;
         let firebaseRef = db.database().ref('users/' + uid);
-        firebaseRef.on('value', (snapshot) =>{
+        firebaseRef.on('value', (snapshot) => {
             username = snapshot.val().username;
         })
         name = username;
     }
+
 
     const redirectCreateRepo = () => {
         history.push("/newrepo");
@@ -36,7 +37,9 @@ const PersonalHome = ({history}) => {
         history.push("/profile");
     }
 
-
+    const handleSearch = () => {
+        history.push("/search_result");
+    }
 
     return (
         <div className="container">
@@ -44,6 +47,14 @@ const PersonalHome = ({history}) => {
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
+                {/*Search Bar Begin */}
+                <form onSubmit={handleSearch}>
+                    <label>
+                        <input id='search_input' type="text" name="query"></input>
+                    </label>
+                    <button type="submit">Search</button>
+                </form>
+                {/*Search Bar End */}
                 <h2>Hello {name}</h2>
                 <DropdownButton id="dropdown-basic-button" title="User">
                     <Dropdown.Item as="button" onClick={redirectProfile}>My Profile</Dropdown.Item>
