@@ -3,6 +3,12 @@ import {insertRepository} from "../../Model/FirebaseHandler";
 import * as K from '../../Constants'
 
 export class CreateRepoAction extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isPrivate: 'F'
+        }
+    }
 
     createRepo = (event) => {  // Handles creating a new repository.
         event.preventDefault();
@@ -14,11 +20,18 @@ export class CreateRepoAction extends Component {
             description
         } = event.target.elements;
         // TODO: Tags query
+        console.log(this.state.isPrivate)
 
-        if (insertRepository(K.empty, repo_name.value, bpm.value, key.value, description.value)) {  // Call insert repo.
+        if (insertRepository(K.empty, repo_name.value,
+           bpm.value, key.value, this.state.isPrivate, description.value)) {  // Call insert repo.
             this.props.history.push("/Repository");
-        }
+       }
     }
+
+    handleCheck = (e) => {
+        this.setState({isPrivate: this.state.isPrivate === 'F' ? 'T' : 'F'});
+    }
+
     render() {
         return(
             <div>
@@ -41,11 +54,16 @@ export class CreateRepoAction extends Component {
                     </label>
                     <br />
                     <label>
-                    <textarea name="description" cols="40" rows="5" placeholder="Description">
+                        Make repository Private
+                        <input type="checkbox" name="isPrivate" onChange={this.handleCheck}/>
+                    </label>
+                    <br />
+                    <label>
+                        <textarea name="description" cols="40" rows="5" placeholder="Description">
 
-                    </textarea>
-                    </label
-                    ><br />
+                        </textarea>
+                    </label>
+                    <br />
                     <button className="create_button" type="submit">Create</button>
                 </form>
             </div>

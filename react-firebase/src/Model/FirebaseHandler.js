@@ -114,11 +114,12 @@ export function deleteUser(id) {
  * @param {string} repo_name
  * @param {string} bpm
  * @param {string} key
+ * @param {string} isPrivate
  * @param {string} description
  * @return {int}
  */
 export function insertRepository(tags_id, repo_name, bpm,
-                                 key, description) {
+                                 key, isPrivate, description) {
     console.log("Creating a new Repository");
     try {
         db.auth().onAuthStateChanged(function ( user){
@@ -131,7 +132,8 @@ export function insertRepository(tags_id, repo_name, bpm,
                     key: key,
                     description: description,
                     snapshots: K.empty,
-                    repo_likes: K.empty,
+                    repo_likes: 0,
+                    is_private: isPrivate,
                     comments: K.empty,
                     thumbnail: K.default_repo_png,  // set default repository image.
                     upload_date: DateToString()
