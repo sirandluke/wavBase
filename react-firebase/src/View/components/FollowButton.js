@@ -5,30 +5,41 @@ import * as K from "../../Constants";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import { Button } from 'react-bootstrap';
 
-// TODO: When user is already following, the text should be "Unfollow" by default
 export class FollowButton extends Component {
     constructor(props) {
         super(props);
-        this.following = false;
+        this.state = { isFollowing: false, buttonText: "" }
+        this.user = db.auth().currentUser.uid;
+
+        // Checks if current user is already following
+        FirebaseHandler.isFollowing(this.props.uid, this.user, (data) => {
+            // Callback sets the initial state of follow button
+            if (data === true) {
+                this.setState({ isFollowing: true, buttonText: "Unfollow" });
+            } else {
+                this.setState({ isFollowing: false, buttonText: "Follow" });
+            }
+        });
     }
 
+    // Adds current user to follower list in database
     follow() {
-        var user = db.auth().currentUser.uid;
-        FirebaseHandler.addFollower("b1CeFr3r9Ma7azib7yB9qSL0hmI3", user);
-        this.following = true;
+        FirebaseHandler.addFollower(this.props.uid, this.user);
+        this.setState({ isFollowing: true, buttonText: "Unfollow" });
     }
 
+    // Removes current user from follower list in database
     unfollow() {
-        var user = db.auth().currentUser.uid;
-        FirebaseHandler.removeFollower("b1CeFr3r9Ma7azib7yB9qSL0hmI3", user);
-        this.following = false;
+        FirebaseHandler.removeFollower(this.props.uid, this.user);
+        this.setState({ isFollowing: false, buttonText: "Follow" });
     }
 
-    fButton = () => this.following ? this.unfollow() : this.follow();
+    // Calls follow or unfollow functions based on state of component
+    fButton = () => this.state.isFollowing ? this.unfollow() : this.follow();
 
     render() {
         return(
-            <Button onClick={this.fButton}>FOLLOW</Button>
+            <Button onClick={this.fButton}>{this.state.buttonText}</Button>
         );
     }
 }

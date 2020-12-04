@@ -56,7 +56,7 @@ const PersonalHome = ({history}) => {
                     <li>Repositories</li>
                     <li>Likes</li>
                     <br/>
-                    <FollowButton />
+                    <FollowButton uid="b1CeFr3r9Ma7azib7yB9qSL0hmI3"/>
                 </ul>
             </div>
         </div>
