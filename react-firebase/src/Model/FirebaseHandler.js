@@ -53,6 +53,12 @@ export function createUser(username, password, email) {
     });
 }
 
+export function addFollower(uid, followerUid) {
+    ref.child('users/' + uid + '/followers').set({
+        [followerUid]: K.empty
+    });
+}
+
 /**
  * Queries for user id based on email passed in
  * @param {string} email 

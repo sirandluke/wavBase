@@ -5,9 +5,10 @@ import "../../App.css";
 import db from "../../Model/base";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import * as FirebaseHandler from "../../Model/FirebaseHandler";
 
-const Profile = () => {
+
+const Profile = ({ history }) => {
+
 
     const [show, setShow] = useState(false);
 
@@ -15,29 +16,34 @@ const Profile = () => {
     const handleShow = () => setShow(true);
 
 
-    const uid = db.auth().currentUser.uid;
-    const userRef = db.database().ref('users/' + uid);
+
+    let uid = db.auth().currentUser.uid;
+    let userRef = db.database().ref('users/' + uid);
     let username, profile_picture_path, user_email;
-    userRef.on('value', (snapshot) => {
+    userRef.on('value', (snapshot) =>{
+
         username = snapshot.val().username;
         profile_picture_path = snapshot.val().profile_picture;
         user_email = snapshot.val().email;
     })
 
-    const pro_pic_path = 'users/' + uid + "/profile_picture";
-    const storageRef = db.storage().ref();
 
-    function get_picture_path(val) {
-        console.log(val);
-        storageRef.child(val).getDownloadURL().then(function (url) {
-            let img = document.getElementById('profile_picture');
-            if (img != null) {
-                img.src = url;
-            }
-        });
+    let storage = db.storage();
+    let storageRef = storage.ref();
+    storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
+        let img = document.getElementById('profile_picture');
+        img.src = url;
+    })
+
+
+    const redirectHome = () => {
+        history.push("/");
     }
 
-    FirebaseHandler.getData(pro_pic_path, get_picture_path);
+    const redirectRepo = () => {
+        history.push("/repository");
+    }
+
 
     const handleUploadPicture = (event) => {
         event.preventDefault();
@@ -46,12 +52,17 @@ const Profile = () => {
         let picture_storage = storageRef.child(picture_path);
         let picture = document.getElementById('picture').files[0];
         console.log(picture);
-        picture_storage.put(picture).then(function (snapshot) {
+
+        picture_storage.put(picture).then(function(snapshot) {
+
             console.log('New Profile Picture Uploaded');
         });
         userRef.update({
             profile_picture: picture_path
         });
+
+
+
     }
 
     const handleInfoUpdate = (event) => {
@@ -66,7 +77,10 @@ const Profile = () => {
         }
         if (new_bio !== "") {
             userRef.update({
-                biography: new_bio
+
+                first_name: new_bio.split(' ')[0],
+                last_name: new_bio.split(' ')[1]
+
             });
             console.log('New Bio: ' + new_bio);
         }
@@ -76,17 +90,21 @@ const Profile = () => {
 
     const resetPassword = () => {
 
-        db.auth().sendPasswordResetEmail(user_email).then(function () {
+        db.auth().sendPasswordResetEmail(user_email).then(function() {
             console.log("Password Reset Email sent to:" + user_email);
-        }).catch(function (error) {
+        }).catch(function(error) {
+
             console.log("Password Reset Email not sent successfully");
         });
     }
 
 
+
+
     return (
         <div>
-            <img id='profile_picture' src='' width={125} height={125}/>
+            <img id="profile_picture" width={100} height={100}/>
+
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
@@ -120,6 +138,14 @@ const Profile = () => {
                 <input type="submit" value="Update"/>
             </form>
             <button onClick={resetPassword}>Reset Password</button>
+
+            <DropdownButton id="dropdown-basic-button" title="User">
+                <Dropdown.Item as="button" >My Profile</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
+            </DropdownButton>
+            <button onClick={redirectHome}>Go Back to Home!</button>
+
         </div>
     );
 }

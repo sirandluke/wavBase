@@ -4,6 +4,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Model/base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
+
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import {HashRouter, NavLink} from "react-router-dom";
 import {BrowserRouter} from 'react-router-dom'
@@ -95,6 +96,7 @@ const PersonalHome = () => {
                         {search_results_path}
                     </div>
                 </HashRouter>
+
 
             </div>
         </div>
