@@ -17,7 +17,6 @@ import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
-import IndividualRepository from "./View/routes/IndividualRepository";
 
 function App() {
 
@@ -35,7 +34,6 @@ function App() {
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
                     <PrivateRoute exact path="/repository" component={Repository} />
                     <PrivateRoute exact path="/profile" component={Profile} />
-                    <Route exact path={repo_path} component={() => IndividualRepository("asdfgsdf")}/>
                 </div>
             </Router>
         </AuthProvider>

@@ -4,6 +4,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Model/base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
+
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import {HashRouter, NavLink} from "react-router-dom";
 import {BrowserRouter} from 'react-router-dom'
@@ -11,7 +12,6 @@ import PrivateRoute from "../auth/PrivateRoute";
 import Profile from "./Profile";
 import Repository, {repo_page_path} from "./Repository";
 import NewRepo from "./NewRepo";
-import IndividualRepository from "./IndividualRepository";
 import SearchBar from "../components/SearchBar";
 import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import SearchResultWithOptions from "../components/SearchResultWithOptions";
@@ -47,17 +47,6 @@ const PersonalHome = () => {
     FirebaseHandler.getData(pro_pic_path, get_picture_path);
 
     let repo_paths = [];
-
-    function handleRepo(id_list) {
-        id_list.forEach(entry => {
-            repo_paths.push(
-                <PrivateRoute exact path={'/' + entry} component={() => IndividualRepository(entry)}/>
-            );
-            console.log(entry);
-        })
-    }
-
-    FirebaseHandler.findRepositories(uid, handleRepo);
 
     //const repo_paths = repo_page_path();
     const search_results_path = search_result_paths();
@@ -95,6 +84,7 @@ const PersonalHome = () => {
                         {search_results_path}
                     </div>
                 </HashRouter>
+
 
             </div>
         </div>

@@ -26,7 +26,10 @@ test("Update node value", done => {
 
     FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
   }
-});
+
+  
+    FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
+  });
 
   test("Fetch repository ids", done => {
     let test = ["-MNSRGgpRojJFru31lkO", "-MNSRKdqdKb1feg9siw1"];
@@ -39,6 +42,7 @@ test("Update node value", done => {
         done(error);
       }
     }
+
 
     FirebaseHandler.findRepositories("b1CeFr3r9Ma7azib7yB9qSL0hmI3", callback);
   });
