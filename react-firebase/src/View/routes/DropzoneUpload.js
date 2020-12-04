@@ -31,6 +31,8 @@ const rejectStyle = {
 };
 
 function DropzoneUpload() {
+    let filesToUpload = [];
+
     const {
         acceptedFiles,
         getRootProps,
@@ -56,8 +58,11 @@ function DropzoneUpload() {
     const files = acceptedFiles.map(file => (
         <li key={file.name}>
             {file.name}
+            {filesToUpload.push(file)}
+            {console.log(filesToUpload)}
         </li>
     ));
+
     return (
         <div className="container">
             <div {...getRootProps({style})}>

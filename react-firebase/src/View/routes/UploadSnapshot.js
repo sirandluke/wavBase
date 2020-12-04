@@ -1,40 +1,54 @@
 import React, {useState} from "react";
 import db from "../../Model/base";
 import "../../App.css";
-import DropzoneUpload from "./DropzoneUpload";
 
-const UploadSnapshot = () => {
+
+// todo: .DS_Store is uploaded.
+// WE WILL USE THIS FUNCTION FOR UPLOAD SNAPSHOT
+
+const UploadSnapshot = (props) => {
 
     const [folder, setFolder] = useState(null);
     let filePaths = [];
 
-    const handleUpload = (e) => {
+    console.log("repo id is:" + props.repo_id);
+
+    const handleUpload = async (e) => {
         e.preventDefault();
         const {snapshotDesc} = e.target.elements;
 
-        uploadStorage().then( () => {  // Upload files to storage, then push to Real Time db.
-            // Push audio file URLs, snapshot description, and datetime to RT db.
-            let snapShotRef = db.database().ref("snapshots/");
-            snapShotRef.push({
-                description: snapshotDesc,
-                files: filePaths.toString()
-            });
-        })
+        const files = await uploadStorage();
+
+        uploadSnapshot(files, snapshotDesc.value);
     }
 
     async function uploadStorage() {
         // Push all audio files to firestore.
         const files = folder;
-        Object.keys(files).forEach(i => {  // For each file, push to firestore.
+        await Object.keys(files).forEach(i => {  // For each file, push to firestore and wait for this loop to finish.
             const file = files[i];
+            // logic for file types.
             let storageSnapRef = db.storage().ref('snapshots/' + file.name)
             storageSnapRef.put(file).then(() => {
+
                 const storageRef = db.storage().ref('/snapshots');
                 storageRef.child(file.name).getMetadata().then(metaData => {
-                    filePaths.push(metaData.getDownloadURL)  // Add URLs to files array.
+                    console.log(metaData);
+                    filePaths.push(metaData.fullPath)  // Add URLs to files array.
                     console.log("Pushed: " + file.name.toString());
                 })
             })
+        })
+        return filePaths;
+    }
+
+    function uploadSnapshot(files, snapshotDesc) {
+        console.log(files);
+        console.log(files.toString());
+        let snapShotRef = db.database().ref("snapshots/");
+        snapShotRef.push({
+            description: snapshotDesc,
+            files: files.toString()
         });
     }
 
@@ -42,38 +56,8 @@ const UploadSnapshot = () => {
     const handleChange = e => {
         if (e.currentTarget.files) {
             setFolder(e.currentTarget.files);
-            console.log("folder: ", folder)
         }
     };
-
-    const handleOG= (e) =>
-    {
-        const file = e.target.files[0]
-        const storageRef = db.storage().ref()
-        const fileRef = storageRef.child(file.name)
-        fileRef.put(file).then(() => {
-            console.log("Uploaded" + file.name.toString());
-        })
-
-        /*
-        let file = evt.target.files[0]
-        let snapRef = db.storage().ref('snapshots/' + file.name)
-        snapRef.put(file).then(() => {
-            const storageRef = db.storage().ref('snapshots/')
-            storagerRef.child(file.name).getMetadata().then(metaData => {
-                let url = metaData.getDownloadURL()
-                const snapshotRef = db.database().ref('snapshots');
-                snapshotRef.push({})
-            })
-        }) */
-    };
-
-
-    const readMultipleFiles = () => {
-    };
-    console.log("folder: ", folder);
-
-
 
     return(
         <div>
@@ -86,13 +70,13 @@ const UploadSnapshot = () => {
                 </label>
                 <br />
                 <label>
-                    <input directory="" webkitdirectory="" type="file" onChange={handleChange} multiple/>
+                    <input accept="audio/*, .als, .flp, .band, .logicx"
+                           directory="" webkitdirectory="" type="file" onChange={handleChange} multiple/>
                 </label>
                 <br />
                 <button className="upload_button" type="submit">Upload</button>
             </form>
         </div>
-
     );
 }
 
