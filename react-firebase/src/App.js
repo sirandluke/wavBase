@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route }from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link }from "react-router-dom";
 
 import Home from "./View/routes/Home";
 import PersonalHome from "./View/routes/PersonalHome";
@@ -16,6 +16,7 @@ import './App.css';
 
 function App() {
     return(
+
         <AuthProvider>
             <Router>
                 <div>

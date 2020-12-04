@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import db from "../../Model/base";
-import { withRouter } from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {findRepositories} from "../../Model/FirebaseHandler";
-import './RepositoryList.css';
+import "./RepositoryList.css";
+import { useHistory } from "react-router-dom"
 
 class RepositoryList extends Component {
     constructor(props) {
@@ -11,7 +12,6 @@ class RepositoryList extends Component {
         this.state = {
             repos: []
         }
-
 
         this.user_id = db.auth().currentUser.uid;
 
@@ -41,9 +41,15 @@ class RepositoryList extends Component {
         }
     }
 
-    redirectToRepo(repo_id) {
+    redirectToRepo(repo_id, user_id) {
         console.log("Navigating to " + repo_id);
-        this.props.history.push("/repository")
+        this.props.history.push({
+            pathname: "/repository",
+            state: {  // Pass as props for Repository page.
+                repo_id: repo_id,
+                user_id: user_id
+            }
+        });
     }
 
     render() {
@@ -51,7 +57,8 @@ class RepositoryList extends Component {
         const repoElement = this.state.repos.map(repos =>
             <tr key={ repos.repo_id }>
                 <td style={ {width: '200px', textAlign: 'left'} }>
-                    <button className="repo_button" name="repo_links" onClick={() => this.redirectToRepo(repos.repo_id)}>
+                    <button className="repo_button" name="repo_links"
+                            onClick={ () => this.redirectToRepo(repos.repo_id, repos.user_id) }>
                         { repos.name }
                     </button>
                 </td>
@@ -68,10 +75,11 @@ class RepositoryList extends Component {
                     </tr> */}
                     </thead>
                     <tbody>
-                    {repoElement}
+                    { repoElement }
                     </tbody>
                 </table>
             </div>
+
         );
     }
 }
