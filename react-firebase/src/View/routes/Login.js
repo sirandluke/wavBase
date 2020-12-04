@@ -3,7 +3,7 @@
     TODO: Sign in & reset password with username
     TODO: [RISK] unstable reset password & login functionality
  */
-import React, { useContent } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
@@ -16,8 +16,7 @@ import './Login.css';
 
 const Login = ({history}) => {
 
-    const handleLogin = (event) =>
-    {
+    const handleLogin = (event) => {
         event.preventDefault();
         const {email_or_username, password} = event.target.elements;
 
@@ -60,14 +59,19 @@ const Login = ({history}) => {
         }
     }
 
+    const { currentUser } = useContext(AuthContext);
+    if (currentUser) {
+        return <Redirect to="/" />;
+    }
+
     /*
         Check's if user input is an email address.
         @input: s -> String
         @output: bool
      */
     function isEmail(s) {
-        const exp = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        return exp.test(s);
+        const exp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return exp.test(s.value);
     }
 
     const redirectRegister = () => {
