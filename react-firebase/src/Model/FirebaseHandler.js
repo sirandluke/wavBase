@@ -135,29 +135,33 @@ export function deleteUser(uid) {
  * @param {string} repo_name
  * @param {string} bpm
  * @param {string} key
+ * @param {string} isPrivate
  * @param {string} description
  * @return {int}
  */
 export function insertRepository(tags_id, repo_name, bpm,
-                                 key, description) {
+                                 key, isPrivate, description) {
     console.log("Creating a new Repository");
     try {
-        let uid = db.auth().currentUser.uid
-        let firebaseRef = db.database().ref("repositories/")
-        firebaseRef.push({
-            user_id: uid,
-            name: repo_name,
-            bpm: bpm,
-            key: key,
-            description: description,
-            snapshots: K.empty,
-            repo_likes: 0,
-            comments: K.empty,
-            thumbnail: K.default_repo_png,  // set default repository image.
-            upload_date: DateToString()
+        db.auth().onAuthStateChanged(function ( user){
+            if (user) {
+                let firebaseRef = db.database().ref("repositories/")
+                firebaseRef.push({
+                    user_id: user.uid,
+                    name: repo_name,
+                    bpm: bpm,
+                    key: key,
+                    description: description,
+                    snapshots: K.empty,
+                    repo_likes: 0,
+                    is_private: isPrivate,
+                    comments: K.empty,
+                    thumbnail: K.default_repo_png,  // set default repository image.
+                    upload_date: DateToString()
+                })
+                firebaseRef.off();
+            }
         })
-        firebaseRef.off();
-
         return 1;  // Insert Successful
     }
     catch (error){
