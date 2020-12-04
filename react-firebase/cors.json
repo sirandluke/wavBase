@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["wavbasedb-9a679.appspot.com"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

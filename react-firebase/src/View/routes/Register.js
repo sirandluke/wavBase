@@ -5,7 +5,7 @@ import React from 'react';
 import db from "../../Model/base";
 import "../../App.css";
 import * as K from "../../Constants";
-import logo from "../../Images/wavBase_logo.png";
+import logo from "../../Images/logo_whiteBG.png";
 import './Register.css'
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
@@ -63,9 +63,9 @@ const Register = ({ history }) => {
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <button className="signIn_btn" type="submit" onClick={redirectLogIn}>Sign In</button>
                 <form className="search_bar">
-                    <input className="search_input" className="type_box" type="text" placeholder=" Search"
+                    <input className="search_input" type="text" placeholder=" Search"
                            name="search"/>
-                    <button type="submit" ><i className="fa fa-search"></i></button>
+                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
                 </form>
 
             </div>
@@ -112,7 +112,7 @@ const Register = ({ history }) => {
                 <p2>Collaborate on a whole new level</p2>
             </div>
 
-            <svg className="wave_shape" transform="translate(0,125)" width="100%" height="233" viewBox="0 0 1440 233" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="wave_shape" transform="translate(0,190)" width="100%" height="233" viewBox="0 25 1440 233" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M436 33.0881C278.129 -126.817 -112.5 358.5 -112.5 358.5L1480.5 312.088C1480.5 312.088 1365.53 -27.3911 1103.5 113.588C841.466 254.567 593.871 192.993 436 33.0881Z" fill="#00A3E7" stroke="#00A3E7"/>
             </svg>
 
