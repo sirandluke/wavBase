@@ -6,6 +6,7 @@ import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import {FollowButton} from "../components/FollowButton";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}) => {
@@ -54,6 +55,8 @@ const PersonalHome = ({history}) => {
                     <button onClick={redirectCreateRepo}>Create Repository</button>
                     <li>Repositories</li>
                     <li>Likes</li>
+                    <br/>
+                    <FollowButton />
                 </ul>
             </div>
         </div>
