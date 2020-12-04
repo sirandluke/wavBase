@@ -6,6 +6,10 @@ import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
+import ResultsInterface from "./ResultsInterface";
+import PrivateRoute from "../auth/PrivateRoute";
+
+export let search_input = '';
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}) => {
@@ -38,6 +42,7 @@ const PersonalHome = ({history}) => {
     }
 
     const handleSearch = () => {
+        search_input = document.getElementById('search_input').value;
         history.push("/search_result");
     }
 
@@ -67,6 +72,7 @@ const PersonalHome = ({history}) => {
                     <li>Likes</li>
                 </ul>
             </div>
+            <PrivateRoute path='/search_result' component={() => ResultsInterface(search_input)}/>
         </div>
     );
 }

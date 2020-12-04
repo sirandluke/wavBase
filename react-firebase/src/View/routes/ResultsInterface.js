@@ -10,12 +10,14 @@ import Repository from "./Repository";
 import Profile from "./Profile";
 import NewRepo from "./NewRepo";
 import SearchResultWithOptions from "../components/SearchResultWithOptions";
+import logo from "../../Images/wavBase_logo.png";
+import {search_input} from "./PersonalHome";
 
 let user_results = [];
 let repo_results = [];
 let tags_results = [];
 
-export const search_result_paths = () => (
+/*export const search_result_paths = () => (
     <div>
         <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
         <PrivateRoute exact path='/search_result/repositories'
@@ -23,9 +25,9 @@ export const search_result_paths = () => (
         <PrivateRoute exact path='/search_result/tags'
                       component={() => SearchResultWithOptions('Tags', tags_results)}/>
     </div>
-);
+);*/
 
-const ResultsInterface = ({history}, search_input) => {
+const ResultsInterface = ({history}) => {
 
     function findMatchingUsers(query, callback) {
         let uids = [];
@@ -113,13 +115,29 @@ const ResultsInterface = ({history}, search_input) => {
     findMatchingRepos('repositories', search_input, getReposByName);
     findMatchingRepos('tags', search_input, getReposByTags);
 
-    return (
+    /*return (
         <div>
             <DropdownButton id="dropdown-basic-button" title="Options">
                 <Dropdown.Item as="button"><NavLink to='/search_result'>Users</NavLink></Dropdown.Item>
                 <Dropdown.Item as="button"><NavLink to='/search_result/repositories'>Repositories</NavLink></Dropdown.Item>
                 <Dropdown.Item as="button"><NavLink to='/search_result/tags'>Tags</NavLink></Dropdown.Item>
             </DropdownButton>
+        </div>
+    );*/
+    return (
+        <div>
+            <div>
+                <h2>User Search Results</h2>
+                {user_results}
+            </div>
+            <div>
+                <h2>Repository Search Results</h2>
+                {repo_results}
+            </div>
+            <div>
+                <h2>Tags Search Results</h2>
+                {tags_results}
+            </div>
         </div>
     );
 }
