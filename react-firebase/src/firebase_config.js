@@ -1,5 +1,5 @@
 /*
-    base.js
+    firebase_config.js
  */
 import firebase from "firebase";
 

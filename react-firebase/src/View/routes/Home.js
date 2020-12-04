@@ -1,9 +1,9 @@
 import React from "react";
-import db from "../model/base";
-import "../App.css";
-import logo from "../Images/wavBase_logo.png";
-import * as FirebaseHandler from '../model/FirebaseHandler';
-import SearchBar from '../View/components/SearchBar';
+import db from "../../firebase_config";
+import "../../App.css";
+import logo from "../../Images/wavBase_logo.png";
+import * as FirebaseHandler from '../../model/FirebaseHandler';
+import SearchBar from '../components/SearchBar';
 
 // TODO: render searchbar, likes, (add more)
 

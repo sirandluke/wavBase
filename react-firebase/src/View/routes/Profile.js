@@ -1,8 +1,8 @@
 import React, {Component, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import "../App.css";
-import db from "../model/base";
+import "../../App.css";
+import db from "../../firebase_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 

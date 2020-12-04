@@ -2,7 +2,7 @@
     Auth.js
  */
 import React, {useEffect , useState} from "react";
-import db from "../../model/base";
+import db from "../../firebase_config";
 
 export const AuthContext = React.createContext();
 

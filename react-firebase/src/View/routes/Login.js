@@ -5,13 +5,13 @@
  */
 import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../View/auth/Auth";
+import { AuthContext } from "../auth/Auth";
 
-import db from "../model/base";
-import "../App.css";
-import * as K from '../Constants';
-import logo from "../Images/wavBase_logo.png";
-import * as FirebaseHandler from "../model/FirebaseHandler.js";
+import db from "../../firebase_config";
+import "../../App.css";
+import * as K from '../../Constants';
+import logo from "../../Images/wavBase_logo.png";
+import * as FirebaseHandler from "../../model/FirebaseHandler.js";
 import './Login.css';
 
 const Login = ({history}) => {

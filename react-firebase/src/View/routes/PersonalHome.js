@@ -1,13 +1,13 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import db from "../model/base";
-import "../App.css";
-import logo from "../Images/wavBase_logo.png";
+import db from "../../firebase_config";
+import "../../App.css";
+import logo from "../../Images/wavBase_logo.png";
 //import Home from "./Home";
-import * as FirebaseHandler from "../model/FirebaseHandler.js";
+import * as FirebaseHandler from "../../model/FirebaseHandler.js";
 import ResultsInterface from "./ResultsInterface";
-import PrivateRoute from "../View/auth/PrivateRoute";
+import PrivateRoute from "../auth/PrivateRoute";
 
 export let search_input = '';
 
