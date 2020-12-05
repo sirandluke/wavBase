@@ -1,9 +1,7 @@
 /*
     Login.js
-    TODO: Sign in & reset password with username
-    TODO: [RISK] unstable reset password & login functionality
  */
-import React, { useContent } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
@@ -16,8 +14,7 @@ import './Login.css';
 
 const Login = ({history}) => {
 
-    const handleLogin = (event) =>
-    {
+    const handleLogin = (event) => {
         event.preventDefault();
         const {email_or_username, password} = event.target.elements;
 
@@ -60,42 +57,27 @@ const Login = ({history}) => {
         }
     }
 
+    const { currentUser } = useContext(AuthContext);
+    if (currentUser) {
+        return <Redirect to="/" />;
+    }
+
     /*
         Check's if user input is an email address.
         @input: s -> String
         @output: bool
      */
     function isEmail(s) {
-        const exp = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        return exp.test(s);
+        const exp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return exp.test(s.value);
     }
 
     const redirectRegister = () => {
         history.push("/register");
     }
 
-    window.onload=function() {
-        const resetPW = document.getElementById('resetPW');
-        const idField = document.getElementById('identity');
-
-        // alert(resetPW);
-        const resetPWFunction = () => {
-            alert('resetPTFunc called')
-            if (isEmail(idField.value)) {
-                alert('is email');
-                db.auth().sendPasswordResetEmail(idField.value)
-                    .then(() => {
-                        alert('Password Reset Email Sent Successfully!');
-                        console.log('Password Reset Email Sent Successfully!');
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    })
-            }
-        }
-
-        if (resetPW)
-            resetPW.addEventListener('click', resetPWFunction);
+    const redirectResetPW = () => {
+        history.push("/reset_password");
     }
 
     return(
@@ -108,13 +90,10 @@ const Login = ({history}) => {
 
             <div className="login_right">
                 <h1 className="signIn_header">Sign in to wavBase</h1>
-                {/*<h1>{K.app_name}</h1>*/}
-                {/*<h2>Login</h2>*/}
                 <form onSubmit={handleLogin}>
                     <label>
                         <input
                             className="signIn_form"
-                            id="identity"
                             name="email_or_username"
                             type="text"
                             required="required"
@@ -127,7 +106,7 @@ const Login = ({history}) => {
                     <br />
                     <button className="button" type="submit">Sign in</button>
                     <br />
-                    <button className="button" id="resetPW">Forgot Password / Username?</button>
+                    <button className="button" onClick={redirectResetPW}>Forgot Password?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
                 </form>
