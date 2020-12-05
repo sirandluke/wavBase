@@ -20,21 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/routes/IndividualRepository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/FindReposByUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/RepoController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/routes/TestModule.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Storage_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin_config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/TestProfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/TestRepository.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UpdatePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdatePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +130,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="50368000" />
+      <workItem from="1607086944181" duration="50586000" />
     </task>
     <servers />
   </component>
