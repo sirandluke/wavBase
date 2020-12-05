@@ -19,21 +19,34 @@ export class RepositoryInfo extends Component {
             datetime: '',
         }
 
-        this.firebaseRef = db.database().ref("repositories");
+        this.userRef = db.database().ref("users/" + this.props.repo.user_id);
         this.storageRef = db.storage().ref();
     }
 
     componentDidMount() {
-        this.setState({
-            username: 'lsirand',
-            repo_name: 'My First Song',
-            bpm: '135',
-            key: 'D maj',
-            tags: '',
-            description: 'This is totally epic.',
-            thumbnail_path: '',
-            datetime: '',
-        })
+        this.userRef
+            .once('value', data => {
+                let username = data.val().username;
+                this.setState({
+                    username: username,
+                    repo_name: this.props.repo.name,
+                    bpm: this.props.repo.bpm,
+                    key: this.props.repo.key,
+                    tags: this.props.repo.tags,
+                    description: this.props.repo.description,
+                    thumbnail_path: this.props.repo.thumbnail,
+                    datetime: this.props.repo.upload_date,
+                });
+            }).then(() => {
+
+                this.storageRef.child(this.state.thumbnail_path).getDownloadURL().then(function (url) {
+                    console.log(url);
+                    let pfp = document.getElementById("repo_thumbnail");
+                    pfp.src = url;
+            }).catch((error) => {
+                console.log(error);
+            });
+        });
     }
 
     render() {
@@ -41,7 +54,11 @@ export class RepositoryInfo extends Component {
         return(
             <div>
                 <div className="left_element">
-                    <img className="repo_thumbnail" id="repo_thumbnail" src={loading} alt="Repository Thumbnail"/>
+                    <img className="repo_thumbnail"
+                         id="repo_thumbnail"
+                         src={loading}
+                         alt="Repository Thumbnail"
+                    />
                 </div>
                 <div className="repo_title">
                     <h2>{ this.state.username }/{ this.state.repo_name }</h2>

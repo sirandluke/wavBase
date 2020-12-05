@@ -40,8 +40,13 @@ class SnapshotList extends Component {
         }
     }
 
-    redirectToSnapshots(snapshot) { // Passes the snapshot object over to be viewed.
-
+    redirectToSnapshots(curr_snapshot) { // Passes the snapshot object over to be viewed.
+        this.props.history.push({
+            pathname: "/snapshot",
+            state: {  // Pass as props for Repository page.
+                repo: curr_snapshot
+            }
+        });
     }
 
     render() {
@@ -62,7 +67,6 @@ class SnapshotList extends Component {
                 </td>
             </tr>
         );
-
 
         return(
             <div>

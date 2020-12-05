@@ -17,13 +17,16 @@ import {useLocation} from 'react-router';
 
 /**
  *
- * @param history -> pass in repo_id and user_id.
+ * @param history -> pass in repo object as prop.
  * @returns {JSX.Element}
  * @constructor
  */
 const Repository = ({history}) => {
     const location = useLocation();
     const {isShowing, toggle} = UseSnapshotModal();
+
+    console.log(location.state.repo);
+
 
     const redirectHome = () => {
         history.push("/");
@@ -32,10 +35,10 @@ const Repository = ({history}) => {
     return (
 
         <div>
-            <RepositoryInfo repo_id={ location.state.repo_id }/>
-            <SnapshotList repo_id={ location.state.repo_id }/>
+            <RepositoryInfo repo={ location.state.repo }/>
+            <SnapshotList repo_id={ location.state.repo }/>
             <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
-            <SnapshotModal isShowing={isShowing} hide={toggle}>
+            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={location.state.repo.repo_id}>
 
             </SnapshotModal>
             <ul>

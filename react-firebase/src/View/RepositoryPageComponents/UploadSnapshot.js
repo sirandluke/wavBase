@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import db from "../../Model/base";
 import folder_icon from "../../Images/folder@3x.png";
+import {DateToString} from "../../Model/Date";
+
 
 import "../../App.css";
 import "./UploadSnapshot.css"
@@ -11,7 +13,6 @@ import "./UploadSnapshot.css"
 const UploadSnapshot = (props) => {
 
     const [folder, setFolder] = useState(null);
-    let filePaths = [];
 
     console.log("repo id is:" + props.repo_id);
 
@@ -20,40 +21,41 @@ const UploadSnapshot = (props) => {
         const {snapshotDesc} = e.target.elements;
 
         const files = await uploadStorage();
-
-        uploadSnapshot(files, snapshotDesc.value);
+        await uploadRealtime(files, snapshotDesc.value);
     }
 
     async function uploadStorage() {
         // Push all audio files to firestore.
+        let filePaths = [];
         const files = folder;
         await Object.keys(files).forEach(i => {  // For each file, push to firestore and wait for this loop to finish.
             const file = files[i];
             // logic for file types.
-            let storageSnapRef = db.storage().ref('snapshots/' + file.name)
+            let storageSnapRef = db.storage().ref('/snapshots/' + props.repo_id + '/' + file.name)
             storageSnapRef.put(file).then(() => {
-
-                const storageRef = db.storage().ref('/snapshots');
+                const storageRef = db.storage().ref('/snapshots/' + props.repo_id);
                 storageRef.child(file.name).getMetadata().then(metaData => {
                     console.log(metaData);
                     filePaths.push(metaData.fullPath)  // Add URLs to files array.
-                    console.log("Pushed: " + file.name.toString());
-                })
-            })
-        })
+                    console.log("Pushed: " + metaData.fullPath);
+                });
+            });
+        });
+
+        console.log(filePaths.toString());
         return filePaths;
     }
 
-    function uploadSnapshot(files, snapshotDesc) {
-        console.log(files);
+    function uploadRealtime(files, snapshotDesc) {
+        console.log(files[1]);
         console.log(files.toString());
         let snapShotRef = db.database().ref("snapshots/");
         snapShotRef.push({
             description: snapshotDesc,
-            files: files.toString()
+            files: files.toString(),
+            repo_id: props.repo_id,
         });
     }
-
 
     const handleChange = e => {
         if (e.currentTarget.files) {

@@ -41,13 +41,11 @@ class RepositoryList extends Component {
         }
     }
 
-    redirectToRepo(repo_id, user_id) {
-        console.log("Navigating to " + repo_id);
+    redirectToRepo(curr_repo) {
         this.props.history.push({
             pathname: "/repository",
             state: {  // Pass as props for Repository page.
-                repo_id: repo_id,
-                user_id: user_id
+                repo: curr_repo
             }
         });
     }
@@ -58,7 +56,7 @@ class RepositoryList extends Component {
             <tr key={ repos.repo_id }>
                 <td style={ {width: '200px', textAlign: 'left'} }>
                     <button className="repo_button" name="repo_links"
-                            onClick={ () => this.redirectToRepo(repos.repo_id, repos.user_id) }>
+                            onClick={ () => this.redirectToRepo(repos) }>
                         { repos.name }
                     </button>
                 </td>
