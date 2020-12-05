@@ -8,6 +8,8 @@ import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import PrivateRoute from "../auth/PrivateRoute";
 import {useHistory} from 'react-router-dom';
 import TestIndividualRepoPage from "./TestIndividualRepoPage";
+import RepoSearchResult from "./RepoSearchResult";
+import TagsSearchResult from "./TagsSearchResult";
 
 export let search_input = '';
 
@@ -116,9 +118,13 @@ function PersonalHome(props) {
                 </DropdownButton>
                 <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
-            <PrivateRoute path='/search_result' component={() => ResultsInterface(search_input)}/>
+            <PrivateRoute path='/search_result' component={ResultsInterface}/>
+            <PrivateRoute exact path='/search_result' component={RepoSearchResult}/>
+            <PrivateRoute exact path='/search_result/repositories'
+                          component={RepoSearchResult}/>
+            <PrivateRoute exact path='/search_result/tags'
+                          component={TagsSearchResult}/>
             <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
-            {search_result_routes}
         </div>
     );
 }

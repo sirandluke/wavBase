@@ -1,51 +1,33 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import db from "../../Realtime_Database_config";
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import {ParseTags} from "../../components/ParseTags";
-import {HashRouter, NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import PrivateRoute from "../auth/PrivateRoute";
-import Repository from "./Repository";
-import Profile from "./Profile";
-import NewRepo from "./NewRepo";
 import SearchResultWithOptions from "../components/SearchResultWithOptions";
 import logo from "../../Images/wavBase_logo.png";
 import {search_input} from "./PersonalHome";
-
-let user_results = [];
-let repo_results = [];
-let tags_results = [];
+import UserSearchResult from "./UserSearchResult";
+import TagsSearchResult from "./TagsSearchResult";
+import RepoSearchResult from "./RepoSearchResult";
 
 export const search_result_paths = () => (
     <div>
-        <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
+        <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
         <PrivateRoute exact path='/search_result/repositories'
-                      component={() => SearchResultWithOptions('Repositories', repo_results)}/>
+                      component={RepoSearchResult}/>
         <PrivateRoute exact path='/search_result/tags'
-                      component={() => SearchResultWithOptions('Tags', tags_results)}/>
+                      component={TagsSearchResult}/>
     </div>
 );
 
-const ResultsInterface = ({history}) => {
+function ResultsInterface(props) {
 
-    function findMatchingUsers(query, callback) {
-        let uids = [];
-        const ref = db.database().ref();
-        ref.child("users").on("value", (snapshot) => {
-            snapshot.forEach((user) => {
-                let uid = user.key;
-                let username = user.val().username;
-                if (username.toLowerCase().includes(query.toLowerCase())) {
-                    uids.push(user);
-                }
-            });
-        });
-        callback(uids);
-    }
 
     //performs callback on array of UIDs with repository names containing the search query
-    function findMatchingRepos(value, query, callback) {
+    /*function findMatchingRepos(value, query, callback) {
         let rids = [];
         const ref = db.database().ref();
         ref.child('repositories').on("value", (snapshot) => {
@@ -79,20 +61,22 @@ const ResultsInterface = ({history}) => {
     }
 
     function getUsers(uids) {
+        //console.log(uids);
         uids.forEach((id) => {
             user_results.push(
                 <button>{id.val().username}</button>
             );
         });
-    }
+    }*/
 
-    user_results = [];
-    repo_results = [];
-    tags_results = [];
 
-    findMatchingUsers(search_input, getUsers);
+    //user_results = [];
+    //repo_results = [];
+    //tags_results = [];
 
-    function getReposByName(rids) {
+    //findMatchingUsers(search_input, getUsers);
+
+    /*function getReposByName(rids) {
         //console.log(rids);
         rids.forEach((id) => {
             console.log("Found repo: " + id);
@@ -113,31 +97,16 @@ const ResultsInterface = ({history}) => {
     }
 
     findMatchingRepos('repositories', search_input, getReposByName);
-    findMatchingRepos('tags', search_input, getReposByTags);
+    findMatchingRepos('tags', search_input, getReposByTags);*/
 
-    /*return (
-        <div>
-            <DropdownButton id="dropdown-basic-button" title="Options">
-                <Dropdown.Item as="button"><NavLink to='/search_result'>Users</NavLink></Dropdown.Item>
-                <Dropdown.Item as="button"><NavLink to='/search_result/repositories'>Repositories</NavLink></Dropdown.Item>
-                <Dropdown.Item as="button"><NavLink to='/search_result/tags'>Tags</NavLink></Dropdown.Item>
-            </DropdownButton>
-        </div>
-    );*/
     return (
         <div>
-            <div>
-                <h2>User Search Results</h2>
-                {user_results}
-            </div>
-            <div>
-                <h2>Repository Search Results</h2>
-                {repo_results}
-            </div>
-            <div>
-                <h2>Tags Search Results</h2>
-                {tags_results}
-            </div>
+            <DropdownButton id="dropdown-basic-button" title="Options">
+                <Dropdown.Item as="button"><Link to='/search_result'>Users</Link></Dropdown.Item>
+                <Dropdown.Item as="button"><Link
+                    to='/search_result/repositories'>Repositories</Link></Dropdown.Item>
+                <Dropdown.Item as="button"><Link to='/search_result/tags'>Tags</Link></Dropdown.Item>
+            </DropdownButton>
         </div>
     );
 }

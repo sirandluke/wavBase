@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const GetUserInfo = require('../model/GetUserInfo');
-const FindReposByUser = require('../model/FindReposByUser');
+const FindReposByUser = require('../model/GetRepos');
 
 const UpdateProfileImage = require('../model/UpdateProfileImage');
 const UpdateUserInfo = require('../model/UpdateUserInfo');
@@ -14,7 +14,7 @@ router.get('/user_info', (req, res) => {
 });
 
 router.get('/repo_list', (req, res) => {
-    FindReposByUser(req.query.uid)
+    FindReposByUser()
         .then(doc => res.send(doc));
 });
 

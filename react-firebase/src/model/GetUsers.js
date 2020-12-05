@@ -1,0 +1,8 @@
+const db = require('../Realtime_Database_config');
+
+module.exports = function FindReposByUser() {
+    const repo_ref = db.database().ref().child('users');
+    return repo_ref.once('value')
+        .then(snapshot => snapshot.val())
+        .catch(error => console.log(error));
+}
