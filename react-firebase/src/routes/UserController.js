@@ -10,7 +10,7 @@ router.get('/user_info', (req, res) => {
 });
 
 router.post('/user_info/update_profile_image', (req, res) => {
-    UpdateProfileImage(req.body.uid, req.body.picture, req.body.path);
+    UpdateProfileImage(req.body.uid, req.body.picture, req.body.picture_path);
 })
 
 module.exports = router;

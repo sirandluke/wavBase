@@ -2,7 +2,7 @@
     Register.js
  */
 import React from 'react';
-import db from "../../firebase_config";
+import db from "../../Realtime_Database_config";
 import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";

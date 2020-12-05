@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { Component, useState } from "react";
-import db from "../firebase_config";
+import db from "../Realtime_Database_config";
 import ReactPlayer from "react-player";
 import * as K from "../Constants";
 /* Do not delete

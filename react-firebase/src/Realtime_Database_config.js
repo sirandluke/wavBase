@@ -1,5 +1,5 @@
 /*
-    firebase_config.js
+    Realtime_Database_config.js
  */
 const firebase = require('firebase');
 //import firebase from "firebase";
@@ -17,12 +17,11 @@ const config = {
 };
 
 const db = firebase.initializeApp(config);
+//const storage = db.storage();
 
-//const {gcloudStorage} = require('@google-cloud/storage');
+
 //const storage = new gcloudStorage(config);
-
-
-
 
 module.exports = db;
 //export default db;
+//export default storage;

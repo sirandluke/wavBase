@@ -1,5 +1,5 @@
 import React from "react";
-import db from "../../firebase_config";
+import db from "../../Realtime_Database_config";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from '../../model/FirebaseHandler';

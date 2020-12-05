@@ -1,5 +1,5 @@
 import React from "react";
-import db from "../../firebase_config";
+import db from "../../Realtime_Database_config";
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import {ParseTags} from "../../model/ParseTags";
 import {HashRouter, NavLink} from "react-router-dom";

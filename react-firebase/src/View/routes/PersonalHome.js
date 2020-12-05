@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import db from "../../firebase_config";
+import db from "../../Realtime_Database_config";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
-//import Home from "./Home";
 import ResultsInterface from "./ResultsInterface";
 import PrivateRoute from "../auth/PrivateRoute";
 import {useHistory} from 'react-router-dom';

@@ -1,7 +1,7 @@
 /*
     FirebaseHandler.js
  */
-import db from "../firebase_config.js";
+import db from "../Realtime_Database_config.js";
 import * as K from "../Constants.js";
 import {DateToString} from "./Date";
 

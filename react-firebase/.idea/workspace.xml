@@ -20,22 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/routes/TestProfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/routes/TestRepository.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Storage_config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/wavbasedb-9a679-firebase-adminsdk-mz5bf-dc506005fa.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/auth/Auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/SearchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Realtime_Database_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FirebaseHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GetUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetUserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PlayButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlayButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/UploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UploadImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/playsnippet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/playsnippet_test.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +83,7 @@
       <recent name="F:\wavBase\wavBase\react-firebase\src\View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -97,6 +102,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -104,6 +119,15 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -119,7 +143,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="32488000" />
+      <workItem from="1607086944181" duration="40639000" />
     </task>
     <servers />
   </component>
@@ -148,30 +172,30 @@
     </state>
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607140480501" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
-    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607131633854">
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607149592402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607131633854" />
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607149592402" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1877" height="157" key="GridCell.Tab.0.bottom" timestamp="1607145842827">
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607157454505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607157454505" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="157" key="GridCell.Tab.0.center" timestamp="1607145842827">
+    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607157454505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="157" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
+    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607157454505" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="157" key="GridCell.Tab.0.left" timestamp="1607145842827">
+    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607157454505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="157" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
+    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607157454505" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="157" key="GridCell.Tab.0.right" timestamp="1607145842827">
+    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607157454505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="157" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
+    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607157454505" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
   </component>
 </project>

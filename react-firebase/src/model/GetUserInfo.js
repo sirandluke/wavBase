@@ -1,4 +1,4 @@
-const db = require('../firebase_config');
+const db = require('../Realtime_Database_config');
 
 module.exports = function GetUserInfo(uid) {
     //console.log("GetUserInfo executed, uid = " + uid);

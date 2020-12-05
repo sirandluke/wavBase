@@ -2,7 +2,7 @@ import React, {Component, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
-import db from "../../firebase_config";
+import db from "../../Realtime_Database_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -23,12 +23,13 @@ const Profile = ({history}) => {
         history.push("/repository");
     }
 
-    const UpdateProfileImage = (picture, path) => {
+    const UpdateProfileImage = (picture, picture_path) => {
+        //console.log(picture_path);
         let config = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                uid, picture, path
+                uid, picture, picture_path
             })
         };
         fetch('http://localhost:8000/user_info/update_profile_image', config)
@@ -40,6 +41,16 @@ const Profile = ({history}) => {
         let extension = document.getElementById('picture').value.split('.').pop();
         let picture_path = 'defaults/' + uid + '.' + extension;
         let picture = document.getElementById('picture').files[0];
+        /*//let picture = new FormData();
+        if (document.getElementById('picture').files.length) {
+            //const upload_file = document.getElementById('picture').files[0];
+            //picture.append('file', upload_file);
+            let picture = document.getElementById('picture').files[0].name;
+
+        } else {
+            console.log('You need to select a file');
+        }*/
+        console.log(picture);
         UpdateProfileImage(picture, picture_path);
     }
 
