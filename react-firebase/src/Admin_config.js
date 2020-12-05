@@ -7,6 +7,4 @@ admin.initializeApp({
     databaseURL: "https://wavbasedb-9a679.firebaseio.com"
 });
 
-const admin_storage = admin.storage();
-
-module.exports = admin_storage;
+module.exports = admin;

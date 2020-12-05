@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 app.use('/', require('../routes/index'));
 
-app.use('/', require('../routes/UserController'));
+app.use('/', require('../routes/Controller'));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

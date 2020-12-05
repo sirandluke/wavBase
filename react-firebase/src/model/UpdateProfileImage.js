@@ -1,5 +1,5 @@
 const db = require('../Realtime_Database_config');
-const storage = require('../Storage_config');
+const storage = require('../Admin_config');
 
 module.exports = function UpdateProfileImage(uid, picture, picture_path) {
     console.log(picture_path);

@@ -14,8 +14,6 @@ import {AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
 import ResultsInterface, {search_result_paths} from "./View/routes/ResultsInterface";
-import TestProfile from "./View/routes/TestProfile";
-import TestRepository from "./View/routes/TestRepository";
 
 function App() {
 
@@ -27,7 +25,7 @@ function App() {
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
                     <PrivateRoute path="/" component={PersonalHome}/>
-                    <PrivateRoute exact path="/" component={TestRepository}/>
+                    <PrivateRoute exact path="/" component={Repository}/>
                     <PrivateRoute exact path="/profile" component={Profile}/>
                     <PrivateRoute exact path='/search_result' component={ResultsInterface}/>
                 </div>
