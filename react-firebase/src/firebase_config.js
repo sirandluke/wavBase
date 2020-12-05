@@ -1,10 +1,11 @@
 /*
     firebase_config.js
  */
-let firebase = require('firebase');
+const firebase = require('firebase');
+//import firebase from "firebase";
 
 // noinspection SpellCheckingInspection
-const db = firebase.initializeApp({
+const config = {
     apiKey: "AIzaSyCAsj0sKvrY1hqtXZYS_GbPyehKPXOzZ6Y",
     authDomain: "wavbasedb-9a679.firebaseapp.com",
     databaseURL: "https://wavbasedb-9a679.firebaseio.com/",
@@ -13,6 +14,15 @@ const db = firebase.initializeApp({
     messagingSenderId: "707190956098",
     appId: "1:707190956098:web:88fa31bd96d13289c64ddb",
     measurementId: "G-C56V3L638G"
-});
+};
+
+const db = firebase.initializeApp(config);
+
+//const {gcloudStorage} = require('@google-cloud/storage');
+//const storage = new gcloudStorage(config);
+
+
+
 
 module.exports = db;
+//export default db;

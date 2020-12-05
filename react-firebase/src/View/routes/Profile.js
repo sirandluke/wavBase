@@ -6,30 +6,14 @@ import db from "../../firebase_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const Profile = ({ history }) => {
+const Profile = ({history}) => {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-
-    let uid = db.auth().currentUser.uid;
-    let userRef = db.database().ref('users/' + uid);
-    let username, profile_picture_path, user_email;
-    userRef.on('value', (snapshot) =>{
-        username = snapshot.val().username;
-        profile_picture_path = snapshot.val().profile_picture;
-        user_email = snapshot.val().email;
-    })
-
-    let storage = db.storage();
-    let storageRef = storage.ref();
-    storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
-        let img = document.getElementById('profile_picture');
-        img.src = url;
-    })
-
+    const uid = db.auth().currentUser.uid;
 
     const redirectHome = () => {
         history.push("/");
@@ -39,24 +23,28 @@ const Profile = ({ history }) => {
         history.push("/repository");
     }
 
+    const UpdateProfileImage = (picture, path) => {
+        let config = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                uid, picture, path
+            })
+        };
+        fetch('http://localhost:8000/user_info/update_profile_image', config)
+            .catch(error => console.log(error));
+    }
+
     const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
         let picture_path = 'defaults/' + uid + '.' + extension;
-        let picture_storage = storageRef.child(picture_path);
         let picture = document.getElementById('picture').files[0];
-        console.log(picture);
-        picture_storage.put(picture).then(function(snapshot) {
-            console.log('New Profile Picture Uploaded');
-        });
-        userRef.update({
-            profile_picture: picture_path
-        });
-
+        UpdateProfileImage(picture, picture_path);
     }
 
     const handleInfoUpdate = (event) => {
-        event.preventDefault();
+        /*event.preventDefault();
         let new_username = document.getElementById('new_username').value;
         let new_bio = document.getElementById('new_bio').value;
         if (new_username !== "") {
@@ -73,22 +61,21 @@ const Profile = ({ history }) => {
             console.log('New Bio: ' + new_bio);
         }
         document.getElementById('new_username').value = "";
-        document.getElementById('new_bio').value = "";
+        document.getElementById('new_bio').value = "";*/
     }
 
     const resetPassword = () => {
-        db.auth().sendPasswordResetEmail(user_email).then(function() {
+       /* db.auth().sendPasswordResetEmail(user_email).then(function () {
             console.log("Password Reset Email sent to:" + user_email);
-        }).catch(function(error) {
+        }).catch(function (error) {
             console.log("Password Reset Email not sent successfully");
-        });
+        });*/
     }
-
 
 
     return (
         <div>
-            <img id="profile_picture" width={100} height={100}/>
+            <img id="profile_image" width={100} height={100}/>
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
@@ -123,7 +110,7 @@ const Profile = ({ history }) => {
             </form>
             <button onClick={resetPassword}>Reset Password</button>
             <DropdownButton id="dropdown-basic-button" title="User">
-                <Dropdown.Item as="button" >My Profile</Dropdown.Item>
+                <Dropdown.Item as="button">My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
             </DropdownButton>

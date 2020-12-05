@@ -13,7 +13,7 @@ export const UploadImage = () => {
 
     let storage = db.storage();
     let storageRef = storage.ref();
-    let picture_name = username
+    let picture_name = username;
     let picture_storage = storageRef.child('defaults/');
 
     const handleUploadPicture = (event) => {

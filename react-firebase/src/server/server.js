@@ -3,6 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+//const firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+//require("firebase/auth");
+//require("firebase/firestore");
+
 app.use(cors({
     credentials: true
 }));

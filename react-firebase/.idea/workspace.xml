@@ -20,20 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/GetUserInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/UserController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/useless.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/routes/TestProfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/routes/TestRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/firebase_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase_config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FirebaseHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GetUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetUserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UploadImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/playsnippet.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/playsnippet_test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/UserController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -72,9 +73,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\wavBase\wavBase\react-firebase\src\View" />
       <recent name="F:\wavBase\wavBase\react-firebase\src" />
       <recent name="F:\wavBase\wavBase\react-firebase" />
+      <recent name="F:\wavBase\wavBase\react-firebase\src\View" />
     </key>
   </component>
   <component name="RunManager">
@@ -118,7 +119,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="16236000" />
+      <workItem from="1607086944181" duration="32488000" />
     </task>
     <servers />
   </component>
@@ -142,29 +143,35 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="416" y="175" width="1086" height="785" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607120951653" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607097011958">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607140480501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607140480501" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
-    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607090532505">
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607131633854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607131633854" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1607126627755">
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom" timestamp="1607145842827">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1878" height="157" key="GridCell.Tab.0.center" timestamp="1607126627755">
+    <state width="1877" height="157" key="GridCell.Tab.0.center" timestamp="1607145842827">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1878" height="157" key="GridCell.Tab.0.left" timestamp="1607126627755">
+    <state width="1877" height="157" key="GridCell.Tab.0.left" timestamp="1607145842827">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1878" height="157" key="GridCell.Tab.0.right" timestamp="1607126627755">
+    <state width="1877" height="157" key="GridCell.Tab.0.right" timestamp="1607145842827">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="157" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607145842827" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
   </component>
 </project>

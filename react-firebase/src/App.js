@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import Home from "./View/routes/Home";
 import PersonalHome, {search_input} from "./View/routes/PersonalHome";
@@ -14,6 +14,8 @@ import {AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
 import ResultsInterface, {search_result_paths} from "./View/routes/ResultsInterface";
+import TestProfile from "./View/routes/TestProfile";
+import TestRepository from "./View/routes/TestRepository";
 
 function App() {
 
@@ -24,10 +26,10 @@ function App() {
                 <div>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
-                    <PrivateRoute exact path="/" component={PersonalHome}/>
-                    <PrivateRoute exact path="/repository" component={Repository}/>
+                    <PrivateRoute path="/" component={PersonalHome}/>
+                    <PrivateRoute exact path="/" component={TestRepository}/>
                     <PrivateRoute exact path="/profile" component={Profile}/>
-                    <PrivateRoute path='/search_result' component={ResultsInterface}/>
+                    <PrivateRoute exact path='/search_result' component={ResultsInterface}/>
                 </div>
             </Router>
         </AuthProvider>

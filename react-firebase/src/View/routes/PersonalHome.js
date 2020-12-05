@@ -14,51 +14,36 @@ export let search_input = '';
 // TODO: render searchbar, likes, (add more)
 function PersonalHome(props) {
 
-
-    /*let user = db.auth().currentUser;
-    //let name, email, photoUrl, uid, emailVerified;
-    let uid = db.auth().currentUser.uid;
-    let name = "YYY";
-    if (user != null) {
-        //name = user.email;
-        let username;
-        let firebaseRef = db.database().ref('users/' + uid);
-        firebaseRef.on('value', (snapshot) => {
-            username = snapshot.val().username;
-        })
-        name = username;
-    }*/
-    let uid = db.auth().currentUser.uid;
+    let current_uid = db.auth().currentUser.uid;
     const history = useHistory();
-    //const url_ref = localStorage.getItem('current_user_profile_image');
     const [current_user, setUser] = useState(props.user || []);
-    //const {profile_image_url} = props.location;
-    //const [image_url] = useState(profile_image_url || url_ref);
 
-    const getUserRef = (uid) => {
+    const getUserRef = (current_uid) => {
         let config = {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         };
-        //console.log("getUserRef executed");
-        return fetch('http://localhost:8000/user_info?uid=' + uid, config)
+        return fetch('http://localhost:8000/user_info?current_uid=' + current_uid, config)
             .then(response => response.json())
             .catch(error => console.log("Home page " + error));
     }
 
     let profile_image_url;
-    let name = '';
 
     useEffect(
         () => {
             if (!props.user) {
-                getUserRef(uid)
+                getUserRef(current_uid)
                     .then(user_snapshot => {
                         setUser(user_snapshot);
-                        name = user_snapshot.username;
-                        profile_image_url = user_snapshot.profile_picture.getDownloadURL().then(function (url) {
+                        document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
+                        profile_image_url = db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
+                            let img2 = document.getElementById('profile_image');
+                            if (img2 != null) {
+                                img2.src = url;
+                            }
                         });
                     });
             }
@@ -97,7 +82,7 @@ function PersonalHome(props) {
                     <button type="submit">Search</button>
                 </form>
                 {/*Search Bar End */}
-                <h2>Hello {name}</h2>
+                <h2 id={'greeting_username'}>Hello</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
                 <DropdownButton id="dropdown-basic-button" title="User">
                     <Dropdown.Item as="button" onClick={redirectProfile}>My Profile</Dropdown.Item>
