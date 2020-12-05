@@ -1,9 +1,10 @@
 import React, {Component} from "react";
+
 import db from "../../Model/base";
+
 import {Link, withRouter} from "react-router-dom";
-import {findRepositories} from "../../Model/FirebaseHandler";
+
 import "./RepositoryList.css";
-import { useHistory } from "react-router-dom"
 
 class RepositoryList extends Component {
     constructor(props) {
@@ -73,7 +74,7 @@ class RepositoryList extends Component {
                     </tr> */}
                     </thead>
                     <tbody>
-                    { repoElement }
+                        { repoElement }
                     </tbody>
                 </table>
             </div>

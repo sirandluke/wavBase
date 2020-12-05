@@ -3,8 +3,11 @@
  * @returns {string} The current date formatted as `MM-DD-YYYY`.
  */
 export let DateToString = () => {
-    let today = new Date();
-    return  (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getFullYear();
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate() <= 10 ? '0' + today.getDate() : today.getDate();
+    const year = today.getFullYear();
+    return month + '-' + day + '-' + year;
 }
 
 export let RankByDate = (readArr) => {

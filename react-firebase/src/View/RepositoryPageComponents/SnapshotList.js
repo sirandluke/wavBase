@@ -4,7 +4,7 @@ import db from "../../Model/base";
 import { withRouter } from "react-router-dom";
 
 import folder_icon from "../../Images/folder.png";
-import "./SnapshotList.css";
+import "./SnapshotList.css"
 
 class SnapshotList extends Component {
     constructor(props) {
@@ -44,7 +44,9 @@ class SnapshotList extends Component {
         this.props.history.push({
             pathname: "/snapshot",
             state: {  // Pass as props for Repository page.
-                repo: curr_snapshot
+                snapshot: curr_snapshot,
+                repo_name: this.props.repo_name,
+                username: "User"
             }
         });
     }
@@ -53,7 +55,6 @@ class SnapshotList extends Component {
 
         // TODO: Map snapshot elements to SnapshotObject
         // Element displays folder icon + desc + datetime
-
 
         const snapshotElement = this.state.snapshots.map(snapshot =>
             <tr key={ snapshot.snap_id }>
@@ -71,7 +72,14 @@ class SnapshotList extends Component {
         return(
             <div>
                 <h3>Snapshots</h3>
-                {snapshotElement}
+                <table>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        {snapshotElement}
+                    </tbody>
+                </table>
             </div>
         );
     }

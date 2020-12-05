@@ -26,7 +26,7 @@ function App() {
                     <Route exact path="/register" component={Register} />
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
                     <PrivateRoute exact path="/repository" component={Repository} />
-                    <PrivateRoute exact path="snapshot" component={Snapshot} />
+                    <PrivateRoute exact path="/snapshot" component={Snapshot} />
                     <PrivateRoute exact path="/profile" component={Profile} />
                 </div>
             </Router>

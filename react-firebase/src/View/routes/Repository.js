@@ -43,7 +43,10 @@ const Repository = ({history}) => {
 
             </SnapshotModal>
 
-            <SnapshotList repo_id={ location.state.repo.repo_id }/>
+            <SnapshotList
+                repo_id={ location.state.repo.repo_id }
+                repo_name={location.state.repo.name}
+            />
 
             <button onClick={ redirectHome }>Go Back to Home!</button>
         </div>
