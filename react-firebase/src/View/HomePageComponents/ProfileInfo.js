@@ -24,6 +24,7 @@ export class ProfileInfo extends Component {
     };
 
     componentDidMount() {
+        // TODO: TRANSFER TO MODEL
         this.firebaseRef.once('value',(snapshot) => {
             const data = snapshot.val();
             console.log(data);
@@ -47,7 +48,6 @@ export class ProfileInfo extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <img className="user_profile_picture" id="profile_picture" src={loading} alt="Profile Picture"/>
