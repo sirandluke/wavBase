@@ -15,7 +15,7 @@ body {
     margin-left: 20px;
     margin-bottom: 1px;
     margin-top: 4.5px;
-    background-color: transparent;
+    background-color: white;
 }
 
 .search_bar {
@@ -31,25 +31,61 @@ body {
     border-radius: 10px;
 }
 
-.user_dropdown {
-    background-color: black;
+.drop_button {
+    background-color: white;
+    border-radius: 0%;
+    padding-right: 45px;
+    padding-left: 40px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     color: black;
+    font-size: 13px;
     border: none;
-    float: left;
-    position: absolute;
-    width: 100px;
-    height: 40px;
-    right: 30px;
-    top: 15px;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2),0 7px 5px 0 rgba(0,0,0,0.1);
+    cursor: pointer;
 }
 
-.dropdown_property {
-    position: absolute;
-    background-color: transparent;
-    color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
+.user_dropdown {
+    float: right;
+    top: 19px;
+    right: 40px;
+    text-align: left;
+    position: relative;
+    display: inline-block;
 }
+
+.dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    z-index: 1;
+
+}
+
+.dropdown_content a {
+    font-size: 12px;
+    color: black;
+    padding: 6px 22px;
+    text-decoration: none;
+    display: block;
+}
+
+.user_dropdown:hover .dropdown_content {
+    display: block;
+}
+
+
+
+
+.down_arrow {
+    float: right;
+    height: 6px;
+    length: 6px;
+    top: 32px;
+    right: -55px;
+    position: relative;
+}
+
+.bottom_wave {
+    position: relative;
+}
+

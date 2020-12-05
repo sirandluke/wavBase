@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {insertRepository} from "../../Model/FirebaseHandler";
 import * as K from '../../Constants'
-import '../routes/NewRepo.css'
+import "../../App.css";
+import './CreateRepoAction.css'
+
+
 
 
 export class CreateRepoAction extends Component {
@@ -38,22 +41,22 @@ export class CreateRepoAction extends Component {
     render() {
         return(
             <div>
-                <h1>Create Repository</h1>
-                <form onSubmit={this.createRepo}>
+                <form className="make_repo_form" onSubmit={this.createRepo}>
+                    <h1>Create Repository</h1>
                     <label>
-                        <input name="repo_name" type="text" required="required" placeholder="Repository name" />
+                        <input className="repo_Name" name="repo_name" type="text" required="required" placeholder="Repository name" />
                     </label>
                     <br />
                     <label>
-                        <input name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM" />
+                        <input className="BPM" name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM" />
                     </label>
                     <br />
                     <label>
-                        <input name="key" type="text" required="required" placeholder="Key Signature" />
+                        <input className="Name" name="key" type="text" required="required" placeholder="Key Signature" />
                     </label>
                     <br />
                     <label>
-                        <input name="tags" type="text" placeholder="Tags" />
+                        <input className="Tags" name="tags" type="text" placeholder="Tags" />
                     </label>
                     <br />
                     <label>
