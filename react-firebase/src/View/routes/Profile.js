@@ -5,14 +5,17 @@ import "../../App.css";
 import db from "../../Realtime_Database_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import {useHistory} from "react-router-dom";
 
-const Profile = ({history}) => {
+function Profile() {
+    const history = useHistory();
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const user = db.auth().currentUser;
     const uid = db.auth().currentUser.uid;
 
     const redirectHome = () => {
@@ -48,6 +51,18 @@ const Profile = ({history}) => {
             .catch(error => console.log(error));
     }
 
+    const UpdateUserPassword = (password) => {
+        let config = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                uid, password
+            })
+        };
+        fetch('http://localhost:8000/user_info/update_password', config)
+            .catch(error => console.log(error));
+    }
+
     const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
@@ -75,12 +90,18 @@ const Profile = ({history}) => {
         document.getElementById('new_bio').value = "";
     }
 
-    const resetPassword = () => {
-       /* db.auth().sendPasswordResetEmail(user_email).then(function () {
-            console.log("Password Reset Email sent to:" + user_email);
-        }).catch(function (error) {
-            console.log("Password Reset Email not sent successfully");
-        });*/
+    const resetPassword = (event) => {
+        event.preventDefault();
+        let password = document.getElementById('new_password').value;
+        let conf_password = document.getElementById('conf_password').value;
+        if (password === conf_password) {
+            UpdateUserPassword(password);
+        }
+        else {
+            alert('Confirmation Password Does Not Match');
+        }
+        document.getElementById('new_password').value = '';
+        document.getElementById('conf_password').value = '';
     }
 
 
@@ -124,12 +145,12 @@ const Profile = ({history}) => {
             <form method="post" onSubmit={resetPassword}>
                 <label>
                     Password <br/>
-                    <input name="password" type="text" id="new_username" placeholder="Enter your new password"/>
+                    <input name="password" type="text" id="new_password" placeholder="Enter your new password"/>
                 </label>
                 <br/>
                 <label>
                     <br/>
-                    <input name="confirmation_password" type="text" id="new_bio" placeholder="Re-enter your new password"/>
+                    <input name="confirmation_password" type="text" id="conf_password" placeholder="Re-enter your new password"/>
                 </label>
                 <br/>
                 <input type="submit" value="Update"/>
