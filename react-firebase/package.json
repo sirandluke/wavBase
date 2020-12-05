@@ -6,7 +6,11 @@
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
-    "firebase": "^8.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase": "^7.24.0",
+    "firebase-admin": "^8.13.0",
+    "nodemon": "^2.0.6",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
@@ -19,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "nodemon src/server/server.js"
   },
   "eslintConfig": {
     "extends": [

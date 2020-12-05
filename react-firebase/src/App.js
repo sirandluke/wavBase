@@ -20,14 +20,16 @@ function App() {
     //const search_result_routes = search_result_paths();
     return (
         <AuthProvider>
-            <div>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/register" component={Register}/>
-                <PrivateRoute exact path="/" component={PersonalHome}/>
-                <PrivateRoute exact path="/repository" component={Repository}/>
-                <PrivateRoute exact path="/profile" component={Profile}/>
-                <PrivateRoute path='/search_result' component={ResultsInterface}/>
-            </div>
+            <Router>
+                <div>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/register" component={Register}/>
+                    <PrivateRoute exact path="/" component={PersonalHome}/>
+                    <PrivateRoute exact path="/repository" component={Repository}/>
+                    <PrivateRoute exact path="/profile" component={Profile}/>
+                    <PrivateRoute path='/search_result' component={ResultsInterface}/>
+                </div>
+            </Router>
         </AuthProvider>
     );
 }

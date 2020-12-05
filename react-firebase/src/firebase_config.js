@@ -1,7 +1,7 @@
 /*
     firebase_config.js
  */
-import firebase from "firebase";
+let firebase = require('firebase');
 
 // noinspection SpellCheckingInspection
 const db = firebase.initializeApp({
@@ -15,4 +15,4 @@ const db = firebase.initializeApp({
     measurementId: "G-C56V3L638G"
 });
 
-export default db;
+module.exports = db;

@@ -20,29 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/GetUserInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/UserController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/useless.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FirebaseHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlayButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlayButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UploadImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase_config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/NewRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/NewRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Register.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +118,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="2957000" />
+      <workItem from="1607086944181" duration="16236000" />
     </task>
     <servers />
   </component>
@@ -146,29 +138,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606814483723">
+    <state x="416" y="175" width="1086" height="785" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607120951653">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606814483723" />
+    <state x="416" y="175" width="1086" height="785" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607120951653" />
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607097011958">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
     <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607090532505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1607090049570">
+    <state width="1878" height="157" key="GridCell.Tab.0.bottom" timestamp="1607126627755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607090049570" />
-    <state width="1878" height="157" key="GridCell.Tab.0.center" timestamp="1607090049570">
+    <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
+    <state width="1878" height="157" key="GridCell.Tab.0.center" timestamp="1607126627755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607090049570" />
-    <state width="1878" height="157" key="GridCell.Tab.0.left" timestamp="1607090049570">
+    <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
+    <state width="1878" height="157" key="GridCell.Tab.0.left" timestamp="1607126627755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607090049570" />
-    <state width="1878" height="157" key="GridCell.Tab.0.right" timestamp="1607090049570">
+    <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
+    <state width="1878" height="157" key="GridCell.Tab.0.right" timestamp="1607126627755">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607090049570" />
+    <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
   </component>
 </project>
