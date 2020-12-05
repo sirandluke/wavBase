@@ -6,7 +6,9 @@ import db from "../../Model/base";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
+
 const Profile = ({ history }) => {
+
 
     const [show, setShow] = useState(false);
 
@@ -14,14 +16,17 @@ const Profile = ({ history }) => {
     const handleShow = () => setShow(true);
 
 
+
     let uid = db.auth().currentUser.uid;
     let userRef = db.database().ref('users/' + uid);
     let username, profile_picture_path, user_email;
     userRef.on('value', (snapshot) =>{
+
         username = snapshot.val().username;
         profile_picture_path = snapshot.val().profile_picture;
         user_email = snapshot.val().email;
     })
+
 
     let storage = db.storage();
     let storageRef = storage.ref();
@@ -39,6 +44,7 @@ const Profile = ({ history }) => {
         history.push("/repository");
     }
 
+
     const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
@@ -46,12 +52,16 @@ const Profile = ({ history }) => {
         let picture_storage = storageRef.child(picture_path);
         let picture = document.getElementById('picture').files[0];
         console.log(picture);
+
         picture_storage.put(picture).then(function(snapshot) {
+
             console.log('New Profile Picture Uploaded');
         });
         userRef.update({
             profile_picture: picture_path
         });
+
+
 
     }
 
@@ -67,8 +77,10 @@ const Profile = ({ history }) => {
         }
         if (new_bio !== "") {
             userRef.update({
+
                 first_name: new_bio.split(' ')[0],
                 last_name: new_bio.split(' ')[1]
+
             });
             console.log('New Bio: ' + new_bio);
         }
@@ -77,18 +89,22 @@ const Profile = ({ history }) => {
     }
 
     const resetPassword = () => {
+
         db.auth().sendPasswordResetEmail(user_email).then(function() {
             console.log("Password Reset Email sent to:" + user_email);
         }).catch(function(error) {
+
             console.log("Password Reset Email not sent successfully");
         });
     }
 
 
 
+
     return (
         <div>
             <img id="profile_picture" width={100} height={100}/>
+
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
@@ -122,12 +138,14 @@ const Profile = ({ history }) => {
                 <input type="submit" value="Update"/>
             </form>
             <button onClick={resetPassword}>Reset Password</button>
+
             <DropdownButton id="dropdown-basic-button" title="User">
                 <Dropdown.Item as="button" >My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
             </DropdownButton>
             <button onClick={redirectHome}>Go Back to Home!</button>
+
         </div>
     );
 }

@@ -9,6 +9,16 @@ import {DateToString} from "./Date";
 
 const ref = db.database().ref();
 
+export function getData(path, callback) {
+    try{
+        ref.child(path).once("value", (snapshot) => {
+            callback(snapshot.val());
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
 /**
  * Creates a data entry for new user
  * @param {string} username 
@@ -18,29 +28,33 @@ const ref = db.database().ref();
  * @param {string} last_name 
  */
 export function createUser(username, password, email) {
-    // Creates user id with email and password values
-    db
-    .auth()
-    .createUserWithEmailAndPassword(
-        email,
-        password
-    );
+    try {
+        // Creates user id with email and password values
+        db
+        .auth()
+        .createUserWithEmailAndPassword(
+            email,
+            password
+        );
 
-    // Sets child values for user id
-    db.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            db.database().ref('users/' + user.uid).set({
-                username: username,
-                email: email,
-                first_name: K.empty,
-                last_name: K.empty,
-                biography: K.empty,
-                profile_picture: K.default_user_png,
-                followers: 0,
-                following: 0,
-            });
-        }
-    });
+        // Sets child values for user id
+        db.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                db.database().ref('users/' + user.uid).set({
+                    username: username,
+                    email: email,
+                    first_name: K.empty,
+                    last_name: K.empty,
+                    biography: K.empty,
+                    profile_picture: K.default_user_png,
+                    followers: 0,
+                    following: 0,
+                });
+            }
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
 }
 
 /**
@@ -112,6 +126,66 @@ export function deleteUser(uid) {
 
         // Finds list of repositories tied to user
         findRepositories(uid,callback);
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
+/*** Followers ***/
+
+/**
+ * Adds current user to another user's followers list
+ * @param {string} uid the user who the current user wants to follow
+ * @param {string} currentUser
+ */
+export function addFollower(uid, currentUser) {
+    try {
+        ref.child('users/' + uid + '/followers').update({
+            [currentUser]: K.empty
+        });
+        console.log("Followed " + uid);
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
+/**
+ * Removes current user from another user's followers list
+ * @param {string} uid the user who the current user wants to unfollow
+ * @param {string} currentUser
+ */
+export function removeFollower(uid, currentUser) {
+    try {
+        ref.child("users/" + uid + '/followers/' + currentUser).remove().then(() => {
+            console.log("Unfollowed " + uid);
+        });
+    } catch(error) {
+        console.log(error.message);
+    }
+}
+
+/**
+ * Determines if the current user is following another user
+ * @param {string} uid the user who the current user is following
+ * @param {string} currentUser 
+ * @param {function} callback 
+ */
+export function isFollowing(uid, currentUser, callback) {
+    try {
+        let isFollow = false;
+
+        // References follower list of a user and tries to find if the current user is in it
+        ref.child("users/" + uid + "/followers").orderByKey().equalTo(currentUser).once("value", (snapshot) => {
+            console.log(snapshot.val());
+
+            // If our snapshot has a valid data entry, then we found the current user in the followers list
+            snapshot.forEach((entry) => {
+                isFollow = true;
+            });
+
+            // Callback once finish processing snapshot data
+            callback(isFollow);
+        });
     } catch(error) {
         console.log(error.message);
     }

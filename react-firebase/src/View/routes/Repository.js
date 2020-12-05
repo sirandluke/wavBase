@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "../../App.css";
+
 import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
@@ -26,7 +27,6 @@ const Repository = ({history}) => {
     const {isShowing, toggle} = UseSnapshotModal();
 
     console.log(location.state.repo);
-
 
     const redirectHome = () => {
         history.push("/");
