@@ -45,16 +45,16 @@ function PersonalHome(props) {
                         let follow_info = document.getElementById('follow');
                         if (follow_info != null) {
                             let followers = 0;
-                            if (user_snapshot.followers != '') {followers = user_snapshot.followers};
+                            if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
                             let followings = 0;
-                            if (user_snapshot.following != '') {followings = user_snapshot.following};
+                            if (user_snapshot.following !== '') {followings = user_snapshot.following};
                             follow_info.innerText = followers + " followers " + followings + " following";
                         }
 
                         let bio_info = document.getElementById('bio');
                         if (bio_info != null) {
                             let user_bio = 'PROFESSIONALISM';
-                            if (user_snapshot.biography != '') {user_bio = user_snapshot.biography};
+                            if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
                             bio_info.innerText = user_bio;
                         }
 
@@ -78,7 +78,7 @@ function PersonalHome(props) {
     }
 
     const redirectRepo = () => {
-        history.push("/repository");
+        history.push("/");
     }
 
     const redirectProfile = () => {
@@ -99,7 +99,7 @@ function PersonalHome(props) {
                 {/*Search Bar Begin */}
                 <form onSubmit={handleSearch}>
                     <label>
-                        <input id='search_input' type="text" name="query"></input>
+                        <input id='search_input' type="text" name="query" placeholder={'Search'}></input>
                     </label>
                     <button type="submit">Search</button>
                 </form>
