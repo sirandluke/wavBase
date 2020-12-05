@@ -111,11 +111,7 @@ function PersonalHome(props) {
                     <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
                 </DropdownButton>
-                <ul>
-                    <button onClick={redirectCreateRepo}>Create Repository</button>
-                    <li>Repositories</li>
-                    <li>Likes</li>
-                </ul>
+                <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
             <PrivateRoute path='/search_result' component={() => ResultsInterface(search_input)}/>
         </div>

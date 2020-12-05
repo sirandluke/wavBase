@@ -1,27 +1,76 @@
-import React, {Component} from "react";
+import React, {useEffect, useState} from "react";
 import "../../App.css";
-import * as K from '../../Constants';
-import * as FirebaseHandler from "../../model/FirebaseHandler.js";
-import {PlayButton} from "../../components/PlayButton";
+import db from "../../Realtime_Database_config";
+import {Link, useHistory, useRouteMatch} from 'react-router-dom';
+import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
+import PrivateRoute from "../auth/PrivateRoute";
+import TestIndividualRepoPage from "./TestIndividualRepoPage";
 
-const Repository = ({ history }) => {
-    let audioSource= 'https://firebasestorage.googleapis.com/v0/b/wavbasedb-9a679.appspot.com/o/test_audio%2Ftest_piano.mp3?alt=media&token=e3dce63f-0aab-4d68-be39-39893c759e8e';
+function Repository(props) {
+    const history = useHistory();
+    const {url, path} = useRouteMatch();
+    const [repos, setRepos] = useState(props.repos || []);
 
-    const redirectHome = () => {
-        history.push("/");
+    const uid = db.auth().currentUser.uid;
+
+    const findRepos = (uid) => {
+        let config = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+        return fetch('http://localhost:8000/repo_list?uid=' + uid, config)
+            .then(response => response.json())
+            .catch(error => console.log(error));
     }
 
 
+    const redirectCreateRepo = () => {
+        history.push("/newrepo");
+    }
+
+    useEffect(() => {
+        if (!props.repos) {
+            findRepos(uid)
+                .then(repos_snapshot => {
+                    let repos_list = [];
+                    for (let repo in repos_snapshot) {
+                        repos_list.push({...repos_snapshot[repo], key: repo});
+                    }
+                    setRepos(repos_list);
+                });
+        }
+    });
+
+    /*<ul id={'repos_list'}>
+        {repos.map((repo, key) => (
+            <li>{repo.name}</li>
+        ))};
+    </ul>*/
+
+    function handleRepoClick(repo_id) {
+        history.push("/" + repo_id);
+    }
+
     return (
         <div>
-            < PlayButton audio={audioSource} />
+            <img id="profile_image" width={100} height={100}/>
+            <h2 id={'display_username'}>username</h2>
+            <p id={'follow'}>0 followers 0 following</p>
+            <p id={'bio'}>Bio</p>
+            <h2>Your Repositories</h2>
+            <button onClick={redirectCreateRepo}>Create Repository</button>
             <ul>
-                <li>Snapshot 1</li>
-                <li>Snapshot 2</li>
+                {repos && repos.map((repo, key) => (
+                    (repo.user_id === uid) && (repo.is_private !== 'T') ? <RepoDisplayComponent onClick={() => handleRepoClick(repo.key)} id={repo.key} name={repo.name}/> : <></>
+                ))}
             </ul>
-            <button onClick={redirectHome}>Go Back to Home!</button>
+            {repos && repos.map((repo, key) => (
+                <PrivateRoute exact path={"/" + repo.key} component={() => TestIndividualRepoPage(repo.key)}/>
+            ))}
         </div>
     );
 };
+
+//(repo.user_id === uid) && (repo.is_private !== 'T')
 
 export default Repository;
