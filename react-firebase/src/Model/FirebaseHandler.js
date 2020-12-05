@@ -176,7 +176,6 @@ export function isFollowing(uid, currentUser, callback) {
 
         // References follower list of a user and tries to find if the current user is in it
         ref.child("users/" + uid + "/followers").orderByKey().equalTo(currentUser).once("value", (snapshot) => {
-            console.log(snapshot.val());
 
             // If our snapshot has a valid data entry, then we found the current user in the followers list
             snapshot.forEach((entry) => {

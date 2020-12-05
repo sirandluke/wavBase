@@ -23,10 +23,7 @@ test("Update node value", done => {
     } catch (error) {
       done(error);
     }
-
-    FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
   }
-
   
     FirebaseHandler.updateUser("users/Ou1rLY45A7WYesB35btqGUxQgs82/biography", randomVal, callback);
   });
@@ -42,7 +39,6 @@ test("Update node value", done => {
         done(error);
       }
     }
-
 
     FirebaseHandler.findRepositories("b1CeFr3r9Ma7azib7yB9qSL0hmI3", callback);
   });
