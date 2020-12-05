@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {insertRepository} from "../../Model/FirebaseHandler";
 import * as K from '../../Constants'
+import '../routes/NewRepo.css'
+
 
 export class CreateRepoAction extends Component {
     constructor(props) {
