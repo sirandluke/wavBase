@@ -4,6 +4,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import db from "../../Model/base";
 import "./PersonalHome.css";
 import logo from "../../Images/wavBase_logo.png";
+import './PersonalHome.css';
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
