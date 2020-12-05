@@ -1,5 +1,6 @@
 const GetUserInfo = require('../model/GetUserInfo');
 const UpdateProfileImage = require('../model/UpdateProfileImage');
+const UpdateUserInfo = require('../model/UpdateUserInfo');
 const express = require('express');
 const router = express.Router();
 
@@ -11,6 +12,10 @@ router.get('/user_info', (req, res) => {
 
 router.post('/user_info/update_profile_image', (req, res) => {
     UpdateProfileImage(req.body.uid, req.body.picture, req.body.picture_path);
+})
+
+router.post('/user_info/update_user_info', (req, res) => {
+    UpdateUserInfo(req.body.uid, req.body.username, req.body.bio);
 })
 
 module.exports = router;

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from "react-bootstrap/Button";
-import db from "../Realtime_Database_config";
+import db from "../../Realtime_Database_config";
 
 
-export const UploadImage = () => {
+export const UploadImagePopUp = () => {
 
     const [show, setShow] = useState(false);
 

@@ -36,9 +36,32 @@ function PersonalHome(props) {
                     .then(user_snapshot => {
                         setUser(user_snapshot);
                         document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
+
+                        let profile_username = document.getElementById('display_username');
+                        if (profile_username != null) {
+                            profile_username.innerText = user_snapshot.username;
+                        }
+
+                        let follow_info = document.getElementById('follow');
+                        if (follow_info != null) {
+                            let followers = 0;
+                            if (user_snapshot.followers != '') {followers = user_snapshot.followers};
+                            let followings = 0;
+                            if (user_snapshot.following != '') {followings = user_snapshot.following};
+                            follow_info.innerText = followers + " followers " + followings + " following";
+                        }
+
+                        let bio_info = document.getElementById('bio');
+                        if (bio_info != null) {
+                            let user_bio = 'PROFESSIONALISM';
+                            if (user_snapshot.biography != '') {user_bio = user_snapshot.biography};
+                            bio_info.innerText = user_bio;
+                        }
+
                         profile_image_url = db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
+
                             let img2 = document.getElementById('profile_image');
                             if (img2 != null) {
                                 img2.src = url;

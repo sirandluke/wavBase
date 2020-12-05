@@ -1,7 +1,7 @@
 import React from "react";
 import db from "../../Realtime_Database_config";
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
-import {ParseTags} from "../../model/ParseTags";
+import {ParseTags} from "../../components/ParseTags";
 import {HashRouter, NavLink} from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";

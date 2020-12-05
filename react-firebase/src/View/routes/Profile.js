@@ -36,6 +36,18 @@ const Profile = ({history}) => {
             .catch(error => console.log(error));
     }
 
+    const UpdateUserInfo = (username, bio) => {
+        let config = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                uid, username, bio
+            })
+        };
+        fetch('http://localhost:8000/user_info/update_user_info', config)
+            .catch(error => console.log(error));
+    }
+
     const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
@@ -55,24 +67,12 @@ const Profile = ({history}) => {
     }
 
     const handleInfoUpdate = (event) => {
-        /*event.preventDefault();
+        event.preventDefault();
         let new_username = document.getElementById('new_username').value;
         let new_bio = document.getElementById('new_bio').value;
-        if (new_username !== "") {
-            userRef.update({
-                username: new_username
-            });
-            console.log('New Username: ' + new_username);
-        }
-        if (new_bio !== "") {
-            userRef.update({
-                first_name: new_bio.split(' ')[0],
-                last_name: new_bio.split(' ')[1]
-            });
-            console.log('New Bio: ' + new_bio);
-        }
+        UpdateUserInfo(new_username, new_bio);
         document.getElementById('new_username').value = "";
-        document.getElementById('new_bio').value = "";*/
+        document.getElementById('new_bio').value = "";
     }
 
     const resetPassword = () => {
@@ -105,27 +105,35 @@ const Profile = ({history}) => {
                     <Modal.Footer></Modal.Footer>
                 </Modal>
             </div>
-            <h1>Profile</h1>
+            <h2 id={'display_username'}>username</h2>
+            <p id={'follow'}>0 followers 0 following</p>
+            <p id={'bio'}>Bio</p>
             <form method="post" onSubmit={handleInfoUpdate}>
                 <label>
                     Username <br/>
-                    <input name="username" type="text" id="new_username" placeholder="Username"/>
+                    <input name="username" type="text" id="new_username" placeholder="Enter your new username"/>
                 </label>
                 <br/>
                 <label>
                     Bio <br/>
-                    <input name="bio" type="text" id="new_bio" placeholder="Bio Information"/>
+                    <input name="bio" type="text" id="new_bio" placeholder="Edit bio"/>
                 </label>
                 <br/>
                 <input type="submit" value="Update"/>
             </form>
-            <button onClick={resetPassword}>Reset Password</button>
-            <DropdownButton id="dropdown-basic-button" title="User">
-                <Dropdown.Item as="button">My Profile</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
-            </DropdownButton>
-            <button onClick={redirectHome}>Go Back to Home!</button>
+            <form method="post" onSubmit={resetPassword}>
+                <label>
+                    Password <br/>
+                    <input name="password" type="text" id="new_username" placeholder="Enter your new password"/>
+                </label>
+                <br/>
+                <label>
+                    <br/>
+                    <input name="confirmation_password" type="text" id="new_bio" placeholder="Re-enter your new password"/>
+                </label>
+                <br/>
+                <input type="submit" value="Update"/>
+            </form>
         </div>
     );
 }

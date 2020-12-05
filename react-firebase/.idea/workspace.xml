@@ -20,26 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Storage_config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/wavbasedb-9a679-firebase-adminsdk-mz5bf-dc506005fa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/UpdateUserInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/auth/Auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/auth/Auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/SearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Realtime_Database_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Date.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Date.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FirebaseHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/GetUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetUserInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlayButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlayButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UploadImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ParseTags.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ParseTags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PlayButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PlayButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UploadImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UploadImagePopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/UserController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/UserController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,6 +69,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\wavBase\wavBase\react-firebase\src\View\components" />
+      <recent name="F:\wavBase\wavBase\react-firebase\src\components" />
       <recent name="F:\wavBase\wavBase\react-firebase\src" />
       <recent name="F:\wavBase\wavBase\react-firebase" />
       <recent name="F:\wavBase\wavBase\react-firebase\src\View" />
@@ -143,7 +136,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="40639000" />
+      <workItem from="1607086944181" duration="43627000" />
     </task>
     <servers />
   </component>
@@ -172,10 +165,10 @@
     </state>
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607140480501" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
-    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607149592402">
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607158707834">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607149592402" />
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607158707834" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
     <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607157454505">
       <screen x="0" y="0" width="1920" height="1040" />
