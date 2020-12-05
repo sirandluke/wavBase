@@ -47,9 +47,9 @@ function Repository(props) {
         ))};
     </ul>*/
 
-    function handleRepoClick(repo_id) {
-        history.push("/" + repo_id);
-    }
+    /*function handleRepoClick(repo_id) {
+        history.push("/repo?repo_id=" + repo_id);
+    }*/
 
     return (
         <div>
@@ -61,12 +61,9 @@ function Repository(props) {
             <button onClick={redirectCreateRepo}>Create Repository</button>
             <ul>
                 {repos && repos.map((repo, key) => (
-                    (repo.user_id === uid) && (repo.is_private !== 'T') ? <RepoDisplayComponent onClick={() => handleRepoClick(repo.key)} id={repo.key} name={repo.name}/> : <></>
+                    (repo.user_id === uid) && (repo.is_private !== 'T') ? <RepoDisplayComponent id={repo.key} name={repo.name}/> : <></>
                 ))}
             </ul>
-            {repos && repos.map((repo, key) => (
-                <PrivateRoute exact path={"/" + repo.key} component={() => TestIndividualRepoPage(repo.key)}/>
-            ))}
         </div>
     );
 };

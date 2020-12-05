@@ -12,7 +12,7 @@ export class RepoDisplayComponent extends React.Component {
     render() {
         return (
             <div>
-                <Button><NavLink to={'/' + this.id}>{this.name}</NavLink></Button>
+                <Button><NavLink to={'/repo/' + this.id}>{this.name}</NavLink></Button>
             </div>
         );
     }

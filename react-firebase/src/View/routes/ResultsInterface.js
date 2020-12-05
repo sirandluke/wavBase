@@ -17,7 +17,7 @@ let user_results = [];
 let repo_results = [];
 let tags_results = [];
 
-/*export const search_result_paths = () => (
+export const search_result_paths = () => (
     <div>
         <PrivateRoute exact path='/search_result' component={() => SearchResultWithOptions('User', user_results)}/>
         <PrivateRoute exact path='/search_result/repositories'
@@ -25,7 +25,7 @@ let tags_results = [];
         <PrivateRoute exact path='/search_result/tags'
                       component={() => SearchResultWithOptions('Tags', tags_results)}/>
     </div>
-);*/
+);
 
 const ResultsInterface = ({history}) => {
 

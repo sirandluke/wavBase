@@ -4,9 +4,10 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import db from "../../Realtime_Database_config";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
-import ResultsInterface from "./ResultsInterface";
+import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import PrivateRoute from "../auth/PrivateRoute";
 import {useHistory} from 'react-router-dom';
+import TestIndividualRepoPage from "./TestIndividualRepoPage";
 
 export let search_input = '';
 
@@ -90,6 +91,8 @@ function PersonalHome(props) {
         history.push("/search_result");
     }
 
+    const search_result_routes = search_result_paths();
+
     return (
         <div className="container">
             <h1>Home</h1>
@@ -114,6 +117,8 @@ function PersonalHome(props) {
                 <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
             <PrivateRoute path='/search_result' component={() => ResultsInterface(search_input)}/>
+            <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
+            {search_result_routes}
         </div>
     );
 }
