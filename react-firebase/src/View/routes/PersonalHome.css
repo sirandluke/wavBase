@@ -1,8 +1,8 @@
 body {
-    background-image: '../../../Images/sine_wave_1.png' ;
+    background-color: rgba(152, 193, 217, 0.15);
 }
 
-.nav_bar {
+.nav {
     height: 10%;
     width: 100%;
     background-color: #355070;
