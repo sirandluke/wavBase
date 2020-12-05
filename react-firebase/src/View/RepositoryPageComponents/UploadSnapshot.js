@@ -12,6 +12,8 @@ import "./UploadSnapshot.css"
 
 const UploadSnapshot = (props) => {
 
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
     const [folder, setFolder] = useState(null);
 
     console.log("repo id is:" + props.repo_id);
@@ -20,8 +22,11 @@ const UploadSnapshot = (props) => {
         e.preventDefault();
         const {snapshotDesc} = e.target.elements;
 
-        const files = await uploadStorage();
-        await uploadRealtime(files, snapshotDesc.value);
+        let files = null;
+        files = await uploadStorage();
+        await delay(10000);
+        uploadRealtime(files, snapshotDesc.value);
+
     }
 
     async function uploadStorage() {
@@ -47,13 +52,15 @@ const UploadSnapshot = (props) => {
     }
 
     function uploadRealtime(files, snapshotDesc) {
-        console.log(files[1]);
         console.log(files.toString());
+        console.log("here")
+        let datetime = DateToString();
         let snapShotRef = db.database().ref("snapshots/");
         snapShotRef.push({
             description: snapshotDesc,
             files: files.toString(),
             repo_id: props.repo_id,
+            upload_date: datetime
         });
     }
 

@@ -8,6 +8,7 @@ import Register from "./View/routes/Register";
 import NewRepo from "./View/routes/NewRepo";
 import Repository from "./View/routes/Repository";
 import Profile from "./View/routes/Profile";
+import Snapshot from "./View/routes/Snapshot";
 
 import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
@@ -25,6 +26,7 @@ function App() {
                     <Route exact path="/register" component={Register} />
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
                     <PrivateRoute exact path="/repository" component={Repository} />
+                    <PrivateRoute exact path="snapshot" component={Snapshot} />
                     <PrivateRoute exact path="/profile" component={Profile} />
                 </div>
             </Router>

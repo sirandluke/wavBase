@@ -1,12 +1,10 @@
 import React, {Component} from "react";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import db from "../../Model/base";
 import { withRouter } from "react-router-dom";
 
-import folder_icon from "../../Images/folder@3x.png"
-
+import folder_icon from "../../Images/folder.png";
+import "./SnapshotList.css";
 
 class SnapshotList extends Component {
     constructor(props) {
@@ -16,27 +14,29 @@ class SnapshotList extends Component {
             snapshots: []
         }
 
-        this.fireBaseRef = db.database().ref('snapshots')
+        this.fireBaseRef = db.database().ref('snapshots');
     }
 
     componentDidMount() {
         try {
-            this.firebaseRef
-                .orderByChild('snapshots')
+            console.log(this.props.repo_id);
+            db.database().ref('snapshots')
+                .orderByChild('repo_id')
                 .equalTo(this.props.repo_id)
                 .once('value', (dataSnapshot) => {
                     let snapshots = [];
+                    console.log('here')
                     dataSnapshot.forEach(snapData => {
                         let snapshot = snapData.val();
-                        snapshots['snap_id'] = snapData.key;
-                        snapshot.push(snapshot);
+                        snapshot['snap_id'] = snapData.key;
+                        snapshots.push(snapshot);
                     });
                     this.setState({snapshots: snapshots});
                 }).then(() => {
                 console.log(this.state.snapshots)
             });
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
         }
     }
 
@@ -57,10 +57,10 @@ class SnapshotList extends Component {
 
         const snapshotElement = this.state.snapshots.map(snapshot =>
             <tr key={ snapshot.snap_id }>
-                <td style={ {width: '200px', textAlign: 'left'} }>
+                <td style={ {width: '500px', textAlign: 'left'} }>
                     <button className="snapshot_button" name="snapshot_links"
                             onClick={ () => this.redirectToSnapshots(snapshot) }>
-                        { folder_icon }
+                       <img className="snaps_ico" src={ folder_icon } alt="snapshot_icon" height="20" width="20"/>
                         { snapshot.description }
                         { snapshot.datetime }
                     </button>
@@ -70,6 +70,7 @@ class SnapshotList extends Component {
 
         return(
             <div>
+                <h3>Snapshots</h3>
                 {snapshotElement}
             </div>
         );
