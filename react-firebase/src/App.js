@@ -28,7 +28,6 @@ function App() {
                     <PrivateRoute path="/" component={PersonalHome}/>
                     <PrivateRoute exact path="/" component={Repository}/>
                     <PrivateRoute exact path="/profile" component={Profile}/>
-                    <PrivateRoute exact path='/search_result' component={ResultsInterface}/>
                 </div>
             </Router>
         </AuthProvider>

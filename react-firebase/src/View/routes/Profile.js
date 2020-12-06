@@ -2,16 +2,19 @@ import React, {Component, useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
-import db from "../../Realtime_Database_config";
+import db from "../../Database_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {useHistory} from "react-router-dom";
+
+//import {UpdateProfileImage} from "../../model/UpdateProfileImage";
 
 function Profile(props) {
     const history = useHistory();
 
     const [show, setShow] = useState(false);
     const [current_user, setUser] = useState(props.user || []);
+    const [re_render_index, re_render] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -78,18 +81,30 @@ function Profile(props) {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
         let picture_path = 'defaults/' + uid + '.' + extension;
+        let picture_object = document.getElementById('picture').files[0];
+        let picture_url = URL.createObjectURL(picture_object);
+        /*const reader = new FileReader();
+        reader.addEventListener("load", function () {
+            // convert image file to base64 string
+            picture_url = reader.result;
+            let img2 = document.getElementById('profile_image');
+            if (img2 != null) {
+                img2.src = picture_url;
+            }
+        }, false);
+        if (picture_object) {reader.readAsDataURL(picture_object)};*/
+        console.log(picture_url);
+        let picture_storage = db.storage().ref().child(picture_path);
         let picture = document.getElementById('picture').files[0];
-        /*//let picture = new FormData();
-        if (document.getElementById('picture').files.length) {
-            //const upload_file = document.getElementById('picture').files[0];
-            //picture.append('file', upload_file);
-            let picture = document.getElementById('picture').files[0].name;
-
-        } else {
-            console.log('You need to select a file');
-        }*/
         console.log(picture);
-        UpdateProfileImage(picture, picture_path);
+        picture_storage.put(picture).then(function (snapshot) {
+            console.log('New Profile Picture Uploaded');
+        });
+        db.database().ref('users/' + uid).update({
+            profile_picture: picture_path
+        });
+        re_render(re_render_index + 1);
+        //UpdateProfileImage(picture_url, picture_path);
     }
 
     const handleInfoUpdate = (event) => {
@@ -97,7 +112,7 @@ function Profile(props) {
         let new_username = document.getElementById('new_username').value;
         let new_bio = document.getElementById('new_bio').value;
         UpdateUserInfo(new_username, new_bio);
-        if (new_username !== '') {
+        /*if (new_username !== '') {
             let profile_username = document.getElementById('display_username');
             if (profile_username != null) {
                 profile_username.innerText = new_username;
@@ -108,7 +123,8 @@ function Profile(props) {
             if (bio_info != null) {
                 bio_info.innerText = new_bio;
             }
-        }
+        }*/
+        re_render(re_render_index + 1);
         document.getElementById('new_username').value = "";
         document.getElementById('new_bio').value = "";
     }
@@ -119,8 +135,7 @@ function Profile(props) {
         let conf_password = document.getElementById('conf_password').value;
         if (password === conf_password) {
             UpdateUserPassword(password);
-        }
-        else {
+        } else {
             alert('Confirmation Password Does Not Match');
         }
         document.getElementById('new_password').value = '';
@@ -128,8 +143,9 @@ function Profile(props) {
     }
 
     useEffect(() => {
-        console.log("fetching user");
-        if (!props.user) {
+            console.log("fetching user");
+            //if (!props.user) {
+            //if (!re_render_index) {
             getUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
                 let profile_username = document.getElementById('display_username');
@@ -140,30 +156,46 @@ function Profile(props) {
                 let follow_info = document.getElementById('follow');
                 if (follow_info != null) {
                     let followers = 0;
-                    if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
+                    if (user_snapshot.followers !== '') {
+                        followers = user_snapshot.followers
+                    }
+                    ;
                     let followings = 0;
-                    if (user_snapshot.following !== '') {followings = user_snapshot.following};
+                    if (user_snapshot.following !== '') {
+                        followings = user_snapshot.following
+                    }
+                    ;
                     follow_info.innerText = followers + " followers " + followings + " following";
                 }
 
                 let bio_info = document.getElementById('bio');
                 if (bio_info != null) {
                     let user_bio = 'PROFESSIONALISM';
-                    if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
+                    if (user_snapshot.biography !== '') {
+                        user_bio = user_snapshot.biography
+                    }
+                    ;
                     bio_info.innerText = user_bio;
                 }
 
                 db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
+                    let img = document.getElementById('profile_avatar');
+                    if (img != url) {
+                        img.src = url;
+                    }
 
                     let img2 = document.getElementById('profile_image');
                     if (img2 != null) {
                         img2.src = url;
                     }
                 });
+                re_render(0);
+                console.log('re-render profile page');
             })
-        }
+            //}
 
-    }, [props.user]);
+        }, //[props.user]
+        [re_render_index]);
 
 
     return (
@@ -211,7 +243,8 @@ function Profile(props) {
                 <br/>
                 <label>
                     <br/>
-                    <input name="confirmation_password" type="text" id="conf_password" placeholder="Re-enter your new password"/>
+                    <input name="confirmation_password" type="text" id="conf_password"
+                           placeholder="Re-enter your new password"/>
                 </label>
                 <br/>
                 <input type="submit" value="Update"/>

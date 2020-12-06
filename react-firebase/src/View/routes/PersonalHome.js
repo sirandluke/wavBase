@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
-import db from "../../Realtime_Database_config";
+import db from "../../Database_config";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import ResultsInterface, {search_result_paths} from "./ResultsInterface";
@@ -40,35 +40,14 @@ function PersonalHome(props) {
                         setUser(user_snapshot);
                         document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
 
-                        let profile_username = document.getElementById('display_username');
-                        if (profile_username != null) {
-                            profile_username.innerText = user_snapshot.username;
-                        }
-
-                        let follow_info = document.getElementById('follow');
-                        if (follow_info != null) {
-                            let followers = 0;
-                            if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
-                            let followings = 0;
-                            if (user_snapshot.following !== '') {followings = user_snapshot.following};
-                            follow_info.innerText = followers + " followers " + followings + " following";
-                        }
-
-                        let bio_info = document.getElementById('bio');
-                        if (bio_info != null) {
-                            let user_bio = 'PROFESSIONALISM';
-                            if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
-                            bio_info.innerText = user_bio;
-                        }
-
                         db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
 
-                            let img2 = document.getElementById('profile_image');
+                            /*let img2 = document.getElementById('profile_image');
                             if (img2 != null) {
                                 img2.src = url;
-                            }
+                            }*/
                         });
                     });
             }
@@ -97,7 +76,7 @@ function PersonalHome(props) {
                 {/*Search Bar Begin */}
                 <form>
                     <label>
-                        <input id='search_input' type="text" name="query" placeholder={'Search'}></input>
+                        <input id='search_input' type="text" placeholder={'Search'}></input>
                     </label>
                     <button type="submit"><Link to={'/search_result'}>Search</Link></button>
                 </form>

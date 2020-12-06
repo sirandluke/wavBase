@@ -2,7 +2,7 @@
     Auth.js
  */
 import React, {useEffect , useState} from "react";
-import db from "../../Realtime_Database_config";
+import db from "../../Database_config";
 
 export const AuthContext = React.createContext();
 

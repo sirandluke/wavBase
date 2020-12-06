@@ -1,5 +1,5 @@
 /*
-    Realtime_Database_config.js
+    Database_config.js
  */
 const firebase = require('firebase');
 //import firebase from "firebase";

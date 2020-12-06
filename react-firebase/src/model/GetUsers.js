@@ -1,4 +1,4 @@
-const db = require('../Realtime_Database_config');
+const db = require('../Database_config');
 
 module.exports = function GetUsers() {
     const repo_ref = db.database().ref().child('users');

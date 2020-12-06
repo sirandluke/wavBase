@@ -1,7 +1,7 @@
 import React, {Component, useContext} from 'react';
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
-import db from '../../Realtime_Database_config';
+import db from '../../Database_config';
 
 class UserSearchResults extends Component {
 

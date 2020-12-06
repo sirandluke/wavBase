@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "../../App.css";
-import db from "../../Realtime_Database_config";
+import db from "../../Database_config";
 import {Link, useHistory, useRouteMatch} from 'react-router-dom';
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import PrivateRoute from "../auth/PrivateRoute";

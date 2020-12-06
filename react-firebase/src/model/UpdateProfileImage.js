@@ -1,9 +1,14 @@
-const db = require('../Realtime_Database_config');
-const storage = require('../Admin_config');
+const db = require('../Database_config');
+const admin = require('../Admin_config');
+
 
 module.exports = function UpdateProfileImage(uid, picture, picture_path) {
-    console.log(picture_path);
-    const picture_bucket = storage.bucket(picture_path);
+    //console.log(picture_path);
+    const picture_bucket = admin.storage().bucket("wavbasedb-9a679.appspot.com");
+    console.log(picture);
+    //const picture_url = picture.substr(picture.indexOf('http:\\'));
+    //console.log(picture_url);
+    //picture_path
     picture_bucket.upload(picture, function (err, file) {
         if (!err) {
             console.log('Upload New Profile Picture Success');
@@ -14,5 +19,55 @@ module.exports = function UpdateProfileImage(uid, picture, picture_path) {
         } else {
             console.log('Error uploading file: ' + err);
         }
-    })
+    });
+    /*db.storage().ref().child(picture_path).put(picture).then(function (snapshot) {
+        console.log('New Profile Picture Uploaded');
+    });
+    db.database().ref('users/' + uid).update({
+        profile_picture: picture_path
+    });*/
 }
+
+
+//const Stream = require('stream');
+//const request = require('request');
+//const http = require('http');
+
+//const uploadNewFileFromStream = () => (picture_path) => (readStream) => {
+/*function uploadNewFileFromStream(picture_path, readStream) {
+    picture_path = 'defaults/1.png';
+    const bucket = admin.storage().bucket("wavbasedb-9a679.appspot.com");
+    const file = bucket.file(`${picture_path}`);
+
+    const writeStream = file.createWriteStream({
+        metadata: {
+            contentType: 'image/!*'
+        }
+    })
+    //const writeStream = file.createWriteStream();
+    const result = new Promise((resolve, reject) => {
+        writeStream.on('error', function (err) {
+            reject(err);
+        });
+        writeStream.on('finish', function () {
+            const publicUrl = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${(encodeURI(picture_path)).replace(/\//g, "%2F")}`;
+            resolve(publicUrl);
+        });
+    })
+
+    readStream.pipe(writeStream);
+    return result
+}
+
+const getStreamFromUrl = (url) => {
+    return request('https://www.import.io/wp-content/uploads/2018/08/Screen-Shot-2018-08-20-at-11.16.18-AM-768x601.png');
+}
+
+
+module.exports = function UpdateProfileImage(uid, picture, picture_path) {
+    picture = picture.substr(5);
+    console.log(picture);
+    uploadNewFileFromStream(picture_path, getStreamFromUrl(picture)).then(r => {
+        console.log('Upload function executed');
+    });
+}*/

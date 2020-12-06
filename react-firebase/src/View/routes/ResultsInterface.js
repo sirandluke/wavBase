@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import db from "../../Realtime_Database_config";
+import db from "../../Database_config";
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import {ParseTags} from "../../components/ParseTags";
 import {Link, NavLink} from "react-router-dom";
@@ -14,6 +14,9 @@ import TagsSearchResult from "./TagsSearchResult";
 import RepoSearchResult from "./RepoSearchResult";
 
 function ResultsInterface(props) {
+
+    //const [search_input, set_search_input] = useState(0);
+    //set_search_input(document.getElementById('search_input').value);
 
 
     //performs callback on array of UIDs with repository names containing the search query

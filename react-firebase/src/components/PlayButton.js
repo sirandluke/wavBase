@@ -1,6 +1,6 @@
 import '../App.css';
 import React, { Component, useState } from "react";
-import db from "../Realtime_Database_config";
+import db from "../Database_config";
 import ReactPlayer from "react-player";
 import * as K from "../Constants";
 /* Do not delete
