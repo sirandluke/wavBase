@@ -5,7 +5,8 @@ import "../../App.css";
 import db from "../../Database_config";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {getIdCount} from "../../components/ParseId";
 
 //import {UpdateProfileImage} from "../../model/UpdateProfileImage";
 
@@ -15,6 +16,7 @@ function Profile(props) {
     const [show, setShow] = useState(false);
     const [current_user, setUser] = useState(props.user || []);
     const [re_render_index, re_render] = useState(0);
+    const [profile_image_url, setProfileImageUrl] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -83,22 +85,29 @@ function Profile(props) {
         let picture_path = 'defaults/' + uid + '.' + extension;
         let picture_object = document.getElementById('picture').files[0];
         let picture_url = URL.createObjectURL(picture_object);
-        /*const reader = new FileReader();
-        reader.addEventListener("load", function () {
-            // convert image file to base64 string
-            picture_url = reader.result;
-            let img2 = document.getElementById('profile_image');
-            if (img2 != null) {
-                img2.src = picture_url;
-            }
-        }, false);
-        if (picture_object) {reader.readAsDataURL(picture_object)};*/
         console.log(picture_url);
         let picture_storage = db.storage().ref().child(picture_path);
         let picture = document.getElementById('picture').files[0];
         console.log(picture);
         picture_storage.put(picture).then(function (snapshot) {
             console.log('New Profile Picture Uploaded');
+            const reader = new FileReader();
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                let url = reader.result;
+                let img = document.getElementById('profile_avatar');
+                if (img != null) {
+                    img.src = url;
+                }
+                let img2 = document.getElementById('profile_image');
+                if (img2 != null) {
+                    img2.src = picture_url;
+                }
+            }, false);
+            if (picture_object) {
+                reader.readAsDataURL(picture_object)
+            }
+            ;
         });
         db.database().ref('users/' + uid).update({
             profile_picture: picture_path
@@ -143,29 +152,13 @@ function Profile(props) {
     }
 
     useEffect(() => {
-            console.log("fetching user");
-            //if (!props.user) {
-            //if (!re_render_index) {
+        console.log("listen to profile");
+        if (!props.user) {
             getUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
                 let profile_username = document.getElementById('display_username');
                 if (profile_username != null) {
                     profile_username.innerText = user_snapshot.username;
-                }
-
-                let follow_info = document.getElementById('follow');
-                if (follow_info != null) {
-                    let followers = 0;
-                    if (user_snapshot.followers !== '') {
-                        followers = user_snapshot.followers
-                    }
-                    ;
-                    let followings = 0;
-                    if (user_snapshot.following !== '') {
-                        followings = user_snapshot.following
-                    }
-                    ;
-                    follow_info.innerText = followers + " followers " + followings + " following";
                 }
 
                 let bio_info = document.getElementById('bio');
@@ -192,10 +185,11 @@ function Profile(props) {
                 re_render(0);
                 console.log('re-render profile page');
             })
-            //}
-
-        }, //[props.user]
-        [re_render_index]);
+        }
+        return () => {
+            console.log('stop listen to profile');
+        }
+    }, [props.user]);
 
 
     return (
@@ -220,7 +214,16 @@ function Profile(props) {
                 </Modal>
             </div>
             <h2 id={'display_username'}>username</h2>
-            <p id={'follow'}>0 followers 0 following</p>
+            <button id={'followers'}>
+                <Link to={'/followers/' + uid}>
+                    {getIdCount(current_user.followers)} followers
+                </Link>
+            </button>
+            <button id={'following'}>
+                <Link to={'/following/' + uid}>
+                    {getIdCount(current_user.following)} following
+                </Link>
+            </button>
             <p id={'bio'}>Bio</p>
             <form method="post" onSubmit={handleInfoUpdate}>
                 <label>

@@ -13,7 +13,9 @@ import TagsSearchResult from "../components/TagsSearchResult";
 import UserSearchResult from "../components/UserSearchResult";
 import Repository from "./Repository";
 import Profile from "./Profile";
-import TestIndividualUserPage from "../components/TestIndividualUserPage";
+import FollowersPage from "../components/FollowersPage";
+import FollowingPage from "../components/FollowingPage";
+import NewRepo from "./NewRepo";
 
 export let search_input = '';
 
@@ -34,9 +36,19 @@ function PersonalHome(props) {
             .catch(error => console.log("Home page " + error));
     }
 
+    /*const getProfileImageUrl = (image_path) => {
+        let config = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+        return fetch('http://localhost:8000/image_url?image_path=' + image_path, config)
+            .then(response => response.json())
+            .catch(error => console.log("Home page " + error));
+    }*/
+
     useEffect(
         () => {
-            console.log('executing');
+            console.log('listen to home');
             if (!props.user) {
                 getUserRef(current_uid)
                     .then(user_snapshot => {
@@ -52,7 +64,14 @@ function PersonalHome(props) {
                                 img2.src = url;
                             }*/
                         });
+                        /*getProfileImageUrl(user_snapshot.profile_picture).then(url => {
+                            let img = document.getElementById('profile_avatar');
+                            img.src = url;
+                        });*/
                     });
+            }
+            return () => {
+                console.log('stop listen to home');
             }
         }, [props.user]
     );
@@ -95,6 +114,7 @@ function PersonalHome(props) {
             </div>
             <PrivateRoute exact path="/" component={Repository}/>
             <PrivateRoute exact path="/profile" component={Profile}/>
+            <PrivateRoute exact path='/newrepo' component={NewRepo}/>
             <PrivateRoute path='/search_result' component={ResultsInterface}/>
             <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
             <PrivateRoute exact path='/search_result/repositories'
@@ -102,7 +122,9 @@ function PersonalHome(props) {
             <PrivateRoute exact path='/search_result/tags'
                           component={TagsSearchResult}/>
             <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
-            <PrivateRoute path={'/user/:user_id'} component={TestIndividualUserPage} />
+            <PrivateRoute path={'/user/:user_id'} component={Repository} />
+            <PrivateRoute path={'/followers/:uid'} component={FollowersPage}/>
+            <PrivateRoute path={'/following/:uid'} component={FollowingPage}/>
         </div>
     );
 }

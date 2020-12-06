@@ -5,6 +5,7 @@ import {Link, useHistory, useParams, useRouteMatch} from 'react-router-dom';
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import PrivateRoute from "../auth/PrivateRoute";
 import TestIndividualRepoPage from "../components/TestIndividualRepoPage";
+import {AddId, DeleteId, getIdCount, IncludeId} from "../../components/ParseId";
 
 function Repository(props) {
     const history = useHistory();
@@ -38,13 +39,20 @@ function Repository(props) {
             .catch(error => console.log(error));
     }
 
-
-    const redirectCreateRepo = () => {
-        history.push("/newrepo");
+    const updateFollow = (uid, current_uid, type) => {
+        let config = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                uid, current_uid, type
+            })
+        };
+        fetch('http://localhost:8000/user_info/follow?uid=' + uid, config)
+            .catch(error => console.log(error));
     }
 
     useEffect(() => {
-        console.log("fetching repos");
+        console.log('listen to repository');
         if (!props.repos) {
             findRepos(uid)
                 .then(repos_snapshot => {
@@ -63,19 +71,22 @@ function Repository(props) {
                     profile_username.innerText = user_snapshot.username;
                 }
 
-                let follow_info = document.getElementById('follow');
+                /*let follow_info = document.getElementById('follow');
                 if (follow_info != null) {
                     let followers = 0;
-                    if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
+                    if (user_snapshot.followers !== '') {followers = getIdCount(user_snapshot.followers)};
                     let followings = 0;
-                    if (user_snapshot.following !== '') {followings = user_snapshot.following};
-                    follow_info.innerText = followers + " followers " + followings + " following";
-                }
+                    if (user_snapshot.following !== '') {followings = getIdCount(user_snapshot.following)};
+                    follow_info.innerText = followers + " followers -- " + followings + " following";
+                }*/
 
                 let bio_info = document.getElementById('bio');
                 if (bio_info != null) {
                     let user_bio = 'PROFESSIONALISM';
-                    if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
+                    if (user_snapshot.biography !== '') {
+                        user_bio = user_snapshot.biography
+                    }
+                    ;
                     bio_info.innerText = user_bio;
                 }
 
@@ -88,37 +99,57 @@ function Repository(props) {
                 });
             })
         }
+        return () => {
+            console.log('stop listen to repository');
+        }
 
     }, [props.repos, props.user]);
 
-    /*<ul id={'repos_list'}>
-        {repos.map((repo, key) => (
-            <li>{repo.name}</li>
-        ))};
-    </ul>*/
+    const handleFollow = () => {
+        updateFollow(uid, current_uid, 'follow');
+        let tmp_user = user;
+        tmp_user = {...tmp_user, followers: AddId(tmp_user.followers, current_uid)}
+        setUser(tmp_user);
+    }
 
-    /*function handleRepoClick(repo_id) {
-        history.push("/repo?repo_id=" + repo_id);
-    }*/
+    const handleUnfollow = () => {
+        updateFollow(uid, current_uid, 'unfollow');
+        let tmp_user = user;
+        tmp_user = {...tmp_user, followers: DeleteId(tmp_user.followers, current_uid)}
+        setUser(tmp_user);
+    }
+
 
     return (
         <div>
             <img id="profile_image" width={100} height={100}/>
             <h2 id={'display_username'}>username</h2>
-            <p id={'follow'}>0 followers 0 following</p>
+            <button id={'followers'}>
+                <Link to={'/followers/' + uid}>
+                    {getIdCount(user.followers)} followers
+                </Link>
+            </button>
+            <button id={'following'}>
+                <Link to={'/following/' + uid}>
+                    {getIdCount(user.following)} following
+                </Link>
+            </button>
+            <br/>
+            {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?
+                <button onClick={handleFollow}>Follow</button> : <></>}
+            {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
+                <button onClick={handleUnfollow}>Following</button> : <></>}
             <p id={'bio'}>Bio</p>
-            <h2>Your Repositories</h2>
-            <button onClick={redirectCreateRepo}>Create Repository</button>
+            {(uid === current_uid) ? <h2>Your Repositories</h2> : <h2>This User's Repositories</h2>}
+            {(uid === current_uid) ? <button><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
             <ul>
                 {repos && repos.map((repo, key) => (
-                    (repo.user_id === uid) && ((uid === current_uid) ||(repo.is_private !== 'T' && uid !== current_uid)) ?
+                    (repo.user_id === uid) && ((uid === current_uid) || (repo.is_private !== 'T' && uid !== current_uid)) ?
                         <RepoDisplayComponent key={key} id={repo.key} name={repo.name}/> : <></>
                 ))}
             </ul>
         </div>
     );
 };
-
-//(repo.user_id === uid) && (repo.is_private !== 'T')
 
 export default Repository;

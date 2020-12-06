@@ -1,10 +1,11 @@
-import React, {Component} from "react";
+import React from "react";
 import {insertRepository} from "../../model/FirebaseHandler";
 import * as K from '../../Constants'
+import {useHistory} from 'react-router-dom';
 
 
-const NewRepo = ({ history }) => {
-
+const NewRepo = () => {
+    const history = useHistory();
     const createRepo = (event) => {  // Handles creating a new repository.
         event.preventDefault();
         const {
@@ -17,13 +18,13 @@ const NewRepo = ({ history }) => {
         // TODO: Tags query
 
         if (insertRepository(K.empty, repo_name.value, bpm.value, key.value, description.value)) {  // Call insert repo.
-            history.push("/repository");
+            history.push("/");
         }
     }
 
     return(
         <div>
-            <h1>Create Repository</h1>
+            <h2>Create Repository</h2>
             <form onSubmit={createRepo}>
                 <label>
                     <input name="repo_name" type="text" required="required" placeholder="Repository name" />

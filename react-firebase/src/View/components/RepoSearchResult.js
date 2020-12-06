@@ -4,41 +4,7 @@ import {RepoDisplayComponent} from "./RepoDisplayComponent";
 import db from "../../Database_config";
 
 function RepoSearchResult(props) {
-    /*const [users, setUsers] = useState(props.users || []);
-    let search_input = search_input;
 
-    const findUsers = () => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_list', config)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
-
-    useEffect(() => {
-        if (!props.users) {
-            findUsers().then(users_snapshot => {
-                let users_list = [];
-                for (let user in users_list) {
-                    users_list.push({...users_snapshot[user], key: user});
-                }
-                setUsers(users_list);
-            });
-        }
-    });
-
-    return (
-        <div>
-            <h2>User Search Result</h2>
-            <ul>
-                {users && users.map((user, key) => (
-                    (user.val().username.toLowerCase().includes(search_input.toLowerCase())) ? <button>{user.val().username}</button> : <></>
-                ))}
-            </ul>
-        </div>
-    );*/
     let search_input = document.getElementById('search_input').value;
 
     const uid = db.auth().currentUser.uid;
@@ -55,7 +21,7 @@ function RepoSearchResult(props) {
     }
 
     useEffect(() => {
-        console.log("fetching repos");
+        console.log('listen to repo list');
         if (!repos) {
             findRepos(uid)
                 .then(repos_snapshot => {
@@ -66,7 +32,9 @@ function RepoSearchResult(props) {
                     setRepos(repos_list);
                 });
         }
-
+        return () => {
+            console.log('stop listen to repo list');
+        }
     }, [repos]);
 
     return (

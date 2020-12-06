@@ -21,7 +21,7 @@ function TagsSearchResult(props) {
     }
 
     useEffect(() => {
-        console.log("fetching repos");
+        console.log('listen to tags list');
         if (!repos) {
             findRepos(uid)
                 .then(repos_snapshot => {
@@ -32,7 +32,9 @@ function TagsSearchResult(props) {
                     setRepos(repos_list);
                 });
         }
-
+        return () => {
+            console.log('stop listen to tags list');
+        }
     }, [repos]);
 
     return (

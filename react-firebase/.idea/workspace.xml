@@ -20,21 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/components/TestIndividualUserPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/components/FollowersPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/components/FollowingPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ParseId.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/GetProfileImageUrl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/HandleFollow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/RepoDisplayComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoDisplayComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/SearchBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResults.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/RepoSearchResults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/SearchResultWithOptions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/TagsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/TagsSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/TestIndividualUserPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/components/UserSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UserSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/NewRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/NewRepo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/RepoSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/RepoSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/SearchResults.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/TagsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/TagsSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/TestIndividualRepoPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/TestIndividualRepoPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/UserSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UserSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UpdateUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateUserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +144,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="78322000" />
+      <workItem from="1607086944181" duration="89951000" />
     </task>
     <servers />
   </component>
@@ -167,35 +172,35 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="686" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607248597660" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607260168094">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607272381391">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260168094" />
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607272381391" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
     <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607260122004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260122004" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607260168121">
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607274642805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260168121" />
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607274642805" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607260168121">
+    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607274642805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260168121" />
+    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607274642805" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607260168120">
+    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607274642805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260168120" />
+    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607274642805" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607260168121">
+    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607274642805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260168121" />
+    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607274642805" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
     <state x="618" y="242" key="run.anything.popup" timestamp="1607260953084">
       <screen x="0" y="0" width="1920" height="1040" />

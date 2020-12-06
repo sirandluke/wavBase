@@ -1,13 +1,22 @@
 import React, {useEffect, useState, useHistory} from "react";
-import db from "../../Database_config";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import {IncludeId} from "../../components/ParseId";
 
-function UserSearchResult(props) {
+function FollowersPage(props) {
 
-    let search_input = document.getElementById('search_input').value;
     const [users, setUsers] = useState(0);
+    const [current_user, setUser] = useState(0);
+    const {uid} = useParams();
 
-    const uid = db.auth().currentUser.uid;
+    const getUserRef = (uid) => {
+        let config = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
+            .then(response => response.json())
+            .catch(error => console.log("Home page " + error));
+    }
 
     const findUsers = (uid) => {
         let config = {
@@ -20,7 +29,12 @@ function UserSearchResult(props) {
     }
 
     useEffect(() => {
-        console.log('listen to user list');
+        console.log('listen to user list and user');
+        if (!current_user) {
+            getUserRef(uid).then(user_snapshot => {
+                setUser(user_snapshot);
+            })
+        }
         if (!users) {
             findUsers(uid).then(users_snapshot => {
                 let users_list = [];
@@ -32,24 +46,20 @@ function UserSearchResult(props) {
             });
         }
         return () => {
-            console.log('stop listen to user list');
+            console.log('stop listen to user list and user');
         }
-    }, [users]);
-
-    /*{users && users.map((user, key) => (
-        (user.val().username.toLowerCase().includes(search_input.toLowerCase())) ? <button>{user.val().username}</button> : <></>
-    ))}*/
+    }, [current_user, users]);
 
 
     return (
         <div>
-            <h2>User Search Result</h2>
+            <h2>{current_user.username}'s followers</h2>
             {users && users.map((user, key) => (
-                (user.username.toLowerCase().includes(search_input.toLowerCase())) ?
+                (IncludeId(current_user.followers, user.key)) ?
                     <button id={key}><Link to={'/user/' + user.key}>{user.username}</Link></button> : <></>
             ))}
         </div>
     );
 }
 
-export default UserSearchResult;
+export default FollowersPage;
