@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useHistory} from "react";
 import db from "../../Database_config";
+import {Link} from "react-router-dom";
 
 function UserSearchResult(props) {
 
@@ -21,7 +22,7 @@ function UserSearchResult(props) {
     useEffect(() => {
         console.log('executing');
         if (!users) {
-            findUsers().then(users_snapshot => {
+            findUsers(uid).then(users_snapshot => {
                 let users_list = [];
                 for (let user in users_snapshot) {
                     //console.log(1);
@@ -41,7 +42,7 @@ function UserSearchResult(props) {
             <h2>User Search Result</h2>
             {users && users.map((user, key) => (
                 (user.username.toLowerCase().includes(search_input.toLowerCase())) ?
-                    <button id={key}>{user.username}</button> : <></>
+                    <button id={key}><Link to={'user/' + user.key}>{user.username}</Link></button> : <></>
             ))}
         </div>
     );

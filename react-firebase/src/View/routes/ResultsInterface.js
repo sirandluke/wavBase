@@ -1,17 +1,7 @@
 import React, {useEffect, useState} from "react";
-import db from "../../Database_config";
-import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
-import {ParseTags} from "../../components/ParseTags";
 import {Link, NavLink} from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import PrivateRoute from "../auth/PrivateRoute";
-import SearchResultWithOptions from "../components/SearchResultWithOptions";
-import logo from "../../Images/wavBase_logo.png";
-import {search_input} from "./PersonalHome";
-import UserSearchResult from "./UserSearchResult";
-import TagsSearchResult from "./TagsSearchResult";
-import RepoSearchResult from "./RepoSearchResult";
 
 function ResultsInterface(props) {
 

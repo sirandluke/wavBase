@@ -7,10 +7,13 @@ import logo from "../../Images/wavBase_logo.png";
 import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import PrivateRoute from "../auth/PrivateRoute";
 import {Link, useHistory} from 'react-router-dom';
-import TestIndividualRepoPage from "./TestIndividualRepoPage";
-import RepoSearchResult from "./RepoSearchResult";
-import TagsSearchResult from "./TagsSearchResult";
-import UserSearchResult from "./UserSearchResult";
+import TestIndividualRepoPage from "../components/TestIndividualRepoPage";
+import RepoSearchResult from "../components/RepoSearchResult";
+import TagsSearchResult from "../components/TagsSearchResult";
+import UserSearchResult from "../components/UserSearchResult";
+import Repository from "./Repository";
+import Profile from "./Profile";
+import TestIndividualUserPage from "../components/TestIndividualUserPage";
 
 export let search_input = '';
 
@@ -90,6 +93,8 @@ function PersonalHome(props) {
                 </DropdownButton>
                 <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
+            <PrivateRoute exact path="/" component={Repository}/>
+            <PrivateRoute exact path="/profile" component={Profile}/>
             <PrivateRoute path='/search_result' component={ResultsInterface}/>
             <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
             <PrivateRoute exact path='/search_result/repositories'
@@ -97,6 +102,7 @@ function PersonalHome(props) {
             <PrivateRoute exact path='/search_result/tags'
                           component={TagsSearchResult}/>
             <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
+            <PrivateRoute path={'/user/:user_id'} component={TestIndividualUserPage} />
         </div>
     );
 }

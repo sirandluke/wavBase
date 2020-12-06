@@ -3,7 +3,6 @@ import db from "../../Database_config";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from '../../model/FirebaseHandler';
-import SearchBar from '../components/SearchBar';
 
 // TODO: render searchbar, likes, (add more)
 
@@ -23,7 +22,6 @@ const Home = ({history}) => {
             <div className="nav">
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50" />
-                <SearchBar />
                 <ul>
                     <button onClick={redirectCreateRepo}>Create Repository</button>
                     <button onClick={redirectRepo}>TestRepositories</button>

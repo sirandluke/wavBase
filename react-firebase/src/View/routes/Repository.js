@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from "react";
 import "../../App.css";
 import db from "../../Database_config";
-import {Link, useHistory, useRouteMatch} from 'react-router-dom';
+import {Link, useHistory, useParams, useRouteMatch} from 'react-router-dom';
 import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import PrivateRoute from "../auth/PrivateRoute";
-import TestIndividualRepoPage from "./TestIndividualRepoPage";
+import TestIndividualRepoPage from "../components/TestIndividualRepoPage";
 
 function Repository(props) {
     const history = useHistory();
-    const {url, path} = useRouteMatch();
     const [repos, setRepos] = useState(props.repos || []);
     const [user, setUser] = useState(props.user || []);
+    const {user_id} = useParams();
 
-    const uid = db.auth().currentUser.uid;
+    let current_uid = db.auth().currentUser.uid;
+    let uid = current_uid;
+    if (user_id != null) {
+        uid = user_id;
+    }
 
     const getUserRef = (uid) => {
         let config = {
@@ -107,8 +111,8 @@ function Repository(props) {
             <button onClick={redirectCreateRepo}>Create Repository</button>
             <ul>
                 {repos && repos.map((repo, key) => (
-                    (repo.user_id === uid) && (repo.is_private !== 'T') ?
-                        <RepoDisplayComponent id={repo.key} name={repo.name}/> : <></>
+                    (repo.user_id === uid) && ((uid === current_uid) ||(repo.is_private !== 'T' && uid !== current_uid)) ?
+                        <RepoDisplayComponent key={key} id={repo.key} name={repo.name}/> : <></>
                 ))}
             </ul>
         </div>

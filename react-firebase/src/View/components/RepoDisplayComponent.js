@@ -1,6 +1,6 @@
 import {Button} from "react-bootstrap";
 import React from "react";
-import {HashRouter, NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export class RepoDisplayComponent extends React.Component {
     constructor(props) {
@@ -12,7 +12,7 @@ export class RepoDisplayComponent extends React.Component {
     render() {
         return (
             <div>
-                <Button><NavLink to={'/repo/' + this.id}>{this.name}</NavLink></Button>
+                <Button><Link to={'/repo/' + this.id}>{this.name}</Link></Button>
             </div>
         );
     }
