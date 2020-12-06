@@ -52,22 +52,14 @@ function PersonalHome(props) {
             if (!props.user) {
                 getUserRef(current_uid)
                     .then(user_snapshot => {
-                        setUser(user_snapshot);
                         document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
 
                         db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
-
-                            /*let img2 = document.getElementById('profile_image');
-                            if (img2 != null) {
-                                img2.src = url;
-                            }*/
                         });
-                        /*getProfileImageUrl(user_snapshot.profile_picture).then(url => {
-                            let img = document.getElementById('profile_avatar');
-                            img.src = url;
-                        });*/
+
+                        setUser(user_snapshot);
                     });
             }
             return () => {
@@ -112,19 +104,21 @@ function PersonalHome(props) {
                 </DropdownButton>
                 <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
-            <PrivateRoute exact path="/" component={Repository}/>
-            <PrivateRoute exact path="/profile" component={Profile}/>
-            <PrivateRoute exact path='/newrepo' component={NewRepo}/>
-            <PrivateRoute path='/search_result' component={ResultsInterface}/>
-            <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
-            <PrivateRoute exact path='/search_result/repositories'
-                          component={RepoSearchResult}/>
-            <PrivateRoute exact path='/search_result/tags'
-                          component={TagsSearchResult}/>
-            <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
-            <PrivateRoute path={'/user/:user_id'} component={Repository} />
-            <PrivateRoute path={'/followers/:uid'} component={FollowersPage}/>
-            <PrivateRoute path={'/following/:uid'} component={FollowingPage}/>
+            <div>
+                <PrivateRoute exact path="/" component={Repository}/>
+                <PrivateRoute exact path="/profile" component={Profile}/>
+                <PrivateRoute exact path='/newrepo' component={NewRepo}/>
+                <PrivateRoute path='/search_result' component={ResultsInterface}/>
+                <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
+                <PrivateRoute exact path='/search_result/repositories'
+                              component={RepoSearchResult}/>
+                <PrivateRoute exact path='/search_result/tags'
+                              component={TagsSearchResult}/>
+                <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
+                <PrivateRoute path={'/user/:user_id'} component={Repository}/>
+                <PrivateRoute path={'/followers/:uid'} component={FollowersPage}/>
+                <PrivateRoute path={'/following/:uid'} component={FollowingPage}/>
+            </div>
         </div>
     );
 }
