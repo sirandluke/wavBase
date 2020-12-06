@@ -6,10 +6,11 @@ import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import ResultsInterface, {search_result_paths} from "./ResultsInterface";
 import PrivateRoute from "../auth/PrivateRoute";
-import {useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import TestIndividualRepoPage from "./TestIndividualRepoPage";
 import RepoSearchResult from "./RepoSearchResult";
 import TagsSearchResult from "./TagsSearchResult";
+import UserSearchResult from "./UserSearchResult";
 
 export let search_input = '';
 
@@ -20,20 +21,19 @@ function PersonalHome(props) {
     const history = useHistory();
     const [current_user, setUser] = useState(props.user || []);
 
-    const getUserRef = (current_uid) => {
+    const getUserRef = (uid) => {
         let config = {
             method: 'GET',
             headers: {'Content-Type': 'application/json'}
         };
-        return fetch('http://localhost:8000/user_info?current_uid=' + current_uid, config)
+        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
             .then(response => response.json())
             .catch(error => console.log("Home page " + error));
     }
 
-    let profile_image_url;
-
     useEffect(
         () => {
+            console.log('executing');
             if (!props.user) {
                 getUserRef(current_uid)
                     .then(user_snapshot => {
@@ -61,7 +61,7 @@ function PersonalHome(props) {
                             bio_info.innerText = user_bio;
                         }
 
-                        profile_image_url = db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
+                        db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
 
@@ -72,10 +72,10 @@ function PersonalHome(props) {
                         });
                     });
             }
-        }
+        }, [props.user]
     );
 
-
+//
     const redirectCreateRepo = () => {
         history.push("/newrepo");
     }
@@ -88,13 +88,6 @@ function PersonalHome(props) {
         history.push("/profile");
     }
 
-    const handleSearch = () => {
-        search_input = document.getElementById('search_input').value;
-        history.push("/search_result");
-    }
-
-    const search_result_routes = search_result_paths();
-
     return (
         <div className="container">
             <h1>Home</h1>
@@ -102,11 +95,11 @@ function PersonalHome(props) {
                 <h2>wavBase</h2>
                 <img src={logo} alt="wavBase Logo" width="50" height="50"/>
                 {/*Search Bar Begin */}
-                <form onSubmit={handleSearch}>
+                <form>
                     <label>
                         <input id='search_input' type="text" name="query" placeholder={'Search'}></input>
                     </label>
-                    <button type="submit">Search</button>
+                    <button type="submit"><Link to={'/search_result'}>Search</Link></button>
                 </form>
                 {/*Search Bar End */}
                 <h2 id={'greeting_username'}>Hello</h2>
@@ -119,7 +112,7 @@ function PersonalHome(props) {
                 <p>------------------------------------Home-Component-Above-----------------------------------------</p>
             </div>
             <PrivateRoute path='/search_result' component={ResultsInterface}/>
-            <PrivateRoute exact path='/search_result' component={RepoSearchResult}/>
+            <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
             <PrivateRoute exact path='/search_result/repositories'
                           component={RepoSearchResult}/>
             <PrivateRoute exact path='/search_result/tags'

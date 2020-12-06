@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
-import {search_input} from "./PersonalHome";
-import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 
 function UserSearchResult(props) {
+
+    let search_input = document.getElementById('search_input').value;
     const [users, setUsers] = useState(props.users || []);
 
     const findUsers = () => {
@@ -16,6 +16,7 @@ function UserSearchResult(props) {
     }
 
     useEffect(() => {
+        console.log('executing');
         if (!props.users) {
             findUsers().then(users_snapshot => {
                 let users_list = [];

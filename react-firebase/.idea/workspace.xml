@@ -20,14 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/routes/RepoSearchResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/routes/TagsSearchResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/routes/UserSearchResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/GetUsers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/ResultsInterface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/FindReposByUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetRepos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/UserSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/UserSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GetRepos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetRepos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GetUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetUsers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +133,7 @@
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
-      <workItem from="1607086944181" duration="58642000" />
+      <workItem from="1607086944181" duration="63627000" />
     </task>
     <servers />
   </component>
@@ -167,25 +167,25 @@
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607158707834" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607167095728">
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607180108729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607167095728" />
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607180108729" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607167095728">
+    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607180108729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607167095728" />
+    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607180108729" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607167095728">
+    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607180108728">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607167095728" />
+    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607180108728" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
-    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607167095728">
+    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607180108729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607167095728" />
+    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607180108729" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607126627755" />
   </component>
 </project>

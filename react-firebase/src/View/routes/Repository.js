@@ -10,8 +10,19 @@ function Repository(props) {
     const history = useHistory();
     const {url, path} = useRouteMatch();
     const [repos, setRepos] = useState(props.repos || []);
+    const [user, setUser] = useState(props.user || []);
 
     const uid = db.auth().currentUser.uid;
+
+    const getUserRef = (uid) => {
+        let config = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
+            .then(response => response.json())
+            .catch(error => console.log("Home page " + error));
+    }
 
     const findRepos = (uid) => {
         let config = {
@@ -29,6 +40,7 @@ function Repository(props) {
     }
 
     useEffect(() => {
+        console.log("fetching repos");
         if (!props.repos) {
             findRepos(uid)
                 .then(repos_snapshot => {
@@ -39,7 +51,41 @@ function Repository(props) {
                     setRepos(repos_list);
                 });
         }
-    });
+        if (!props.user) {
+            getUserRef(uid).then(user_snapshot => {
+                setUser(user_snapshot);
+                let profile_username = document.getElementById('display_username');
+                if (profile_username != null) {
+                    profile_username.innerText = user_snapshot.username;
+                }
+
+                let follow_info = document.getElementById('follow');
+                if (follow_info != null) {
+                    let followers = 0;
+                    if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
+                    let followings = 0;
+                    if (user_snapshot.following !== '') {followings = user_snapshot.following};
+                    follow_info.innerText = followers + " followers " + followings + " following";
+                }
+
+                let bio_info = document.getElementById('bio');
+                if (bio_info != null) {
+                    let user_bio = 'PROFESSIONALISM';
+                    if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
+                    bio_info.innerText = user_bio;
+                }
+
+                db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
+
+                    let img2 = document.getElementById('profile_image');
+                    if (img2 != null) {
+                        img2.src = url;
+                    }
+                });
+            })
+        }
+
+    }, [props.repos, props.user]);
 
     /*<ul id={'repos_list'}>
         {repos.map((repo, key) => (
@@ -61,7 +107,8 @@ function Repository(props) {
             <button onClick={redirectCreateRepo}>Create Repository</button>
             <ul>
                 {repos && repos.map((repo, key) => (
-                    (repo.user_id === uid) && (repo.is_private !== 'T') ? <RepoDisplayComponent id={repo.key} name={repo.name}/> : <></>
+                    (repo.user_id === uid) && (repo.is_private !== 'T') ?
+                        <RepoDisplayComponent id={repo.key} name={repo.name}/> : <></>
                 ))}
             </ul>
         </div>

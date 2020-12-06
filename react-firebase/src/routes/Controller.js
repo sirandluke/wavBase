@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const GetUserInfo = require('../model/GetUserInfo');
-const FindReposByUser = require('../model/GetRepos');
+const GetRepos = require('../model/GetRepos');
+const GetUsers = require('../model/GetUsers');
 
 const UpdateProfileImage = require('../model/UpdateProfileImage');
 const UpdateUserInfo = require('../model/UpdateUserInfo');
@@ -14,7 +15,12 @@ router.get('/user_info', (req, res) => {
 });
 
 router.get('/repo_list', (req, res) => {
-    FindReposByUser()
+    GetRepos()
+        .then(doc => res.send(doc));
+});
+
+router.get('/user_list', (req, res) => {
+    GetUsers()
         .then(doc => res.send(doc));
 });
 

@@ -13,16 +13,6 @@ import UserSearchResult from "./UserSearchResult";
 import TagsSearchResult from "./TagsSearchResult";
 import RepoSearchResult from "./RepoSearchResult";
 
-export const search_result_paths = () => (
-    <div>
-        <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
-        <PrivateRoute exact path='/search_result/repositories'
-                      component={RepoSearchResult}/>
-        <PrivateRoute exact path='/search_result/tags'
-                      component={TagsSearchResult}/>
-    </div>
-);
-
 function ResultsInterface(props) {
 
 

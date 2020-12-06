@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
@@ -7,10 +7,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {useHistory} from "react-router-dom";
 
-function Profile() {
+function Profile(props) {
     const history = useHistory();
 
     const [show, setShow] = useState(false);
+    const [current_user, setUser] = useState(props.user || []);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -24,6 +25,16 @@ function Profile() {
 
     const redirectRepo = () => {
         history.push("/repository");
+    }
+
+    const getUserRef = (uid) => {
+        let config = {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+        };
+        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
+            .then(response => response.json())
+            .catch(error => console.log("Home page " + error));
     }
 
     const UpdateProfileImage = (picture, picture_path) => {
@@ -86,6 +97,18 @@ function Profile() {
         let new_username = document.getElementById('new_username').value;
         let new_bio = document.getElementById('new_bio').value;
         UpdateUserInfo(new_username, new_bio);
+        if (new_username !== '') {
+            let profile_username = document.getElementById('display_username');
+            if (profile_username != null) {
+                profile_username.innerText = new_username;
+            }
+        }
+        if (new_bio !== '') {
+            let bio_info = document.getElementById('bio');
+            if (bio_info != null) {
+                bio_info.innerText = new_bio;
+            }
+        }
         document.getElementById('new_username').value = "";
         document.getElementById('new_bio').value = "";
     }
@@ -103,6 +126,44 @@ function Profile() {
         document.getElementById('new_password').value = '';
         document.getElementById('conf_password').value = '';
     }
+
+    useEffect(() => {
+        console.log("fetching user");
+        if (!props.user) {
+            getUserRef(uid).then(user_snapshot => {
+                setUser(user_snapshot);
+                let profile_username = document.getElementById('display_username');
+                if (profile_username != null) {
+                    profile_username.innerText = user_snapshot.username;
+                }
+
+                let follow_info = document.getElementById('follow');
+                if (follow_info != null) {
+                    let followers = 0;
+                    if (user_snapshot.followers !== '') {followers = user_snapshot.followers};
+                    let followings = 0;
+                    if (user_snapshot.following !== '') {followings = user_snapshot.following};
+                    follow_info.innerText = followers + " followers " + followings + " following";
+                }
+
+                let bio_info = document.getElementById('bio');
+                if (bio_info != null) {
+                    let user_bio = 'PROFESSIONALISM';
+                    if (user_snapshot.biography !== '') {user_bio = user_snapshot.biography};
+                    bio_info.innerText = user_bio;
+                }
+
+                db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
+
+                    let img2 = document.getElementById('profile_image');
+                    if (img2 != null) {
+                        img2.src = url;
+                    }
+                });
+            })
+        }
+
+    }, [props.user]);
 
 
     return (
