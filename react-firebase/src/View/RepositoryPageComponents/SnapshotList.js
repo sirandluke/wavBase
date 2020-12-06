@@ -23,7 +23,7 @@ class SnapshotList extends Component {
             db.database().ref('snapshots')
                 .orderByChild('repo_id')
                 .equalTo(this.props.repo_id)
-                .once('value', (dataSnapshot) => {
+                .on('value', (dataSnapshot) => {
                     let snapshots = [];
                     console.log('here')
                     dataSnapshot.forEach(snapData => {

@@ -15,10 +15,21 @@
         opacity: 1;
     }
 }
-
-.sine_wave {
+.content-dir-item img.mail {
+    display: inline-block;
+}
+.load_text {
     animation-name: glow;
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+.loading_msg {
+    position: relative;
+    color: black;
+}
+
+.loading_icon {
+    position: relative;
+    top: 10px;
 }
