@@ -5,6 +5,10 @@ import "../../App.css";
 import db from "../../Model/base";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import logo from "../../Images/wavBase_logo.png";
+import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
+import "./Profile.css"
+import '../../NavBar.css'
 
 const Profile = ({ history }) => {
 
@@ -12,7 +16,6 @@ const Profile = ({ history }) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
 
     let uid = db.auth().currentUser.uid;
     let userRef = db.database().ref('users/' + uid);
@@ -27,7 +30,9 @@ const Profile = ({ history }) => {
     let storageRef = storage.ref();
     storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
         let img = document.getElementById('profile_picture');
+        let img2 = document.getElementById('profile_picture2');
         img.src = url;
+        img2.src = url;
     })
 
 
@@ -35,8 +40,9 @@ const Profile = ({ history }) => {
         history.push("/");
     }
 
+    // considering home page is repo page
     const redirectRepo = () => {
-        history.push("/repository");
+        history.push("/");
     }
 
     const handleUploadPicture = (event) => {
@@ -84,11 +90,41 @@ const Profile = ({ history }) => {
         });
     }
 
+    const redirectProfile = () => {
+        // history.push("/profile");
+        alert('You are already on Profile Page!');
+    }
 
 
     return (
         <div>
-            <img id="profile_picture" width={100} height={100}/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <div className="nav_bar">
+                <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
+
+                <form className="search_bar">
+                    <input className="search_input" type="text" placeholder=" Search"
+                           name="search"/>
+                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
+                    {/*TODO: not sure why this button takes me to sign in page everytime*/}
+                </form>
+                <img id="profile_picture2" className="top_icon"/>
+
+                <DropdownButton
+                    id="dropdown-item-button"
+                    title={ username }
+                    variant="success">
+                    <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
+                    <br />
+                </DropdownButton>
+
+            </div>
+            <ProfileInfo />
+
             <div>
                 <Button variant="primary" onClick={handleShow}>
                     Edit Profile Picture
