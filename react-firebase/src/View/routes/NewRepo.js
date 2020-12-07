@@ -7,7 +7,7 @@ import logo from "../../Images/wavBase_logo.png";
 import db from "../../Model/base";
 import downArrow from "../../Images/downArrow.png";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
-import '../../NavBar.css'
+import '../NavBarComponents/NavBar.css'
 
 
 const NewRepo = ({ history }) => {

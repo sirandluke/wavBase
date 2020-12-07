@@ -4,7 +4,7 @@ import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
 import {RepositoryInfo} from "../RepositoryPageComponents/RepositoryInfo";
-import NavBar from './NavBar.js';
+import NavBar from '../NavBarComponents/NavBar.js';
 import SnapshotList from "../RepositoryPageComponents/SnapshotList";
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 
@@ -33,6 +33,7 @@ const Repository = ({history}) => {
 
     return (
         <div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar/>
             
             <RepositoryInfo repo={ location.state.repo }/>
