@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
-
+import React from 'react';
+import {Component} from 'react';
 import db from "../../Model/base";
 import LoadingScreen from "../LoadingComponent/LoadingScreen";
 
