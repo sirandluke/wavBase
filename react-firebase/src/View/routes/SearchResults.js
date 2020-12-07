@@ -5,6 +5,9 @@ import db from '../../Model/base';
 import {Link, withRouter} from "react-router-dom";
 import UserSearchResults from "../SearchComponents/UserSearchResults";
 import RepoSearchResults from "../SearchComponents/RepoSearchResults";
+import NavBar from '../NavBarComponents/NavBar';
+import './SearchResults.css';
+
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -41,11 +44,21 @@ class SearchResults extends Component {
 
         return(
             <div>
-                <select onChange={this.handleChange}>
-                    <option selected value="users">Users</option>
-                    <option  value="repos">Repositories</option>
-                </select>
-                {this.state.resultsHTML}
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"></link>
+                <NavBar />
+                <div className="container results_container">
+                    <div className="row">
+                        <div className="col-sm-10"></div>
+                        <div className="col-sm-2 filter_box">
+                            Filters:&nbsp; &nbsp;
+                            <select onChange={this.handleChange}>
+                                <option selected value="users">Users</option>
+                                <option  value="repos">Repositories</option>
+                            </select>
+                        </div>
+                    </div>
+                    {this.state.resultsHTML}
+                </div>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import db from '../../Model/base';
 import {Link, withRouter} from "react-router-dom";
+import './RepoSearchResults.css';
 
 class RepoSearchResults extends Component {
 
@@ -19,39 +20,32 @@ class RepoSearchResults extends Component {
         console.log(this.props);
 
         const repoElement = this.props.results.map(repo => 
-            <div>
-                <tr key={ repo.repo_id }>
-                    <td style={ {width: '200px', textAlign: 'left'} }>
-                        <button className="repo_button" name="repo_links"
+            <div className="container repo_result">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <button name="repo_links"
                                 onClick={ () => this.redirectToRepo(repo) }>
                             { repo.name }
                         </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td style={ {width: '200px', textAlign: 'left'} }>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
                         Description: {repo.description}
-                    </td>
-                </tr>
-                <tr>
-                    Tags: {repo.tags}
-                </tr>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        Tags: {repo.tags}
+                    </div>
+                </div>
             </div>
         );
 
         return (
-            <div style={{paddingTop: '20px', overflowY:'scroll', height:"65%"}}>
-                {/* <table style={{border: '1px solid blue'}}> */}
-                <table>
-                    <thead>
-                    {/* <tr>
-                        <th style={{textAlign:"left"}}>Your Repositories</th>
-                    </tr> */}
-                    </thead>
-                    <tbody>
-                        { repoElement }
-                    </tbody>
-                </table>
+            <div style={{paddingTop: '20px', height:"65%"}}>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"></link>
+                    {repoElement}
             </div>
 
         );

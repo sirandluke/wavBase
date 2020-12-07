@@ -1,0 +1,9 @@
+.results_container {
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 20px;
+}
+
+.filter_box {
+    padding-top: 5px;
+}
