@@ -3,7 +3,10 @@ import {insertRepository} from "../../Model/FirebaseHandler";
 import * as K from '../../Constants'
 import "../../App.css";
 import './CreateRepoAction.css'
-
+import privateLock from "../../Images/private.png";
+import publicGlobe from "../../Images/public.png";
+import db from "../../Model/base";
+let name = "User";
 export class CreateRepoAction extends Component {
     constructor(props) {
         super(props);
@@ -11,6 +14,7 @@ export class CreateRepoAction extends Component {
             isPrivate: 'F'
         }
     }
+
 
     createRepo = (event) => {  // Handles creating a new repository.
         event.preventDefault();
@@ -39,40 +43,78 @@ export class CreateRepoAction extends Component {
         this.setState({isPrivate: this.state.isPrivate === 'F' ? 'T' : 'F'});
     }
 
+    username = () => {
+        let user = db.auth().currentUser;
+        //let name, email, photoUrl, uid, emailVerified;
+        let username
+        if (user != null) {
+            //name = user.email;
+
+            let uid = db.auth().currentUser.uid;
+            let firebaseRef = db.database().ref('users/' + uid);
+            firebaseRef.on('value', (snapshot) =>{
+                username = snapshot.val().username;
+                name = username;
+            })
+        }
+    }
+
+
+
     render() {
+        this.username();
         return(
             <div>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 <form className="make_repo_form" onSubmit={this.createRepo}>
                     <h1>Create Repository</h1>
+                    <b1>{name}</b1>
                     <label>
-                        <input className="repo_Name" name="repo_name" type="text" required="required" placeholder="Repository name" />
+                        <input className="repoName_input" name="repo_name" type="text" required="required" placeholder="Repository Name"/>
+                    </label>
+
+                    <br/>
+
+                    <label>
+                        <div className="public_option">
+                            <input type="checkbox" />
+                            <b2>Public</b2>
+                            <img src={publicGlobe} className={"public_globe"} />
+                        </div>
+                        <div className="private_option" >
+                            <input type="checkbox" name="isPrivate" onChange={this.handleCheck}/>
+                            <b2>Private</b2>
+                            <img src={privateLock} className={"private_globe"} />
+                        </div>
+
+                    </label>
+
+                    <br />
+                    <label>
+                        <input className="createRepo_input" name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM"/>
                     </label>
                     <br />
                     <label>
-                        <input className="BPM" name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM" />
+                        <input className="createRepo_input" name="key" type="text" required="required" placeholder="Key Signature"/>
                     </label>
                     <br />
                     <label>
-                        <input className="Name" name="key" type="text" required="required" placeholder="Key Signature" />
+                        <input className="createRepo_input" name="tags" type="text" placeholder="Tags"/>
                     </label>
                     <br />
-                    <label>
-                        <input className="Tags" name="tags" type="text" placeholder="Tags" />
-                    </label>
+
+
                     <br />
                     <label>
-                        Make repository Private
-                        <input type="checkbox" name="isPrivate" onChange={this.handleCheck}/>
-                    </label>
-                    <br />
-                    <label>
-                        <textarea name="description" cols="40" rows="5" placeholder="Description">
+                        <textarea name="description" cols="40" rows="5" placeholder="Description" >
 
                         </textarea>
                     </label>
                     <br />
+
                     <button className="create_button" type="submit">Create</button>
                 </form>
+
             </div>
         );
     }

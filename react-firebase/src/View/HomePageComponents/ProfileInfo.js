@@ -55,7 +55,7 @@ export class ProfileInfo extends Component {
 
     render() {
         return (
-            <div>
+            <div id="ProfileInfoContainer">
                 <img className="user_profile_picture" id="profile_picture" src={loading} alt="Profile Picture"/>
                 <NameBioFollowers
                     username={this.state.username}
@@ -63,6 +63,7 @@ export class ProfileInfo extends Component {
                     followers={this.state.followers}
                     following={this.state.following}
                 />
+
             </div>
         );
     }

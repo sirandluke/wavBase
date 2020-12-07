@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {insertRepository} from "../../Model/FirebaseHandler";
 import * as K from '../../Constants'
 import {CreateRepoAction} from "../NewRepoComponents/CreateRepoAction";
+import NavBar from "../NavBarComponents/NavBar.js";
 import './NewRepo.css'
 import logo from "../../Images/wavBase_logo.png";
 import db from "../../Model/base";
@@ -22,7 +23,10 @@ const NewRepo = ({ history }) => {
 
     return(
         <div>
+
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <NavBar />
+            {/* We now use navbar.js
             <div className="nav_bar">
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <div class="user_dropdown">
@@ -40,12 +44,11 @@ const NewRepo = ({ history }) => {
                         <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
                         <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
                 </DropdownButton>
-                */}
-                {/*
+
                 User profile pic and user tab
 
 
-                */}
+
                 <form className="search_bar">
                     <input className="search_input" className="type_box" type="text" placeholder=" Search"
                            name="search"/>
@@ -53,6 +56,7 @@ const NewRepo = ({ history }) => {
                 </form>
 
             </div>
+            */}
             <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-3rem", zIndex:"-99", position:"absolute"}}/>
 
             <CreateRepoAction history={history}/>
