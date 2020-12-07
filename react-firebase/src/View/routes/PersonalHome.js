@@ -6,7 +6,8 @@ import "./PersonalHome.css";
 import logo from "../../Images/wavBase_logo.png";
 import './PersonalHome.css';
 import '../../App.css'
-import '../../NavBar.css'
+import '../NavBarComponents/NavBar.css'
+import NavBar from '../NavBarComponents/NavBar.js';
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
@@ -68,32 +69,7 @@ const PersonalHome = ({history}) => {
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-            <div className="nav_bar">
-                <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-
-                <form className="search_bar">
-                    <input className="search_input" type="text" placeholder=" Search"
-                           name="search"/>
-                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
-                    {/*TODO: not sure why this button takes me to sign in page everytime*/}
-
-                </form>
-                {/*TODO: insert profile pic at top bar*/}
-                {/*<img id="profile_picture2" className="top_icon" width={50} height={50}/>*/}
-
-                <DropdownButton
-                    id="dropdown-item-button"
-                    title={ name }
-                    variant="success">
-                    <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
-                    <br />
-                    <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
-                    <br />
-                    <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
-                    <br />
-                </DropdownButton>
-
-            </div>
+            <NavBar />
 
             <div className="container">
                 <div className="row">
