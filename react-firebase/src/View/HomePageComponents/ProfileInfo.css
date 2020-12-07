@@ -3,6 +3,8 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 80px;
+    position: relative;
 }
 
 /* .profile_info */

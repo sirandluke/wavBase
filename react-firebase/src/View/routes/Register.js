@@ -64,9 +64,9 @@ const Register = ({ history }) => {
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <button className="signIn_btn" type="submit" onClick={redirectLogIn}>Sign In</button>
                 <form className="search_bar">
-                    <input className="search_input" className="type_box" type="text" placeholder=" Search"
+                    <input className="search_input" type="text" placeholder=" Search"
                            name="search"/>
-                    <button type="submit" ><i className="fa fa-search"></i></button>
+                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
                 </form>
 
             </div>

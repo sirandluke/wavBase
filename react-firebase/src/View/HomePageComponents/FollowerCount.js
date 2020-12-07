@@ -6,7 +6,7 @@ export class FollowerCount extends Component{
 
         return(
             <div>
-                <p style={{fontSize:'24px', textAlign:'center', width:'100%', borderBottom:"5px black"}}>{this.props.followers} followers · {this.props.following} following</p>
+                <p style={{fontSize:'24px', textAlign:'center', borderBottom:"5px black"}}>{this.props.followers} followers · {this.props.following} following</p>
             </div>
         )
     }

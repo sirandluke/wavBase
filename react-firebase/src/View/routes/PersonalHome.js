@@ -5,6 +5,8 @@ import db from "../../Model/base";
 import "./PersonalHome.css";
 import logo from "../../Images/wavBase_logo.png";
 import './PersonalHome.css';
+import '../../App.css'
+import '../../NavBar.css'
 //import Home from "./Home";
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
@@ -33,12 +35,30 @@ const PersonalHome = ({history}) => {
         })
     }
 
+    // let uid = db.auth().currentUser.uid;
+    // let userRef = db.database().ref('users/' + uid);
+    // let username, profile_picture_path, user_email;
+    // userRef.on('value', (snapshot) =>{
+    //     username = snapshot.val().username;
+    //     profile_picture_path = snapshot.val().profile_picture;
+    //     user_email = snapshot.val().email;
+    // })
+    //
+    // let storage = db.storage();
+    // let storageRef = storage.ref();
+    // storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
+    //     let img2 = document.getElementById('profile_picture2');
+    //     img2.src = url;
+    // })
+
     const redirectCreateRepo = () => {
         history.push("/newrepo");
     }
 
+    // considering home page is repo page, do nothing when user clicks "My Repo"
     const redirectRepo = () => {
-        history.push("/repository");
+        // history.push("/repository");
+        alert('You are already on Repository Page!')
     }
 
     const redirectProfile = () => {
@@ -50,19 +70,29 @@ const PersonalHome = ({history}) => {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <div className="nav_bar">
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-                {/* <div className="dropdown_button"> */}
-                    <DropdownButton 
-                    id="dropdown-item-button" 
+
+                <form className="search_bar">
+                    <input className="search_input" type="text" placeholder=" Search"
+                           name="search"/>
+                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
+                    {/*TODO: not sure why this button takes me to sign in page everytime*/}
+
+                </form>
+                {/*TODO: insert profile pic at top bar*/}
+                {/*<img id="profile_picture2" className="top_icon" width={50} height={50}/>*/}
+
+                <DropdownButton
+                    id="dropdown-item-button"
                     title={ name }
                     variant="success">
-                        <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
-                        <br />
-                        <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
-                        <br />
-                        <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
-                        <br />
-                    </DropdownButton>
-                {/* </div> */}
+                    <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
+                    <br />
+                    <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
+                    <br />
+                </DropdownButton>
+
             </div>
 
             <div className="container">

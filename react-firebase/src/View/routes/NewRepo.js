@@ -7,7 +7,7 @@ import logo from "../../Images/wavBase_logo.png";
 import db from "../../Model/base";
 import downArrow from "../../Images/downArrow.png";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
-
+import '../../NavBar.css'
 
 
 const NewRepo = ({ history }) => {
@@ -41,9 +41,6 @@ const NewRepo = ({ history }) => {
                         <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
                 </DropdownButton>
                 */}
-
-
-
                 {/*
                 User profile pic and user tab
 
