@@ -63,7 +63,7 @@ function NavBar({history}) {
                 </button>
 
                 TODO: not sure why this button takes me to sign in page everytime
-            </form> */}}
+            </form> */}
             <SearchBar />
 
             <img id="profile_picture2" className="top_icon"/>
