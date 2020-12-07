@@ -2,22 +2,50 @@ import React, {Component, useContext} from 'react';
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import db from '../../Model/base';
+import {Link, withRouter} from "react-router-dom";
 
 class RepoSearchResults extends Component {
 
-    render() {
+    redirectToRepo(curr_repo) {
+        this.props.history.push({
+            pathname: "/repository",
+            state: {  // Pass as props for Repository page.
+                repo: curr_repo
+            }
+        });
+    }
 
-        return(
-            <div>
-                <h2>Repository Search Results</h2>
-                <ul>
-                    {this.props.results.map((result) => {
-                        <li>{result}</li>
-                    })}
-                </ul>
+    render() {
+        console.log(this.props);
+
+        const repoElement = this.props.results.map(repo =>
+            <tr key={ repo.repo_id }>
+                <td style={ {width: '200px', textAlign: 'left'} }>
+                    <button className="repo_button" name="repo_links"
+                            onClick={ () => this.redirectToRepo(repo) }>
+                        { repo.name }
+                    </button>
+                </td>
+            </tr>
+        );
+
+        return (
+            <div style={{paddingTop: '20px', overflowY:'scroll', height:"65%"}}>
+                {/* <table style={{border: '1px solid blue'}}> */}
+                <table>
+                    <thead>
+                    {/* <tr>
+                        <th style={{textAlign:"left"}}>Your Repositories</th>
+                    </tr> */}
+                    </thead>
+                    <tbody>
+                        { repoElement }
+                    </tbody>
+                </table>
             </div>
+
         );
     }
 }
 
-export default RepoSearchResults;
+export default withRouter(RepoSearchResults);

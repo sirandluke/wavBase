@@ -12,6 +12,7 @@ import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
+import SearchResults from './View/routes/SearchResults';
 
 function App() {
     return(
@@ -22,7 +23,7 @@ function App() {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <PrivateRoute exact path="/newrepo" component={NewRepo} />
-                    <Route exact path="/search" component={Search} />
+                    <Route exact path="/search" component={SearchResults} />
                 </div>
             </Router>
         </AuthProvider>

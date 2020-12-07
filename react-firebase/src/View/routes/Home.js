@@ -4,6 +4,7 @@ import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from '../../Model/FirebaseHandler';
 import SearchBar from '../components/SearchBar';
+import {Link, withRouter} from "react-router-dom";
 
 // TODO: render searchbar, likes, (add more)
 
@@ -31,4 +32,4 @@ const Home = ({history}) => {
     );
 }
 
-export default Home;
+export default withRouter(Home);
