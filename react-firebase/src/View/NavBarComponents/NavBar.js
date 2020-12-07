@@ -58,8 +58,7 @@ function NavBar() {
             <DropdownButton
                 id="dropdown-item-button"
                 title={ username }
-                variant="success"
-                isExpanded="true">
+                variant="success">
                 
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
