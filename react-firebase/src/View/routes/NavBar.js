@@ -46,6 +46,7 @@ const NavBar = ({history}) => {
                         <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
                         <br />
                     </DropdownButton>
+            
             </div>
         </div>
     );
