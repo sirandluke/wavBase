@@ -4,15 +4,14 @@ import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../../Model/PlayButton";
 import {RepositoryInfo} from "../RepositoryPageComponents/RepositoryInfo";
+import NavBar from './NavBar.js';
 import SnapshotList from "../RepositoryPageComponents/SnapshotList";
-
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 
 import SnapshotModal from "../RepositoryModals/SnapshotModal";
 import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
 import {repo_tab} from "../../Constants";
-
 import {useLocation} from 'react-router';
 
 /**
@@ -33,9 +32,9 @@ const Repository = ({history}) => {
     }
 
     return (
-
         <div>
-
+            <NavBar/>
+            
             <RepositoryInfo repo={ location.state.repo }/>
 
             <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
