@@ -41,7 +41,7 @@ const UploadSnapshot = (props) => {
         const files = folder;
         const total = files.length * 3;
         const time_stamp = TimeStampToString();
-        let count = 1
+        let count = 1;
         for (const i of Object.keys(files)) {  // For each file, push to firestore and wait for this loop to finish.
             updateProgressBar(total, count);
             count++;

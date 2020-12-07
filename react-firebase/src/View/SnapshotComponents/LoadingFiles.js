@@ -1,3 +1,4 @@
+import React, {Component} from "react";
 import ReactPlayer from "react-player";
 
 import db from "../../Model/base";
@@ -15,8 +16,9 @@ export class LoadingFiles extends Component {
             isLoading: true,
             audio_objs: null,
             proj_objs: null,
-        }
-        this.storageRef = db.storage().ref()
+        };
+
+        this.storageRef = db.storage().ref();
     }
 
     componentDidMount() {
@@ -53,7 +55,7 @@ export class LoadingFiles extends Component {
 
     async getObjs(audio_paths, proj_paths) {
         let audio_objs = [];
-        let proj_objs = []
+        let proj_objs = [];
         let id = 0;
         try {
             await audio_paths.forEach(path => {

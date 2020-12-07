@@ -27,11 +27,15 @@ export class CreateRepoAction extends Component {
         // TODO: Tags query
         console.log(this.state.isPrivate)
 
+        if (insertRepository(K.empty, repo_name.value,
+            bpm.value, key.value, description.value)) {  // Call insert repo.
+            this.props.history.push("/");
+        }
+        /*
         // TODO: UNCOMMENT LATER
-        /*if (insertRepository(K.empty, repo_name.value,
+        if (insertRepository(K.empty, repo_name.value,
            bpm.value, key.value, this.state.isPrivate, description.value)) {  // Call insert repo.
-            this.props.history.push("/Repository");
-       }*/
+            this.props.history.push("/"); */
     }
 
     handleCheck = (e) => {
