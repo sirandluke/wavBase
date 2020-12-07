@@ -23,9 +23,19 @@ class UserSearchResults extends Component {
         const repoElement = this.props.results.map(user =>
             <tr key={ user.uid }>
                 <td style={ {width: '200px', textAlign: 'left'} }>
-                    <button className="repo_button" name="repo_links"
+                    {/* Not sure how to implement retrieving profile picture*/}
+                    { user.profile_picture }
+                    {/* filler picture*/}
+                    <img src="../../Images/wavBase_logo.png"></img>
+                </td>
+                <td style={ {width: '200px', textAlign: 'left'} }>
+                    { user.username }
+                </td>
+                <td style={ {width: '200px', textAlign: 'left'} }>     
+                    {/* replace this with the actual follow button*/}
+                    <button className="follow_button" name="follow_link"
                             onClick={ () => this.redirectToUser(user) }>
-                        { user.username }
+                                Follow
                     </button>
                 </td>
             </tr>

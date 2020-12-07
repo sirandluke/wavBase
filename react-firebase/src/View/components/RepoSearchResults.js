@@ -18,15 +18,25 @@ class RepoSearchResults extends Component {
     render() {
         console.log(this.props);
 
-        const repoElement = this.props.results.map(repo =>
-            <tr key={ repo.repo_id }>
-                <td style={ {width: '200px', textAlign: 'left'} }>
-                    <button className="repo_button" name="repo_links"
-                            onClick={ () => this.redirectToRepo(repo) }>
-                        { repo.name }
-                    </button>
-                </td>
-            </tr>
+        const repoElement = this.props.results.map(repo => 
+            <div>
+                <tr key={ repo.repo_id }>
+                    <td style={ {width: '200px', textAlign: 'left'} }>
+                        <button className="repo_button" name="repo_links"
+                                onClick={ () => this.redirectToRepo(repo) }>
+                            { repo.name }
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td style={ {width: '200px', textAlign: 'left'} }>
+                        Description: {repo.description}
+                    </td>
+                </tr>
+                <tr>
+                    Tags: {repo.tags}
+                </tr>
+            </div>
         );
 
         return (
