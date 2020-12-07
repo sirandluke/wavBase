@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 import SearchBar from "../SearchComponents/SearchBar";
 
 
-function NavBar({history}) {
-
+function NavBar() {
+    let history = useHistory();
     let user = db.auth().currentUser;
     //let name, email, photoUrl, uid, emailVerified;
     let name = "User";
@@ -51,19 +51,6 @@ function NavBar({history}) {
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-
-            {/*<form className="search_bar">
-
-                <input className="search_input" type="text" placeholder=" Search"
-                       name="search"/>
-                <button type="submit" className="search_btn">
-                    <i className="fa fa-search">
-
-                    </i>
-                </button>
-
-                TODO: not sure why this button takes me to sign in page everytime
-            </form> */}
             <SearchBar />
 
             <img id="profile_picture2" className="top_icon"/>
@@ -71,13 +58,12 @@ function NavBar({history}) {
             <DropdownButton
                 id="dropdown-item-button"
                 title={ username }
-                variant="success">
+                variant="success"
+                isExpanded="true">
+                
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
-                <br />
                 <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
-                <br />
                 <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
-                <br />
             </DropdownButton>
         </div>
     )

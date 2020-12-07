@@ -71,16 +71,6 @@ const PersonalHome = ({history}, props) => {
         history.push("/newrepo");
     }
 
-    // considering home page is repo page, do nothing when user clicks "My Repo"
-    const redirectRepo = () => {
-        // history.push("/repository");
-        alert('You are already on Repository Page!')
-    }
-
-    const redirectProfile = () => {
-        history.push("/profile");
-    }
-
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />

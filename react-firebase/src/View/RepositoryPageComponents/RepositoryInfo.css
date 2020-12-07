@@ -1,6 +1,7 @@
 .repo_thumbnail{
     max-width: 5rem;
     position: absolute;
+    z-index: -99;
     right: 0;
     margin-right: 2rem;
 }
