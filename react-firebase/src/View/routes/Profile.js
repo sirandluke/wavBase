@@ -140,7 +140,9 @@ const Profile = ({ history }) => {
                             <input type="submit" value="submit"/>
                         </form>
                     </Modal.Body>
-                    <Modal.Footer></Modal.Footer>
+                    <Modal.Footer>
+
+                    </Modal.Footer>
                 </Modal>
             </div>
             <h1>Profile</h1>

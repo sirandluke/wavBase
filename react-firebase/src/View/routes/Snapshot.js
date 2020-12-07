@@ -9,9 +9,9 @@ import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 
 
 import {SnapshotInfo} from "../SnapshotComponents/SnapshotInfo";
-import {FileList} from "../SnapshotComponents/FileList";
 
 import {useLocation} from 'react-router';
+import {LoadingFiles} from "../SnapshotComponents/LoadingFiles";
 
 /**
  *
@@ -26,10 +26,6 @@ const Snapshot = ({history}) => {
     console.log(location.state.snapshot);
     console.log(location.state.repo_name);
 
-    const redirectHome = () => {
-        history.push("/");
-    }
-
     return (
         <div>
             <SnapshotInfo
@@ -39,9 +35,7 @@ const Snapshot = ({history}) => {
                 datetime = {location.state.snapshot.upload_date}
             />
 
-            <FileList snapshot_paths={location.state.snapshot.files} />
-
-            <button onClick={ redirectHome }>Go Back to Home!</button>
+            <LoadingFiles snapshot_paths={location.state.snapshot.files} />
         </div>
     );
 };

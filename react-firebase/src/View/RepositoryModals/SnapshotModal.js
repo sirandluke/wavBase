@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
-
-import "./SnapshotModal.css";
+import './SnapshotModal.css'
 
 
 const SnapshotModal = ({ isShowing, hide, repo_id}) => isShowing ? ReactDOM.createPortal(
+
     <React.Fragment>
         <div className="modal-overlay"/>
         <div className="modal-wrapper" aria-modal aria-hidden tabIndex={-1} role="dialog">
@@ -15,7 +15,7 @@ const SnapshotModal = ({ isShowing, hide, repo_id}) => isShowing ? ReactDOM.crea
                         <span aria-hidden="true">cancel</span>
                     </button>
                 </div>
-                <UploadSnapshot repo_id={repo_id}/>
+                <UploadSnapshot repo_id={repo_id} />
             </div>
         </div>
     </React.Fragment>, document.body

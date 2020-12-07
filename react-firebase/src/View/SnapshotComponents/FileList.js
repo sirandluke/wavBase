@@ -1,141 +1,113 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
+import JSZip from 'jszip';
+import JSZipUtils from 'jszip-utils';
+import saveAs from 'file-saver';
 
-import db from "../../Model/base";
-import LoadingScreen from "../LoadingComponent/LoadingScreen";
+import "./FileList.css"
 
 import audio_icon from "../../Images/music_note_24px_outlined.png";
 import folder_icon from "../../Images/folder.png";
-
-import sine_wave from "../../Images/sine_wave_1.png";
 
 export class FileList extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isLoading: true,
-            audio_objs: [],
-            proj_objs: [],
+            audio_objs: this.props.audio_objs,
+            proj_objs: this.props.proj_objs,
         }
-        this.storageRef = db.storage().ref()
-    }
-
-    async componentDidMount() {
-
-        const file_paths = this.parseFileString();
-
-        const audio_paths = file_paths[0];
-        const proj_paths = file_paths[1];
-
-        const objs = await this.getObjs(audio_paths, proj_paths);
-
-        setTimeout('',10000);
-
-        this.setState({
-            isLoading: false,
-            audio_objs: objs[0],
-            proj_objs: objs[1]
-        })
-
 
         console.log(this.state.audio_objs);
         console.log(this.state.proj_objs);
     }
 
-    parseFileString() {
-        let audio_paths = [];
-        let proj_paths = [];
-        let file_paths = this.props.snapshot_paths.split(',');
-        console.log(file_paths);
-        file_paths.forEach(file_path => {
-            if (file_path.indexOf('.mp3') !== -1 || file_path.indexOf('.wav') !== -1) {
-                audio_paths.push(file_path);
-            } else {
-                proj_paths.push(file_path);
-            }
+    handleDownloadAll(e) {
+        let objs = [];
+        this.state.audio_objs.forEach(obj => {
+            objs.push(obj);
         });
-        return [audio_paths, proj_paths]
-    }
-
-    async getObjs(audio_paths, proj_paths) {
-        let audio_files = [];
-        let proj_files = [];
-
-        try {
-            await audio_paths.forEach(path => {
-                this.storageRef
-                    .child(path)
-                    .getDownloadURL()
-                    .then((url) => {
-                        let obj = {
-                            name: this.getName(path),
-                            url: url
-                        }
-                        audio_files.push(obj);
+        this.props.proj_objs.forEach(obj => {
+            objs.push(obj)
+        });
+        let zip = new JSZip();
+        let count = 0;
+        let zipFilename = "zipFilename.zip";
+        objs.forEach( (obj) => {
+            let filename = obj.name;
+            console.log(obj.name);
+            // loading a file and add it in a zip file
+            JSZipUtils.getBinaryContent(obj.url, function (err, data) {
+                if (err) {
+                    throw err; // or handle the error
+                }
+                zip.file(filename, data, { binary: true });
+                count++;
+                if (count === objs.length) {
+                    zip.generateAsync({ type: 'blob' }).then(function (content) {
+                        saveAs(content, zipFilename);
+                        console.log("done");
                     });
+                }
             });
-            await proj_paths.forEach(path => {
-                this.storageRef
-                    .child(path)
-                    .getDownloadURL()
-                    .then((url) => {
-                        let obj = {
-                            name: this.getName(path),
-                            url: url
-                        }
-                        proj_files.push(obj);
-                    });
-            });
-        } catch (error) {
-            console.log(error);
-        }
-        return [audio_files, proj_files];
-    }
-
-    getName(path) {
-        const p = path.split('/');
-        return p.slice(-1)[0];
+        });
     }
 
     render() {
 
         const audioFileElement = this.state.audio_objs.map(obj =>
-            <tr key={ obj.name }>
-                <td style={ {width: '500px', textAlign: 'left'} }>
+            <tr key={ obj.id }>
+                <td>
                     <img className="audio_ico" src={ audio_icon } alt="audio_icon" height="20" width="20"/>
-                    {/* console.log(obj.name) */ }
-                    { /* obj.name */ }
-                    <ReactPlayer url={ obj.url }/>
+                    { obj.name }
+                </td>
+                <td>
+                    <ReactPlayer
+                        url={ obj.url }
+                        width="400px"
+                        height="50px"
+                        playing={ false }
+                        controls={ true }
+                        volume={0.5 }
+                        progressInterval={ 5000 }
+                        pip={ true }
+                    />
                 </td>
             </tr>
         );
 
         const projectFileElement = this.state.proj_objs.map(obj =>
-            <tr key={ obj.name }>
-                <td style={ {width: '500px', textAlign: 'left'} }>
+            <tr key={ obj.id }>
+                <td style={ {width: '200px', textAlign: 'left'} }>
                     <img className="file_ico" src={ folder_icon } alt="file_icon" height="20" width="20"/>
-                    {/* console.log(obj.name) */ }
-                    { /* obj.name */ }
-                    <ReactPlayer url={ obj.url }/>
+                    { obj.name }
+                </td>
+                <td>
+                    <button className="download_file_btn">
+                        <i className="fa fa-download"/>
+                        <a href={obj.url} download={ obj.name }> Download File</a>
+                    </button>
                 </td>
             </tr>
         );
 
         return (
-            this.state.isLoading ? <LoadingScreen /> :
-                <div>
-                    <h3>Project Files</h3>
-                    <table>
-                        <thead>
+            <div>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+                <button className="download_all_btn" onClick={ () => this.handleDownloadAll()}>
+                    <i className="fa fa-download"/>
+                     Download All
+                </button>
+                <table>
+                    <thead>
 
-                        </thead>
-                        <tbody>
-                        { projectFileElement }
-                        { audioFileElement }
-                        </tbody>
-                    </table>
-                </div>
+                    </thead>
+                    <tbody>
+                    { audioFileElement }
+                    { projectFileElement }
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
