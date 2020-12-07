@@ -18,6 +18,7 @@ import sine_wave_1 from "../../Images/sine_wave_1.png"
 
 
 import Repository from "./Repository";
+import SearchBar from "../SearchComponents/SearchBar";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}, props) => {
@@ -84,7 +85,6 @@ const PersonalHome = ({history}, props) => {
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar />
-
             <div className="container">
                 <div className="row">
                     <div className="col_1">

@@ -12,7 +12,7 @@ const SnapshotModal = ({ isShowing, hide, repo_id}) => isShowing ? ReactDOM.crea
             <div className="modal">
                 <div className="modal-header">
                     <button type="button" className="modal-close-button" data-dismiss="modal" aria-label="Close" onClick={hide}>
-                        <span aria-hidden="true">cancel</span>
+                        <span aria-hidden="true">close</span>
                     </button>
                 </div>
                 <UploadSnapshot repo_id={repo_id} />
