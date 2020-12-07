@@ -35,7 +35,10 @@ const Snapshot = ({history}) => {
                 datetime = {location.state.snapshot.upload_date}
             />
 
-            <LoadingFiles snapshot_paths={location.state.snapshot.files} />
+            <LoadingFiles
+                snapshot_paths={location.state.snapshot.files}
+                snapshot_name={location.state.snapshot.description}
+            />
         </div>
     );
 };

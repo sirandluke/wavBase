@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component, useState, useEffect} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
@@ -98,11 +98,12 @@ const Profile = ({ history }) => {
     }
 
 
+
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar />
-            <ProfileInfo id="profileInfo"/>
+            <ProfileInfo uid={uid} />
 
             <div>
                 <Button variant="primary" id="editProfilePicBtn" onClick={handleShow}>

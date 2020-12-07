@@ -18,7 +18,13 @@ export class ProfileInfo extends Component {
             profile_picture_path: loading
         };
 
-        let uid = db.auth().currentUser.uid;
+        let uid;
+        if (this.props.uid === null) {
+            uid = db.auth().currentUser.uid;
+        } else {
+            uid = this.props.uid;
+        }
+
         this.firebaseRef = db.database().ref('users/' + uid);
         this.storageRef = db.storage().ref();
     };

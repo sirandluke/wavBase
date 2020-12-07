@@ -32,7 +32,7 @@ export class FileList extends Component {
         });
         let zip = new JSZip();
         let count = 0;
-        let zipFilename = "zipFilename.zip";
+        let zipFilename = this.props.snapshot_name;
         objs.forEach( (obj) => {
             let filename = obj.name;
             console.log(obj.name);

@@ -61,7 +61,7 @@ class SnapshotList extends Component {
                 <td style={ {width: '500px', textAlign: 'left'} }>
                     <button className="snapshot_button" name="snapshot_links"
                             onClick={ () => this.redirectToSnapshots(snapshot) }>
-                       <img className="snaps_ico" src={ folder_icon } alt="snapshot_icon" height="20" width="20"/>
+                       <img className="snaps_ico_1" src={ folder_icon } alt="snapshot_icon"/>
                         { snapshot.description }
                         { snapshot.datetime }
                     </button>
@@ -71,12 +71,8 @@ class SnapshotList extends Component {
 
         return(
             <div>
-                <h3>Snapshots</h3>
-                <table>
-                    <thead>
-
-                    </thead>
-                    <tbody>
+                <table className="snapshot_table">
+                    <tbody className="snapshot_body">
                         {snapshotElement}
                     </tbody>
                 </table>

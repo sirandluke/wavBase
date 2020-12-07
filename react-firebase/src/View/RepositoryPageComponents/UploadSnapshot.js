@@ -88,13 +88,12 @@ const UploadSnapshot = (props) => {
 
     return (
         <div>
-            <div className="upload_title">
+            <div className="upload_title_1">
                 <img className="snaps_ico" src={ folder_icon } alt="snaps_ico" align="left" width="30" height="30"/>
                 <h2>Take a Snapshot!</h2>
             </div>
-            <p>Choose a project folder that you want to upload</p>
-            <p>You can include anything from Ableton files, FL Studio files, midi's, wav's, mp3's, and more</p>
-            <h3>^^ Ryan, make this p element less cheesy</h3>
+            <p className="upload_description">Choose a project folder that you want to upload</p>
+            <p className="upload_description">You can include anything from Ableton files, FL Studio files, midi's, wav's, mp3's, and more</p>
             <form onSubmit={ handleUpload }>
                 <label>
                     <input accept=".wav, .mp3, .als, .flp, .band, .logicx"
@@ -111,7 +110,7 @@ const UploadSnapshot = (props) => {
                 <br/>
                 { showProgressBar
                     ? <ProgressBar animated now={ progress } label={ `${ progress }% complete` }/>
-                    : <button className="upload_button" type="submit">Upload</button>
+                    : <button className="upload_button_1" type="submit">Upload</button>
                 }
             </form>
         </div>

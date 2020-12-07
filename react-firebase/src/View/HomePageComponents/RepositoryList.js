@@ -14,7 +14,8 @@ class RepositoryList extends Component {
             repos: []
         }
 
-        this.user_id = db.auth().currentUser.uid;
+        this.user_id = this.props.uid;
+        console.log(this.user_id);
 
         this.firebaseRef = db.database().ref('repositories');
     }
