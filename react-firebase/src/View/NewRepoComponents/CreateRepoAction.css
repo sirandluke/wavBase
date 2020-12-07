@@ -1,5 +1,124 @@
 .make_repo_form {
     position: absolute;
-    left: 50%;
-    top:150px;
+    left: 30%;
+    top: 120px;
+    width: 400px;
+    font-size: 20px;
+    flex-direction: column;
+    padding-right: 0%;
+}
+
+h1 {
+    padding-bottom: 0px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+b1 {
+    background-color: white;
+    border-radius: 5%;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.repoName_input {
+    position: relative;
+    text-align: center;
+    top: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    width: 250px;
+    padding-top: 20px;
+    padding-right: 5px;
+    padding-bottom: -10px;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style:solid;
+    border-bottom-color: lightgray;
+    border-width: 1.5px;
+    border-radius: 0%;
+    height: 30px;
+}
+
+.public_option {
+    padding-top: 20px;
+    float: left;
+}
+
+.public_option img{
+    padding-left: 5px;
+}
+
+b2 {
+    padding-left: 10px;
+}
+
+.private_option {
+    padding-top: 20px;
+    float: right;
+}
+
+.private_option img{
+    padding-left: 5px;
+}
+
+
+.public_globe {
+    height: 20px;
+    width: 20px;
+}
+
+.private_globe {
+    height: 20px;
+    width: 20px;
+}
+
+.createRepo_input {
+    font-size: 20px;
+    background-color: transparent;
+    outline: none;
+    width: 400px;
+    padding-top: 20px;
+    padding-right: 5px;
+    left: 10px;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style:solid;
+    border-bottom-color: lightgray;
+    border-width: 1.5px;
+    border-radius: 0%;
+    height: 30px;
+}
+
+.make_repo_form ::placeholder{
+    color: darkgray;
+}
+
+
+.make_repo_form label textarea {
+    font-family: inherit;
+    font-size: 20px;
+    height: 30px;
+    border-left-style: none;
+    border-right-style: none;
+    border-top-style: none;
+    border-bottom-style:solid;
+    border-bottom-color: lightgray;
+    border-width: 1.5px;
+    border-radius: 0%;
+    outline: none;
+    resize: none;
+    padding-top: -10px;
+    background-color: transparent;
+    top: 0px;
+}
+
+.create_button {
+
 }
