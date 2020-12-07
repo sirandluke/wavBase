@@ -27,10 +27,11 @@
 .search_input {
     border: white;
     border-radius: 5px;
-    height: 35px;
+    height: 33px;
     width: 300px;
     margin-top: 0px;
     top: 0px;
+    font-size: 20px;
 }
 
 .search_btn {

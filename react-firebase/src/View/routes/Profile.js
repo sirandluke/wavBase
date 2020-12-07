@@ -101,34 +101,11 @@ const Profile = ({ history }) => {
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-            {/*<div className="nav_bar">*/}
-            {/*    <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />*/}
-
-            {/*    <form className="search_bar">*/}
-            {/*        <input className="search_input" type="text" placeholder=" Search"*/}
-            {/*               name="search"/>*/}
-            {/*        <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>*/}
-            {/*        /!*TODO: not sure why this button takes me to sign in page everytime*!/*/}
-            {/*    </form>*/}
-            {/*    <img id="profile_picture2" className="top_icon"/>*/}
-
-            {/*    <DropdownButton*/}
-            {/*        id="dropdown-item-button"*/}
-            {/*        title={ username }*/}
-            {/*        variant="success">*/}
-            {/*        <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>*/}
-            {/*        <br />*/}
-            {/*        <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>*/}
-            {/*        <br />*/}
-            {/*        <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>*/}
-            {/*        <br />*/}
-            {/*    </DropdownButton>*/}
-            {/*</div>*/}
             <NavBar />
-            <ProfileInfo />
+            <ProfileInfo id="profileInfo"/>
 
             <div>
-                <Button variant="primary" onClick={handleShow}>
+                <Button variant="primary" id="editProfilePicBtn" onClick={handleShow}>
                     Edit Profile Picture
                 </Button>
                 <Modal show={show} onHide={handleClose}>
@@ -147,7 +124,8 @@ const Profile = ({ history }) => {
                     </Modal.Footer>
                 </Modal>
             </div>
-            <h1>Profile</h1>
+
+            <br />
             <form method="post" onSubmit={handleInfoUpdate}>
                 <label>
                     Username <br/>

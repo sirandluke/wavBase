@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import { Redirect } from "react-router-dom";
 import {FollowerCount} from "./FollowerCount";
+import "./NameBioFollowers.css"
 
 export class NameBioFollowers extends Component{
     render(){
@@ -22,12 +23,13 @@ export class NameBioFollowers extends Component{
 
         return(
             <div>
-                <h3 style={{textAlign:'center', fontSize:'24px'}}>{this.props.username}</h3>
+                <h3 id="username">{this.props.username}</h3>
                 <FollowerCount
                     followers={checkFollower()}
                     following={checkFollowing()}
                 />
-                <p>{this.props.biography}</p>
+                <hr />
+                <p id="bio">{this.props.biography}</p>
             </div>
         )
     }
