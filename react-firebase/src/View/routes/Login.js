@@ -108,8 +108,6 @@ const Login = ({history}) => {
 
             <div className="login_right">
                 <h1 className="signIn_header">Sign in to wavBase</h1>
-                {/*<h1>{K.app_name}</h1>*/}
-                {/*<h2>Login</h2>*/}
                 <form onSubmit={handleLogin}>
                     <label>
                         <input

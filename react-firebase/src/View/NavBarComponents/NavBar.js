@@ -8,7 +8,7 @@ import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
 import SearchBar from "../SearchComponents/SearchBar";
-
+import "./NavBar.css"
 
 function NavBar() {
     let history = useHistory();

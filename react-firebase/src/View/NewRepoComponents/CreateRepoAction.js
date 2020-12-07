@@ -69,12 +69,12 @@ export class CreateRepoAction extends Component {
                 <form className="make_repo_form" onSubmit={this.createRepo}>
                     <h1>Create Repository</h1>
                     <div className="topPart">
-                    <label className="name_box">
-                        <b1>{name}</b1>
-                    </label>
-                    <label>
-                        <input className="repoName_input" name="repo_name" type="text" required="required" placeholder="Repository Name"/>
-                    </label>
+                        <label className="name_box">
+                            <b1>{name}</b1>
+                        </label>
+                        <label>
+                            <input className="repoName_input" name="repo_name" type="text" required="required" placeholder="Repository Name"/>
+                        </label>
                     </div>
                     <br/>
                         <div className="public_option">

@@ -133,10 +133,17 @@ h2 {
 }
 
 .profile_info{
-    /* background-color: blueviolet; */
-   
+     /*background-color: blueviolet;*/
+     width: 400px;
+    float: left;
 }
 
+.repository_lists {
+    float: right;
+    position: absolute;
+    width: 50%;
+    margin-top: 40px;
+}
 
 .repository_lists:nth-child(2){
     max-height: 1rem;
