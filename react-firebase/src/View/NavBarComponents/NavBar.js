@@ -6,10 +6,12 @@ import "../routes/PersonalHome.css";
 import {useHistory} from 'react-router-dom';
 import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
+import {Link} from "react-router-dom";
+import SearchBar from "../SearchComponents/SearchBar";
 
 
-function NavBar() {
-    let history = useHistory();
+function NavBar({history}) {
+
     let user = db.auth().currentUser;
     //let name, email, photoUrl, uid, emailVerified;
     let name = "User";
@@ -28,7 +30,7 @@ function NavBar() {
 
     let storage = db.storage();
     let storageRef = storage.ref();
-    if (profile_picture_path != undefined){
+    if (profile_picture_path !== undefined){
         storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
             let img = document.getElementById('profile_picture');
             if (img != null)
@@ -50,12 +52,20 @@ function NavBar() {
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
 
-            <form className="search_bar">
+            {/*<form className="search_bar">
+
                 <input className="search_input" type="text" placeholder=" Search"
                        name="search"/>
-                <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
-                {/*TODO: not sure why this button takes me to sign in page everytime*/}
-            </form>
+                <button type="submit" className="search_btn">
+                    <i className="fa fa-search">
+
+                    </i>
+                </button>
+
+                TODO: not sure why this button takes me to sign in page everytime
+            </form> */}}
+            <SearchBar />
+
             <img id="profile_picture2" className="top_icon"/>
 
             <DropdownButton

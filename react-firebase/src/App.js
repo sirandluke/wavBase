@@ -9,11 +9,15 @@ import NewRepo from "./View/routes/NewRepo";
 import Repository from "./View/routes/Repository";
 import Profile from "./View/routes/Profile";
 import Snapshot from "./View/routes/Snapshot";
+import ResultsInterface from "./View/routes/ResultsInterface";
+import UserSearchResult from "./View/SearchResultsComponents(zhifei)/UserSearchResult";
 
 import PrivateRoute from "./View/auth/PrivateRoute";
 import { AuthProvider} from "./View/auth/Auth";
 
 import './App.css';
+
+import SearchResults from "./View/routes/SearchResults";
 
 function App() {
     return(
@@ -28,6 +32,9 @@ function App() {
                     <PrivateRoute exact path="/repository" component={Repository} />
                     <PrivateRoute exact path="/snapshot" component={Snapshot} />
                     <PrivateRoute exact path="/profile" component={Profile} />
+                    <PrivateRoute path='/search_result' component={ResultsInterface}/>
+                    <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
+                    <PrivateRoute exact path='/search' component={SearchResults} />
                 </div>
             </Router>
         </AuthProvider>
