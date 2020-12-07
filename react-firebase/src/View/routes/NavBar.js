@@ -4,10 +4,13 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import db from "../../Model/base";
 import "./PersonalHome.css";
+import {useHistory} from 'react-router-dom';
 import logo from "../../Images/wavBase_logo.png";
+import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 
 
-const NavBar = ({history}) => {
+function NavBar() {
+    let history = useHistory();
     let user = db.auth().currentUser;
     //let name, email, photoUrl, uid, emailVerified;
     let name = "User";
@@ -39,7 +42,7 @@ const NavBar = ({history}) => {
                     id="dropdown-item-button" 
                     title={ name }
                     variant="success">
-                        <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
+                     <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
                         <br />
                         <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
                         <br />
@@ -49,7 +52,7 @@ const NavBar = ({history}) => {
             
             </div>
         </div>
-    );
+    )
 };
 
 export default NavBar;
