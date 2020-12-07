@@ -1,12 +1,14 @@
 import React, {useEffect, useState, useHistory} from "react";
 import {Link, useParams} from "react-router-dom";
 import {IncludeId} from "../../components/ParseId";
+import UserDisplayComponent from "./UserDisplayComponent";
 
-function FollowersPage(props) {
+function FollowersPopUp(props) {
 
     const [users, setUsers] = useState(0);
     const [current_user, setUser] = useState(0);
-    const {uid} = useParams();
+    //const {uid} = useParams();
+    const uid = props.id;
 
     const getUserRef = (uid) => {
         let config = {
@@ -56,10 +58,10 @@ function FollowersPage(props) {
             <h2>{current_user.username}'s followers</h2>
             {users && users.map((user, key) => (
                 (IncludeId(current_user.followers, user.key)) ?
-                    <button id={key}><Link to={'/user/' + user.key}>{user.username}</Link></button> : <></>
+                    <UserDisplayComponent id={key} uid={user.key} username={user.username}/> : <></>
             ))}
         </div>
     );
 }
 
-export default FollowersPage;
+export default FollowersPopUp;

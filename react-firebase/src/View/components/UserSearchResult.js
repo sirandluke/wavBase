@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useHistory} from "react";
 import db from "../../Database_config";
 import {Link} from "react-router-dom";
+import UserDisplayComponent from "./UserDisplayComponent";
 
 function UserSearchResult(props) {
 
@@ -40,13 +41,13 @@ function UserSearchResult(props) {
         (user.val().username.toLowerCase().includes(search_input.toLowerCase())) ? <button>{user.val().username}</button> : <></>
     ))}*/
 
-
+    //<button id={key}><Link to={'/user/' + user.key}>{user.username}</Link></button>
     return (
         <div>
             <h2>User Search Result</h2>
             {users && users.map((user, key) => (
-                (user.username.toLowerCase().includes(search_input.toLowerCase())) ?
-                    <button id={key}><Link to={'/user/' + user.key}>{user.username}</Link></button> : <></>
+                (user.username.toLowerCase().includes(search_input.toLowerCase()) && (user.key !== uid)) ?
+                    <UserDisplayComponent id={key} uid={user.key} username={user.username}/> : <></>
             ))}
         </div>
     );

@@ -13,9 +13,11 @@ import TagsSearchResult from "../components/TagsSearchResult";
 import UserSearchResult from "../components/UserSearchResult";
 import Repository from "./Repository";
 import Profile from "./Profile";
-import FollowersPage from "../components/FollowersPage";
-import FollowingPage from "../components/FollowingPage";
+//import FollowersPage from "../components/FollowersPage";
+//import FollowingPage from "../components/FollowingPage";
 import NewRepo from "./NewRepo";
+import Popout from 'react-popout'
+import {GetProfileImageUrl} from "../../model/GetProfileImageUrl";
 
 export let search_input = '';
 
@@ -52,14 +54,27 @@ function PersonalHome(props) {
             if (!props.user) {
                 getUserRef(current_uid)
                     .then(user_snapshot => {
+                        setUser(user_snapshot);
                         document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
 
-                        db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
+                        let image_path = user_snapshot.profile_picture;
+                        let image_url;
+                        if (localStorage.getItem(image_path)) {
+                            image_url = localStorage.getItem(image_path);
+                        } else {
+                            db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
+                                image_url = url;
+                                localStorage.setItem(image_path, url);
+                            });
+                        }
+                        let img = document.getElementById('profile_avatar');
+                        img.src = image_url;
+                        /*db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
                             let img = document.getElementById('profile_avatar');
                             img.src = url;
-                        });
+                        });*/
+                        localStorage.setItem('following', user_snapshot.following);
 
-                        setUser(user_snapshot);
                     });
             }
             return () => {
@@ -116,8 +131,6 @@ function PersonalHome(props) {
                               component={TagsSearchResult}/>
                 <PrivateRoute path={"/repo/:repo_id"} component={TestIndividualRepoPage}/>
                 <PrivateRoute path={'/user/:user_id'} component={Repository}/>
-                <PrivateRoute path={'/followers/:uid'} component={FollowersPage}/>
-                <PrivateRoute path={'/following/:uid'} component={FollowingPage}/>
             </div>
         </div>
     );

@@ -6,11 +6,16 @@ import {RepoDisplayComponent} from "../components/RepoDisplayComponent";
 import PrivateRoute from "../auth/PrivateRoute";
 import TestIndividualRepoPage from "../components/TestIndividualRepoPage";
 import {AddId, DeleteId, getIdCount, IncludeId} from "../../components/ParseId";
+import Popup from "reactjs-popup";
+import FollowersPopUp from "../components/FollowersPopUp";
+import FollowingPopUp from "../components/FollowingPopUp";
 
 function Repository(props) {
     const history = useHistory();
     const [repos, setRepos] = useState(props.repos || []);
-    const [user, setUser] = useState(props.user || []);
+    //const [user, setUser] = useState(props.user || []);
+    const [user, setUser] = useState(0);
+
     const {user_id} = useParams();
 
     let current_uid = db.auth().currentUser.uid;
@@ -63,7 +68,7 @@ function Repository(props) {
                     setRepos(repos_list);
                 });
         }
-        if (!props.user) {
+        if (!user) {
             getUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
                 let profile_username = document.getElementById('display_username');
@@ -71,14 +76,24 @@ function Repository(props) {
                     profile_username.innerText = user_snapshot.username;
                 }
 
-                /*let follow_info = document.getElementById('follow');
-                if (follow_info != null) {
-                    let followers = 0;
-                    if (user_snapshot.followers !== '') {followers = getIdCount(user_snapshot.followers)};
-                    let followings = 0;
-                    if (user_snapshot.following !== '') {followings = getIdCount(user_snapshot.following)};
-                    follow_info.innerText = followers + " followers -- " + followings + " following";
-                }*/
+                let image_path = "defaults/test_user.png";
+                if (user_snapshot.profile_picture !== '') {
+                    image_path = user_snapshot.profile_picture;
+                }
+                let image_url;
+                if (localStorage.getItem(image_path)) {
+                    image_url = localStorage.getItem(image_path);
+                } else {
+                    db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
+                        image_url = url;
+                        localStorage.setItem(image_path, url);
+                    });
+                }
+
+                let img2 = document.getElementById('profile_image');
+                if (img2 != null) {
+                    img2.src = image_url;
+                }
 
                 let bio_info = document.getElementById('bio');
                 if (bio_info != null) {
@@ -89,34 +104,34 @@ function Repository(props) {
                     ;
                     bio_info.innerText = user_bio;
                 }
-
-                db.storage().ref().child(user_snapshot.profile_picture).getDownloadURL().then(function (url) {
-
-                    let img2 = document.getElementById('profile_image');
-                    if (img2 != null) {
-                        img2.src = url;
-                    }
-                });
             })
         }
         return () => {
             console.log('stop listen to repository');
         }
 
-    }, [props.repos, props.user]);
+    }, [props.repos, user]);
 
     const handleFollow = () => {
         updateFollow(uid, current_uid, 'follow');
         let tmp_user = user;
-        tmp_user = {...tmp_user, followers: AddId(tmp_user.followers, current_uid)}
+        let tmp_followers = AddId(tmp_user.followers, current_uid);
+        tmp_user = {...tmp_user, followers: tmp_followers};
+        localStorage.setItem('following', AddId(localStorage.getItem('following'), uid));
         setUser(tmp_user);
     }
 
     const handleUnfollow = () => {
         updateFollow(uid, current_uid, 'unfollow');
         let tmp_user = user;
-        tmp_user = {...tmp_user, followers: DeleteId(tmp_user.followers, current_uid)}
+        let tmp_followers = DeleteId(tmp_user.followers, current_uid);
+        tmp_user = {...tmp_user, followers: tmp_followers}
+        localStorage.setItem('following', DeleteId(localStorage.getItem('following'), uid));
         setUser(tmp_user);
+    }
+
+    function handleFollowUpdate() {
+
     }
 
 
@@ -124,21 +139,19 @@ function Repository(props) {
         <div>
             <img id="profile_image" width={100} height={100}/>
             <h2 id={'display_username'}>username</h2>
-            <button id={'followers'}>
-                <Link to={'/followers/' + uid}>
-                    {getIdCount(user.followers)} followers
-                </Link>
-            </button>
-            <button id={'following'}>
-                <Link to={'/following/' + uid}>
-                    {getIdCount(user.following)} following
-                </Link>
-            </button>
+            <Popup trigger={<button id={current_uid + 'followers'}>{getIdCount(user.followers)} followers</button>}
+                   onClose={handleFollowUpdate} position={'right center'}>
+                <FollowersPopUp id={uid}/>
+            </Popup>
+            <Popup trigger={<button id={current_uid + 'following'}>{getIdCount(user.following)} following</button>}
+                   onClose={handleFollowUpdate} position={'right center'}>
+                <FollowingPopUp id={uid}/>
+            </Popup>
             <br/>
             {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?
                 <button onClick={handleFollow}>Follow</button> : <></>}
             {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
-                <button onClick={handleUnfollow}>Following</button> : <></>}
+                <button onClick={handleUnfollow}>Unfollow</button> : <></>}
             <p id={'bio'}>Bio</p>
             {(uid === current_uid) ? <h2>Your Repositories</h2> : <h2>This User's Repositories</h2>}
             {(uid === current_uid) ? <button><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
