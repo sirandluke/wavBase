@@ -95,7 +95,7 @@ const PersonalHome = ({history}, props) => {
                     </div>
                 </div>
             </div>
-            <img src={sine_wave_1} style={{width:"100%", bottom:'-15%', zIndex:"-99", position:"absolute"}}/> 
+            <img src={sine_wave_1} style={{width:"100%", float:'bottom', zIndex:"-99", position:"relative", marginTop:'1rem'}}/> 
         </div>
     );
 }

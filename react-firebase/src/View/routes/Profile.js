@@ -7,8 +7,9 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
-import "./Profile.css"
-import '../NavBarComponents/NavBar.css'
+import "./Profile.css";
+import sine_wave_1 from "../../Images/sine_wave_1.png";
+import '../NavBarComponents/NavBar.css';
 import NavBar from '../NavBarComponents/NavBar.js';
 
 
@@ -92,23 +93,14 @@ const Profile = ({ history }) => {
         });
     }
 
-    const redirectProfile = () => {
-        // history.push("/profile");
-        alert('You are already on Profile Page!');
-    }
-
-
-
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar />
+            <div className="profile_div">
             <ProfileInfo uid={uid} />
 
-            <div>
-                <Button variant="primary" id="editProfilePicBtn" onClick={handleShow}>
-                    Edit Profile Picture
-                </Button>
+            <div id="profile_row_2">
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Choose Your Profile Picture</Modal.Title>
@@ -124,29 +116,33 @@ const Profile = ({ history }) => {
 
                     </Modal.Footer>
                 </Modal>
-            </div>
-
-            <br />
+                
+            
             <form method="post" onSubmit={handleInfoUpdate}>
                 <label>
-                    Username <br/>
-                    <input name="username" type="text" id="new_username" placeholder="Username"/>
+                    <h3>Update Username</h3> 
+                    
+                    <input className="edit_input_1" name="username" type="text" id="new_username" placeholder="Username"/>
                 </label>
                 <br/>
                 <label>
-                    Bio <br/>
-                    <input name="bio" type="text" id="new_bio" placeholder="Bio Information"/>
+                    <h3>Update Bio</h3>
+                    <textarea className="edit_input_2" name="bio" type="text" id="new_bio" placeholder="Bio Information"/>
                 </label>
                 <br/>
-                <input type="submit" value="Update"/>
+                <input className="update_button" type="submit" value="Update"/>
             </form>
-            <button onClick={resetPassword}>Reset Password</button>
-            <DropdownButton id="dropdown-basic-button" title="User">
-                <Dropdown.Item as="button" >My Profile</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>
-            </DropdownButton>
-            <button onClick={redirectHome}>Go Back to Home!</button>
+            <div style={{marginBottom:"2rem"}} className="line"/>
+            <div className="profile_row_2_buttons">
+            <Button variant="primary" id="editProfilePicBtn" onClick={handleShow}>
+                    Edit Profile Picture
+                </Button>
+                <button className="edit_profile_button 1" onClick={resetPassword}>Reset Password</button>
+                <button className="edit_profile_button 2" onClick={redirectHome}>Go Back to Home!</button>
+            </div>
+            </div>
+            </div>
+            <img src={sine_wave_1} style={{width:"100%", float:'bottom', zIndex:"-99", position:"relative", marginTop:'1rem'}}/> 
         </div>
     );
 }
