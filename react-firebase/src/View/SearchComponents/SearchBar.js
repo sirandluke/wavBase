@@ -83,11 +83,12 @@ class SearchBar extends Component {
     render() {
         return(
             <div>
-                <form onSubmit={(e) => {this.handleSearch(e)}}>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+                <form className="search_bar" onSubmit={(e) => {this.handleSearch(e)}}>
                     <label>
-                        <input type="text" name="query" placeholder="search" />
+                        <input className="search_input" type="text" name="query" placeholder="search" />
                     </label>
-                    <button type="submit">Search</button>
+                    <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
                 </form>
             </div>
         );

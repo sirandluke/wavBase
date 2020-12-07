@@ -88,6 +88,7 @@ const Profile = ({ history }) => {
     const resetPassword = () => {
         db.auth().sendPasswordResetEmail(user_email).then(function() {
             console.log("Password Reset Email sent to:" + user_email);
+            alert("Password Reset Email sent to: " + user_email);
         }).catch(function(error) {
             console.log("Password Reset Email not sent successfully");
         });

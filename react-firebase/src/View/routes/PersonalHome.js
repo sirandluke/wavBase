@@ -80,7 +80,6 @@ const PersonalHome = ({history}, props) => {
                     <div className="col_1">
                     <div className="profile_info">
                         <ProfileInfo uid={uid} />
-                        {/* <div style={{width:'100%',height:'2px', backgroundColor:'black'}}/> */}
                     </div>
                     </div>
 

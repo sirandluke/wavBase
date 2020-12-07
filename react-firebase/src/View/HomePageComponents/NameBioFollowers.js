@@ -5,18 +5,15 @@ import "./NameBioFollowers.css"
 
 export class NameBioFollowers extends Component{
     render(){
-        // if (this.props.followers == '')
-        //     this.props.followers = 0
-        // if (this.props.following == '')
-        //     this.props.following = 0
+
         const checkFollower = () => {
-            if (this.props.followers == '')
+            if (this.props.followers == '' || !Number.isInteger(this.props.followers))
                 return 0;
             return this.props.followers;
         }
 
         const checkFollowing = () => {
-            if (this.props.followers == '')
+            if (this.props.followers == '' || !Number.isInteger(this.props.following))
                 return 0;
             return this.props.following;
         }

@@ -68,10 +68,8 @@ const Register = ({ history }) => {
                            name="search"/>
                     <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
                 </form>
-
             </div>
-            {/*<h1>{K.app_name}</h1>*/}
-            {/*<h2>Register an Account</h2>*/}
+
             <div className="register_left">
                 <form className="register_form" onSubmit={handleRegister}>
                     <label>
@@ -99,35 +97,12 @@ const Register = ({ history }) => {
             </div>
 
             <div className="upperRight_text">
-                <h1>Built for <br/> music creators</h1>
+                <h1 id="bold">Built for <br/> music creators</h1>
                 <p1>
                     wavBase is a development platform designed for <span className="bold_text">music producers</span>. From open source to collaboration, you can <span className="bold_text">collaborate</span> with others, <span className="bold_text">manage projects</span>, and <span className='bold_text'>share</span> your work to millions of music listeners.
                 </p1>
             </div>
-            {/*
-            <div className="lowerRight_text">
-                <h2>Get started with wavBase </h2>
-                <p2>Collaborate on a whole new level</p2>
-            </div>/}
-
-
-            {/* <svg className="wave_shape" transform="translate(0,125)" width="100%" height="233" viewBox="0 0 1440 233" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M436 33.0881C278.129 -126.817 -112.5 358.5 -112.5 358.5L1480.5 312.088C1480.5 312.088 1365.53 -27.3911 1103.5 113.588C841.466 254.567 593.871 192.993 436 33.0881Z" fill="#00A3E7" stroke="#00A3E7"/>
-            </svg> */}
-
             <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-3rem", zIndex:"-99", position:"absolute"}}/>
-
-            {/*<button className="link_button" onClick={redirectLogIn}>Already have an account?</button>*/}
-            {/*
-            //Not sure if we need fb and twitter on the register(sign up) page
-            <div className="footer">
-                <p className="company">© 2020 wavBase Inc.</p>
-                <div className="social_media">
-                    <a href="#" className="fa fa-facebook fa-2x"></a>
-                    <a href="#" className="fa fa-twitter fa-2x"></a>
-                </div>
-            </div>
-            */}
         </div>
 
     );

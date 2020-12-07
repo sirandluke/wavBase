@@ -9,6 +9,7 @@ import db from "../../Model/base";
 import downArrow from "../../Images/downArrow.png";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
 import '../NavBarComponents/NavBar.css'
+import './NewRepo.css'
 
 
 const NewRepo = ({ history }) => {
@@ -59,7 +60,7 @@ const NewRepo = ({ history }) => {
             */}
             <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-3rem", zIndex:"-99", position:"absolute"}}/>
 
-            <CreateRepoAction history={history}/>
+            <CreateRepoAction id="createRepoForm" history={history}/>
 
 
         </div>

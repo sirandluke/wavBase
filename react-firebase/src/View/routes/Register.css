@@ -47,29 +47,26 @@ body {
 }*/
 
 .signIn_btn {
-    border: none;
-    float: left;
+    /*border: none;*/
+    /*float: left;*/
+    /*position: absolute;*/
+    /*width: 100px;*/
+    /*height: 40px;*/
+    /*right: 30px;*/
+    /*top: 15px;*/
+    float: right;
     position: absolute;
     width: 100px;
     height: 40px;
     right: 30px;
-    top: 15px;
-    /*
-     border: none;
-    border-radius: 8px;
-    height: 40px;
-    background-color: #00A3E7;
-    color: white;
-    padding: 5px 55px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    top: 8px;
+    border-radius: 10px;
+    background-color: white;
+
     transition-duration: 0.4s;
     cursor: pointer;
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2),0 7px 5px 0 rgba(0,0,0,0.1);
-     */
+
 }
 
 .signIn_btn:hover {
@@ -78,9 +75,8 @@ body {
 
 .register_form {
     position: absolute;
-    /*left: 140px;*/
     left: 10%;
-    top: 150px;
+    top: 15%;
     background-color: white;
     padding: 30px 20px 30px 20px;
     border-radius: 10px;
@@ -93,7 +89,7 @@ body {
     border-color: darkgrey;
     border-style: solid;
     height: 30px;
-    width: 240px;
+    width: 270px;
     margin: 5px 0px 20px 0px;
     padding-left: 10px;
 }
@@ -102,6 +98,7 @@ body {
     border: none;
     border-radius: 8px;
     height: 40px;
+    width: 270px;
     background-color: #00A3E7;
     color: white;
     padding: 5px 55px;
@@ -131,7 +128,7 @@ body {
     z-index:2;
 }
 
-h1 {
+#bold {
     font-style: normal;
     font-weight: bold;
     /* padding-right: 30rem; */
