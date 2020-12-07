@@ -5,6 +5,13 @@
 }
 
 #bio {
-    width: 308px;
+    width: 90%;
+    margin-left: 1rem;
     text-align: left;
+}
+.bio_div{
+    border: 1px solid black;
+    height: 10rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

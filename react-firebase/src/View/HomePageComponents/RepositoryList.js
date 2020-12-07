@@ -66,14 +66,9 @@ class RepositoryList extends Component {
         );
 
         return (
-            <div style={{paddingTop: '20px', overflowY:'scroll', height:"65%"}}>
+            <div className="repo_list_div">
                 {/* <table style={{border: '1px solid blue'}}> */}
                 <table>
-                    <thead>
-                    {/* <tr>
-                        <th style={{textAlign:"left"}}>Your Repositories</th>
-                    </tr> */}
-                    </thead>
                     <tbody>
                         { repoElement }
                     </tbody>

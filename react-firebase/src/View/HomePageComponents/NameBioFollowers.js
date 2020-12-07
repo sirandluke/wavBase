@@ -29,7 +29,9 @@ export class NameBioFollowers extends Component{
                     following={checkFollowing()}
                 />
                 <hr />
-                <p id="bio">{this.props.biography}</p>
+                <div className="bio_div">
+                    <p id="bio">{this.props.biography}</p>
+                </div>
             </div>
         )
     }
