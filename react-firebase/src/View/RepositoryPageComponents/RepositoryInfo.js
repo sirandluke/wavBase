@@ -3,6 +3,7 @@ import db from "../../Model/base";
 import { withRouter } from "react-router-dom";
 import {findRepositories} from "../../Model/FirebaseHandler";
 import loading from "../../Images/loader.gif";
+import './RepositoryInfo.css'
 
 export class RepositoryInfo extends Component {
     constructor(props) {
@@ -62,7 +63,11 @@ export class RepositoryInfo extends Component {
                 </div>
                 <div className="repo_title">
                     <h2>{ this.state.username }/{ this.state.repo_name }</h2>
-                    <h3>BPM:{ this.state.bpm } | Key:{ this.state.key }</h3>
+                    <h3>BPM:{ this.state.bpm } | Key: { this.state.key }</h3>
+                </div>
+
+                <div className="repo_description">
+                    <p>Repo Description</p>
                     <p>{ this.state.description }</p>
                 </div>
             </div>

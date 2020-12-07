@@ -38,6 +38,8 @@
 
 .modal-close-button {
     font-size: 1.4rem;
+    position: absolute;
+    margin-top: 0.5rem;
     font-weight: 700;
     line-height: 1;
     color: #000;

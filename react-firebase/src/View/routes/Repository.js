@@ -7,7 +7,7 @@ import {RepositoryInfo} from "../RepositoryPageComponents/RepositoryInfo";
 import NavBar from './NavBar.js';
 import SnapshotList from "../RepositoryPageComponents/SnapshotList";
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
-
+import './Repository.css';
 import SnapshotModal from "../RepositoryModals/SnapshotModal";
 import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
@@ -34,20 +34,22 @@ const Repository = ({history}) => {
     return (
         <div>
             <NavBar/>
-            
             <RepositoryInfo repo={ location.state.repo }/>
+            <div className="line"/>
+            <div className="info_upload_row">
+                <h3>Snapshots</h3>
+                <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
+            </div>
+            
+            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={location.state.repo.repo_id}/>
 
-            <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
-            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={location.state.repo.repo_id}>
-
-            </SnapshotModal>
 
             <SnapshotList
                 repo_id={ location.state.repo.repo_id }
                 repo_name={location.state.repo.name}
             />
 
-            <button onClick={ redirectHome }>Go Back to Home!</button>
+            <button className="redirect_home" onClick={ redirectHome }>Go Back to Home!</button>
         </div>
     );
 };

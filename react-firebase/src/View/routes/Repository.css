@@ -1,0 +1,33 @@
+.info_upload_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 57.5%;
+    margin-left: 2rem;
+}
+.info_upload_row>h3{
+    flex:1;
+    font-weight: 400;
+}
+.line{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.upload_pop_up{
+    /* width: 10rem; */
+    border: 1px solid black;
+}
+.upload_pop_up:hover{
+    filter:invert(100%);
+    transition: .25s;
+}
+
+.redirect_home{
+    border: 1px solid black;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+.redirect_home:hover{
+    filter:invert(100%);
+    transition: .25s;
+}
