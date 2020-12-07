@@ -57,7 +57,7 @@ const NewRepo = ({ history }) => {
 
             </div>
             */}
-            <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-3rem", zIndex:"-99", position:"absolute"}}/>
+            <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-10rem", zIndex:"-99", position:"absolute"}}/>
 
             <CreateRepoAction history={history}/>
 
