@@ -116,9 +116,9 @@ function Profile(props) {
         UpdateUserInfo(new_username, new_bio);
         //re_render(re_render_index + 1);
         if (new_username !== "") {
-            let tmp_user = user;
+            /*let tmp_user = user;
             tmp_user = {...tmp_user, username: new_username};
-            setUser(tmp_user);
+            setUser(tmp_user);*/
             let profile_username = document.getElementById('display_username');
             if (profile_username != null) {
                 profile_username.innerText = new_username;
@@ -126,9 +126,9 @@ function Profile(props) {
             console.log('New Username: ' + new_username);
         }
         if (new_bio !== "") {
-            let tmp_user = user;
+            /*let tmp_user = user;
             tmp_user = {...tmp_user, biography: new_bio};
-            setUser(tmp_user);
+            setUser(tmp_user);*/
             let bio_info = document.getElementById('bio');
             if (bio_info != null) {
                 bio_info.innerText = new_bio;
@@ -166,7 +166,8 @@ function Profile(props) {
                 let user_bio = 'PROFESSIONALISM';
                 if (user_snapshot.biography !== '') {
                     user_bio = user_snapshot.biography
-                };
+                }
+                ;
                 bio_info.innerText = user_bio;
             }
 
@@ -200,9 +201,6 @@ function Profile(props) {
         }
     }, [props.user]);
 
-    function handleFollowUpdate() {
-
-    }
 
     return (
         <div>
@@ -218,11 +216,11 @@ function Profile(props) {
             </div>
             <h2 id={'display_username'}>username</h2>
             <Popup trigger={<button id={uid + 'followers'}>{getIdCount(current_user.followers)} followers</button>}
-                   onClose={handleFollowUpdate} position={'right center'}>
+                   position={'right center'}>
                 <FollowersPopUp id={uid}/>
             </Popup>
             <Popup trigger={<button id={uid + 'following'}>{getIdCount(current_user.following)} following</button>}
-                   onClose={handleFollowUpdate} position={'right center'}>
+                   position={'right center'}>
                 <FollowingPopUp id={uid}/>
             </Popup>
             <p id={'bio'}>bio</p>

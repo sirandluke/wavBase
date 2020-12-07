@@ -50,7 +50,7 @@ function FollowersPopUp(props) {
         return () => {
             console.log('stop listen to user list and user');
         }
-    }, [current_user, users]);
+    }, [current_user, users, props.id]);
 
 
     return (

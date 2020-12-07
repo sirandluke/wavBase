@@ -2,6 +2,9 @@
  * @param {string} ids
  */
 function ParseIds(ids) {
+    if ((typeof ids) !== "string") {
+        ids = '';
+    }
     let id = [];
     if (ids !== '' && ids != null) {
         id = ids.split(",");
@@ -14,6 +17,9 @@ function ParseIds(ids) {
  * @param {string} id
  */
 export function AddId(ids, id) {
+    if ((typeof ids) !== "string") {
+        ids = '';
+    }
     if (ids === '') {
         return id;
     } else if (IncludeId(ids, id)) {
@@ -28,6 +34,9 @@ export function AddId(ids, id) {
  * @param {string} id
  */
 export function DeleteId(ids, id) {
+    if ((typeof ids) !== "string") {
+        ids = '';
+    }
     if (ids === '') {
         return ids;
     } else if (IncludeId(ids, id)) {

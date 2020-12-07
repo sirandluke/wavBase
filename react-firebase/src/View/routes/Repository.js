@@ -9,12 +9,13 @@ import {AddId, DeleteId, getIdCount, IncludeId} from "../../components/ParseId";
 import Popup from "reactjs-popup";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
+import {treeFilter} from "enzyme/src/RSTTraversal";
 
 function Repository(props) {
     const history = useHistory();
     const [repos, setRepos] = useState(props.repos || []);
-    //const [user, setUser] = useState(props.user || []);
-    const [user, setUser] = useState(0);
+    const [user, setUser] = useState(props.user || []);
+    //const [user, setUser] = useState(0);
 
     const {user_id} = useParams();
 
@@ -23,6 +24,7 @@ function Repository(props) {
     if (user_id != null) {
         uid = user_id;
     }
+    console.log('Entering', uid + "'s repo page");
 
     const getUserRef = (uid) => {
         let config = {
@@ -57,6 +59,7 @@ function Repository(props) {
     }
 
     useEffect(() => {
+        //if (localStorage.getItem('repo_page_id') !== uid) {
         console.log('listen to repository');
         if (!props.repos) {
             findRepos(uid)
@@ -68,10 +71,10 @@ function Repository(props) {
                     setRepos(repos_list);
                 });
         }
-        if (!user) {
+        if (!props.user) {
             getUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
-                let profile_username = document.getElementById('display_username');
+                let profile_username = document.getElementById(uid + 'display_username');
                 if (profile_username != null) {
                     profile_username.innerText = user_snapshot.username;
                 }
@@ -90,12 +93,12 @@ function Repository(props) {
                     });
                 }
 
-                let img2 = document.getElementById('profile_image');
+                let img2 = document.getElementById(uid + 'profile_image');
                 if (img2 != null) {
                     img2.src = image_url;
                 }
 
-                let bio_info = document.getElementById('bio');
+                let bio_info = document.getElementById(uid + 'bio');
                 if (bio_info != null) {
                     let user_bio = 'PROFESSIONALISM';
                     if (user_snapshot.biography !== '') {
@@ -106,11 +109,20 @@ function Repository(props) {
                 }
             })
         }
+
+        //localStorage.setItem('repo_page_id', uid);
+        //}
         return () => {
+            if (document.getElementById(uid + 'followers popup')) {
+                //document.getElementById(uid + 'followers popup').open=false;
+            }
+            if ( document.getElementById(uid + 'following popup')) {
+                //document.getElementById(uid + 'following popup').open=false;
+            }
             console.log('stop listen to repository');
         }
 
-    }, [props.repos, user]);
+    }, [props.repos, props.user, useParams()]);
 
     const handleFollow = () => {
         updateFollow(uid, current_uid, 'follow');
@@ -130,21 +142,17 @@ function Repository(props) {
         setUser(tmp_user);
     }
 
-    function handleFollowUpdate() {
-
-    }
-
 
     return (
         <div>
-            <img id="profile_image" width={100} height={100}/>
-            <h2 id={'display_username'}>username</h2>
-            <Popup trigger={<button id={current_uid + 'followers'}>{getIdCount(user.followers)} followers</button>}
-                   onClose={handleFollowUpdate} position={'right center'}>
+            <img id={uid + "profile_image"} width={100} height={100}/>
+            <h2 id={uid + 'display_username'}>username</h2>
+            <Popup id={uid + 'followers popup'} trigger={<button id={uid + 'followers button'}>{getIdCount(user.followers)} followers</button>}
+                   position={'right center'}>
                 <FollowersPopUp id={uid}/>
             </Popup>
-            <Popup trigger={<button id={current_uid + 'following'}>{getIdCount(user.following)} following</button>}
-                   onClose={handleFollowUpdate} position={'right center'}>
+            <Popup id={uid + 'following popup'} trigger={<button id={uid + 'following button'}>{getIdCount(user.following)} following</button>}
+                   position={'right center'} >
                 <FollowingPopUp id={uid}/>
             </Popup>
             <br/>
@@ -152,7 +160,7 @@ function Repository(props) {
                 <button onClick={handleFollow}>Follow</button> : <></>}
             {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
                 <button onClick={handleUnfollow}>Unfollow</button> : <></>}
-            <p id={'bio'}>Bio</p>
+            <p id={uid + 'bio'}>Bio</p>
             {(uid === current_uid) ? <h2>Your Repositories</h2> : <h2>This User's Repositories</h2>}
             {(uid === current_uid) ? <button><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
             <ul>

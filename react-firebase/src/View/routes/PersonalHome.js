@@ -13,8 +13,6 @@ import TagsSearchResult from "../components/TagsSearchResult";
 import UserSearchResult from "../components/UserSearchResult";
 import Repository from "./Repository";
 import Profile from "./Profile";
-//import FollowersPage from "../components/FollowersPage";
-//import FollowingPage from "../components/FollowingPage";
 import NewRepo from "./NewRepo";
 import Popout from 'react-popout'
 import {GetProfileImageUrl} from "../../model/GetProfileImageUrl";
@@ -74,7 +72,6 @@ function PersonalHome(props) {
                             img.src = url;
                         });*/
                         localStorage.setItem('following', user_snapshot.following);
-
                     });
             }
             return () => {

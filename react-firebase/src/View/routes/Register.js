@@ -11,6 +11,18 @@ import * as FirebaseHandler from "../../model/FirebaseHandler.js";
 
 const Register = ({ history }) => {
 
+    const CreateUser = (username, password, email) => {
+        let config = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                username, password, email
+            })
+        };
+        fetch('http://localhost:8000/user_info/create_user', config)
+            .catch(error => console.log(error));
+    }
+
     const handleRegister = (event) => {
         event.preventDefault();
 
@@ -31,7 +43,8 @@ const Register = ({ history }) => {
 
             try {
                 // Creates user via FirebaseHandler using returned element values
-                FirebaseHandler.createUser(username.value, password.value, email.value);
+                //FirebaseHandler.createUser(username.value, password.value, email.value);
+                CreateUser(username.value, password.value, email.value);
                 history.push("/");
             } catch (error) {
                 const errorCode = error.code;

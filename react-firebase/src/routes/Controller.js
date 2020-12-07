@@ -5,6 +5,7 @@ const GetRepos = require('../model/GetRepos');
 const GetUsers = require('../model/GetUsers');
 const GetProfileImageUrl = require('../model/GetProfileImageUrl');
 
+const CreateUser = require('../model/CreateUser');
 const UpdateProfileImage = require('../model/UpdateProfileImage');
 const UpdateUserInfo = require('../model/UpdateUserInfo');
 const UpdatePassword = require('../model/UpdatePassword');
@@ -30,6 +31,10 @@ router.get('/user_list', (req, res) => {
     GetProfileImageUrl(req.query.image_path)
         .then(doc => res.send(doc));
 })*/
+
+router.post('/user_info/create_user', (req, res) => {
+    CreateUser(req.body.username, req.body.password, req.body.email);
+})
 
 router.post('/user_info/update_profile_image', (req, res) => {
     UpdateProfileImage(req.body.uid, req.body.picture, req.body.picture_path);
