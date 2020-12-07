@@ -20,8 +20,9 @@ import sine_wave_1 from "../../Images/sine_wave_1.png"
 import Repository from "./Repository";
 
 // TODO: render searchbar, likes, (add more)
-const PersonalHome = ({history}) => {
+const PersonalHome = ({history}, props) => {
 
+    /*
     let user = db.auth().currentUser;
     //let name, email, photoUrl, uid, emailVerified;
     let name = "User";
@@ -35,6 +36,19 @@ const PersonalHome = ({history}) => {
             name = username;
         })
     }
+*/
+    let uid;
+    let username;
+    if (props.uid == null) {
+        uid = db.auth().currentUser.uid;
+    } else {
+        uid = props.uid;
+    }
+
+    let firebaseRef = db.database().ref('users/' + uid);
+    firebaseRef.on('value', (snapshot) =>{
+        username = snapshot.val().username;
+    })
 
     // let uid = db.auth().currentUser.uid;
     // let userRef = db.database().ref('users/' + uid);
@@ -75,7 +89,7 @@ const PersonalHome = ({history}) => {
                 <div className="row">
                     <div className="col_1">
                     <div className="profile_info">
-                        <ProfileInfo />
+                        <ProfileInfo uid={uid} />
                         <div style={{width:'100%',height:'2px', backgroundColor:'black'}}/>
                     </div>
                     </div>
@@ -86,7 +100,7 @@ const PersonalHome = ({history}) => {
                             <h7>Your Repositories</h7>
                             <button className="create_repository" onClick={ redirectCreateRepo }>Create Repository</button>
                         </div>
-                    <RepositoryList/>
+                    <RepositoryList uid={uid}/>
                     </div>
                     </div>
                 </div>

@@ -106,7 +106,10 @@ export class LoadingFiles extends Component {
         return (
             isLoading
                 ? <LoadingScreen message="Getting your files!"/>
-                : <FileList audio_objs={ audio_objs } proj_objs={ proj_objs }/>
+                : <FileList
+                    audio_objs={ audio_objs }
+                    proj_objs={ proj_objs }
+                    snapshot_name ={this.props.snapshot_name}/>
         );
     }
 }
