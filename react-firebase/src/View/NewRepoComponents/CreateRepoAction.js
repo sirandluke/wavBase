@@ -68,14 +68,15 @@ export class CreateRepoAction extends Component {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                 <form className="make_repo_form" onSubmit={this.createRepo}>
                     <h1>Create Repository</h1>
-                    <b1>{name}</b1>
+                    <div className="topPart">
+                    <label className="name_box">
+                        <b1>{name}</b1>
+                    </label>
                     <label>
                         <input className="repoName_input" name="repo_name" type="text" required="required" placeholder="Repository Name"/>
                     </label>
-
+                    </div>
                     <br/>
-
-                    <label>
                         <div className="public_option">
                             <input type="checkbox" />
                             <b2>Public</b2>
@@ -86,33 +87,33 @@ export class CreateRepoAction extends Component {
                             <b2>Private</b2>
                             <img src={privateLock} className={"private_globe"} />
                         </div>
-
-                    </label>
-
                     <br />
-                    <label>
-                        <input className="createRepo_input" name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM"/>
-                    </label>
-                    <br />
-                    <label>
-                        <input className="createRepo_input" name="key" type="text" required="required" placeholder="Key Signature"/>
-                    </label>
-                    <br />
-                    <label>
-                        <input className="createRepo_input" name="tags" type="text" placeholder="Tags"/>
-                    </label>
-                    <br />
+                    <div className="mainpart_input">
+                        <label>
+                            <input className="createRepo_input" name="bpm" type="number" min="60" max="250" required="required" placeholder="BPM"/>
+                        </label>
+                        <br />
+                        <label>
+                            <input className="createRepo_input" name="key" type="text" required="required" placeholder="Key Signature"/>
+                        </label>
+                        <br />
+                        <label>
+                            <input className="createRepo_input" name="tags" type="text" placeholder="Tags"/>
+                        </label>
 
 
-                    <br />
-                    <label>
-                        <textarea name="description" cols="40" rows="5" placeholder="Description" >
 
-                        </textarea>
-                    </label>
-                    <br />
+                       <br />
+                       <label>
+                            <textarea name="description" cols="40" rows="5" placeholder="Description" >
 
-                    <button className="create_button" type="submit">Create</button>
+                           </textarea>
+                        </label>
+                        <br />
+                        <button className="create_button" type="submit">Create</button>
+                    </div>
+
+
                 </form>
 
             </div>
