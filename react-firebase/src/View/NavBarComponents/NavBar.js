@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import db from "../../Model/TODELETE_base";
@@ -9,37 +9,47 @@ import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
 import SearchBar from "../SearchComponents/SearchBar";
 import "./NavBar.css"
+import {getProfileImageUrl, getUserRef} from "../../BackendFunctions";
 
-function NavBar() {
-    let history = useHistory();
-    let user = db.auth().currentUser;
-    //let name, email, photoUrl, uid, emailVerified;
-    let name = "User";
-    let username, profile_picture_path;
-    if (user != null) {
-        //name = user.email;
+function NavBar(props) {
 
-        let uid = db.auth().currentUser.uid;
-        let firebaseRef = db.database().ref('users/' + uid);
-        firebaseRef.on('value', (snapshot) =>{
-            username = snapshot.val().username;
-            profile_picture_path = snapshot.val().profile_picture;
-            name = username;
-        })
-    }
+    let current_uid = db.auth().currentUser.uid;
+    const history = useHistory();
+    const [user, setUser] = useState(props.user || []);
 
-    let storage = db.storage();
-    let storageRef = storage.ref();
-    if (profile_picture_path !== undefined){
-        storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
-            let img = document.getElementById('profile_picture');
-            if (img != null)
-                img.src = url;
-            let img2 = document.getElementById('profile_picture2');
-            if (img2 != null)
-                img2.src = url;
-        })
-    }
+    useEffect(
+        () => {
+            console.log('listen to home');
+            if (!props.user) {
+                getUserRef(current_uid)
+                    .then(user_snapshot => {
+                        setUser(user_snapshot);
+                        //document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
+
+                        let image_path = user_snapshot.profile_picture;
+                        let image_url;
+                        if (localStorage.getItem(image_path)) {
+                            image_url = localStorage.getItem(image_path);
+                        } else {
+                            getProfileImageUrl(image_path).then(url => {
+                                url.map((link, key) => {
+                                    image_url = link;
+                                })
+                                localStorage.setItem(image_path, image_url);
+                            });
+                        }
+                        console.log(image_url);
+                        let img = document.getElementById('profile_picture2');
+                        img.src = image_url;
+                        localStorage.setItem('following', user_snapshot.following);
+                    });
+            }
+            return () => {
+                console.log('stop listen to home');
+            }
+        }, [props.user]
+    );
+
 
     const redirectRepo = () => {
         history.push("/");
@@ -57,7 +67,7 @@ function NavBar() {
 
             <DropdownButton
                 id="dropdown-item-button"
-                title={ username }
+                title={ user.username }
                 variant="success">
                 
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>

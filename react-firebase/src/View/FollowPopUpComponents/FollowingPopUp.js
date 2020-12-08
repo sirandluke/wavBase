@@ -1,40 +1,21 @@
 import React, {useEffect, useState, useHistory} from "react";
 import {Link, useParams} from "react-router-dom";
-import {IncludeId} from "../../components/ParseId";
-import UserDisplayComponent from "./UserDisplayComponent";
+import {findUsers, getUserRef} from "../../BackendFunctions";
+import {IncludeId} from "../../GlobalComponent/ParseId";
+import UserDisplayComponent from "../SearchResultsComponents(zhifei)/UserDisplayComponent";
 
 function FollowingPopUp(props) {
 
     const [users, setUsers] = useState(0);
-    const [current_user, setUser] = useState(0);
+    const [current_user, setCurrentUser] = useState(0);
     //const {uid} = useParams();
     const uid=props.id;
-
-    const getUserRef = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log("Home page " + error));
-    }
-
-    const findUsers = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_list?' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
 
     useEffect(() => {
         console.log('listen to user list and user');
         if (!current_user) {
             getUserRef(uid).then(user_snapshot => {
-                setUser(user_snapshot);
+                setCurrentUser(user_snapshot);
             })
         }
         if (!users) {

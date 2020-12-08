@@ -1,11 +1,17 @@
-import * as K from "../Constants";
-import {DateToString} from "../GlobalComponent/Date";
-
 const db = require('../Database_config');
 
-module.exports = function CreateRepo(tags_id, repo_name, bpm, key, description) {
+const DateToString = () => {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate() <= 10 ? '0' + today.getDate() : today.getDate();
+    const year = today.getFullYear();
+    return month + '-' + day + '-' + year;
+}
+
+module.exports = function CreateRepo(tags_id, repo_name, bpm, key, is_private, description) {
     console.log("Creating a new Repository");
     try {
+        //TODO
         let uid = db.auth().currentUser.uid
         let firebaseRef = db.database().ref("repositories/")
         firebaseRef.push({
@@ -14,16 +20,16 @@ module.exports = function CreateRepo(tags_id, repo_name, bpm, key, description) 
             bpm: bpm,
             key: key,
             description: description,
-            snapshots: K.empty,
+            is_private: is_private,
+            snapshots: "",
             repo_likes: 0,
-            comments: K.empty,
-            thumbnail: K.default_repo_png,  // set default repository image.
+            comments: "",
+            thumbnail: "defaults/default_repo_thumbnail.png",  // set default repository image.
             upload_date: DateToString()
         })
         firebaseRef.off();
     }
     catch (error){
         console.log(error)
-        alert(K.unknown_err);
     }
 }

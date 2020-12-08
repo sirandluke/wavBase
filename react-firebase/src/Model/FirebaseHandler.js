@@ -96,7 +96,7 @@ const ref = db.database().ref();
  * Deletes user by user id
  * @param {string} uid 
  */
-export function deleteUser(uid) { 
+/*export function deleteUser(uid) {
     try {
         // Removes UID from Firebase
         ref.child("users/" + uid).remove().then(() => {
@@ -115,7 +115,7 @@ export function deleteUser(uid) {
     } catch(error) {
         console.log(error.message);
     }
-}
+}*/
 
 /*** wavBase.repositories queries ***/
 

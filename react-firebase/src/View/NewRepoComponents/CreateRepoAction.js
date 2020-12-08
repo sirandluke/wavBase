@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {insertRepository} from "../../Model/FirebaseHandler";
-import * as K from '../../Constants'
 import "../../App.css";
 import './CreateRepoAction.css'
 import privateLock from "../../Images/private.png";
 import publicGlobe from "../../Images/public.png";
 import db from "../../Model/TODELETE_base";
+import {CreateRepo} from "../../BackendFunctions";
 let name = "User";
 export class CreateRepoAction extends Component {
     constructor(props) {
@@ -28,22 +27,24 @@ export class CreateRepoAction extends Component {
         // TODO: Tags query
         console.log(this.state.isPrivate)
 
-        if (insertRepository(K.empty, repo_name.value,
+       /* if (insertRepository(K.empty, repo_name.value,
             bpm.value, key.value, description.value)) {  // Call insert repo.
             this.props.history.push("/");
-        }
-        /*
-        // TODO: UNCOMMENT LATER
-        if (insertRepository(K.empty, repo_name.value,
+        }*/
+
+        /*if (insertRepository(K.empty, repo_name.value,
            bpm.value, key.value, this.state.isPrivate, description.value)) {  // Call insert repo.
             this.props.history.push("/"); */
+        CreateRepo(tags, repo_name.value,
+            bpm.value, key.value, this.state.isPrivate, description.value);
+        this.props.history.push("/");
     }
 
     handleCheck = (e) => {
         this.setState({isPrivate: this.state.isPrivate === 'F' ? 'T' : 'F'});
     }
 
-    username = () => {
+    /*username = () => {
         let user = db.auth().currentUser;
         //let name, email, photoUrl, uid, emailVerified;
         let username
@@ -57,7 +58,7 @@ export class CreateRepoAction extends Component {
                 name = username;
             })
         }
-    }
+    }*/
 
 
 
@@ -98,7 +99,7 @@ export class CreateRepoAction extends Component {
                         </label>
                         <br />
                         <label>
-                            <input className="createRepo_input" name="tags" type="text" placeholder="Tags"/>
+                            <input className="createRepo_input" name="tags" type="text" placeholder="Tags - Separate them with ,"/>
                         </label>
 
 

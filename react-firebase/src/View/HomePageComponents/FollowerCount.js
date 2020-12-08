@@ -1,3 +1,5 @@
+//TODO: Deprecated
+/*
 import React,{Component} from "react";
 import { Redirect } from "react-router-dom";
 import "./FollowerCount.css"
@@ -11,4 +13,4 @@ export class FollowerCount extends Component{
             </div>
         )
     }
-}
+}*/

@@ -28,6 +28,7 @@
     "react-router": "^5.2.0",
     "react-router-link": "^2.0.2",
     "react-scripts": "4.0.0",
+    "reactjs-popup": "^2.0.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

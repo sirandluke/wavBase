@@ -19,6 +19,7 @@ import sine_wave_1 from "../../Images/sine_wave_1.png"
 
 import Repository from "./Repository";
 import SearchBar from "../SearchComponents/SearchBar";
+import PrivateRoute from "../auth/PrivateRoute";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}, props) => {
@@ -38,18 +39,6 @@ const PersonalHome = ({history}, props) => {
         })
     }
 */
-    let uid;
-    let username;
-    if (props.uid == null) {
-        uid = db.auth().currentUser.uid;
-    } else {
-        uid = props.uid;
-    }
-
-    let firebaseRef = db.database().ref('users/' + uid);
-    firebaseRef.on('value', (snapshot) =>{
-        username = snapshot.val().username;
-    })
 
     // let uid = db.auth().currentUser.uid;
     // let userRef = db.database().ref('users/' + uid);
@@ -67,35 +56,13 @@ const PersonalHome = ({history}, props) => {
     //     img2.src = url;
     // })
 
-    const redirectCreateRepo = () => {
-        history.push("/newrepo");
-    }
-
     return (
         <div>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar />
-            <div className="container">
-                <div className="row">
-                    <div className="col_1">
-                    <div className="profile_info">
-                        <ProfileInfo uid={uid} />
-                    </div>
-                    </div>
-
-                    <div className="col_2">
-                    <div className="repository_lists">
-                        <div className="repository_lists_top_row">
-                            <h7>Your Repositories</h7>
-                            <button className="create_repository" onClick={ redirectCreateRepo }>Create Repository</button>
-                        </div>
-                    <RepositoryList uid={uid}/>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <img src={sine_wave_1} style={{width:"100%", float:'bottom', zIndex:"-99", position:"relative", marginTop:'1rem'}}/> 
+            <PrivateRoute path={"/repo/:repo_id"} component={Repository}/>
+            <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
         </div>
+
     );
 }
 

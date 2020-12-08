@@ -1,11 +1,79 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {FollowerCount} from "./FollowerCount"
 import {NameBioFollowers} from "./NameBioFollowers";
 import db from "../../Model/TODELETE_base";
 import loading from "../../Images/loader.gif"
 
 import "./ProfileInfo.css"
+import {useHistory, useParams} from "react-router";
+import {findRepos, getProfileImageUrl, getUserRef} from "../../BackendFunctions";
 
+
+export function ProfileInfo(props) {
+    const uid = props.uid;
+
+    const history = useHistory();
+    const [user, setUser] = useState(props.user || []);
+
+    useEffect(() => {
+        //if (localStorage.getItem('repo_page_id') !== uid) {
+        console.log('listen to user info');
+        if (!props.user) {
+            getUserRef(uid).then(user_snapshot => {
+                setUser(user_snapshot);
+                /*let profile_username = document.getElementById(uid + 'display_username');
+                if (profile_username != null) {
+                    profile_username.innerText = user_snapshot.username;
+                }*/
+                let image_path = "defaults/test_user.png";
+                if (user_snapshot.profile_picture !== '') {
+                    image_path = user_snapshot.profile_picture;
+                }
+                let image_url;
+                if (localStorage.getItem(image_path)) {
+                    image_url = localStorage.getItem(image_path);
+                } else {
+                    getProfileImageUrl(image_path).then(url => {
+                        url.map((link, key) => {
+                            image_url = link;
+                        })
+                        localStorage.setItem(image_path, image_url);
+                    });
+                }
+                console.log(image_url);
+                let img2 = document.getElementById(uid + 'profile_picture');
+                if (img2 != null) {
+                    img2.src = image_url;
+                }
+            })
+        }
+
+        //localStorage.setItem('repo_page_id', uid);
+        //}
+        return () => {
+            console.log('stop listen to repository');
+        }
+
+    }, [props.repos, props.user, useParams()]);
+
+    //console.log('profileinfo', user.username);
+
+    return (
+        <div id="ProfileInfoContainer">
+            <img className="user_profile_picture" id={uid + "profile_picture"} src={loading} alt="Profile Picture"/>
+            <NameBioFollowers
+                uid={uid}
+                username={user.username}
+                biography={user.biography}
+                followers={user.followers}
+                following={user.following}
+            />
+
+        </div>
+    );
+}
+
+/*
 export class ProfileInfo extends Component {
     constructor(props) {
         super(props);
@@ -67,4 +135,4 @@ export class ProfileInfo extends Component {
             </div>
         );
     }
-}
+}*/
