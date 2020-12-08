@@ -53,7 +53,7 @@ function PersonalHome(props) {
                 getUserRef(current_uid)
                     .then(user_snapshot => {
                         setUser(user_snapshot);
-                        document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
+                        //document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
 
                         let image_path = user_snapshot.profile_picture;
                         let image_url;
@@ -107,9 +107,8 @@ function PersonalHome(props) {
                     <button type="submit"><Link to={'/search_result'}>Search</Link></button>
                 </form>
                 {/*Search Bar End */}
-                <h2 id={'greeting_username'}>Hello</h2>
                 <img id='profile_avatar' src='' width={50} height={50}/>
-                <DropdownButton id="dropdown-basic-button" title="User">
+                <DropdownButton id="dropdown-basic-button" title={current_user.username}>
                     <Dropdown.Item as="button" onClick={redirectProfile}>My Profile</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
                     <Dropdown.Item as="button" onClick={() => db.auth().signOut()}>Sign Out</Dropdown.Item>

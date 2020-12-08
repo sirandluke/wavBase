@@ -37,7 +37,7 @@ export const UploadImagePopUp = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <form method="post" onSubmit={handleUploadPicture}>
-                        <input name="file" type="file" accept="image/*"/>
+                        <input name="profile_image" type="file" accept="image/*"/>
                         <input name="token" type="hidden"/>
                         <input type="submit" value="submit"/>
                     </form>

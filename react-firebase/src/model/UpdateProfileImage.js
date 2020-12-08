@@ -2,30 +2,26 @@ const db = require('../Database_config');
 const admin = require('../Admin_config');
 
 
-module.exports = function UpdateProfileImage(uid, picture, picture_path) {
-    //console.log(picture_path);
+module.exports = function UploadProfileImage(picture_path, picture) {
+
     const picture_bucket = admin.storage().bucket("wavbasedb-9a679.appspot.com");
-    console.log(picture);
-    //const picture_url = picture.substr(picture.indexOf('http:\\'));
-    //console.log(picture_url);
-    //picture_path
-    picture_bucket.upload(picture, function (err, file) {
+    console.log(picture.name);
+
+
+    const upload_options = {
+        destination: ('defaults/' + picture.name)
+    }
+    picture_bucket.upload(picture_path, upload_options, function (err, file) {
         if (!err) {
             console.log('Upload New Profile Picture Success');
-            let userRef = db.database().ref('users/' + uid);
+            /*let userRef = db.database().ref('users/' + uid);
             userRef.update({
                 profile_picture: picture_path
-            });
+            });*/
         } else {
             console.log('Error uploading file: ' + err);
         }
     });
-    /*db.storage().ref().child(picture_path).put(picture).then(function (snapshot) {
-        console.log('New Profile Picture Uploaded');
-    });
-    db.database().ref('users/' + uid).update({
-        profile_picture: picture_path
-    });*/
 }
 
 

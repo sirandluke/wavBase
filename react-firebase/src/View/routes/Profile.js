@@ -2,34 +2,23 @@ import React, {useEffect, useState} from "react";
 import "../../App.css";
 import db from "../../Database_config";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import {Link, useHistory} from "react-router-dom";
 import Popup from 'reactjs-popup';
+import axios from 'axios';
 import 'reactjs-popup/dist/index.css';
 import {AddId, getIdCount} from "../../components/ParseId";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
-
-//import {UpdateProfileImage} from "../../model/UpdateProfileImage";
 
 function Profile(props) {
     const history = useHistory();
 
     //const [show, setShow] = useState(false);
     const [current_user, setUser] = useState(props.user || []);
-    //const [re_render_index, re_render] = useState(0);
-    //re_render(false);
+    const [progress, setProgress] = useState(0);
 
     const user = db.auth().currentUser;
     const uid = db.auth().currentUser.uid;
-
-    const redirectHome = () => {
-        history.push("/");
-    }
-
-    const redirectRepo = () => {
-        history.push("/repository");
-    }
 
     const getUserRef = (uid) => {
         let config = {
@@ -41,25 +30,24 @@ function Profile(props) {
             .catch(error => console.log("Home page " + error));
     }
 
-    /*const UpdateProfileImage = (picture, picture_path) => {
-        //console.log(picture_path);
-        let config = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                uid, picture, picture_path
-            })
-        };
-        fetch('http://localhost:8000/user_info/update_profile_image', config)
-            .catch(error => console.log(error));
-    }*/
+    const UpdateProfileImage = (picture_formData) => {
+        axios.post('http://localhost:8000/user_info/update_profile_image', picture_formData, {
+            onUploadProgress: (ProgressEvent) => {
+                let tmp_progress = Math.round(
+                    ProgressEvent.loaded / ProgressEvent.total * 100) + '%';
+                setProgress(tmp_progress);
+            }
+        }).then(res => {
+            console.log(res);
+        }).catch(err => console.log(err));
+    }
 
-    const UpdateUserInfo = (username, bio) => {
+    const UpdateUserInfo = (username, bio, image_path) => {
         let config = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                uid, username, bio
+                uid, username, bio, image_path
             })
         };
         fetch('http://localhost:8000/user_info/update_user_info', config)
@@ -78,13 +66,13 @@ function Profile(props) {
             .catch(error => console.log(error));
     }
 
-    const handleUploadPicture = (event) => {
+    /*const handleUploadPicture = (event) => {
         event.preventDefault();
         let extension = document.getElementById('picture').value.split('.').pop();
         let picture_path = 'defaults/' + uid + '.' + extension;
         let picture_object = document.getElementById('picture').files[0];
-        /*let picture_url = URL.createObjectURL(picture_object);
-        console.log(picture_url);*/
+        /!*let picture_url = URL.createObjectURL(picture_object);
+        console.log(picture_url);*!/
         let picture_storage = db.storage().ref().child(picture_path);
         let picture = document.getElementById('picture').files[0];
         console.log(picture);
@@ -107,6 +95,18 @@ function Profile(props) {
         });
         //re_render(true);
         //UpdateProfileImage(picture_url, picture_path);
+    }*/
+
+    const handleUploadPicture = (event) => {
+        event.preventDefault();
+        let picture_object = document.getElementById('picture').files[0];
+        let picture_path = 'defaults/' + picture_object.name;
+        let picture = new FormData();
+        picture.append('file', picture_object);
+        console.log(picture);
+        UpdateProfileImage(picture);
+        UpdateUserInfo('', '', picture_path);
+        //console.log(picture_path);
     }
 
     const handleInfoUpdate = (event) => {
@@ -212,6 +212,7 @@ function Profile(props) {
                         <input name="token" type="hidden"/>
                         <input type="submit" value="submit"/>
                     </form>
+                    {(progress) ? <p>Upload Progress: {progress}</p> : <></>}
                 </Popup>
             </div>
             <h2 id={'display_username'}>username</h2>

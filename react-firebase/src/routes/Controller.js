@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const file_upload = require('express-fileupload');
+
 const GetUserInfo = require('../model/GetUserInfo');
 const GetRepos = require('../model/GetRepos');
 const GetUsers = require('../model/GetUsers');
 const GetProfileImageUrl = require('../model/GetProfileImageUrl');
 
 const CreateUser = require('../model/CreateUser');
-const UpdateProfileImage = require('../model/UpdateProfileImage');
+const UploadProfileImage = require('../model/UpdateProfileImage');
 const UpdateUserInfo = require('../model/UpdateUserInfo');
 const UpdatePassword = require('../model/UpdatePassword');
 const HandleFollow = require('../model/HandleFollow');
@@ -37,11 +39,26 @@ router.post('/user_info/create_user', (req, res) => {
 })
 
 router.post('/user_info/update_profile_image', (req, res) => {
-    UpdateProfileImage(req.body.uid, req.body.picture, req.body.picture_path);
+    if (!req.files) {
+        return res.status(500).send({msg: "file is not found"});
+    }
+    console.log('file field found');
+    const image_file = req.files.file;
+    const image_local_path = `./public/${image_file.name}`;
+    console.log('file found');
+    image_file.mv(image_local_path, function (err) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({msg: "Error occurred"});
+        }
+        return res.send({name: image_file.name, path: `/${image_file.name}`});
+    });
+    console.log('file processed');
+    UploadProfileImage(image_local_path, image_file);
 });
 
 router.post('/user_info/update_user_info', (req, res) => {
-    UpdateUserInfo(req.body.uid, req.body.username, req.body.bio);
+    UpdateUserInfo(req.body.uid, req.body.username, req.body.bio, req.body.image_path);
 });
 
 router.post('/user_info/update_password', (req, res) => {

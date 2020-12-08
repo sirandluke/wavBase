@@ -1,11 +1,7 @@
 /*
-import db from "../Database_config";
-import {useCallback} from "react";
+const admin = require('../Admin_config');
 
-export function GetProfileImageUrl(image_path) {
-    if (localStorage.getItem(image_path)) {
-        return localStorage.getItem(image_path);
-    }
-    console.log('fetching url from firebase');
-    return db.storage().ref().child(image_path).getDownloadURL().then(url => url);
-}*/
+module.exports = function GetProfileImageUrl(image_path) {
+    const bucket = admin.storage().bucket("wavbasedb-9a679.appspot.com");
+}
+*/

@@ -1,6 +1,6 @@
 const db = require('../Database_config');
 
-module.exports = function UpdateUserInfo(uid, username, bio) {
+module.exports = function UpdateUserInfo(uid, username, bio, image_path) {
     const user_path = db.database().ref('users/' + uid);
     if (username !== '') {
         user_path.update({
@@ -17,5 +17,12 @@ module.exports = function UpdateUserInfo(uid, username, bio) {
             console.log('New Bio: ' + bio);
         });
 
+    }
+    if (image_path !== '') {
+        user_path.update({
+            profile_picture: image_path
+        }).then(r => {
+            console.log('New Image Path: ' + image_path);
+        });
     }
 }
