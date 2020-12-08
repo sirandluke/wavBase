@@ -40,7 +40,7 @@ export function ProfileInfo(props) {
                         localStorage.setItem(image_path, image_url);
                     });
                 }
-                console.log(image_url);
+                //console.log(image_url);
                 let img2 = document.getElementById(uid + 'profile_picture');
                 if (img2 != null) {
                     img2.src = image_url;

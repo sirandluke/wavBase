@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import db from "../../Model/TODELETE_base";
 import folder_icon from "../../Images/folder@3x.png";
-import {DateToString, TimeStampToString} from "../../GlobalComponent/Date";
+import {DateToString, TimeStampToString} from "../GlobalComponent/Date";
 
 
 import "../../App.css";

@@ -3,7 +3,7 @@
  */
 import db from "./TODELETE_base.js";
 import * as K from "../Constants.js";
-import {DateToString} from "../GlobalComponent/Date";
+import {DateToString} from "../View/GlobalComponent/Date";
 
 /*** wavBase.users queries ***/
 

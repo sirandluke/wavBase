@@ -9,16 +9,12 @@ import '../../App.css'
 import '../NavBarComponents/NavBar.css'
 import NavBar from '../NavBarComponents/NavBar.js';
 //import Home from "./Home";
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
-import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import RepositoryList from "../HomePageComponents/RepositoryList";
-import sine_wave_1 from "../../Images/sine_wave_1.png"
 
 
 
 import Repository from "./Repository";
-import SearchBar from "../SearchComponents/SearchBar";
 import PrivateRoute from "../auth/PrivateRoute";
 
 // TODO: render searchbar, likes, (add more)

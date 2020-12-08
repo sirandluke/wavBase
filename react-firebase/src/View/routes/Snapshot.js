@@ -3,7 +3,7 @@ import "../../App.css";
 
 import * as K from '../../Constants';
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
-import {PlayButton} from "../../GlobalComponent/PlayButton";
+import {PlayButton} from "../GlobalComponent/PlayButton";
 
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 

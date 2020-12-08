@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {AddId, DeleteId, getIdCount, IncludeId} from "../../GlobalComponent/ParseId";
+import {AddId, DeleteId, getIdCount, IncludeId} from "../GlobalComponent/ParseId";
 import {getProfileImageUrl, getUserRef, updateFollow} from "../../BackendFunctions";
 //import db from "../../Database_config";
 import db from "../../Model/TODELETE_base";
@@ -77,7 +77,7 @@ function UserDisplayComponent(props) {
     return (
         <div>
             <ul>
-                <img id={uid + 'user_avatar'} width={30} height={30}/>
+                <img id={uid + 'profile_picture'} width={30} height={30}/>
                 {(uid == current_uid) ? <p id={'user_username'}><Link to={'/'}>{username}</Link></p> :
                 <p id={'user_username'}><Link to={'/user/' + uid}>{username}</Link></p>}
                 {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?

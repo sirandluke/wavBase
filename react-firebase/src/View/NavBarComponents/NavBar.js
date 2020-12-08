@@ -7,7 +7,6 @@ import {useHistory} from 'react-router-dom';
 import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
-import SearchBar from "../SearchComponents/SearchBar";
 import "./NavBar.css"
 import {getProfileImageUrl, getUserRef} from "../../BackendFunctions";
 
@@ -38,7 +37,7 @@ function NavBar(props) {
                                 localStorage.setItem(image_path, image_url);
                             });
                         }
-                        console.log(image_url);
+                        //console.log(image_url);
                         let img = document.getElementById('profile_picture2');
                         img.src = image_url;
                         localStorage.setItem('following', user_snapshot.following);
@@ -61,7 +60,12 @@ function NavBar(props) {
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-            <SearchBar />
+            <form>
+                <label>
+                    <input id='search_input' type="text" placeholder={'Search'}></input>
+                </label>
+                <button type="submit"><Link to={'/search_result'}>Search</Link></button>
+            </form>
 
             <img id="profile_picture2" className="top_icon"/>
 

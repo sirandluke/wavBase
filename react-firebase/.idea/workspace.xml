@@ -20,11 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResult.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/SearchComponents/TagsSearchResult.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/RepoDisplayComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GlobalComponent/Date.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GlobalComponent/Date.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GlobalComponent/ParseId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GlobalComponent/ParseId.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GlobalComponent/ParseTags.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GlobalComponent/ParseTags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GlobalComponent/PlayButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GlobalComponent/PlayButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FirebaseHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowersPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowersPopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowingPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowingPopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/NameBioFollowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/NameBioFollowers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/ProfileInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/ProfileInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RepositoryPageComponents/UploadSnapshot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RepositoryPageComponents/UploadSnapshot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResults.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/SearchBar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/UserSearchResults.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/UserSearchResults.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/UserDisplayComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/UserDisplayComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/UserSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchComponents/UserSearchResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/SearchResults.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/SearchResults.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Snapshot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Snapshot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +73,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,14 +84,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\MVC\wavBase\react-firebase\src\View" />
+      <recent name="F:\MVC\wavBase\react-firebase\src" />
+      <recent name="F:\MVC\wavBase\react-firebase" />
       <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchResultsComponents(zhifei)" />
+      <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchComponents" />
       <recent name="F:\MVC\wavBase\react-firebase\src\View\FollowPopUpComponents" />
       <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
       <recent name="F:\MVC\wavBase\react-firebase\src\server" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\Controller" />
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
@@ -128,7 +153,7 @@
       <workItem from="1606814473130" duration="315000" />
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
-      <workItem from="1607398702135" duration="12048000" />
+      <workItem from="1607398702135" duration="14193000" />
     </task>
     <servers />
   </component>
@@ -153,34 +178,45 @@
     </state>
     <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607398709003" />
     <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606814483723" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607405038277">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607411783286">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607405038277" />
-    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607400051074">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607411783286" />
+    <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607412174757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607400051074" />
+    <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607412174757" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
-    <state width="1878" height="191" key="GridCell.Tab.0.bottom" timestamp="1607410903777">
+    <state width="1878" height="191" key="GridCell.Tab.0.bottom" timestamp="1607413368317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
+    <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607413368317" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.center" timestamp="1607410903777">
+    <state width="1878" height="191" key="GridCell.Tab.0.center" timestamp="1607413368316">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
+    <state width="1878" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607413368316" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.left" timestamp="1607410903777">
+    <state width="1878" height="191" key="GridCell.Tab.0.left" timestamp="1607413368316">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
+    <state width="1878" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607413368316" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.right" timestamp="1607410903777">
+    <state width="1878" height="191" key="GridCell.Tab.0.right" timestamp="1607413368316">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
+    <state width="1878" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607413368316" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/View/GlobalComponent/PlayButton.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

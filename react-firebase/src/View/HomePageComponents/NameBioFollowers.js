@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./NameBioFollowers.css"
-import {getIdCount} from "../../GlobalComponent/ParseId";
+import {getIdCount} from "../GlobalComponent/ParseId";
 import Popup from "reactjs-popup";
 import FollowersPopUp from "../FollowPopUpComponents/FollowersPopUp";
 import FollowingPopUp from "../FollowPopUpComponents/FollowingPopUp";

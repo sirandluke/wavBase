@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useHistory} from "react";
 import {Link, useParams} from "react-router-dom";
 import {findUsers, getUserRef} from "../../BackendFunctions";
-import {IncludeId} from "../../GlobalComponent/ParseId";
+import {IncludeId} from "../GlobalComponent/ParseId";
 import UserDisplayComponent from "../SearchResultsComponents(zhifei)/UserDisplayComponent";
 
 function FollowersPopUp(props) {

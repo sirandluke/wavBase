@@ -1,10 +1,12 @@
+//TODO: Deprecated
+/*
 import React, {Component, useContext} from 'react';
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import db from '../../Model/TODELETE_base';
 import {Link, withRouter} from "react-router-dom";
-import UserSearchResults from "../SearchComponents/UserSearchResults";
-import RepoSearchResults from "../SearchComponents/RepoSearchResults";
+import UserSearchResults from "../TODELETE_SearchComponents/UserSearchResults";
+import RepoSearchResults from "../TODELETE_SearchComponents/RepoSearchResults";
 import NavBar from '../NavBarComponents/NavBar';
 import './SearchResults.css';
 
@@ -64,4 +66,4 @@ class SearchResults extends Component {
     }
 }
 
-export default withRouter(SearchResults);
+export default withRouter(SearchResults);*/
