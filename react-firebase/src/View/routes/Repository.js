@@ -10,7 +10,7 @@ import Popup from "reactjs-popup";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
 import {treeFilter} from "enzyme/src/RSTTraversal";
-import {findRepos, getProfileImageUrl, getUserRef, updateFollow} from "./TestFunctions";
+import {findRepos, getProfileImageUrl, getUserRef, updateFollow} from "./BackendFunctions";
 
 function Repository(props) {
     const history = useHistory();

@@ -2,6 +2,7 @@ import React, {useEffect, useState, useHistory} from "react";
 import db from "../../Database_config";
 import {Link} from "react-router-dom";
 import UserDisplayComponent from "./UserDisplayComponent";
+import {findUsers} from "../routes/BackendFunctions";
 
 function UserSearchResult(props) {
 
@@ -10,15 +11,6 @@ function UserSearchResult(props) {
 
     const uid = db.auth().currentUser.uid;
 
-    const findUsers = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_list?' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
 
     useEffect(() => {
         console.log('listen to user list');

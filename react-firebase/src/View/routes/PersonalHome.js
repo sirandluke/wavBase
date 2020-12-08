@@ -15,7 +15,7 @@ import Repository from "./Repository";
 import Profile from "./Profile";
 import NewRepo from "./NewRepo";
 import Popout from 'react-popout'
-import {getProfileImageUrl, getUserRef} from "./TestFunctions";
+import {getProfileImageUrl, getUserRef} from "./BackendFunctions";
 
 export let search_input = '';
 

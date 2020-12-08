@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import db from "../../Database_config";
 import {RepoDisplayComponent} from "./RepoDisplayComponent";
 import {ParseTags} from "../../components/ParseTags";
+import {findRepos} from "../routes/BackendFunctions";
 
 
 function TagsSearchResult(props) {
@@ -9,16 +10,6 @@ function TagsSearchResult(props) {
 
     const uid = db.auth().currentUser.uid;
     const [repos, setRepos] = useState(0);
-
-    const findRepos = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/repo_list?uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
 
     useEffect(() => {
         console.log('listen to tags list');

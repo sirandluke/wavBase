@@ -63,3 +63,13 @@ export const updateFollow = (uid, current_uid, type) => {
     fetch('http://localhost:8000/user_info/follow?uid=' + uid, config)
         .catch(error => console.log(error));
 }
+
+export const findUsers = (uid) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/user_list?' + uid, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}

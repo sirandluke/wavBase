@@ -9,7 +9,7 @@ import 'reactjs-popup/dist/index.css';
 import {AddId, getIdCount} from "../../components/ParseId";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
-import {getProfileImageUrl, getUserRef, UpdateUserInfo, UpdateUserPassword} from "./TestFunctions";
+import {getProfileImageUrl, getUserRef, UpdateUserInfo, UpdateUserPassword} from "./BackendFunctions";
 
 function Profile(props) {
     const history = useHistory();

@@ -14,10 +14,6 @@ module.exports = function UploadProfileImage(picture_path, picture) {
     picture_bucket.upload(picture_path, upload_options, function (err, file) {
         if (!err) {
             console.log('Upload New Profile Picture Success');
-            /*let userRef = db.database().ref('users/' + uid);
-            userRef.update({
-                profile_picture: picture_path
-            });*/
         } else {
             console.log('Error uploading file: ' + err);
         }
