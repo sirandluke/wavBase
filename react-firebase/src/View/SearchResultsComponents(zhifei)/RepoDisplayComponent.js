@@ -9,6 +9,10 @@ export class RepoDisplayComponent extends React.Component {
         this.name = this.props.name;
     }
 
+    handleClick() {
+
+    }
+
     render() {
         return (
             <div>

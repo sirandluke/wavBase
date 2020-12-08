@@ -34,7 +34,6 @@ const Repository = ({history}) => {
     return (
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-            <NavBar/>
             <RepositoryInfo repo={ location.state.repo }/>
             <div className="line"/>
             <div className="info_upload_row">
@@ -50,7 +49,7 @@ const Repository = ({history}) => {
                 repo_name={location.state.repo.name}
             />
 
-            <button className="redirect_home" onClick={ redirectHome }>Go Back to Home!</button>
+            {/*<button className="redirect_home" onClick={ redirectHome }>Go Back to Home!</button>*/}
         </div>
     );
 };

@@ -29,7 +29,7 @@ function RepositoryList(props) {
                 .then(repos_snapshot => {
                     let repos_list = [];
                     for (let repo in repos_snapshot) {
-                        repos_list.push({...repos_snapshot[repo], key: repo});
+                        repos_list.push({...repos_snapshot[repo], repo_id: repo});
                     }
                     setRepos(repos_list);
                 });
@@ -40,8 +40,13 @@ function RepositoryList(props) {
 
     }, [props.repos, props.user, useParams()]);
 
-    const redirectToRepo = (repo_id) => {
-        history.push('/repo/' + repo_id);
+    const redirectToRepo = (curr_repo) => {
+        history.push({
+            pathname: "/repo/" + curr_repo.repo_id,
+            state: {  // Pass as props for Repository page.
+                repo: curr_repo
+            }
+        });
     }
 
     let repoElement = [];
@@ -51,7 +56,7 @@ function RepositoryList(props) {
                 <tr key={ repo.repo_id }>
                     <td style={ {width: '200px', textAlign: 'left'} }>
                         <button className="repo_button" name="repo_links"
-                                onClick={ () => redirectToRepo(repo.key) }>
+                                onClick={ () => redirectToRepo(repo) }>
                             { repo.name }
                         </button>
                     </td>
