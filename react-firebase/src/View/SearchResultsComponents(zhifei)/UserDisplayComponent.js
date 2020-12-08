@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import db from "../../Model/base";
-import {AddId, DeleteId, getIdCount, IncludeId} from "./ParseId";
+import db from "../../Model/TODELETE_base";
+import {AddId, DeleteId, getIdCount, IncludeId} from "../../GlobalComponent/ParseId";
 import {Link} from "react-router-dom";
 
 function UserDisplayComponent(props) {

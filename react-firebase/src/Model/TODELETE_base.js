@@ -1,5 +1,5 @@
 /*
-    base.js
+    TODELETE_base.js
  */
 import firebase from "firebase";
 

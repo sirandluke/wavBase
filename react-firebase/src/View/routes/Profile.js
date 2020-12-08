@@ -2,7 +2,7 @@ import React, {Component, useState, useEffect} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import logo from "../../Images/wavBase_logo.png";

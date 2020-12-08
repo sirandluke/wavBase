@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import ReactPlayer from "react-player";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import LoadingScreen from "../LoadingComponent/LoadingScreen";
 
 import audio_icon from "../../Images/music_note_24px_outlined.png";

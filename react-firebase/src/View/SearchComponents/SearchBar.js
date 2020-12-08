@@ -2,7 +2,7 @@ import React, {Component, useContext} from 'react';
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 import {Link, withRouter} from "react-router-dom";
-import db from '../../Model/base';
+import db from '../../Model/TODELETE_base';
 
 class SearchBar extends Component {
     constructor(props) {

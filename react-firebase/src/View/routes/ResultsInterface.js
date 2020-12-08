@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link, NavLink} from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 
 function ResultsInterface(props) {
     return (

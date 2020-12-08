@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import { withRouter } from "react-router-dom";
 import {findRepositories} from "../../Model/FirebaseHandler";
 import loading from "../../Images/loader.gif";

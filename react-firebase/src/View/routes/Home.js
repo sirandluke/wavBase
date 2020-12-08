@@ -1,5 +1,5 @@
 import React from "react";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import "../../App.css";
 import logo from "../../Images/wavBase_logo.png";
 

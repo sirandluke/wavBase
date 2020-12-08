@@ -1,9 +1,9 @@
 /*
     FirebaseHandler.js
  */
-import db from "./base.js";
+import db from "./TODELETE_base.js";
 import * as K from "../Constants.js";
-import {DateToString} from "./Date";
+import {DateToString} from "../GlobalComponent/Date";
 
 /*** wavBase.users queries ***/
 
@@ -17,7 +17,7 @@ const ref = db.database().ref();
  * @param {string} first_name 
  * @param {string} last_name 
  */
-export function createUser(username, password, email) {
+/*export function createUser(username, password, email) {
     // Creates user id with email and password values
     db
     .auth()
@@ -41,14 +41,14 @@ export function createUser(username, password, email) {
             });
         }
     });
-}
+}*/
 
 /**
  * Queries for user id based on email passed in
  * @param {string} email 
  * @param {function} callback
  */
-export function getUserByEmail(email, callback) {
+/*export function getUserByEmail(email, callback) {
     try {
         let uid = "";
 
@@ -66,7 +66,7 @@ export function getUserByEmail(email, callback) {
     } catch(error) {
         console.log(error.message);
     }
-}
+}*/
 
 /**
  * Updates value for user based on parameters
@@ -74,7 +74,7 @@ export function getUserByEmail(email, callback) {
  * @param {*} updateVal 
  * @param {function} callback 
  */
-export function updateUser(updatePath, updateVal, callback) { 
+/*export function updateUser(updatePath, updateVal, callback) {
     try {
         // Specifies where to update and what value to use
         var updates = {};
@@ -90,7 +90,7 @@ export function updateUser(updatePath, updateVal, callback) {
     } catch(error) {
         console.log(error.message);
     }
-}
+}*/
 
 /**
  * Deletes user by user id
@@ -128,7 +128,7 @@ export function deleteUser(uid) {
  * @param {string} description
  * @return {int}
  */
-export function insertRepository(tags_id, repo_name, bpm,
+/*export function insertRepository(tags_id, repo_name, bpm,
                                  key, description) {
     console.log("Creating a new Repository");
     try {
@@ -157,14 +157,14 @@ export function insertRepository(tags_id, repo_name, bpm,
         alert(K.unknown_err);
         return 0; // Insert Fail
     }
-}
+}*/
 
 /**
  * Finds all repositories tied to a user id
  * @param {string} uid 
  * @param {function} callback 
  */
-export function findRepositories(uid, callback) {
+/*export function findRepositories(uid, callback) {
     try {
         // Sort children by email and query matching email; store in snapshot
         ref.child('repositories').orderByChild('user_id').equalTo(uid).once("value", (snapshot) => {
@@ -181,7 +181,7 @@ export function findRepositories(uid, callback) {
     } catch(error) {
         console.log(error.message);
     }
-}
+}*/
 
 // Update a repository's fields in the database.
 export function updateRepository(updatePath, updateVal, callback) { 

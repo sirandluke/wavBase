@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {FollowerCount} from "./FollowerCount"
 import {NameBioFollowers} from "./NameBioFollowers";
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import loading from "../../Images/loader.gif"
 
 import "./ProfileInfo.css"

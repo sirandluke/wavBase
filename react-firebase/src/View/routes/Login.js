@@ -7,7 +7,7 @@ import React, { useContent } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../auth/Auth";
 
-import db from "../../Model/base";
+import db from "../../Model/TODELETE_base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
