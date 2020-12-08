@@ -29,10 +29,11 @@ router.get('/user_list', (req, res) => {
         .then(doc => res.send(doc));
 });
 
-/*router.get('/image_url', (req, res) => {
+router.get('/user_info/get_image_url', (req, res) => {
     GetProfileImageUrl(req.query.image_path)
         .then(doc => res.send(doc));
-})*/
+})
+
 
 router.post('/user_info/create_user', (req, res) => {
     CreateUser(req.body.username, req.body.password, req.body.email);

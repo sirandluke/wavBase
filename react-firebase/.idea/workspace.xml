@@ -20,17 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/View/routes/TestFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/components/UploadImagePopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/components/UploadImagePopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/CreateUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CreateUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/GetProfileImageUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GetProfileImageUrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateProfileImage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UpdateUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UpdateUserInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +130,7 @@
       <workItem from="1607080904917" duration="2029000" />
       <workItem from="1607084373353" duration="384000" />
       <workItem from="1607086944181" duration="107519000" />
-      <workItem from="1607369259916" duration="20049000" />
+      <workItem from="1607369259916" duration="24423000" />
     </task>
     <servers />
   </component>
@@ -165,35 +162,35 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="686" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607248597660" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607277480863">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607393732352">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607277480863" />
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607393732352" />
     <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607097011958" />
     <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607260122004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607260122004" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607090532505" />
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607393576618">
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom" timestamp="1607396436471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607393576618" />
+    <state width="1877" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607396436471" />
     <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607369316113" />
-    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607393576618">
+    <state width="1877" height="191" key="GridCell.Tab.0.center" timestamp="1607396436471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607393576618" />
+    <state width="1877" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607396436471" />
     <state width="1878" height="191" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607369316113" />
-    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607393576618">
+    <state width="1877" height="191" key="GridCell.Tab.0.left" timestamp="1607396436470">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607393576618" />
+    <state width="1877" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607396436470" />
     <state width="1878" height="191" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607369316113" />
-    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607393576618">
+    <state width="1877" height="191" key="GridCell.Tab.0.right" timestamp="1607396436471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607393576618" />
+    <state width="1877" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607396436471" />
     <state width="1878" height="191" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607369316113" />
     <state x="802" y="291" key="refactoring.ChangeSignatureDialog" timestamp="1607290396083">
       <screen x="0" y="0" width="1920" height="1040" />

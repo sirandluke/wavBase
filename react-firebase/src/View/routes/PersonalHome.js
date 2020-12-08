@@ -15,7 +15,7 @@ import Repository from "./Repository";
 import Profile from "./Profile";
 import NewRepo from "./NewRepo";
 import Popout from 'react-popout'
-import {GetProfileImageUrl} from "../../model/GetProfileImageUrl";
+import {getProfileImageUrl, getUserRef} from "./TestFunctions";
 
 export let search_input = '';
 
@@ -25,26 +25,6 @@ function PersonalHome(props) {
     let current_uid = db.auth().currentUser.uid;
     const history = useHistory();
     const [current_user, setUser] = useState(props.user || []);
-
-    const getUserRef = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log("Home page " + error));
-    }
-
-    /*const getProfileImageUrl = (image_path) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/image_url?image_path=' + image_path, config)
-            .then(response => response.json())
-            .catch(error => console.log("Home page " + error));
-    }*/
 
     useEffect(
         () => {
@@ -60,17 +40,16 @@ function PersonalHome(props) {
                         if (localStorage.getItem(image_path)) {
                             image_url = localStorage.getItem(image_path);
                         } else {
-                            db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
-                                image_url = url;
-                                localStorage.setItem(image_path, url);
+                            getProfileImageUrl(image_path).then(url => {
+                                url.map((link, key) => {
+                                    image_url = link;
+                                })
+                                localStorage.setItem(image_path, image_url);
                             });
                         }
+                        console.log(image_url);
                         let img = document.getElementById('profile_avatar');
                         img.src = image_url;
-                        /*db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
-                            let img = document.getElementById('profile_avatar');
-                            img.src = url;
-                        });*/
                         localStorage.setItem('following', user_snapshot.following);
                     });
             }

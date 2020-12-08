@@ -9,28 +9,17 @@ import 'reactjs-popup/dist/index.css';
 import {AddId, getIdCount} from "../../components/ParseId";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
+import {getProfileImageUrl, getUserRef, UpdateUserInfo, UpdateUserPassword} from "./TestFunctions";
 
 function Profile(props) {
     const history = useHistory();
 
-    //const [show, setShow] = useState(false);
     const [current_user, setUser] = useState(props.user || []);
     const [progress, setProgress] = useState(0);
 
-    const user = db.auth().currentUser;
     const uid = db.auth().currentUser.uid;
 
-    const getUserRef = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log("Home page " + error));
-    }
-
-    const UpdateProfileImage = (picture_formData) => {
+    const updateProfileImage = (picture_formData) => {
         axios.post('http://localhost:8000/user_info/update_profile_image', picture_formData, {
             onUploadProgress: (ProgressEvent) => {
                 let tmp_progress = Math.round(
@@ -42,78 +31,37 @@ function Profile(props) {
         }).catch(err => console.log(err));
     }
 
-    const UpdateUserInfo = (username, bio, image_path) => {
-        let config = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                uid, username, bio, image_path
-            })
-        };
-        fetch('http://localhost:8000/user_info/update_user_info', config)
-            .catch(error => console.log(error));
-    }
-
-    const UpdateUserPassword = (password) => {
-        let config = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                uid, password
-            })
-        };
-        fetch('http://localhost:8000/user_info/update_password', config)
-            .catch(error => console.log(error));
-    }
-
-    /*const handleUploadPicture = (event) => {
+    const handleUploadPicture = (event) => {
         event.preventDefault();
-        let extension = document.getElementById('picture').value.split('.').pop();
-        let picture_path = 'defaults/' + uid + '.' + extension;
-        let picture_object = document.getElementById('picture').files[0];
-        /!*let picture_url = URL.createObjectURL(picture_object);
-        console.log(picture_url);*!/
-        let picture_storage = db.storage().ref().child(picture_path);
-        let picture = document.getElementById('picture').files[0];
-        console.log(picture);
-        picture_storage.put(picture).then(function (snapshot) {
-            console.log('New Profile Picture Uploaded');
-            snapshot.ref.getDownloadURL().then(url => {
-                localStorage.setItem(picture_path, url);
+        if (document.getElementById('picture').files.length !== 0) {
+            let picture_object = document.getElementById('picture').files[0];
+            let extension = document.getElementById('picture').value.split('.').pop();
+            let picture_path = 'defaults/' + uid + '.' + extension;
+            let picture = new FormData();
+            picture.append('file', picture_object, uid + '.' + extension);
+            console.log(picture);
+            updateProfileImage(picture);
+            UpdateUserInfo('', '', picture_path);
+            let reader = new FileReader();
+            reader.onload = function () {
                 let img = document.getElementById('profile_avatar');
                 if (img != null) {
-                    img.src = url;
+                    img.src = reader.result;
                 }
                 let img2 = document.getElementById('profile_image');
                 if (img2 != null) {
-                    img2.src = url;
+                    img2.src = reader.result;
                 }
-            });
-        });
-        db.database().ref('users/' + uid).update({
-            profile_picture: picture_path
-        });
-        //re_render(true);
-        //UpdateProfileImage(picture_url, picture_path);
-    }*/
-
-    const handleUploadPicture = (event) => {
-        event.preventDefault();
-        let picture_object = document.getElementById('picture').files[0];
-        let picture_path = 'defaults/' + picture_object.name;
-        let picture = new FormData();
-        picture.append('file', picture_object);
-        console.log(picture);
-        UpdateProfileImage(picture);
-        UpdateUserInfo('', '', picture_path);
-        //console.log(picture_path);
+            }
+            reader.readAsDataURL(picture_object);
+        }
     }
 
     const handleInfoUpdate = (event) => {
         event.preventDefault();
         let new_username = document.getElementById('new_username').value;
         let new_bio = document.getElementById('new_bio').value;
-        UpdateUserInfo(new_username, new_bio);
+        UpdateUserInfo(uid, new_username, new_bio);
         //re_render(re_render_index + 1);
         if (new_username !== "") {
             /*let tmp_user = user;
@@ -144,7 +92,7 @@ function Profile(props) {
         let password = document.getElementById('new_password').value;
         let conf_password = document.getElementById('conf_password').value;
         if (password === conf_password) {
-            UpdateUserPassword(password);
+            UpdateUserPassword(uid, password);
         } else {
             alert('Confirmation Password Does Not Match');
         }
@@ -175,24 +123,26 @@ function Profile(props) {
             if (user_snapshot.profile_picture !== '') {
                 image_path = user_snapshot.profile_picture;
             }
-            let image_url;
+            let image_url = '';
             if (localStorage.getItem(image_path)) {
                 image_url = localStorage.getItem(image_path);
             } else {
-                db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
-                    image_url = url;
-                    localStorage.setItem(image_path, url);
+                getProfileImageUrl(image_path).then(url => {
+                    url.map((link, key) => {
+                        image_url = link;
+                    })
+                    localStorage.setItem(image_path, image_url);
                 });
             }
             let img = document.getElementById('profile_avatar');
             if (img != null) {
                 img.src = image_url;
             }
-
             let img2 = document.getElementById('profile_image');
             if (img2 != null) {
                 img2.src = image_url;
             }
+
             console.log('re-render profile page');
             //re_render(false);
         })

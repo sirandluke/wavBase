@@ -9,8 +9,6 @@ module.exports = function CreateUser(username, password, email) {
         db.database().ref('users/' + userRecord.uid).set({
             username: username,
             email: email,
-            first_name: "",
-            last_name: "",
             biography: "",
             profile_picture: "defaults/test_user.png",
             followers: "",

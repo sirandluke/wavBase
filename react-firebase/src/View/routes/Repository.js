@@ -10,6 +10,7 @@ import Popup from "reactjs-popup";
 import FollowersPopUp from "../components/FollowersPopUp";
 import FollowingPopUp from "../components/FollowingPopUp";
 import {treeFilter} from "enzyme/src/RSTTraversal";
+import {findRepos, getProfileImageUrl, getUserRef, updateFollow} from "./TestFunctions";
 
 function Repository(props) {
     const history = useHistory();
@@ -25,38 +26,6 @@ function Repository(props) {
         uid = user_id;
     }
     console.log('Entering', uid + "'s repo page");
-
-    const getUserRef = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/user_info?current_uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log("Home page " + error));
-    }
-
-    const findRepos = (uid) => {
-        let config = {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        };
-        return fetch('http://localhost:8000/repo_list?uid=' + uid, config)
-            .then(response => response.json())
-            .catch(error => console.log(error));
-    }
-
-    const updateFollow = (uid, current_uid, type) => {
-        let config = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                uid, current_uid, type
-            })
-        };
-        fetch('http://localhost:8000/user_info/follow?uid=' + uid, config)
-            .catch(error => console.log(error));
-    }
 
     useEffect(() => {
         //if (localStorage.getItem('repo_page_id') !== uid) {
@@ -87,12 +56,14 @@ function Repository(props) {
                 if (localStorage.getItem(image_path)) {
                     image_url = localStorage.getItem(image_path);
                 } else {
-                    db.storage().ref().child(image_path).getDownloadURL().then(function (url) {
-                        image_url = url;
-                        localStorage.setItem(image_path, url);
+                    getProfileImageUrl(image_path).then(url => {
+                        url.map((link, key) => {
+                            image_url = link;
+                        })
+                        localStorage.setItem(image_path, image_url);
                     });
                 }
-
+                console.log(image_url);
                 let img2 = document.getElementById(uid + 'profile_image');
                 if (img2 != null) {
                     img2.src = image_url;
