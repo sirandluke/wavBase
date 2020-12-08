@@ -24,20 +24,7 @@
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BackendFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CreateRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CreateRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/FirebaseHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FirebaseHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowersPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowersPopUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowingPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/FollowPopUpComponents/FollowingPopUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/FollowerCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/FollowerCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/NameBioFollowers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/NameBioFollowers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/ProfileInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/ProfileInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/UserDisplayComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/UserDisplayComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +128,7 @@
       <workItem from="1606814473130" duration="315000" />
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
-      <workItem from="1607398702135" duration="10530000" />
+      <workItem from="1607398702135" duration="12048000" />
     </task>
     <servers />
   </component>
@@ -175,25 +162,25 @@
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607400051074" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
-    <state width="1878" height="191" key="GridCell.Tab.0.bottom" timestamp="1607405089677">
+    <state width="1878" height="191" key="GridCell.Tab.0.bottom" timestamp="1607410903777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607405089677" />
+    <state width="1878" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.center" timestamp="1607405089676">
+    <state width="1878" height="191" key="GridCell.Tab.0.center" timestamp="1607410903777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607405089676" />
+    <state width="1878" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.left" timestamp="1607405089676">
+    <state width="1878" height="191" key="GridCell.Tab.0.left" timestamp="1607410903777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607405089676" />
+    <state width="1878" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="1878" height="191" key="GridCell.Tab.0.right" timestamp="1607405089677">
+    <state width="1878" height="191" key="GridCell.Tab.0.right" timestamp="1607410903777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1878" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607405089677" />
+    <state width="1878" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607410903777" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
   </component>
 </project>

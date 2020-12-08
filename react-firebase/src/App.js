@@ -20,6 +20,7 @@ import './App.css';
 import SearchResults from "./View/routes/SearchResults";
 import NavBar from "./View/NavBarComponents/NavBar";
 import RepositoryList from "./View/HomePageComponents/RepositoryList";
+import sine_wave_1 from "./Images/sine_wave_1.png";
 
 //import RepositoryListContainer from "./View/routes/RepositoryListContainer";
 
@@ -42,6 +43,7 @@ function App() {
                     <PrivateRoute path='/search_result' component={ResultsInterface}/>
                     <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
                     <PrivateRoute exact path='/search' component={SearchResults}/>
+                    <img src={sine_wave_1} style={{width:"100%", float:'bottom', zIndex:"-99", position:"relative", marginTop:'1rem'}}/>
                 </div>
             </Router>
         </AuthProvider>
