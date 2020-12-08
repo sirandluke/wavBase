@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 //import db from "../../Database_config";
 import {findRepos} from "../../BackendFunctions";
-import {RepoDisplayComponent} from "../SearchResultsComponents(zhifei)/RepoDisplayComponent";
+//import {RepoDisplayComponent} from "../SearchResultsComponents(zhifei)/RepoDisplayComponent";
 import {ParseTags} from "../GlobalComponent/ParseTags";
 import db from "../../Model/TODELETE_base";
 import {useHistory} from "react-router";

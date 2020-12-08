@@ -20,12 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Controller/RepoController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/SnapshotController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResult.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/TagsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchComponents/TagsSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/RepoDisplayComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/RepoDisplayComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Repository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Repository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/RepoDisplayComponent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +134,7 @@
       <workItem from="1606814473130" duration="315000" />
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
-      <workItem from="1607398702135" duration="16608000" />
+      <workItem from="1607398702135" duration="18520000" />
     </task>
     <servers />
   </component>
@@ -157,34 +159,34 @@
     </state>
     <state x="416" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607398709003" />
     <state x="416" y="175" width="1086" height="737" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606814483723" />
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607411783286">
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607416336275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607411783286" />
+    <state x="691" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607416336275" />
     <state x="741" y="275" key="FileChooserDialogImpl" timestamp="1607412174757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607412174757" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
-    <state width="938" height="191" key="GridCell.Tab.0.bottom" timestamp="1607415381074">
+    <state width="938" height="192" key="GridCell.Tab.0.bottom" timestamp="1607417739825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607415381074" />
+    <state width="938" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="191" key="GridCell.Tab.0.center" timestamp="1607415381074">
+    <state width="938" height="192" key="GridCell.Tab.0.center" timestamp="1607417739825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="191" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607415381074" />
+    <state width="938" height="192" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="191" key="GridCell.Tab.0.left" timestamp="1607415381074">
+    <state width="938" height="192" key="GridCell.Tab.0.left" timestamp="1607417739825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="191" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607415381074" />
+    <state width="938" height="192" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="191" key="GridCell.Tab.0.right" timestamp="1607415381074">
+    <state width="938" height="192" key="GridCell.Tab.0.right" timestamp="1607417739825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="191" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607415381074" />
+    <state width="938" height="192" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
   </component>
   <component name="XDebuggerManager">
