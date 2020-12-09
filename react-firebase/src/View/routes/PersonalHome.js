@@ -14,7 +14,7 @@ import RepositoryList from "../HomePageComponents/RepositoryList";
 
 
 
-import Repository from "./Repository";
+//import Repository from "./Repository";
 import PrivateRoute from "../auth/PrivateRoute";
 import NewRepo from "./NewRepo";
 import Snapshot from "./Snapshot";
@@ -23,6 +23,8 @@ import ResultsInterface from "./ResultsInterface";
 import UserSearchResult from "../SearchComponents/UserSearchResult";
 import RepoSearchResult from "../SearchComponents/RepoSearchResult";
 import TagsSearchResult from "../SearchComponents/TagsSearchResult";
+import {Route} from "react-router";
+import {Repository} from "./Repository";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}, props) => {
@@ -73,7 +75,7 @@ const PersonalHome = ({history}, props) => {
             <PrivateRoute exact path='/search_result/tags'
                           component={TagsSearchResult}/>
             <PrivateRoute path={"/repo/:repo_id"} component={Repository}/>
-            <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
+            <Route path={'/user/:user_id'} component={RepositoryList}/>
         </div>
 
     );

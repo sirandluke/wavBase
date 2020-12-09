@@ -7,7 +7,7 @@ import './RepositoryInfo.css'
 import {GetRepoInfo, getUserRef} from "../../BackendFunctions";
 
 export function RepositoryInfo(props) {
-    const {repo_id} = useParams();
+    /*const repo_id = props.repo_id;
     const [repo, setRepo] = useState(0);
     const [repo_owner, setRepoOwner] = useState(0);
 
@@ -24,7 +24,9 @@ export function RepositoryInfo(props) {
         return () => {
             console.log('Stop listening to repo:', repo_id);
         }
-    }, [repo]);
+    }, [repo]);*/
+    const repo = props.repo;
+    const repo_owner = props.repo_owner;
 
     return(
         <div>
