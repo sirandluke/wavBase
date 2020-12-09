@@ -6,6 +6,7 @@ const GetUserInfo = require('../Model/GetUserInfo');
 const GetRepos = require('../Model/GetRepos');
 const GetUsers = require('../Model/GetUsers');
 const GetProfileImageUrl = require('../Model/GetProfileImageUrl');
+const GetRepoInfo = require('../Model/GetRepoInfo');
 
 
 const CreateUser = require('../Model/CreateUser');
@@ -38,6 +39,10 @@ router.get('/user_info/get_image_url', (req, res) => {
         .then(doc => res.send(doc));
 })
 
+router.get('/repo_info', (req, res) => {
+    GetRepoInfo(req.query.repo_id)
+        .then(doc => res.send(doc));
+})
 
 router.post('/user_info/create_user', (req, res) => {
     CreateUser(req.body.username, req.body.password, req.body.email);

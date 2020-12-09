@@ -121,3 +121,13 @@ export const UpdateSnapshotInfo = (snapshot_id, description) => {
     fetch('http://localhost:8000/snapshot_info/update_snapshot_info', config)
         .catch(error => console.log(error));
 }
+
+export const GetRepoInfo = (repo_id) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/repo_info?repo_id=' + repo_id, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}

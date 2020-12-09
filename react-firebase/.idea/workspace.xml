@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/UpdateRepoInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/UpdateSnapshotInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/GetRepoInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BackendFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UpdateUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UpdateUserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/GetUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/GetUserInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,7 @@
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607398702135" duration="18775000" />
-      <workItem from="1607466014390" duration="10075000" />
+      <workItem from="1607466014390" duration="10510000" />
     </task>
     <servers />
   </component>
