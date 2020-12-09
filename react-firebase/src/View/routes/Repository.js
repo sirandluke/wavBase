@@ -12,8 +12,9 @@ import SnapshotModal from "../RepositoryModals/SnapshotModal";
 import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
 import {repo_tab} from "../../Constants";
-import {useLocation, useParams} from 'react-router';
+import {useHistory, useLocation, useParams} from 'react-router';
 import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
+import db from "../../Model/TODELETE_base";
 
 /**
  *
@@ -22,9 +23,10 @@ import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
  * @constructor
  */
 function Repository(props) {
+    const history = useHistory();
     const {isShowing, toggle} = UseSnapshotModal();
     const {repo_id} = useParams();
-    //console.log(repo_id);
+    const uid = db.auth().currentUser.uid;
 
     const [repo, setRepo] = useState(0);
     const [repo_owner, setRepoOwner] = useState(0);
@@ -44,6 +46,18 @@ function Repository(props) {
         }
     }, [repo]);
 
+    function redirectToSettings() {
+        history.push(`/repo/${repo_id}/settings`);
+    }
+
+    function handleLike() {
+
+    }
+
+    function redirectToSnapshot() {
+
+    }
+
 
     return (
         <div>
@@ -53,14 +67,15 @@ function Repository(props) {
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
                 <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
+                {(repo && repo.user_id === uid) ? <button onClick={redirectToSettings}>Settings</button> : <button onClick={handleLike}>Like</button>}
             </div>
 
             <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
 
-            <SnapshotList
+            {/*<SnapshotList
                 repo_id={ repo_id }
                 repo_name={repo.name}
-            />
+            />*/}
         </div>
     );
 }

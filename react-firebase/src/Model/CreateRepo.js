@@ -8,7 +8,7 @@ const DateToString = () => {
     return month + '-' + day + '-' + year;
 }
 
-module.exports = function CreateRepo(uid, repo_name, bpm, key, is_private, description) {
+module.exports = function CreateRepo(uid, repo_name, bpm, key, tags, is_private, description) {
     console.log("Creating a new Repository");
     try {
         console.log(uid, 'is creating new repo');
@@ -18,6 +18,7 @@ module.exports = function CreateRepo(uid, repo_name, bpm, key, is_private, descr
             name: repo_name,
             bpm: bpm,
             key: key,
+            tags: tags,
             description: description,
             is_private: is_private,
             snapshots: "",

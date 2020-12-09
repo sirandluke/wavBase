@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState} from "react";
 
 import db from "../../Model/TODELETE_base";
-import {Route, useHistory, useRouteMatch, withRouter} from "react-router-dom";
+import {Route, useHistory, useParams, useRouteMatch, withRouter} from "react-router-dom";
 
 import folder_icon from "../../Images/folder.png";
 import "./SnapshotList.css"
@@ -10,10 +10,8 @@ import {GetSnapshotListByRepoId} from "../../BackendFunctions";
 export function SnapshotList(props) {
 
     const history = useHistory();
-    const repo_id = props.repo_id;
-    const repo_name = props.repo_name;
+    const {repo_id} = useParams();
     const [snapshot_list, setSnapshotList] = useState(0);
-    const {url, path} = useRouteMatch();
 
     useEffect(() => {
         console.log('Listening to snapshot list of repo_id:', repo_id);
@@ -36,11 +34,6 @@ export function SnapshotList(props) {
     function redirectToSnapshots(curr_snapshot) { // Passes the snapshot object over to be viewed.
         history.push({
             pathname: `/snapshot/${curr_snapshot.snap_id}`,
-            state: {  // Pass as props for Repository page.
-                snapshot: curr_snapshot,
-                repo_name: repo_name,
-                username: "User"
-            }
         });
     }
 
@@ -53,7 +46,7 @@ export function SnapshotList(props) {
                             onClick={() => redirectToSnapshots(snapshot)}>
                         <img className="snaps_ico_1" src={folder_icon} alt="snapshot_icon"/>
                         {snapshot.description}
-                        {snapshot.datetime}
+                        {snapshot.upload_date}
                     </button>
                 </td>
             </tr>

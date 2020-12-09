@@ -5,11 +5,14 @@ import loading from "../../Images/loader.gif";
 import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
 import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
+import {ParseTags} from "../GlobalComponent/ParseTags";
 
 export function RepositoryInfo(props) {
 
     const repo = props.repo;
     const repo_owner = props.repo_owner;
+
+    const tags = ParseTags(repo.tags);
 
     return(
         <div>
@@ -23,6 +26,9 @@ export function RepositoryInfo(props) {
             <div className="repo_title">
                 <h2>{ repo_owner.username }/{ repo.name }</h2>
                 <h3>BPM:{ repo.bpm } | Key: { repo.key }</h3>
+                {tags.map(tag =>
+                    <button>{tag}</button>
+                )}
             </div>
 
             <div className="repo_description">

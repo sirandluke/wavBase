@@ -25,6 +25,8 @@ import RepoSearchResult from "../SearchComponents/RepoSearchResult";
 import TagsSearchResult from "../SearchComponents/TagsSearchResult";
 import {Route} from "react-router";
 import Repository from "./Repository";
+import RepositorySettings from "../RepositoryPageComponents/RepositorySettings";
+import {SnapshotList} from "../RepositoryPageComponents/SnapshotList";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}, props) => {
@@ -75,7 +77,9 @@ const PersonalHome = ({history}, props) => {
             <PrivateRoute exact path='/search_result/tags'
                           component={TagsSearchResult}/>
             <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
-            <Route exact path={"/repo/:repo_id"} component={Repository}/>
+            <Route path={"/repo/:repo_id"} component={Repository}/>
+            <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
+            <PrivateRoute exact path={'/repo/:repo_id/settings'} component={RepositorySettings}/>
             <Route exact path={"/snapshot/:snapshot_id"} component={Snapshot}/>
         </div>
 
