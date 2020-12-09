@@ -6,11 +6,14 @@ import {Route, useHistory, useParams, useRouteMatch, withRouter} from "react-rou
 import folder_icon from "../../Images/folder.png";
 import "./SnapshotList.css"
 import {GetSnapshotListByRepoId} from "../../BackendFunctions";
+import SnapshotModal from "../RepositoryModals/SnapshotModal";
+import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
 export function SnapshotList(props) {
 
     const history = useHistory();
     const {repo_id} = useParams();
+    const {isShowing, toggle} = UseSnapshotModal();
     const [snapshot_list, setSnapshotList] = useState(0);
 
     useEffect(() => {
@@ -46,7 +49,7 @@ export function SnapshotList(props) {
                             onClick={() => redirectToSnapshots(snapshot)}>
                         <img className="snaps_ico_1" src={folder_icon} alt="snapshot_icon"/>
                         {snapshot.description}
-                        {snapshot.upload_date}
+                        {/*<p>Upload Date: {snapshot.upload_date}</p>*/}
                     </button>
                 </td>
             </tr>
@@ -56,6 +59,12 @@ export function SnapshotList(props) {
 
     return (
         <div>
+            <div className="info_upload_row">
+                <h3>Snapshots</h3>
+                <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
+            </div>
+
+            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
             <table className="snapshot_table">
                 <tbody className="snapshot_body">
                 {snapshotElement}

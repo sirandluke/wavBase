@@ -26,7 +26,6 @@ function Repository(props) {
     const history = useHistory();
     const {isShowing, toggle} = UseSnapshotModal();
     const {repo_id} = useParams();
-    const uid = db.auth().currentUser.uid;
 
     const [repo, setRepo] = useState(0);
     const [repo_owner, setRepoOwner] = useState(0);
@@ -35,6 +34,7 @@ function Repository(props) {
         console.log('Listening to repo:', repo_id);
         if (!repo) {
             GetRepoInfo(repo_id).then(repo_snapshot => {
+                repo_snapshot = {...repo_snapshot, repo_id: repo_id};
                 setRepo(repo_snapshot);
                 GetUserRef(repo_snapshot.user_id).then(owner_snapshot => {
                     setRepoOwner(owner_snapshot);
@@ -64,13 +64,13 @@ function Repository(props) {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <RepositoryInfo repo={repo} repo_owner={repo_owner}/>
             <div className="line"/>
-            <div className="info_upload_row">
+            {/*<div className="info_upload_row">
                 <h3>Snapshots</h3>
                 <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
                 {(repo && repo.user_id === uid) ? <button onClick={redirectToSettings}>Settings</button> : <button onClick={handleLike}>Like</button>}
             </div>
 
-            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
+            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>*/}
 
             {/*<SnapshotList
                 repo_id={ repo_id }
