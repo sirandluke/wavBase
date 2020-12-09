@@ -14,7 +14,12 @@ import '../NavBarComponents/NavBar.css';
 //import NavBar from '../NavBarComponents/NavBar.js';
 import Popup from "reactjs-popup";
 import {useHistory} from "react-router";
-import {GetProfileImageUrl, GetUserRef, UpdateUserInfo, UpdateUserPassword} from "../../BackendFunctions";
+import {
+    GetProfileImageUrl,
+    GetUserRef,
+    UpdateUserInfo,
+    UpdateUserPassword
+} from "../../BackendFunctions";
 
 
 function Profile(props) {
@@ -104,7 +109,7 @@ function Profile(props) {
 
     const uid = db.auth().currentUser.uid;
 
-    const updateProfileImage = (picture_formData) => {
+    const UpdateProfileImage = (picture_formData) => {
         axios.post('http://localhost:8000/user_info/update_profile_image', picture_formData, {
             onUploadProgress: (ProgressEvent) => {
                 let tmp_progress = Math.round(
@@ -125,7 +130,7 @@ function Profile(props) {
             let picture = new FormData();
             picture.append('file', picture_object, uid + '.' + extension);
             console.log(picture);
-            updateProfileImage(picture);
+            UpdateProfileImage(picture);
             UpdateUserInfo('', '', '', picture_path);
             let reader = new FileReader();
             reader.onload = function () {

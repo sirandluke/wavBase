@@ -12,7 +12,7 @@ const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
-const UploadProfileImage = require('../Model/UpdateProfileImage');
+const UploadProfileImage = require('../Model/UploadProfileImage');
 const UpdateUserInfo = require('../Model/UpdateUserInfo');
 const UpdateRepoInfo = require('../Model/UpdateRepoInfo');
 const UpdateSnapshotInfo = require('../Model/UpdateSnapshotInfo');
@@ -72,16 +72,8 @@ router.post('/user_info/update_profile_image', (req, res) => {
     }
     console.log('file field found');
     const image_file = req.files.file;
-    const image_local_path = `./public/${image_file.name}`;
+    const image_local_path = `/tmp/${image_file.name}`;
     console.log('file found');
-    image_file.mv(image_local_path, function (err) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send({msg: "Error occurred"});
-        }
-        return res.send({name: image_file.name, path: `/${image_file.name}`});
-    });
-    console.log('file processed');
     UploadProfileImage(image_local_path, image_file);
 });
 

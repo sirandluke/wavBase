@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const GetUserRef = (uid) => {
     let config = {
         method: 'GET',
@@ -121,6 +123,18 @@ export const UpdateSnapshotInfo = (snapshot_id, description) => {
     fetch('http://localhost:8000/snapshot_info/update_snapshot_info', config)
         .catch(error => console.log(error));
 }
+
+/*export const UpdateProfileImage = (picture_formData) => {
+    axios.post('http://localhost:8000/user_info/update_profile_image', picture_formData, {
+        /!*onUploadProgress: (ProgressEvent) => {
+            let tmp_progress = Math.round(
+                ProgressEvent.loaded / ProgressEvent.total * 100) + '%';
+            setProgress(tmp_progress);
+        }*!/
+    }).then(res => {
+        console.log(res);
+    }).catch(err => console.log(err));
+}*/
 
 export const GetRepoInfo = (repo_id) => {
     let config = {
