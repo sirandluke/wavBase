@@ -187,3 +187,13 @@ export const CreateSnapshot = (description, files, repo_id, upload_date) => {
     fetch('http://localhost:8000/snapshot_info/create_snapshot', config)
         .catch(error => console.log(error));
 }
+
+export const GetFileUrl = (file_path) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/file_url?file_path=' + file_path, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}

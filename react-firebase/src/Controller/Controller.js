@@ -10,6 +10,7 @@ const GetRepoInfo = require('../Model/GetRepoInfo');
 const GetSnapshotListByRepoId = require('../Model/GetSnapshotListByRepoId');
 const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
 const GetFileMetaData = require('../Model/GetFileMetadata');
+const GetFileUrl = require('../Model/GetFileUrl');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
@@ -63,6 +64,11 @@ router.get('/file_link', (req, res) => {
         .then(doc => res.send(doc));
 })
 
+router.get('/file_url', (req, res) => {
+    GetFileUrl(req.query.file_path)
+        .then(doc => res.send(doc));
+})
+
 
 //Post Functions
 router.post('/user_info/create_user', (req, res) => {
@@ -108,7 +114,7 @@ router.post('/repo_info/update_repo_info', (req, res) => {
     UpdateRepoInfo(req.body.repo_id, req.body.tags, req.body.description);
 });
 
-router.post('snapshot_info/update_snapshot_info', (req, res) => {
+router.post('/snapshot_info/update_snapshot_info', (req, res) => {
     UpdateSnapshotInfo(req.body.snapshot_id, req.body.description);
 })
 
