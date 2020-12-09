@@ -141,3 +141,13 @@ export const GetSnapshotListByRepoId = (repo_id) => {
         .then(response => response.json())
         .catch(error => console.log(error));
 }
+
+export const GetSnapshotInfo = (snap_id) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/snapshot_info?snap_id=' + snap_id, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}

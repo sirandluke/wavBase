@@ -8,6 +8,7 @@ const GetUsers = require('../Model/GetUsers');
 const GetProfileImageUrl = require('../Model/GetProfileImageUrl');
 const GetRepoInfo = require('../Model/GetRepoInfo');
 const GetSnapshotListByRepoId = require('../Model/GetSnapshotListByRepoId');
+const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
@@ -49,6 +50,13 @@ router.get('/snapshot_list', (req, res) => {
         .then(doc => res.send(doc));
 })
 
+router.get('/snapshot_info', (req, res) => {
+    GetSnapshotInfo(req.query.snap_id)
+        .then(doc => res.send(doc));
+})
+
+
+//Post Functions
 router.post('/user_info/create_user', (req, res) => {
     CreateUser(req.body.username, req.body.password, req.body.email);
 })

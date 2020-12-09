@@ -36,7 +36,7 @@ export function SnapshotList(props) {
 
     function redirectToSnapshots(curr_snapshot) { // Passes the snapshot object over to be viewed.
         history.push({
-            pathname: `/snapshot/${curr_snapshot.snap_id}`,
+            pathname: `/repo/${repo_id}/snapshot/${curr_snapshot.snap_id}`,
         });
     }
 

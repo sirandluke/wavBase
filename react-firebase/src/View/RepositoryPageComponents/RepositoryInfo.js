@@ -49,7 +49,7 @@ export function RepositoryInfo(props) {
 
             <div className="repo_description">
                 <p>Repo Description</p>
-                <p>{ repo.description }</p>
+                <p id={'repo_description'}>{ repo.description }</p>
             </div>
         </div>
     );

@@ -80,7 +80,7 @@ const PersonalHome = ({history}, props) => {
             <Route path={"/repo/:repo_id"} component={Repository}/>
             <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
             <PrivateRoute exact path={'/repo/:repo_id/settings'} component={RepositorySettings}/>
-            <Route exact path={"/snapshot/:snapshot_id"} component={Snapshot}/>
+            <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
         </div>
 
     );
