@@ -1,4 +1,4 @@
-export const getUserRef = (uid) => {
+export const GetUserRef = (uid) => {
     let config = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
@@ -8,7 +8,7 @@ export const getUserRef = (uid) => {
         .catch(error => console.log("Home page " + error));
 }
 
-export const getProfileImageUrl = (image_path) => {
+export const GetProfileImageUrl = (image_path) => {
     let config = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
@@ -42,7 +42,7 @@ export const UpdateUserPassword = (uid, password) => {
         .catch(error => console.log(error));
 }
 
-export const findRepos = (uid) => {
+export const FindRepos = (uid) => {
     let config = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
@@ -52,7 +52,7 @@ export const findRepos = (uid) => {
         .catch(error => console.log(error));
 }
 
-export const updateFollow = (uid, current_uid, type) => {
+export const UpdateFollow = (uid, current_uid, type) => {
     let config = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -64,7 +64,7 @@ export const updateFollow = (uid, current_uid, type) => {
         .catch(error => console.log(error));
 }
 
-export const findUsers = (uid) => {
+export const FindUsers = (uid) => {
     let config = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
@@ -128,6 +128,16 @@ export const GetRepoInfo = (repo_id) => {
         headers: {'Content-Type': 'application/json'}
     };
     return fetch('http://localhost:8000/repo_info?repo_id=' + repo_id, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}
+
+export const GetSnapshotListByRepoId = (repo_id) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/snapshot_list?repo_id=' + repo_id, config)
         .then(response => response.json())
         .catch(error => console.log(error));
 }

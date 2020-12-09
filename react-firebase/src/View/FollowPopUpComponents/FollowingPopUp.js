@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useHistory} from "react";
 import {Link, useParams} from "react-router-dom";
-import {findUsers, getUserRef} from "../../BackendFunctions";
+import {FindUsers, GetUserRef} from "../../BackendFunctions";
 import {IncludeId} from "../GlobalComponent/ParseId";
 import UserDisplayComponent from "../SearchResultsComponents/UserDisplayComponent";
 
@@ -14,12 +14,12 @@ function FollowingPopUp(props) {
     useEffect(() => {
         console.log('listen to user list and user');
         if (!current_user) {
-            getUserRef(uid).then(user_snapshot => {
+            GetUserRef(uid).then(user_snapshot => {
                 setCurrentUser(user_snapshot);
             })
         }
         if (!users) {
-            findUsers(uid).then(users_snapshot => {
+            FindUsers(uid).then(users_snapshot => {
                 let users_list = [];
                 for (let user in users_snapshot) {
                     //console.log(1);

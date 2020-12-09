@@ -14,7 +14,7 @@ import '../NavBarComponents/NavBar.css';
 //import NavBar from '../NavBarComponents/NavBar.js';
 import Popup from "reactjs-popup";
 import {useHistory} from "react-router";
-import {getProfileImageUrl, getUserRef, UpdateUserInfo, UpdateUserPassword} from "../../BackendFunctions";
+import {GetProfileImageUrl, GetUserRef, UpdateUserInfo, UpdateUserPassword} from "../../BackendFunctions";
 
 
 function Profile(props) {
@@ -189,7 +189,7 @@ function Profile(props) {
 
     useEffect(() => {
         console.log("listen to profile");
-        getUserRef(uid).then(user_snapshot => {
+        GetUserRef(uid).then(user_snapshot => {
             setUser(user_snapshot);
             let profile_username = document.getElementById('display_username');
             if (profile_username != null) {
@@ -214,7 +214,7 @@ function Profile(props) {
             if (localStorage.getItem(image_path)) {
                 image_url = localStorage.getItem(image_path);
             } else {
-                getProfileImageUrl(image_path).then(url => {
+                GetProfileImageUrl(image_path).then(url => {
                     url.map((link, key) => {
                         image_url = link;
                     })

@@ -4,27 +4,10 @@ import {useParams, withRouter} from "react-router-dom";
 import loading from "../../Images/loader.gif";
 import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
-import {GetRepoInfo, getUserRef} from "../../BackendFunctions";
+import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
 
 export function RepositoryInfo(props) {
-    /*const repo_id = props.repo_id;
-    const [repo, setRepo] = useState(0);
-    const [repo_owner, setRepoOwner] = useState(0);
 
-    useEffect(() => {
-        console.log('Listening to repo:', repo_id);
-        if (!repo) {
-            GetRepoInfo(repo_id).then(repo_snapshot => {
-                setRepo(repo_snapshot);
-                getUserRef(repo_snapshot.user_id).then(owner_snapshot => {
-                    setRepoOwner(owner_snapshot);
-                });
-            });
-        }
-        return () => {
-            console.log('Stop listening to repo:', repo_id);
-        }
-    }, [repo]);*/
     const repo = props.repo;
     const repo_owner = props.repo_owner;
 

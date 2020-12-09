@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 //import db from "../../Database_config";
 //import {RepoDisplayComponent} from "../SearchResultsComponents(zhifei)/RepoDisplayComponent";
-import {findRepos} from "../../BackendFunctions";
+import {FindRepos} from "../../BackendFunctions";
 import db from "../../Model/TODELETE_base";
 import {useHistory} from "react-router";
 
@@ -16,7 +16,7 @@ function RepoSearchResult(props) {
     useEffect(() => {
         console.log('listen to repo list');
         if (!repos) {
-            findRepos(uid)
+            FindRepos(uid)
                 .then(repos_snapshot => {
                     let repos_list = [];
                     for (let repo in repos_snapshot) {

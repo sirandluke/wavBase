@@ -5,7 +5,7 @@ import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../GlobalComponent/PlayButton";
 import {RepositoryInfo} from "../RepositoryPageComponents/RepositoryInfo";
 import NavBar from '../NavBarComponents/NavBar.js';
-import SnapshotList from "../RepositoryPageComponents/SnapshotList";
+import {SnapshotList} from "../RepositoryPageComponents/SnapshotList";
 import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 import './Repository.css';
 import SnapshotModal from "../RepositoryModals/SnapshotModal";
@@ -13,7 +13,7 @@ import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
 import {repo_tab} from "../../Constants";
 import {useLocation, useParams} from 'react-router';
-import {GetRepoInfo, getUserRef} from "../../BackendFunctions";
+import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
 
 /**
  *
@@ -21,10 +21,10 @@ import {GetRepoInfo, getUserRef} from "../../BackendFunctions";
  * @returns {JSX.Element}
  * @constructor
  */
-export function Repository(props) {
+function Repository(props) {
     const {isShowing, toggle} = UseSnapshotModal();
     const {repo_id} = useParams();
-    console.log(repo_id);
+    //console.log(repo_id);
 
     const [repo, setRepo] = useState(0);
     const [repo_owner, setRepoOwner] = useState(0);
@@ -34,7 +34,7 @@ export function Repository(props) {
         if (!repo) {
             GetRepoInfo(repo_id).then(repo_snapshot => {
                 setRepo(repo_snapshot);
-                getUserRef(repo_snapshot.user_id).then(owner_snapshot => {
+                GetUserRef(repo_snapshot.user_id).then(owner_snapshot => {
                     setRepoOwner(owner_snapshot);
                 });
             });
@@ -64,7 +64,7 @@ export function Repository(props) {
         </div>
     );
 }
-
+export default Repository;
 /*
 const Repository = ({history}) => {
     const location = useLocation();

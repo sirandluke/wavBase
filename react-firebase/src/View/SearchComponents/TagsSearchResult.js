@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 //import db from "../../Database_config";
-import {findRepos} from "../../BackendFunctions";
+import {FindRepos} from "../../BackendFunctions";
 //import {RepoDisplayComponent} from "../SearchResultsComponents(zhifei)/RepoDisplayComponent";
 import {ParseTags} from "../GlobalComponent/ParseTags";
 import db from "../../Model/TODELETE_base";
@@ -17,7 +17,7 @@ function TagsSearchResult(props) {
     useEffect(() => {
         console.log('listen to tags list');
         if (!repos) {
-            findRepos(uid)
+            FindRepos(uid)
                 .then(repos_snapshot => {
                     let repos_list = [];
                     for (let repo in repos_snapshot) {

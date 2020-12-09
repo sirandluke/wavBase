@@ -7,7 +7,7 @@ import {Link, withRouter} from "react-router-dom";
 import "./RepositoryList.css";
 import {useHistory, useParams} from "react-router";
 import {ProfileInfo} from "./ProfileInfo";
-import {findRepos, getProfileImageUrl, getUserRef} from "../../BackendFunctions";
+import {FindRepos, GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
 
 function RepositoryList(props) {
     const history = useHistory();
@@ -25,7 +25,7 @@ function RepositoryList(props) {
     useEffect(() => {
         console.log('listen to repository');
         if (!props.repos) {
-            findRepos(uid)
+            FindRepos(uid)
                 .then(repos_snapshot => {
                     let repos_list = [];
                     for (let repo in repos_snapshot) {

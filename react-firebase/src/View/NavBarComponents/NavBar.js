@@ -8,7 +8,7 @@ import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
 import "./NavBar.css"
-import {getProfileImageUrl, getUserRef} from "../../BackendFunctions";
+import {GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
 
 function NavBar(props) {
 
@@ -20,7 +20,7 @@ function NavBar(props) {
         () => {
             console.log('listen to home');
             if (!props.user) {
-                getUserRef(current_uid)
+                GetUserRef(current_uid)
                     .then(user_snapshot => {
                         setUser(user_snapshot);
                         //document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
@@ -30,7 +30,7 @@ function NavBar(props) {
                         if (localStorage.getItem(image_path)) {
                             image_url = localStorage.getItem(image_path);
                         } else {
-                            getProfileImageUrl(image_path).then(url => {
+                            GetProfileImageUrl(image_path).then(url => {
                                 url.map((link, key) => {
                                     image_url = link;
                                 })

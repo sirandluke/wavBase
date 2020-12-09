@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useHistory} from "react";
 //import db from "../../Database_config";
-import {findUsers} from "../../BackendFunctions";
+import {FindUsers} from "../../BackendFunctions";
 import UserDisplayComponent from "../SearchResultsComponents/UserDisplayComponent";
 import db from "../../Model/TODELETE_base";
 
@@ -16,7 +16,7 @@ function UserSearchResult(props) {
     useEffect(() => {
         console.log('listen to user list');
         if (!users) {
-            findUsers(uid).then(users_snapshot => {
+            FindUsers(uid).then(users_snapshot => {
                 let users_list = [];
                 for (let user in users_snapshot) {
                     //console.log(1);

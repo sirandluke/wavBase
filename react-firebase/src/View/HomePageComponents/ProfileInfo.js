@@ -6,7 +6,7 @@ import loading from "../../Images/loader.gif"
 
 import "./ProfileInfo.css"
 import {useHistory, useParams} from "react-router";
-import {findRepos, getProfileImageUrl, getUserRef} from "../../BackendFunctions";
+import {FindRepos, GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
 
 
 export function ProfileInfo(props) {
@@ -19,7 +19,7 @@ export function ProfileInfo(props) {
         //if (localStorage.getItem('repo_page_id') !== uid) {
         console.log('listen to user info');
         if (!props.user) {
-            getUserRef(uid).then(user_snapshot => {
+            GetUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
                 /*let profile_username = document.getElementById(uid + 'display_username');
                 if (profile_username != null) {
@@ -33,7 +33,7 @@ export function ProfileInfo(props) {
                 if (localStorage.getItem(image_path)) {
                     image_url = localStorage.getItem(image_path);
                 } else {
-                    getProfileImageUrl(image_path).then(url => {
+                    GetProfileImageUrl(image_path).then(url => {
                         url.map((link, key) => {
                             image_url = link;
                         })

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {AddId, DeleteId, getIdCount, IncludeId} from "../GlobalComponent/ParseId";
-import {getProfileImageUrl, getUserRef, updateFollow} from "../../BackendFunctions";
+import {GetProfileImageUrl, GetUserRef, UpdateFollow} from "../../BackendFunctions";
 //import db from "../../Database_config";
 import db from "../../Model/TODELETE_base";
 
@@ -16,7 +16,7 @@ function UserDisplayComponent(props) {
     useEffect(() => {
         console.log('listen to user status');
         if (!props.user) {
-            getUserRef(uid).then(user_snapshot => {
+            GetUserRef(uid).then(user_snapshot => {
                 setUser(user_snapshot);
                 let image_path = "defaults/test_user.png";
                 if (user_snapshot.profile_picture !== '') {
@@ -26,7 +26,7 @@ function UserDisplayComponent(props) {
                 if (localStorage.getItem(image_path)) {
                     image_url = localStorage.getItem(image_path);
                 } else {
-                    getProfileImageUrl(image_path).then(url => {
+                    GetProfileImageUrl(image_path).then(url => {
                         url.map((link, key) => {
                             image_url = link;
                         })
@@ -53,7 +53,7 @@ function UserDisplayComponent(props) {
     }, [props.user]);
 
     const handleFollow = () => {
-        updateFollow(uid, current_uid, 'follow');
+        UpdateFollow(uid, current_uid, 'follow');
         let tmp_user = user;
         tmp_user = {...tmp_user, followers: AddId(tmp_user.followers, current_uid)}
         localStorage.setItem('following', AddId(localStorage.getItem('following'), uid));
@@ -64,7 +64,7 @@ function UserDisplayComponent(props) {
     }
 
     const handleUnfollow = () => {
-        updateFollow(uid, current_uid, 'unfollow');
+        UpdateFollow(uid, current_uid, 'unfollow');
         let tmp_user = user;
         tmp_user = {...tmp_user, followers: DeleteId(tmp_user.followers, current_uid)}
         localStorage.setItem('following', DeleteId(localStorage.getItem('following'), uid));
