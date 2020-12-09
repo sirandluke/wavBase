@@ -40,7 +40,8 @@ export class LoadingFiles extends Component {
     parseFileString() {
         let audio_paths = [];
         let proj_paths = [];
-        let file_paths = this.props.snapshot_paths.split(',');
+        let file_paths;
+        file_paths = this.props.snapshot_paths.split(',');
         console.log(file_paths);
         file_paths.forEach(file_path => {
             if (file_path.indexOf('.mp3') !== -1 || file_path.indexOf('.wav') !== -1) {
@@ -107,9 +108,9 @@ export class LoadingFiles extends Component {
             isLoading
                 ? <LoadingScreen message="Getting your files!"/>
                 : <FileList
-                    audio_objs={ audio_objs }
-                    proj_objs={ proj_objs }
-                    snapshot_name ={this.props.snapshot_name}/>
+                    audio_objs={audio_objs}
+                    proj_objs={proj_objs}
+                    snapshot_name={this.props.snapshot_name}/>
         );
     }
 }

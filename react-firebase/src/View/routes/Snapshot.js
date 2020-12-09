@@ -53,10 +53,10 @@ function Snapshot(props) {
                 datetime={snapshot.upload_date}
             />
 
-            {/*<LoadingFiles
+            {<LoadingFiles
                 snapshot_paths={snapshot.files}
                 snapshot_name={snapshot.description}
-            />*/}
+            />}
         </div>
     );
 }
