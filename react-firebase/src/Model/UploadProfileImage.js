@@ -1,6 +1,6 @@
-const db = require('../Database_config');
+//const db = require('../Database_config');
 const admin = require('../Admin_config');
-
+const fs = require('fs');
 
 module.exports = function UploadProfileImage(picture_path, picture) {
 
@@ -11,10 +11,13 @@ module.exports = function UploadProfileImage(picture_path, picture) {
     const upload_options = {
         destination: ('defaults/' + picture.name)
     }
+    console.log(picture_path);
     picture_bucket.upload(picture_path, upload_options, function (err, file) {
         if (!err) {
+            fs.unlinkSync(picture_path);
             console.log('Upload New Profile Picture Success');
         } else {
+            fs.unlinkSync(picture_path);
             console.log('Error uploading file: ' + err);
         }
     });

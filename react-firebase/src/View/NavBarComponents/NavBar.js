@@ -15,6 +15,7 @@ function NavBar(props) {
     let current_uid = db.auth().currentUser.uid;
     const history = useHistory();
     const [user, setUser] = useState(props.user || []);
+    const [image_url, setImageUrl] = useState(0);
 
     useEffect(
         () => {
@@ -28,12 +29,14 @@ function NavBar(props) {
                         let image_path = user_snapshot.profile_picture;
                         let image_url;
                         if (localStorage.getItem(image_path)) {
+                            setImageUrl(image_url);
                             image_url = localStorage.getItem(image_path);
                         } else {
                             GetProfileImageUrl(image_path).then(url => {
                                 url.map((link, key) => {
                                     image_url = link;
                                 })
+                                setImageUrl(image_url);
                                 localStorage.setItem(image_path, image_url);
                             });
                         }
@@ -59,6 +62,13 @@ function NavBar(props) {
     const redirectProfile = () => {
         history.push("/profile");
     }
+
+    const handleSignOut = () => {
+        localStorage.clear();
+        db.auth().signOut().then(r => {
+            console.log('Successfully signed out');
+        });
+    }
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
@@ -69,7 +79,7 @@ function NavBar(props) {
                 <button type="submit"><Link to={'/search_result'}>Search</Link></button>
             </form>
 
-            <img id="profile_picture2" className="top_icon"/>
+            <img id="profile_picture2" className="top_icon" src={image_url}/>
 
             <DropdownButton
                 id="dropdown-item-button"
@@ -78,7 +88,7 @@ function NavBar(props) {
                 
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={ handleSignOut }>Sign Out</Dropdown.Item>
             </DropdownButton>
         </div>
     )

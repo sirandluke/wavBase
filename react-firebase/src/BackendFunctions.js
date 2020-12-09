@@ -165,3 +165,25 @@ export const GetSnapshotInfo = (snap_id) => {
         .then(response => response.json())
         .catch(error => console.log(error));
 }
+
+export const GetFileMetadata = (file_path) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/file_link?file_path=' + file_path, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}
+
+export const CreateSnapshot = (description, files, repo_id, upload_date) => {
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            description, files, repo_id, upload_date
+        })
+    };
+    fetch('http://localhost:8000/snapshot_info/create_snapshot', config)
+        .catch(error => console.log(error));
+}

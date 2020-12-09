@@ -9,15 +9,18 @@ const GetProfileImageUrl = require('../Model/GetProfileImageUrl');
 const GetRepoInfo = require('../Model/GetRepoInfo');
 const GetSnapshotListByRepoId = require('../Model/GetSnapshotListByRepoId');
 const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
+const GetFileMetaData = require('../Model/GetFileMetadata');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
+const CreateSnapshot = require('../Model/CreateSnapshot');
 const UploadProfileImage = require('../Model/UploadProfileImage');
 const UpdateUserInfo = require('../Model/UpdateUserInfo');
 const UpdateRepoInfo = require('../Model/UpdateRepoInfo');
 const UpdateSnapshotInfo = require('../Model/UpdateSnapshotInfo');
 const UpdatePassword = require('../Model/UpdatePassword');
 const HandleFollow = require('../Model/HandleFollow');
+const UploadSnapshotFile = require('../Model/UploadSnapshotFile');
 
 router.get('/user_info', (req, res) => {
     //console.log("router GetUserInfo executed");
@@ -55,6 +58,11 @@ router.get('/snapshot_info', (req, res) => {
         .then(doc => res.send(doc));
 })
 
+router.get('/file_link', (req, res) => {
+    GetFileMetaData(req.query.file_path)
+        .then(doc => res.send(doc));
+})
+
 
 //Post Functions
 router.post('/user_info/create_user', (req, res) => {
@@ -72,9 +80,16 @@ router.post('/user_info/update_profile_image', (req, res) => {
     }
     console.log('file field found');
     const image_file = req.files.file;
-    const image_local_path = `/tmp/${image_file.name}`;
+    const image_local_path = `../../tmp_file/${image_file.name}`;
     console.log('file found');
-    UploadProfileImage(image_local_path, image_file);
+    image_file.mv(image_local_path, function (err) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({msg: "Error occurred"});
+        }
+        UploadProfileImage(image_local_path, image_file);
+        return res.send({name: image_file.name, path: `/${image_file.name}`});
+    });
 });
 
 router.post('/user_info/update_user_info', (req, res) => {
@@ -95,6 +110,28 @@ router.post('/repo_info/update_repo_info', (req, res) => {
 
 router.post('snapshot_info/update_snapshot_info', (req, res) => {
     UpdateSnapshotInfo(req.body.snapshot_id, req.body.description);
+})
+
+router.post('/snapshot_info/create_snapshot', (req, res) => {
+    CreateSnapshot(req.body.description, req.body.files, req.body.repo_id, req.body.upload_date);
+})
+
+router.post('/snapshot_info/upload_file', (req, res) => {
+    if (!req.files) {
+        return res.status(500).send({msg: "file is not found"});
+    }
+    console.log('file field found');
+    const file = req.files.file;
+    const local_path = `../../tmp_file/${file.name}`;
+    console.log('file found');
+    file.mv(local_path, function (err) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send({msg: "Error occurred"});
+        }
+        UploadSnapshotFile(file, local_path, req.query.destination)
+            .then(doc => res.send({name: file.name, path: `/${file.name}`}));
+    });
 })
 
 module.exports = router;
