@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Model/GetRepoInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Images/default_repo_thumbnail.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BackendFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/GetUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/GetUserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/RepositoryPageComponents/RepositoryInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RepositoryPageComponents/RepositoryInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View/RepositoryPageComponents" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,11 +60,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\MVC\wavBase\react-firebase\src\Images" />
       <recent name="F:\MVC\wavBase\react-firebase\src\View\RepositoryPageComponents" />
       <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchResultsComponents(zhifei)" />
       <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchComponents" />
       <recent name="F:\MVC\wavBase\react-firebase\src\View\FollowPopUpComponents" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MVC\wavBase\react-firebase\src\View" />
@@ -125,7 +123,7 @@
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607398702135" duration="18775000" />
-      <workItem from="1607466014390" duration="10510000" />
+      <workItem from="1607466014390" duration="11747000" />
     </task>
     <servers />
   </component>
