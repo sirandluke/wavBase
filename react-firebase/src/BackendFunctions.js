@@ -97,3 +97,27 @@ export const CreateRepo = (uid, repo_name, bpm, key, tags, is_private, descripti
     fetch('http://localhost:8000/repo_info/create_repo', config)
         .catch(error => console.log(error));
 }
+
+export const UpdateRepoInfo = (repo_id, tags, description) => {
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            repo_id, tags, description
+        })
+    };
+    fetch('http://localhost:8000/repo_info/update_repo_info', config)
+        .catch(error => console.log(error));
+}
+
+export const UpdateSnapshotInfo = (snapshot_id, description) => {
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            snapshot_id, description
+        })
+    };
+    fetch('http://localhost:8000/snapshot_info/update_snapshot_info', config)
+        .catch(error => console.log(error));
+}

@@ -20,23 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/RepositoryPageComponents/LikeButton.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/UpdateRepoInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/UpdateSnapshotInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BackendFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendFunctions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CreateRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CreateRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/NewRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/NewRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/Controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/UpdateUserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UpdateUserInfo.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +126,7 @@
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
       <workItem from="1607398702135" duration="18775000" />
-      <workItem from="1607466014390" duration="8358000" />
+      <workItem from="1607466014390" duration="10075000" />
     </task>
     <servers />
   </component>

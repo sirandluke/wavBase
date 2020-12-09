@@ -7,10 +7,13 @@ const GetRepos = require('../Model/GetRepos');
 const GetUsers = require('../Model/GetUsers');
 const GetProfileImageUrl = require('../Model/GetProfileImageUrl');
 
+
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
 const UploadProfileImage = require('../Model/UpdateProfileImage');
 const UpdateUserInfo = require('../Model/UpdateUserInfo');
+const UpdateRepoInfo = require('../Model/UpdateRepoInfo');
+const UpdateSnapshotInfo = require('../Model/UpdateSnapshotInfo');
 const UpdatePassword = require('../Model/UpdatePassword');
 const HandleFollow = require('../Model/HandleFollow');
 
@@ -75,5 +78,13 @@ router.post('/user_info/update_password', (req, res) => {
 router.post('/user_info/follow', (req, res) => {
     HandleFollow(req.body.uid, req.body.current_uid, req.body.type);
 });
+
+router.post('/repo_info/update_repo_info', (req, res) => {
+    UpdateRepoInfo(req.body.repo_id, req.body.tags, req.body.description);
+});
+
+router.post('snapshot_info/update_snapshot_info', (req, res) => {
+    UpdateSnapshotInfo(req.body.snapshot_id, req.body.description);
+})
 
 module.exports = router;

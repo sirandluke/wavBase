@@ -8,7 +8,6 @@ module.exports = function UpdateUserInfo(uid, username, bio, image_path) {
         }).then(r => {
             console.log('New Username: ' + username);
         });
-
     }
     if (bio !== '') {
         user_path.update({
@@ -16,7 +15,6 @@ module.exports = function UpdateUserInfo(uid, username, bio, image_path) {
         }).then(r => {
             console.log('New Bio: ' + bio);
         });
-
     }
     if (image_path !== '') {
         user_path.update({
