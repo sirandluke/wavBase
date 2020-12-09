@@ -20,13 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc39e7a8-ceed-488a-af76-dde1c1970f01" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/RepoController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/SnapshotController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/View/RepositoryPageComponents/LikeButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchComponents/RepoSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SearchComponents/TagsSearchResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SearchComponents/TagsSearchResult.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SearchResultsComponents(zhifei)/RepoDisplayComponent.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BackendFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BackendFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/CreateRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CreateRepo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NavBarComponents/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/NewRepoComponents/CreateRepoAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/NewRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/NewRepo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/PersonalHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/routes/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/routes/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/Controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +63,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/View/RepositoryPageComponents" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,30 +73,28 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\MVC\wavBase\react-firebase\src\View\RepositoryPageComponents" />
+      <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchResultsComponents(zhifei)" />
+      <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchComponents" />
+      <recent name="F:\MVC\wavBase\react-firebase\src\View\FollowPopUpComponents" />
+      <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\MVC\wavBase\react-firebase\src\View" />
       <recent name="F:\MVC\wavBase\react-firebase\src" />
       <recent name="F:\MVC\wavBase\react-firebase" />
       <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchResultsComponents(zhifei)" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\View\SearchComponents" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\View\FollowPopUpComponents" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\GlobalComponent" />
-      <recent name="F:\MVC\wavBase\react-firebase\src\server" />
-    </key>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="npm.dev">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -99,7 +106,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/../../../wavBase/wavBase/react-firebase/package.json" />
       <command value="run" />
       <scripts>
@@ -116,11 +123,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="npm.dev" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -134,7 +136,8 @@
       <workItem from="1606814473130" duration="315000" />
       <workItem from="1606815155414" duration="20000" />
       <workItem from="1606815200917" duration="17913000" />
-      <workItem from="1607398702135" duration="18520000" />
+      <workItem from="1607398702135" duration="18775000" />
+      <workItem from="1607466014390" duration="8358000" />
     </task>
     <servers />
   </component>
@@ -168,33 +171,36 @@
     </state>
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607412174757" />
     <state x="741" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606815173836" />
-    <state width="938" height="192" key="GridCell.Tab.0.bottom" timestamp="1607417739825">
+    <state width="1877" height="192" key="GridCell.Tab.0.bottom" timestamp="1607489035915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
+    <state width="1877" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607489035915" />
     <state width="1878" height="157" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="192" key="GridCell.Tab.0.center" timestamp="1607417739825">
+    <state width="1877" height="192" key="GridCell.Tab.0.center" timestamp="1607489035914">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="192" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
+    <state width="1877" height="192" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607489035914" />
     <state width="1878" height="157" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="192" key="GridCell.Tab.0.left" timestamp="1607417739825">
+    <state width="1877" height="192" key="GridCell.Tab.0.left" timestamp="1607489035914">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="192" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
+    <state width="1877" height="192" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607489035914" />
     <state width="1878" height="157" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
-    <state width="938" height="192" key="GridCell.Tab.0.right" timestamp="1607417739825">
+    <state width="1877" height="192" key="GridCell.Tab.0.right" timestamp="1607489035915">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="192" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607417739825" />
+    <state width="1877" height="192" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607489035915" />
     <state width="1878" height="157" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606817178327" />
+    <state x="558" y="5" width="594" height="891" key="find.popup" timestamp="1607483533301">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="558" y="5" width="594" height="891" key="find.popup/0.0.1920.1040/-1920.1080.1920.1040@0.0.1920.1040" timestamp="1607483533301" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/View/GlobalComponent/PlayButton.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

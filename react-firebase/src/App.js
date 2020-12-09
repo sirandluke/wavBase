@@ -37,17 +37,6 @@ function App() {
                         <Route exact path="/register" component={Register}/>
                         <PrivateRoute path="/" component={PersonalHome}/>
                     </Switch>
-                    <PrivateRoute exact path="/" component={RepositoryList}/>
-                    <PrivateRoute exact path="/newrepo" component={NewRepo}/>
-                    <PrivateRoute exact path="/repository" component={Repository}/>
-                    <PrivateRoute exact path="/snapshot" component={Snapshot}/>
-                    <PrivateRoute exact path="/profile" component={Profile}/>
-                    <PrivateRoute path='/search_result' component={ResultsInterface}/>
-                    <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
-                    <PrivateRoute exact path='/search_result/repositories'
-                                  component={RepoSearchResult}/>
-                    <PrivateRoute exact path='/search_result/tags'
-                                  component={TagsSearchResult}/>
                     <img src={sine_wave_1} style={{
                         width: "100%",
                         float: 'bottom',

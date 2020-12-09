@@ -10,9 +10,12 @@ import downArrow from "../../Images/downArrow.png";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
 import '../NavBarComponents/NavBar.css'
 import './NewRepo.css'
+import {useHistory} from "react-router";
 
 
-const NewRepo = ({ history }) => {
+function NewRepo(props) {
+
+    const history = useHistory();
 
     const redirectRepo = () => {
         history.push("/repository");
@@ -26,8 +29,18 @@ const NewRepo = ({ history }) => {
         <div>
 
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-            <NavBar />
-            {/* We now use navbar.js
+            <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-10rem", zIndex:"-99", position:"absolute"}}/>
+
+            <CreateRepoAction id="createRepoForm" />
+
+
+        </div>
+    );
+}
+
+export default NewRepo;
+
+/* We now use navbar.js
             <div className="nav_bar">
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <div class="user_dropdown">
@@ -57,13 +70,4 @@ const NewRepo = ({ history }) => {
                 </form>
 
             </div>
-            */}
-            <img src={sine_wave_1} className={"bottom_wave"} style={{width:"100%", height:"233", bottom:"-10rem", zIndex:"-99", position:"absolute"}}/>
-
-            <CreateRepoAction id="createRepoForm" history={history}/>
-
-
-        </div>
-    );
-};
-export default NewRepo;
+            */

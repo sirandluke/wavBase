@@ -41,7 +41,8 @@ router.post('/user_info/create_user', (req, res) => {
 })
 
 router.post('/repo_info/create_repo', (req, res) => {
-    CreateRepo(req.body.tags_id, req.body.repo_name, req.body.bpm, req.body.key, req.body.is_private, req.body.description)
+    console.log('create repo');
+    CreateRepo(req.body.uid, req.body.repo_name, req.body.bpm, req.body.key, req.body.tags, req.body.is_private, req.body.description)
 })
 
 router.post('/user_info/update_profile_image', (req, res) => {

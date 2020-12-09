@@ -20,9 +20,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/', require('../routes/index'));
+app.use('/', require('../Controller/index'));
 
-app.use('/', require('../routes/Controller'));
+app.use('/', require('../Controller/Controller'));
 
 
 const PORT = process.env.PORT || 8000;

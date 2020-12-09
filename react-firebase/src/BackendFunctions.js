@@ -86,12 +86,12 @@ export const CreateUser = (username, password, email) => {
         .catch(error => console.log(error));
 }
 
-export const CreateRepo = (tags_id, repo_name, bpm, key, is_private, description) => {
+export const CreateRepo = (uid, repo_name, bpm, key, tags, is_private, description) => {
     let config = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            tags_id, repo_name, bpm, key, is_private, description
+            uid, repo_name, bpm, key, tags, is_private, description
         })
     };
     fetch('http://localhost:8000/repo_info/create_repo', config)

@@ -8,11 +8,10 @@ const DateToString = () => {
     return month + '-' + day + '-' + year;
 }
 
-module.exports = function CreateRepo(tags_id, repo_name, bpm, key, is_private, description) {
+module.exports = function CreateRepo(uid, repo_name, bpm, key, is_private, description) {
     console.log("Creating a new Repository");
     try {
-        //TODO
-        let uid = db.auth().currentUser.uid
+        console.log(uid, 'is creating new repo');
         let firebaseRef = db.database().ref("repositories/")
         firebaseRef.push({
             user_id: uid,

@@ -40,6 +40,8 @@ function NavBar(props) {
                         //console.log(image_url);
                         let img = document.getElementById('profile_picture2');
                         img.src = image_url;
+                        localStorage.setItem('current_uid', current_uid);
+                        localStorage.setItem('username', user_snapshot.username);
                         localStorage.setItem('following', user_snapshot.following);
                     });
             }

@@ -158,6 +158,7 @@ function Profile(props) {
                 profile_username.innerText = new_username;
             }
             console.log('New Username: ' + new_username);
+            localStorage.setItem('username', new_username);
         }
         if (new_bio !== "") {
             /*let tmp_user = user;
