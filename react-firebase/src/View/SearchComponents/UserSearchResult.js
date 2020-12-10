@@ -17,6 +17,7 @@ function UserSearchResult(props) {
         console.log('listen to user list');
         if (!users) {
             FindUsers(uid).then(users_snapshot => {
+                console.log(users_snapshot);
                 let users_list = [];
                 for (let user in users_snapshot) {
                     //console.log(1);

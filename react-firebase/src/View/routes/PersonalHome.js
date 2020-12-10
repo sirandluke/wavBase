@@ -25,7 +25,6 @@ import RepoSearchResult from "../SearchComponents/RepoSearchResult";
 import TagsSearchResult from "../SearchComponents/TagsSearchResult";
 import {Route} from "react-router";
 import Repository from "./Repository";
-import RepositorySettings from "../RepositoryPageComponents/RepositorySettings";
 import {SnapshotList} from "../RepositoryPageComponents/SnapshotList";
 
 // TODO: render searchbar, likes, (add more)

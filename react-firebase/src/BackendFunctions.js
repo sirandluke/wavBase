@@ -221,3 +221,15 @@ export const DeleteRepo = (repo_id) => {
     fetch('http://localhost:8000/repo_info/delete_repo', config)
         .catch(error => console.log(error));
 }
+
+export const HandleComment = (repo_id, username, comment) => {
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            repo_id, username, comment
+        })
+    };
+    fetch('http://localhost:8000/repo_info/add_comment', config)
+        .catch(error => console.log(error));
+}

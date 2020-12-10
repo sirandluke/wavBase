@@ -4,12 +4,13 @@ import {useParams, useRouteMatch, withRouter} from "react-router-dom";
 import loading from "../../Images/loader.gif";
 import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
-import {DeleteRepo, GetRepoInfo, GetUserRef, UpdateRepoInfo} from "../../BackendFunctions";
+import {DeleteRepo, GetRepoInfo, GetUserRef, HandleComment, UpdateRepoInfo} from "../../BackendFunctions";
 import {ParseTags} from "../GlobalComponent/ParseTags";
 import db from "../../Model/TODELETE_base";
 import {useHistory} from "react-router";
 import Popup from "reactjs-popup";
 import Button from "react-bootstrap/Button";
+import CommentsDisplayComponent from "./CommentsDisplayComponent";
 
 export function RepositoryInfo(props) {
 
@@ -18,6 +19,8 @@ export function RepositoryInfo(props) {
     const uid = db.auth().currentUser.uid;
 
     const [repo, setRepo] = useState(0);
+    const [visitor, setVisitor] = useState(0);
+    const [comments, setComments] = useState(0);
     const repo_owner = props.repo_owner;
 
 
@@ -34,6 +37,21 @@ export function RepositoryInfo(props) {
     useEffect(() => {
         if (props.repo) {
             setRepo(props.repo);
+            //console.log(props.repo.comments);
+            let tmp_comments = [];
+            if (props.repo.comments) {
+                for (let comment in props.repo.comments) {
+                    tmp_comments.push({...props.repo.comments[comment], key: comment});
+                }
+            }
+            setComments(tmp_comments);
+        }
+        if (!visitor) {
+            if (uid) {
+                GetUserRef(uid).then(r => {
+                    setVisitor(r);
+                });
+            }
         }
         return () => {
             console.log('Repo Info Updated');
@@ -79,6 +97,21 @@ export function RepositoryInfo(props) {
         alert(window.location.href + ' copied to your clipboard');
     }
 
+    const handleComment = (e) => {
+        e.preventDefault();
+        const comment = document.getElementById('new_comment').value;
+        if (comment && comment !== '') {
+            HandleComment(repo_id, visitor.username, comment);
+            let tmp_comments = [...comments];
+            tmp_comments.push({...tmp_comments[tmp_comments.length], text: comment, username: visitor.username});
+            setComments(tmp_comments);
+        }
+        else {
+            alert('Cannot comment blank');
+        }
+        document.getElementById('new_comment').value = '';
+    }
+
     return(
         <div>
             <div className="left_element">
@@ -103,7 +136,7 @@ export function RepositoryInfo(props) {
                                 <h3>Update Tags</h3>
 
                                 <input className="edit_input_1" name="tags" type="text" id="new_tags"
-                                       placeholder="Tags"/>
+                                       placeholder="Tags" defaultValue={repo.tags}/>
                             </label>
                             <br/>
                             <label>
@@ -130,6 +163,22 @@ export function RepositoryInfo(props) {
             <div className="repo_description">
                 <p>Repo Description</p>
                 <p id={'repo_description'}>{ repo.description }</p>
+            </div>
+
+            {/*TODO: Make comment component below the description*/}
+            <div className='add_repo_comments'>
+                <form method="post" onSubmit={handleComment}>
+                    <label>
+                        <h3>Comment This Repo</h3>
+                        <textarea className="edit_input_2" name="description" type="text" id="new_comment"
+                                  placeholder="Leave Your Comments"/>
+                    </label>
+                    <input className="comment_button" type="submit" value="Comment"/>
+                </form>
+            </div>
+
+            <div className='display_repo_comments'>
+                {(comments) ? <CommentsDisplayComponent comments={comments} /> : <h3>No Comment Yet</h3>}
             </div>
         </div>
     );
