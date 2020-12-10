@@ -10,6 +10,7 @@ import db from "../../Model/TODELETE_base";
 import {useHistory} from "react-router";
 import Popup from "reactjs-popup";
 import Button from "react-bootstrap/Button";
+import { confirmAlert } from 'react-confirm-alert';
 import CommentsDisplayComponent from "./CommentsDisplayComponent";
 import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
 import LikedListDisplayComponent from "./LikedListDisplayComponent";
@@ -75,6 +76,7 @@ export function RepositoryInfo(props) {
 
     const handleDelete = (event) => {
         event.preventDefault();
+        alert(`Repo ${repo.name} Deleted`);
         DeleteRepo(repo_id);
         history.push('/');
     }
@@ -167,7 +169,7 @@ export function RepositoryInfo(props) {
                                 <br/>
                                 <p>*Delete the repository. This will delete all aspects of the repository</p>
                             </label>
-                            <button onClick={handleDelete}><h2>Delete</h2></button>
+                            {<button onClick={handleDelete}><h2>Delete</h2></button>}
                         </form>
                     </Popup>
                     : <></>}
