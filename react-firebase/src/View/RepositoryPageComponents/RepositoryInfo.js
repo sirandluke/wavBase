@@ -6,11 +6,9 @@ import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
 import {DeleteRepo, GetRepoInfo, GetUserRef, HandleComment, HandleLike, UpdateRepoInfo} from "../../BackendFunctions";
 import {ParseTags} from "../GlobalComponent/ParseTags";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import {useHistory} from "react-router";
 import Popup from "reactjs-popup";
-import Button from "react-bootstrap/Button";
-import { confirmAlert } from 'react-confirm-alert';
 import CommentsDisplayComponent from "./CommentsDisplayComponent";
 import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
 import LikedListDisplayComponent from "./LikedListDisplayComponent";

@@ -245,3 +245,16 @@ export const HandleLike = (repo_id, likes) => {
     fetch('http://localhost:8000/repo_info/update_likes', config)
         .catch(error => console.log(error));
 }
+
+export const SignIn = (email, password) => {
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            email, password
+        })
+    };
+    return fetch('http://localhost:8000/sign_in', config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}

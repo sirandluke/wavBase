@@ -2,7 +2,7 @@
     Auth.js
  */
 import React, {useEffect , useState} from "react";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 
 export const AuthContext = React.createContext();
 

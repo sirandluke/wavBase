@@ -1,5 +1,5 @@
 /*
-    Login.js
+    SignIn.js
     TODO: Sign in & reset password with username
     TODO: [RISK] unstable reset password & login functionality
  */
@@ -7,12 +7,13 @@ import React, {useContent, useContext} from "react";
 import {Redirect} from "react-router-dom";
 import {AuthContext} from "../auth/Auth";
 
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
 import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import './Login.css';
+import {SignIn} from "../../BackendFunctions";
 
 const Login = ({history}) => {
 
@@ -34,7 +35,6 @@ const Login = ({history}) => {
                     .signInWithEmailAndPassword(email, password.value).then(user => {
                     console.log(user.user.uid);
                 });
-                history.push("/");
             } else {
                 // TODO: Login with username and password.
                 let username = email_or_username.value;

@@ -2,7 +2,7 @@
     Register.js
  */
 import React from 'react';
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";

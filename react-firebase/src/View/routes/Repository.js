@@ -14,7 +14,7 @@ import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 import {repo_tab} from "../../Constants";
 import {useHistory, useLocation, useParams} from 'react-router';
 import {GetRepoInfo, GetUserRef} from "../../BackendFunctions";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 
 /**
  *

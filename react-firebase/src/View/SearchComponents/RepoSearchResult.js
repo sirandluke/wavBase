@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 //import db from "../../Database_config";
 //import {RepoDisplayComponent} from "../SearchResultsComponents(zhifei)/RepoDisplayComponent";
 import {FindRepos} from "../../BackendFunctions";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import {useHistory} from "react-router";
 
 function RepoSearchResult(props) {

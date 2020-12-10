@@ -1,7 +1,7 @@
 /*
     FirebaseHandler.js
  */
-import db from "./TODELETE_base.js";
+import db from "./base.js";
 import * as K from "../Constants.js";
 import {DateToString} from "../View/GlobalComponent/Date";
 

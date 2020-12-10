@@ -11,6 +11,7 @@ const GetSnapshotListByRepoId = require('../Model/GetSnapshotListByRepoId');
 const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
 const GetFileMetaData = require('../Model/GetFileMetadata');
 const GetFileUrl = require('../Model/GetFileUrl');
+const SignIn = require('../Model/SignIn');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
@@ -70,6 +71,11 @@ router.get('/file_link', (req, res) => {
 
 router.get('/file_url', (req, res) => {
     GetFileUrl(req.query.file_path)
+        .then(doc => res.send(doc));
+})
+
+router.post('/sign_in', (req, res) => {
+    SignIn(req.body.email, req.body.password)
         .then(doc => res.send(doc));
 })
 

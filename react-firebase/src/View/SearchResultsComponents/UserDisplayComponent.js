@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {AddId, DeleteId, getIdCount, IncludeId} from "../GlobalComponent/ParseId";
 import {GetProfileImageUrl, GetUserRef, UpdateFollow} from "../../BackendFunctions";
 //import db from "../../Database_config";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 
 function UserDisplayComponent(props) {
     const username = props.username;

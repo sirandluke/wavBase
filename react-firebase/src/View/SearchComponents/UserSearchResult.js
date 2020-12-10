@@ -2,7 +2,7 @@ import React, {useEffect, useState, useHistory} from "react";
 //import db from "../../Database_config";
 import {FindUsers} from "../../BackendFunctions";
 import UserDisplayComponent from "../SearchResultsComponents/UserDisplayComponent";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 
 function UserSearchResult(props) {
 

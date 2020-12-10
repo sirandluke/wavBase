@@ -1,6 +1,6 @@
 import React, {Component, useEffect, useState} from "react";
 
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 
 import {Link, withRouter} from "react-router-dom";
 

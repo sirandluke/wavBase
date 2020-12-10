@@ -5,7 +5,7 @@ import {CreateRepoAction} from "../NewRepoComponents/CreateRepoAction";
 import NavBar from "../NavBarComponents/NavBar.js";
 import './NewRepo.css'
 import logo from "../../Images/wavBase_logo.png";
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import downArrow from "../../Images/downArrow.png";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
 import '../NavBarComponents/NavBar.css'

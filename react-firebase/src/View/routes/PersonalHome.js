@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import db from "../../Model/TODELETE_base";
+import db from "../../Model/base";
 import "./PersonalHome.css";
 import logo from "../../Images/wavBase_logo.png";
 import './PersonalHome.css';
