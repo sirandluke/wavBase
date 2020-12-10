@@ -22,6 +22,7 @@ const UpdateSnapshotInfo = require('../Model/UpdateSnapshotInfo');
 const UpdatePassword = require('../Model/UpdatePassword');
 const HandleFollow = require('../Model/HandleFollow');
 const HandleComment = require('../Model/HandleComment');
+const HandleLike = require('../Model/HandleLike');
 const UploadSnapshotFile = require('../Model/UploadSnapshotFile');
 const DeleteSnapshot =  require('../Model/DeleteSnapshot');
 const DeleteRepo = require('../Model/DeleteRepo');
@@ -153,6 +154,10 @@ router.post('/repo_info/delete_repo', (req, res) => {
 
 router.post('/repo_info/add_comment', (req, res) => {
     HandleComment(req.body.repo_id, req.body.username, req.body.comment);
+})
+
+router.post('/repo_info/update_likes', (req, res) => {
+    HandleLike(req.body.repo_id, req.body.likes);
 })
 
 module.exports = router;

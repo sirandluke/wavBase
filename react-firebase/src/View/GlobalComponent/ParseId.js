@@ -1,7 +1,7 @@
 /**
  * @param {string} ids
  */
-function ParseIds(ids) {
+export function ParseIds(ids) {
     if ((typeof ids) !== "string") {
         ids = '';
     }

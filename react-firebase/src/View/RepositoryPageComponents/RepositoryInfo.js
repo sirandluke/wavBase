@@ -4,19 +4,21 @@ import {useParams, useRouteMatch, withRouter} from "react-router-dom";
 import loading from "../../Images/loader.gif";
 import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
-import {DeleteRepo, GetRepoInfo, GetUserRef, HandleComment, UpdateRepoInfo} from "../../BackendFunctions";
+import {DeleteRepo, GetRepoInfo, GetUserRef, HandleComment, HandleLike, UpdateRepoInfo} from "../../BackendFunctions";
 import {ParseTags} from "../GlobalComponent/ParseTags";
 import db from "../../Model/TODELETE_base";
 import {useHistory} from "react-router";
 import Popup from "reactjs-popup";
 import Button from "react-bootstrap/Button";
 import CommentsDisplayComponent from "./CommentsDisplayComponent";
+import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
+import LikedListDisplayComponent from "./LikedListDisplayComponent";
 
 export function RepositoryInfo(props) {
 
     const history = useHistory();
     const {repo_id} = useParams();
-    const uid = db.auth().currentUser.uid;
+    const visitor_id = db.auth().currentUser.uid;
 
     const [repo, setRepo] = useState(0);
     const [visitor, setVisitor] = useState(0);
@@ -28,10 +30,6 @@ export function RepositoryInfo(props) {
 
     function redirectToSettings() {
         history.push(`/repo/${repo.repo_id}/settings`);
-    }
-
-    function handleLike() {
-
     }
 
     useEffect(() => {
@@ -47,8 +45,8 @@ export function RepositoryInfo(props) {
             setComments(tmp_comments);
         }
         if (!visitor) {
-            if (uid) {
-                GetUserRef(uid).then(r => {
+            if (visitor_id) {
+                GetUserRef(visitor_id).then(r => {
                     setVisitor(r);
                 });
             }
@@ -79,6 +77,22 @@ export function RepositoryInfo(props) {
         event.preventDefault();
         DeleteRepo(repo_id);
         history.push('/');
+    }
+
+    const handleLike = (event) => {
+        event.preventDefault();
+        let like_id_list = '';
+        if (repo.likes && IncludeId(repo.likes, visitor_id)) {
+            like_id_list = DeleteId(repo.likes, visitor_id);
+            console.log(`${visitor.username} cancelled like to repo ${repo_id}`);
+        } else {
+            like_id_list = AddId(repo.likes, visitor_id);
+            console.log(`${visitor.username} liked repo ${repo_id}`);
+        }
+        let tmp_repo = repo;
+        tmp_repo = {...tmp_repo, likes: like_id_list};
+        setRepo(tmp_repo);
+        HandleLike(repo_id, like_id_list);
     }
 
     /*const redirectToRepoHomePage = (event) => {
@@ -129,7 +143,7 @@ export function RepositoryInfo(props) {
                     <button>{tag}</button>
                 )}
                 <br/>
-                {(uid === repo.user_id) ?
+                {(visitor_id === repo.user_id) ?
                     <Popup trigger={<button>Settings</button>} position={'right center'}>
                         <form method="post" onSubmit={handleRepoInfoUpdate}>
                             <label>
@@ -163,6 +177,13 @@ export function RepositoryInfo(props) {
             <div className="repo_description">
                 <p>Repo Description</p>
                 <p id={'repo_description'}>{ repo.description }</p>
+            </div>
+
+            <div className='repo_likes'>
+                {(repo.likes && IncludeId(repo.likes, visitor_id)) ?
+                    <button onClick={handleLike}>Liked</button> :
+                    <button onClick={handleLike}>Like</button>}
+                <LikedListDisplayComponent likes={repo.likes} />
             </div>
 
             {/*TODO: Make comment component below the description*/}
