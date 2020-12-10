@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import {useHistory, useParams} from "react-router";
 import {DeleteRepo, UpdateRepoInfo} from "../../BackendFunctions";
@@ -55,4 +56,4 @@ function RepositorySettings(props) {
     );
 }
 
-export default RepositorySettings;
+export default RepositorySettings;*/

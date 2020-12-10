@@ -25,18 +25,22 @@ function UserDisplayComponent(props) {
                 let image_url;
                 if (localStorage.getItem(image_path)) {
                     image_url = localStorage.getItem(image_path);
+                    let img2 = document.getElementById(uid + 'profile_picture');
+                    if (img2 != null) {
+                        img2.src = image_url;
+                    }
                 } else {
                     GetProfileImageUrl(image_path).then(url => {
                         url.map((link, key) => {
                             image_url = link;
                         })
                         localStorage.setItem(image_path, image_url);
+                        console.log(image_url);
+                        let img2 = document.getElementById(uid + 'profile_picture');
+                        if (img2 != null) {
+                            img2.src = image_url;
+                        }
                     });
-                }
-                console.log(image_url);
-                let img2 = document.getElementById(uid + 'profile_picture');
-                if (img2 != null) {
-                    img2.src = image_url;
                 }
                 /*db.storage().ref().child(picture).getDownloadURL().then(function (url) {
                     console.log(username + '\'s url is ' + url);
