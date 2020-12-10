@@ -83,7 +83,7 @@ class LikeButton extends Component {
         const repoLikedUsersRef = ref.child("repositories/" + this.props.repo + "/liked_users");
         repoLikedUsersRef.once("value", (snapshot) => {
             snapshot.forEach((childSnapshot) => {
-                if (childSnapshot.child("uid").val() == currentUID) {
+                if (childSnapshot.child("uid").val() === currentUID) {
                     childSnapshot.ref.remove();
                 }
             })
@@ -92,7 +92,7 @@ class LikeButton extends Component {
         const userLikesRef = ref.child("users/"+ currentUID + "/likes");
         userLikesRef.once("value", (snapshot) => {
             snapshot.forEach((childSnapshot) => {
-                if (childSnapshot.child("repo_id").val() == this.props.repo) {
+                if (childSnapshot.child("repo_id").val() === this.props.repo) {
                     childSnapshot.ref.remove();
                 }
             })
