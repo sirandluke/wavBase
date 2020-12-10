@@ -69,14 +69,21 @@ function NavBar(props) {
             console.log('Successfully signed out');
         });
     }
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        if (document.getElementById('search_input').value !== '') {
+            history.push('/search_result');
+        }
+    }
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-            <form>
+            <form onSubmit={handleSearch}>
                 <label>
                     <input id='search_input' type="text" placeholder={'Search'}></input>
                 </label>
-                <button type="submit"><Link to={'/search_result'}>Search</Link></button>
+                <button type="submit">>Search</button>
             </form>
 
             <img id="profile_picture2" className="top_icon" src={image_url}/>

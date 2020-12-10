@@ -22,6 +22,8 @@ const UpdateSnapshotInfo = require('../Model/UpdateSnapshotInfo');
 const UpdatePassword = require('../Model/UpdatePassword');
 const HandleFollow = require('../Model/HandleFollow');
 const UploadSnapshotFile = require('../Model/UploadSnapshotFile');
+const DeleteSnapshot =  require('../Model/DeleteSnapshot');
+const DeleteRepo = require('../Model/DeleteRepo');
 
 router.get('/user_info', (req, res) => {
     //console.log("router GetUserInfo executed");
@@ -138,6 +140,14 @@ router.post('/snapshot_info/upload_file', (req, res) => {
         UploadSnapshotFile(file, local_path, req.query.destination)
             .then(doc => res.send({name: file.name, path: `/${file.name}`}));
     });
+})
+
+router.post('/snapshot_info/delete_snapshot', (req, res) => {
+    DeleteSnapshot(req.body.snap_id);
+})
+
+router.post('/repo_info/delete_repo', (req, res) => {
+    DeleteRepo(req.body.repo_id);
 })
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory, useParams} from "react-router";
-import {UpdateRepoInfo} from "../../BackendFunctions";
+import {DeleteRepo, UpdateRepoInfo} from "../../BackendFunctions";
 
 function RepositorySettings(props) {
     const history = useHistory();
@@ -15,7 +15,8 @@ function RepositorySettings(props) {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        alert('under construction');
+        DeleteRepo(repo_id);
+        history.push('/');
     }
 
     const redirectToRepoHomePage = (event) => {

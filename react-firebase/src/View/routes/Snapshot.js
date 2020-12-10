@@ -12,7 +12,7 @@ import SnapshotInfo from "../SnapshotComponents/SnapshotInfo";
 
 import {useHistory, useLocation, useParams} from 'react-router';
 import LoadingFiles from "../SnapshotComponents/LoadingFiles";
-import {GetRepoInfo, GetSnapshotInfo, GetUserRef, UpdateSnapshotInfo} from "../../BackendFunctions";
+import {DeleteSnapshot, GetRepoInfo, GetSnapshotInfo, GetUserRef, UpdateSnapshotInfo} from "../../BackendFunctions";
 import Popup from "reactjs-popup";
 
 function Snapshot(props) {
@@ -57,6 +57,7 @@ function Snapshot(props) {
 
     const handleDelete = (event) => {
         event.preventDefault();
+        DeleteSnapshot(snap_id);
         history.push('/repo/' + repo_id);
     }
 

@@ -1,4 +1,3 @@
-//const db = require('../Database_config');
 const admin = require('../Admin_config');
 const fs = require('fs');
 
