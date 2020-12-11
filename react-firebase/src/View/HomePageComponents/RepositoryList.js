@@ -65,9 +65,10 @@ function RepositoryList(props) {
     }
 
     return(
-        <div>
+        <div className="container">
             <ProfileInfo uid={uid}/>
-            {(uid === current_uid) ? <button><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
+            <div className="col_2">
+            {(uid === current_uid) ? <button className="create_repository"><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
             <div className="repo_list_div">
                 {/* <table style={{border: '1px solid blue'}}> */}
                 <table>
@@ -75,6 +76,7 @@ function RepositoryList(props) {
                     { repoElement }
                     </tbody>
                 </table>
+            </div>
             </div>
         </div>
     );
