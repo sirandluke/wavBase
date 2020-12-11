@@ -33,15 +33,14 @@
     /* margin-right: 1rem; */
     width: 90%;
 }
-.name_and_share_btn {
-}
+.name_and_share_btn { }
 
 .name_btn {
     float: left;
 }
 
 .share_btns {
-    padding-left: 500px;
+    margin-left: auto;
     padding-top: 5px;
 }
 
