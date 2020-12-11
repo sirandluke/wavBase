@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import db from "../../Model/base";
@@ -7,39 +7,53 @@ import {useHistory} from 'react-router-dom';
 import logo from "../../Images/wavBase_logo.png";
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
-import SearchBar from "../SearchComponents/SearchBar";
 import "./NavBar.css"
+import {GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
 
-function NavBar() {
-    let history = useHistory();
-    let user = db.auth().currentUser;
-    //let name, email, photoUrl, uid, emailVerified;
-    let name = "User";
-    let username, profile_picture_path;
-    if (user != null) {
-        //name = user.email;
+function NavBar(props) {
 
-        let uid = db.auth().currentUser.uid;
-        let firebaseRef = db.database().ref('users/' + uid);
-        firebaseRef.on('value', (snapshot) =>{
-            username = snapshot.val().username;
-            profile_picture_path = snapshot.val().profile_picture;
-            name = username;
-        })
-    }
+    let current_uid = db.auth().currentUser.uid;
+    const history = useHistory();
+    const [user, setUser] = useState(props.user || []);
+    const [image_url, setImageUrl] = useState(0);
 
-    let storage = db.storage();
-    let storageRef = storage.ref();
-    if (profile_picture_path !== undefined){
-        storageRef.child(profile_picture_path).getDownloadURL().then(function (url) {
-            let img = document.getElementById('profile_picture');
-            if (img != null)
-                img.src = url;
-            let img2 = document.getElementById('profile_picture2');
-            if (img2 != null)
-                img2.src = url;
-        })
-    }
+    useEffect(
+        () => {
+            console.log('listen to home');
+            if (!props.user) {
+                GetUserRef(current_uid)
+                    .then(user_snapshot => {
+                        setUser(user_snapshot);
+                        //document.getElementById('greeting_username').innerText = 'Hello ' + user_snapshot.username;
+
+                        let image_path = user_snapshot.profile_picture;
+                        let image_url;
+                        if (localStorage.getItem(image_path)) {
+                            setImageUrl(image_url);
+                            image_url = localStorage.getItem(image_path);
+                        } else {
+                            GetProfileImageUrl(image_path).then(url => {
+                                url.map((link, key) => {
+                                    image_url = link;
+                                })
+                                setImageUrl(image_url);
+                                localStorage.setItem(image_path, image_url);
+                            });
+                        }
+                        //console.log(image_url);
+                        let img = document.getElementById('profile_picture2');
+                        img.src = image_url;
+                        localStorage.setItem('current_uid', current_uid);
+                        localStorage.setItem('username', user_snapshot.username);
+                        localStorage.setItem('following', user_snapshot.following);
+                    });
+            }
+            return () => {
+                console.log('stop listen to home');
+            }
+        }, [props.user]
+    );
+
 
     const redirectRepo = () => {
         history.push("/");
@@ -48,21 +62,40 @@ function NavBar() {
     const redirectProfile = () => {
         history.push("/profile");
     }
+
+    const handleSignOut = () => {
+        localStorage.clear();
+        db.auth().signOut().then(r => {
+            console.log('Successfully signed out');
+        });
+    }
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        if (document.getElementById('search_input').value !== '') {
+            history.push('/search_result');
+        }
+    }
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-            <SearchBar />
+            <form onSubmit={handleSearch}>
+                <label>
+                    <input id='search_input' type="text" placeholder={'Search'}></input>
+                </label>
+                <button type="submit">>Search</button>
+            </form>
 
-            <img id="profile_picture2" className="top_icon"/>
+            <img id="profile_picture2" className="top_icon" src={image_url}/>
 
             <DropdownButton
                 id="dropdown-item-button"
-                title={ username }
+                title={ user.username }
                 variant="success">
                 
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={ () => db.auth().signOut() }>Sign Out</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={ handleSignOut }>Sign Out</Dropdown.Item>
             </DropdownButton>
         </div>
     )

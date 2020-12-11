@@ -33,3 +33,18 @@
     /* margin-right: 1rem; */
     width: 90%;
 }
+.name_and_share_btn { }
+
+.name_btn {
+    float: left;
+}
+
+.share_btns {
+    margin-left: auto;
+    padding-top: 5px;
+}
+
+.bpm_key_tags {
+
+}
+

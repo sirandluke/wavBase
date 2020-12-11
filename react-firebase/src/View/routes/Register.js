@@ -9,6 +9,7 @@ import logo from "../../Images/wavBase_logo.png";
 import './Register.css'
 import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
+import {CreateUser} from "../../BackendFunctions";
 
 const Register = ({ history }) => {
 
@@ -32,7 +33,7 @@ const Register = ({ history }) => {
 
             try {
                 // Creates user via FirebaseHandler using returned element values
-                FirebaseHandler.createUser(username.value, password.value, email.value);
+                CreateUser(username.value, password.value, email.value);
                 history.push("/");
             } catch (error) {
                 const errorCode = error.code;
@@ -54,7 +55,8 @@ const Register = ({ history }) => {
     }
 
     const redirectLogIn = () => {
-        history.push("/");
+        //history.push("/");
+        history.push("/login");
     }
 
     return(

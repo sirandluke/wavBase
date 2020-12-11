@@ -1,23 +1,23 @@
 /*
-    Login.js
+    SignIn.js
     TODO: Sign in & reset password with username
     TODO: [RISK] unstable reset password & login functionality
  */
-import React, { useContent } from "react";
-import { Redirect } from "react-router-dom";
-import { AuthContext } from "../auth/Auth";
+import React, {useContent, useContext} from "react";
+import {Redirect} from "react-router-dom";
+import {AuthContext} from "../auth/Auth";
 
 import db from "../../Model/base";
 import "../../App.css";
 import * as K from '../../Constants';
 import logo from "../../Images/wavBase_logo.png";
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import './Login.css';
+import {SignIn} from "../../BackendFunctions";
 
 const Login = ({history}) => {
 
-    const handleLogin = (event) =>
-    {
+    const handleLogin = (event) => {
         event.preventDefault();
         const {email_or_username, password} = event.target.elements;
 
@@ -32,8 +32,9 @@ const Login = ({history}) => {
                 let email = email_or_username.value;
                 db
                     .auth()
-                    .signInWithEmailAndPassword(email, password.value);
-                history.push("/");
+                    .signInWithEmailAndPassword(email, password.value).then(user => {
+                    console.log(user.user.uid);
+                });
             } else {
                 // TODO: Login with username and password.
                 let username = email_or_username.value;
@@ -41,10 +42,10 @@ const Login = ({history}) => {
                 firebaseRef
                     .orderByChild("username")
                     .equalTo(username)
-                    .on("value", function(snapshot){
+                    .on("value", function (snapshot) {
                         let email = snapshot.child("email").val()
                         db.auth().signInWithEmailAndPassword(email, password.value);
-                });
+                    });
                 history.push("/");
                 firebaseRef.off();
             }
@@ -58,6 +59,11 @@ const Login = ({history}) => {
                 alert(K.unknown_err);
             }
         }
+    }
+
+    const {currentUser} = useContext(AuthContext);
+    if (currentUser) {
+        return <Redirect to="/"/>;
     }
 
     /*
@@ -74,7 +80,7 @@ const Login = ({history}) => {
         history.push("/register");
     }
 
-    window.onload=function() {
+    window.onload = function () {
         const resetPW = document.getElementById('resetPW');
         const idField = document.getElementById('identity');
 
@@ -98,10 +104,10 @@ const Login = ({history}) => {
             resetPW.addEventListener('click', resetPWFunction);
     }
 
-    return(
+    return (
         <div>
             <div className="login_left">
-                <img className="login_logo" src={logo} alt="wavBase Logo" width="209" height="187" />
+                <img className="login_logo" src={logo} alt="wavBase Logo" width="209" height="187"/>
                 <hr className="separator"/>
                 <p className="login_quote">Collaborate and share with music creators all over the world!</p>
             </div>
@@ -116,15 +122,16 @@ const Login = ({history}) => {
                             name="email_or_username"
                             type="text"
                             required="required"
-                            placeholder=" Username / Email" />
+                            placeholder=" Username / Email"/>
                     </label>
-                    <br />
+                    <br/>
                     <label>
-                        <input className="signIn_form" name="password" type="password" required="required" placeholder=" Password" />
+                        <input className="signIn_form" name="password" type="password" required="required"
+                               placeholder=" Password"/>
                     </label>
-                    <br />
+                    <br/>
                     <button className="button" type="submit">Sign in</button>
-                    <br />
+                    <br/>
                     <button className="button" id="resetPW">Forgot Password / Username?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>

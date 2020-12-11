@@ -1,11 +1,82 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 
 import db from "../../Model/base";
-import { withRouter } from "react-router-dom";
+import {Route, useHistory, useParams, useRouteMatch, withRouter} from "react-router-dom";
 
 import folder_icon from "../../Images/folder.png";
 import "./SnapshotList.css"
+import {GetSnapshotListByRepoId} from "../../BackendFunctions";
+import SnapshotModal from "../RepositoryModals/SnapshotModal";
+import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 
+export function SnapshotList(props) {
+
+    const history = useHistory();
+    const {repo_id} = useParams();
+    const {isShowing, toggle} = UseSnapshotModal();
+    const [snapshot_list, setSnapshotList] = useState(0);
+
+    useEffect(() => {
+        console.log('Listening to snapshot list of repo_id:', repo_id);
+        if (!snapshot_list) {
+            GetSnapshotListByRepoId(repo_id).then(snapshot_list_snapshot => {
+                let tmp_list = [];
+                for (let snapshot in snapshot_list_snapshot) {
+                    tmp_list.push({...snapshot_list_snapshot[snapshot], snap_id: snapshot});
+                }
+                setSnapshotList(tmp_list);
+            })
+        }
+        return () => {
+            console.log('Stop listening to snapshot list of repo_id:', repo_id);
+        }
+    }, [snapshot_list])
+    // TODO: Map snapshot elements to SnapshotObject
+    // Element displays folder icon + desc + datetime
+
+    function redirectToSnapshots(curr_snapshot) { // Passes the snapshot object over to be viewed.
+        history.push({
+            pathname: `/repo/${repo_id}/snapshot/${curr_snapshot.snap_id}`,
+        });
+    }
+
+    let snapshotElement = [];
+    if (snapshot_list) {
+        snapshotElement = snapshot_list.map((snapshot, key) =>
+            <tr key={snapshot.snap_id}>
+                <td style={{width: '500px', textAlign: 'left'}}>
+                    <button className="snapshot_button" name="snapshot_links"
+                            onClick={() => redirectToSnapshots(snapshot)}>
+                        <img className="snaps_ico_1" src={folder_icon} alt="snapshot_icon"/>
+                        {snapshot.description}
+                        {/*<p>Upload Date: {snapshot.upload_date}</p>*/}
+                    </button>
+                </td>
+            </tr>
+        );
+    }
+
+
+    return (
+        <div>
+            <div className="info_upload_row">
+                <h3>Snapshots</h3>
+                <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
+            </div>
+
+            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
+            <table className="snapshot_table">
+                <tbody className="snapshot_body">
+                {snapshotElement}
+                </tbody>
+            </table>
+        </div>
+    );
+
+}
+
+
+/*
 class SnapshotList extends Component {
     constructor(props) {
         super(props);
@@ -81,4 +152,4 @@ class SnapshotList extends Component {
     }
 }
 
-export default withRouter(SnapshotList);
+export default withRouter(SnapshotList);*/

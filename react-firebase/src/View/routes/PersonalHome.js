@@ -9,16 +9,23 @@ import '../../App.css'
 import '../NavBarComponents/NavBar.css'
 import NavBar from '../NavBarComponents/NavBar.js';
 //import Home from "./Home";
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 
-import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import RepositoryList from "../HomePageComponents/RepositoryList";
-import sine_wave_1 from "../../Images/sine_wave_1.png"
 
 
 
+//import Repository from "./Repository";
+import PrivateRoute from "../auth/PrivateRoute";
+import NewRepo from "./NewRepo";
+import Snapshot from "./Snapshot";
+import Profile from "./Profile";
+import ResultsInterface from "./ResultsInterface";
+import UserSearchResult from "../SearchComponents/UserSearchResult";
+import RepoSearchResult from "../SearchComponents/RepoSearchResult";
+import TagsSearchResult from "../SearchComponents/TagsSearchResult";
+import {Route} from "react-router";
 import Repository from "./Repository";
-import SearchBar from "../SearchComponents/SearchBar";
+import {SnapshotList} from "../RepositoryPageComponents/SnapshotList";
 
 // TODO: render searchbar, likes, (add more)
 const PersonalHome = ({history}, props) => {
@@ -38,18 +45,6 @@ const PersonalHome = ({history}, props) => {
         })
     }
 */
-    let uid;
-    let username;
-    if (props.uid == null) {
-        uid = db.auth().currentUser.uid;
-    } else {
-        uid = props.uid;
-    }
-
-    let firebaseRef = db.database().ref('users/' + uid);
-    firebaseRef.on('value', (snapshot) =>{
-        username = snapshot.val().username;
-    })
 
     // let uid = db.auth().currentUser.uid;
     // let userRef = db.database().ref('users/' + uid);
@@ -67,35 +62,26 @@ const PersonalHome = ({history}, props) => {
     //     img2.src = url;
     // })
 
-    const redirectCreateRepo = () => {
-        history.push("/newrepo");
-    }
-
     return (
         <div>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <NavBar />
-            <div className="container">
-                <div className="row">
-                    <div className="col_1">
-                    <div className="profile_info">
-                        <ProfileInfo uid={uid} />
-                    </div>
-                    </div>
-
-                    <div className="col_2">
-                    <div className="repository_lists">
-                        <div className="repository_lists_top_row">
-                            <h7>Your Repositories</h7>
-                            <button className="create_repository" onClick={ redirectCreateRepo }>Create Repository</button>
-                        </div>
-                    <RepositoryList uid={uid}/>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <img src={sine_wave_1} style={{width:"100%", float:'bottom', zIndex:"-99", position:"relative", marginTop:'1rem'}}/> 
+            <PrivateRoute exact path="/" component={RepositoryList}/>
+            <PrivateRoute exact path="/newrepo" component={NewRepo}/>
+            {/*<PrivateRoute exact path="/snapshot" component={Snapshot}/>*/}
+            <PrivateRoute exact path="/profile" component={Profile}/>
+            <PrivateRoute path='/search_result' component={ResultsInterface}/>
+            <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
+            <PrivateRoute exact path='/search_result/repositories'
+                          component={RepoSearchResult}/>
+            <PrivateRoute exact path='/search_result/tags'
+                          component={TagsSearchResult}/>
+            <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
+            <Route path={"/repo/:repo_id"} component={Repository}/>
+            <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
+            {/*<PrivateRoute exact path={'/repo/:repo_id/settings'} component={RepositorySettings}/>*/}
+            <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
         </div>
+
     );
 }
 
