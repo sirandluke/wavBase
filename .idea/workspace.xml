@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/react-firebase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-firebase/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="search" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jwIAmZDMSoCLZDKBJdB7AGXjPw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/react-firebase" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/Controller" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/View" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/server" />
+      <recent name="$PROJECT_DIR$/react-firebase/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/react-firebase" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/View/routes" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/View/SearchComponents" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/Controller" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.RepositoryList.js">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewRepo.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/View/routes/NewRepo.js" working-dir="$PROJECT_DIR$/src/View/routes">
+      <method v="2" />
+    </configuration>
+    <configuration name="RepositoryList.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/View/HomePageComponents/RepositoryList.js" working-dir="$PROJECT_DIR$/src/View/HomePageComponents">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.RepositoryList.js" />
+        <item itemvalue="Node.js.NewRepo.js" />
+        <item itemvalue="Node.js.RepositoryList.js" />
+        <item itemvalue="Node.js.NewRepo.js" />
+        <item itemvalue="Node.js.RepositoryList.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="" />
+      <created>1604708588242</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604708588242</updated>
+      <workItem from="1604708592412" duration="12010000" />
+      <workItem from="1604738857920" duration="11172000" />
+      <workItem from="1604868716509" duration="5082000" />
+      <workItem from="1604880250086" duration="1377000" />
+      <workItem from="1605172029620" duration="1710000" />
+      <workItem from="1605485243090" duration="196000" />
+      <workItem from="1605487249111" duration="3533000" />
+      <workItem from="1605491248617" duration="1549000" />
+      <workItem from="1605913533193" duration="8761000" />
+      <workItem from="1606078284006" duration="4784000" />
+      <workItem from="1606085626000" duration="5061000" />
+      <workItem from="1606515690119" duration="34629000" />
+      <workItem from="1606630895973" duration="453000" />
+      <workItem from="1606694671075" duration="4504000" />
+      <workItem from="1606729159570" duration="87000" />
+      <workItem from="1606809543661" duration="3960000" />
+      <workItem from="1606818466521" duration="7045000" />
+      <workItem from="1606827231776" duration="8245000" />
+      <workItem from="1606892215058" duration="8364000" />
+      <workItem from="1606951499002" duration="7876000" />
+      <workItem from="1606966390912" duration="2901000" />
+      <workItem from="1606987701279" duration="2652000" />
+      <workItem from="1607032632508" duration="5631000" />
+      <workItem from="1607059320021" duration="111242000" />
+      <workItem from="1607376756539" duration="3774000" />
+      <workItem from="1607639398844" duration="16967000" />
+      <workItem from="1607672141047" duration="1512000" />
+      <workItem from="1607676185105" duration="1909000" />
+      <workItem from="1607717512936" duration="5177000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="538" y="306" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1607588846977">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="-1203" y="387" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606608684135" />
+    <state x="2157" y="348" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607333460761" />
+    <state x="538" y="306" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1607588846977" />
+    <state x="2138" y="319" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607254125142">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1222" y="354" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606609333041" />
+    <state x="2138" y="319" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607254125142" />
+    <state x="1540" y="100" width="1720" height="880" key="DiffContextDialog" timestamp="1607325512191">
+      <screen x="1440" y="23" width="1920" height="1057" />
+    </state>
+    <state x="1540" y="100" width="1720" height="880" key="DiffContextDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1606086417521" />
+    <state x="1540" y="100" width="1720" height="880" key="DiffContextDialog/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607325512191" />
+    <state width="1878" height="407" key="GridCell.Tab.0.bottom" timestamp="1607725883122">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="339" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445531" />
+    <state width="1878" height="407" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883122" />
+    <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607594914487" />
+    <state width="1878" height="300" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351584" />
+    <state width="1878" height="329" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322137" />
+    <state width="1878" height="299" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606868675684" />
+    <state width="1878" height="407" key="GridCell.Tab.0.center" timestamp="1607725883121">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="339" key="GridCell.Tab.0.center/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445530" />
+    <state width="1878" height="407" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883121" />
+    <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607594914486" />
+    <state width="1878" height="300" key="GridCell.Tab.0.center/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351582" />
+    <state width="1878" height="329" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322133" />
+    <state width="1878" height="299" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606868675682" />
+    <state width="1878" height="407" key="GridCell.Tab.0.left" timestamp="1607725883120">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="339" key="GridCell.Tab.0.left/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445528" />
+    <state width="1878" height="407" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883120" />
+    <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607594914485" />
+    <state width="1878" height="300" key="GridCell.Tab.0.left/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351579" />
+    <state width="1878" height="329" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322132" />
+    <state width="1878" height="299" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606868675680" />
+    <state width="1878" height="407" key="GridCell.Tab.0.right" timestamp="1607725883122">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="339" key="GridCell.Tab.0.right/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445531" />
+    <state width="1878" height="407" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883122" />
+    <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607594914487" />
+    <state width="1878" height="300" key="GridCell.Tab.0.right/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351583" />
+    <state width="1878" height="329" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322134" />
+    <state width="1878" height="299" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1606868675683" />
+    <state x="1851" y="240" width="1295" height="500" key="IDE.errors.dialog" timestamp="1607343762768">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1851" y="240" key="IDE.errors.dialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607343762768" />
+    <state x="308" y="200" key="IDE.errors.dialog/0.0.1440.900@0.0.1440.900" timestamp="1606815783338" />
+    <state x="1851" y="258" width="1295" height="500" key="IDE.errors.dialog/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607064260355" />
+    <state x="1637" y="178" key="git4idea.branch.GitSmartOperationDialog" timestamp="1607639828219">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1637" y="178" key="git4idea.branch.GitSmartOperationDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607639828219" />
+    <state x="2065" y="255" key="run.anything.popup" timestamp="1607312732033">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2065" y="255" key="run.anything.popup/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607312732033" />
+    <state x="2063" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1607248361965">
+      <screen x="1440" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1297" y="266" width="672" height="754" key="search.everywhere.popup/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606609917366" />
+    <state x="2063" y="239" width="672" height="678" key="search.everywhere.popup/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607248361965" />
+    <state x="2137" y="410" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1607664721988">
+      <screen x="1440" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2137" y="410" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607664721988" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/View/ShareRepoComponent/ShareButtons.js</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
