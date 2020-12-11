@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState} from "react";
 import "../../App.css";
 import * as K from '../../Constants';
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import {PlayButton} from "../GlobalComponent/PlayButton";
 import {RepositoryInfo} from "../RepositoryPageComponents/RepositoryInfo";
 import NavBar from '../NavBarComponents/NavBar.js';

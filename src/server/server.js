@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/', require('../Controller/index'));
+app.use('/', require('../Controller'));
 
 app.use('/', require('../Controller/Controller'));
 

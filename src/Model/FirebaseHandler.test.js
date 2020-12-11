@@ -1,4 +1,4 @@
-import * as FirebaseHandler from  "./FirebaseHandler";
+import * as FirebaseHandler from "./FirebaseHandler";
 
 test("Returns user id corresponding to email", done => {
     function callback(data) {

@@ -7,7 +7,7 @@ import "../../App.css";
 import * as K from "../../Constants";
 import logo from "../../Images/wavBase_logo.png";
 import './Register.css'
-import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
+import * as FirebaseHandler from "../../Model/FirebaseHandler.js";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
 import {CreateUser} from "../../BackendFunctions";
 
