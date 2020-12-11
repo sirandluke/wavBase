@@ -9,7 +9,7 @@ import NavBar from '../NavBarComponents/NavBar';
 import './SearchResults.css';
 
 class SearchResults extends Component {
-    constructor(props) {
+    constructor(props, history) {
         super(props);
         //console.log(this.props);
 

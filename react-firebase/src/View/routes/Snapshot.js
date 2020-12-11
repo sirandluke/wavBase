@@ -9,7 +9,7 @@ import UploadSnapshot from "../RepositoryPageComponents/UploadSnapshot";
 
 
 import {SnapshotInfo} from "../SnapshotComponents/SnapshotInfo";
-
+import Navbar from '../NavBarComponents/NavBar.js';
 import {useLocation} from 'react-router';
 import {LoadingFiles} from "../SnapshotComponents/LoadingFiles";
 
@@ -28,6 +28,7 @@ const Snapshot = ({history}) => {
 
     return (
         <div>
+        <Navbar/>
             <SnapshotInfo
                 username={location.state.username}
                 repo_name = {location.state.repo_name}

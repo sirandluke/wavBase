@@ -92,7 +92,7 @@ export class FileList extends Component {
         );
 
         return (
-            <div>
+            <div style={{marginLeft:'2rem'}}>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
                 <button className="download_all_btn" onClick={ () => this.handleDownloadAll()}>
                     <i className="fa fa-download"/>
