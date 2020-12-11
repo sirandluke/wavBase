@@ -265,26 +265,25 @@ function Profile(props) {
                             <textarea className="edit_input_2" name="bio" type="text" id="new_bio"
                                       placeholder="Bio Information"/>
                         </label>
-                        <br/>
                         <input className="update_button" type="submit" value="Update"/>
                     </form>
                     <form method="post" onSubmit={resetPassword}>
                         <label>
-                            Password <br/>
-                            <input name="password" type="text" id="new_password" placeholder="Enter your new password"/>
+                            <h3>Password</h3>
+                            <input className="edit_input_1" name="password" type="text" id="new_password" placeholder="Enter your new password"/>
                         </label>
                         <br/>
                         <label>
                             <br/>
-                            <input name="confirmation_password" type="text" id="conf_password"
+                            <input className="edit_input_1" name="confirmation_password" type="text" id="conf_password"
                                    placeholder="Re-enter your new password"/>
                         </label>
                         <br/>
-                        <input type="submit" value="Update"/>
+                        <input className="update_button" type="submit" value="Update"/>
                     </form>
                     <div style={{marginBottom: "2rem"}} className="line"/>
                     <div className="profile_row_2_buttons">
-                        <Popup trigger={<Button>Edit Profile Picture</Button>} position={'right center'}>
+                        <Popup trigger={<Button className="update_button" style={{width:'100%'}}>Edit Profile Picture</Button>} position={'right center'}>
                             <form method="post" onSubmit={handleUploadPicture}>
                                 <input name="file" type="file" id="picture" accept="image/*"/>
                                 <input name="token" type="hidden"/>
@@ -297,8 +296,7 @@ function Profile(props) {
                     </div>
                 </div>
             </div>
-            <img src={sine_wave_1}
-                 style={{width: "100%", float: 'bottom', zIndex: "-99", position: "relative", marginTop: '1rem'}}/>
+            
         </div>
     );
 }

@@ -79,11 +79,11 @@ function NavBar(props) {
     return (
         <div className="nav_bar">
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
-            <form onSubmit={handleSearch}>
+            <form className="search_bar" onSubmit={handleSearch}>
                 <label>
                     <input id='search_input' type="text" placeholder={'Search'}></input>
                 </label>
-                <button type="submit">>Search</button>
+                <button className="search_btn" type="submit">Search</button>
             </form>
 
             <img id="profile_picture2" className="top_icon" src={image_url}/>
