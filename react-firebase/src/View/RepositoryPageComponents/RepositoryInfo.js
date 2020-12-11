@@ -101,7 +101,7 @@ export function RepositoryInfo(props) {
         history.push(`/repo/${repo_id}`);
     }*/
 
-    const handleShare = (event) => {
+    /*const handleShare = (event) => {
         event.preventDefault();
         const el = document.createElement('textarea');
         el.value = window.location.href;
@@ -110,7 +110,8 @@ export function RepositoryInfo(props) {
         document.execCommand('copy');
         document.body.removeChild(el);
         alert(window.location.href + ' copied to your clipboard');
-    }
+    } */
+
 
     const handleComment = (e) => {
         e.preventDefault();
@@ -179,7 +180,7 @@ export function RepositoryInfo(props) {
                         </form>
                     </Popup>
                     : <></>}
-                <button onClick={handleShare}>Share</button>
+                { /*<button onClick={handleShare}>Share</button>*/ }
             </div>
 
             <div className="repo_description">
