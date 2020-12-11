@@ -12,6 +12,7 @@ import Popup from "reactjs-popup";
 import CommentsDisplayComponent from "./CommentsDisplayComponent";
 import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
 import LikedListDisplayComponent from "./LikedListDisplayComponent";
+import ShareButtons from "../ShareRepoComponent/ShareButtons";
 
 export function RepositoryInfo(props) {
 
@@ -136,12 +137,19 @@ export function RepositoryInfo(props) {
                 />
             </div>
             <div className="repo_title">
-                <h2>{ repo_owner.username }/{ repo.name }</h2>
-                <h3>BPM:{ repo.bpm } | Key: { repo.key }</h3>
-                <h3>Tags: </h3>
-                {tags.map(tag =>
-                    <button>{tag}</button>
-                )}
+                    <div className="name_btn">
+                        <h2>{ repo_owner.username }/{ repo.name }</h2>
+                    </div>
+                    <div className="share_btns">
+                        <ShareButtons repo_name={repo.name} repo_owner={repo_owner.username}/>
+                    </div>
+                <div className="bpm_key_tags">
+                    <h3>BPM:{ repo.bpm } | Key: { repo.key }</h3>
+                    <h3>Tags: </h3>
+                    {tags.map(tag =>
+                        <button>{tag}</button>
+                    )}
+                </div>
                 <br/>
                 {(visitor_id === repo.user_id) ?
                     <Popup trigger={<button>Settings</button>} position={'right center'}>
@@ -190,9 +198,9 @@ export function RepositoryInfo(props) {
             <div className='add_repo_comments'>
                 <form method="post" onSubmit={handleComment}>
                     <label>
-                        <h3>Comment This Repo</h3>
+                        <h3>Leave a comment</h3>
                         <textarea className="edit_input_2" name="description" type="text" id="new_comment"
-                                  placeholder="Leave Your Comments"/>
+                                  placeholder="Show some love, give some feedback, and keep things nice!"/>
                     </label>
                     <input className="comment_button" type="submit" value="Comment"/>
                 </form>
