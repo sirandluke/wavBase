@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const file_upload = require('express-fileupload');
+const fs = require('fs');
 
 const GetUserInfo = require('../Model/GetUserInfo');
 const GetRepos = require('../Model/GetRepos');
@@ -96,7 +97,7 @@ router.post('/user_info/update_profile_image', (req, res) => {
     }
     console.log('file field found');
     const image_file = req.files.file;
-    const image_local_path = `../../tmp_file/${image_file.name}`;
+    const image_local_path = `../tmp_file/${image_file.name}`;
     console.log('file found');
     image_file.mv(image_local_path, function (err) {
         if (err) {
@@ -138,7 +139,7 @@ router.post('/snapshot_info/upload_file', (req, res) => {
     }
     console.log('file field found');
     const file = req.files.file;
-    const local_path = `../../tmp_file/${file.name}`;
+    const local_path = `../tmp_file/${file.name}`;
     console.log('file found');
     file.mv(local_path, function (err) {
         if (err) {
@@ -146,7 +147,10 @@ router.post('/snapshot_info/upload_file', (req, res) => {
             return res.status(500).send({msg: "Error occurred"});
         }
         UploadSnapshotFile(file, local_path, req.query.destination)
-            .then(doc => res.send({name: file.name, path: `/${file.name}`}));
+            .then(doc => {
+                fs.unlinkSync(local_path);
+                res.send({name: file.name, path: `/${file.name}`})
+            });
     });
 })
 

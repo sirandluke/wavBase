@@ -20,10 +20,12 @@ export function RepositoryInfo(props) {
     const {repo_id} = useParams();
     const visitor_id = db.auth().currentUser.uid;
 
+    //const [repo, setRepo] = useState(0);
     const [repo, setRepo] = useState(0);
     const [visitor, setVisitor] = useState(0);
     const [comments, setComments] = useState(0);
     const repo_owner = props.repo_owner;
+    //const [repo_owner, setRepoOwner] = useState(0);
 
 
     const tags = ParseTags(repo.tags);
@@ -44,6 +46,9 @@ export function RepositoryInfo(props) {
             }
             setComments(tmp_comments);
         }
+        /*if (props.repo_owner) {
+            setRepoOwner(props.repo_owner)
+        }*/
         if (!visitor) {
             if (visitor_id) {
                 GetUserRef(visitor_id).then(r => {
@@ -54,7 +59,7 @@ export function RepositoryInfo(props) {
         return () => {
             console.log('Repo Info Updated');
         }
-    }, [props.repo]);
+    }, [props.repo, props.repo_owner]);
 
     const handleRepoInfoUpdate = (event) => {
         event.preventDefault();
