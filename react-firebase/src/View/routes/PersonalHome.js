@@ -65,9 +65,9 @@ const PersonalHome = ({history}, props) => {
     return (
         <div>
             <NavBar />
-            <PrivateRoute exact path="/" component={RepositoryList}/>
+            {/*<PrivateRoute exact path="/" component={RepositoryList}/>
             <PrivateRoute exact path="/newrepo" component={NewRepo}/>
-            {/*<PrivateRoute exact path="/snapshot" component={Snapshot}/>*/}
+            <PrivateRoute exact path="/snapshot" component={Snapshot}/>
             <PrivateRoute exact path="/profile" component={Profile}/>
             <PrivateRoute path='/search_result' component={ResultsInterface}/>
             <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
@@ -78,8 +78,8 @@ const PersonalHome = ({history}, props) => {
             <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
             <Route path={"/repo/:repo_id"} component={Repository}/>
             <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
-            {/*<PrivateRoute exact path={'/repo/:repo_id/settings'} component={RepositorySettings}/>*/}
-            <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
+            <PrivateRoute exact path={'/repo/:repo_id/settings'} component={RepositorySettings}/>
+            <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>*/}
         </div>
 
     );

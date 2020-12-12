@@ -23,6 +23,7 @@ import sine_wave_1 from "./Images/sine_wave_1.png";
 import UserSearchResult from "./View/SearchComponents/UserSearchResult";
 import RepoSearchResult from "./View/SearchComponents/RepoSearchResult";
 import TagsSearchResult from "./View/SearchComponents/TagsSearchResult";
+import {SnapshotList} from "./View/RepositoryPageComponents/SnapshotList";
 
 //import RepositoryListContainer from "./View/routes/RepositoryListContainer";
 
@@ -37,6 +38,19 @@ function App() {
                         <Route exact path="/register" component={Register}/>
                         <PrivateRoute path="/" component={PersonalHome}/>
                     </Switch>
+                    <PrivateRoute exact path="/" component={RepositoryList}/>
+                    <PrivateRoute exact path="/newrepo" component={NewRepo}/>
+                    <PrivateRoute exact path="/profile" component={Profile}/>
+                    <PrivateRoute path='/search_result' component={ResultsInterface}/>
+                    <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
+                    <PrivateRoute exact path='/search_result/repositories'
+                                  component={RepoSearchResult}/>
+                    <PrivateRoute exact path='/search_result/tags'
+                                  component={TagsSearchResult}/>
+                    <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
+                    <Route path={"/repo/:repo_id"} component={Repository}/>
+                    <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
+                    <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
                     {/*<img src={sine_wave_1} style={{*/}
                     {/*    width: "100%",*/}
                     {/*    float: 'bottom',*/}
