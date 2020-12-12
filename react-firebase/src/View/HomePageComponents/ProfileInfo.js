@@ -6,11 +6,13 @@ import loading from "../../Images/loader.gif"
 
 import "./ProfileInfo.css"
 import {useHistory, useParams} from "react-router";
-import {FindRepos, GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
+import {FindRepos, GetProfileImageUrl, GetUserRef, UpdateFollow} from "../../BackendFunctions";
+import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
 
 
 export function ProfileInfo(props) {
     const uid = props.uid;
+    const current_uid = db.auth().currentUser.uid;
 
     const history = useHistory();
     const [user, setUser] = useState(props.user || []);
@@ -57,10 +59,31 @@ export function ProfileInfo(props) {
     }, [props.repos, props.user, useParams()]);
 
     //console.log('profileinfo', user.username);
+    const handleFollow = () => {
+        UpdateFollow(uid, current_uid, 'follow');
+        let tmp_user = user;
+        let tmp_followers = AddId(tmp_user.followers, current_uid);
+        tmp_user = {...tmp_user, followers: tmp_followers};
+        localStorage.setItem('following', AddId(localStorage.getItem('following'), uid));
+        setUser(tmp_user);
+    }
+
+    const handleUnfollow = () => {
+        UpdateFollow(uid, current_uid, 'unfollow');
+        let tmp_user = user;
+        let tmp_followers = DeleteId(tmp_user.followers, current_uid);
+        tmp_user = {...tmp_user, followers: tmp_followers}
+        localStorage.setItem('following', DeleteId(localStorage.getItem('following'), uid));
+        setUser(tmp_user);
+    }
 
     return (
         <div id="ProfileInfoContainer">
             <img className="user_profile_picture" id={uid + "profile_picture"} src={loading} alt="Profile Picture"/>
+            {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?
+                <button onClick={handleFollow}>Follow</button> : <></>}
+            {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
+                <button onClick={handleUnfollow}>Unfollow</button> : <></>}
             <NameBioFollowers
                 uid={uid}
                 username={user.username}
