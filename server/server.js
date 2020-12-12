@@ -20,12 +20,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 
-app.use('/', require('../index'));
+app.use('/', require('../src/index'));
 
 app.use('/', require('../src/Controller/Controller'));
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = (process.env.PORT || 5000);
+console.log(PORT)
 app.listen(PORT, () =>
     console.log(`Server started on port ${PORT}`)
 );
