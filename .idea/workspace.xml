@@ -13,12 +13,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp_file/f.js" beforeDir="false" />
-    </list>
+    <list default="true" id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -132,6 +127,7 @@
       <workItem from="1607676185105" duration="1909000" />
       <workItem from="1607717512936" duration="5177000" />
       <workItem from="1607746177736" duration="303000" />
+      <workItem from="1607755524753" duration="311000" />
     </task>
     <servers />
   </component>
