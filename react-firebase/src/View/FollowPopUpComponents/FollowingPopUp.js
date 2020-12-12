@@ -35,8 +35,8 @@ function FollowingPopUp(props) {
 
 
     return (
-        <div>
-            <h2>{current_user.username} is following</h2>
+        <div className="popUp">
+            <h2 className="follow-title">{current_user.username} is following</h2>
             {users && users.map((user, key) => (
                 (IncludeId(current_user.following, user.key)) ?
                     <UserDisplayComponent id={key} uid={user.key} username={user.username}/> : <></>

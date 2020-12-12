@@ -21,10 +21,10 @@
 
 .searchUsername {
     color: black;
-    float: right;
-    margin-left: 10px;
+    float: left;
     font-weight: bold;
-    position: absolute;
+    position: relative;
+    left: 10%;
     margin-top: 13px;
     font-size: 20px;
 }
@@ -39,9 +39,9 @@
 .followBtn {
     /*border-style: solid;*/
     width: 100px;
-    right: 2%;
-    position: absolute;
-    margin-top: 13px;
+    right: 10%;
+    position: relative;
+    margin-top: 28px;
     float: right;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

@@ -3,6 +3,7 @@ import {Link, useParams} from "react-router-dom";
 import {FindUsers, GetUserRef} from "../../BackendFunctions";
 import {IncludeId} from "../GlobalComponent/ParseId";
 import UserDisplayComponent from "../SearchResultsComponents/UserDisplayComponent";
+import "./follow.css"
 
 function FollowersPopUp(props) {
 
@@ -38,8 +39,8 @@ function FollowersPopUp(props) {
 
 
     return (
-        <div>
-            <h2>{current_user.username}'s followers</h2>
+        <div className="popUp">
+            <h2 className="follow-title">{current_user.username}'s followers</h2>
             {users && users.map((user, key) => (
                 (IncludeId(current_user.followers, user.key)) ?
                     <UserDisplayComponent id={key} uid={user.key} username={user.username}/> : <></>

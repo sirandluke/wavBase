@@ -209,7 +209,7 @@ export function RepositoryInfo(props) {
                 <form style={{width:'100%',display:'inline-block'}} method="post" onSubmit={handleComment}>
                     <label>
                         <h3>Leave a comment</h3>
-                        <textarea style={{maxWidth:'100%', padding:'0', height:'5rem'}} className="edit_input_2" name="description" type="text" id="new_comment"
+                        <textarea style={{maxWidth:'100%', padding:'10px', height:'5rem'}} className="edit_input_2" name="description" type="text" id="new_comment"
                                   placeholder="Show some love, give some feedback, and keep things nice!"/>
                     </label>
                     <br/>

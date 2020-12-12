@@ -42,6 +42,7 @@ const ShareButtons = (props) => {
                     <SocialIcon url="https://twitter.com"/>
                 </TwitterShareButton>
             </div>
+
         </div>
     );
 }

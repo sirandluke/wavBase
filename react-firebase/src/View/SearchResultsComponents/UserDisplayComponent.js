@@ -85,14 +85,16 @@ function UserDisplayComponent(props) {
             <ul className="userList" >
                 <img id={uid + 'profile_picture'} className="profilePic"/>
 
-                {(uid == current_uid) ? <p id={'user_username'}><Link to={'/'}>{username}</Link></p> :
-                <p id={'user_username'}><Link to={'/user/' + uid} className="searchUsername">{username}</Link></p>}
+
 
                 {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?
                     <button className="followBtn" onClick={handleFollow}>Follow</button> : <></>}
 
                 {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
                     <button className="followBtn" onClick={handleUnfollow}>Unfollow</button> : <></>}
+
+                {(uid == current_uid) ? <p id={'user_username'}><Link to={'/'}>{username}</Link></p> :
+                    <p id={'user_username'}><Link to={'/user/' + uid} className="searchUsername">{username}</Link></p>}
             </ul>
             <hr/>
             <br/>
