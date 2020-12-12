@@ -18,6 +18,8 @@
 .download_all_btn {
     background-color: DodgerBlue;
     border: none;
+    margin:0;
+    margin-top: 1rem;
     color: white;
     padding: 12px 30px;
     cursor: pointer;

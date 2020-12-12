@@ -6,8 +6,8 @@
 }
 
 .snapshot_button{
-    width: 154.5%;
-    display: flex;
+    width: 275%;
+    display: inline-flex;
     align-items: center;
     height: 3rem;
     border:1px solid black;
@@ -19,9 +19,10 @@
     transition: 0.25s;
 }
 .snapshot_table{
+    box-sizing: border-box;
     height: 23rem;
     border: 1px solid black;
-    margin-left: 2rem;
+    width: 100%;
 }
 .snapshot_body{
     align-items: center;
@@ -29,6 +30,18 @@
     /* border: 1px solid black; */
     display: block;
     max-height: 23rem;
-    width: 52rem;
+    width: 100%;
     overflow: auto;
+}
+
+.info_upload_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    margin-left: 0rem;
+}
+.info_upload_row>h3{
+    flex:1;
+    font-weight: 400;
 }

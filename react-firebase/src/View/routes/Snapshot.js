@@ -14,6 +14,7 @@ import {useHistory, useLocation, useParams} from 'react-router';
 import LoadingFiles from "../SnapshotComponents/LoadingFiles";
 import {DeleteSnapshot, GetRepoInfo, GetSnapshotInfo, GetUserRef, UpdateSnapshotInfo} from "../../BackendFunctions";
 import Popup from "reactjs-popup";
+import './Snapshot.css';
 
 function Snapshot(props) {
     const history = useHistory();
@@ -62,7 +63,7 @@ function Snapshot(props) {
     }
 
     return (
-        <div>
+        <div style={{marginLeft:'3rem'}}>
             <SnapshotInfo
                 /*username={owner.username}
                 repo_name={repo.name}*/
@@ -70,19 +71,19 @@ function Snapshot(props) {
                 datetime={snapshot.upload_date}
             />
 
-            <Popup id={'update_snapshot'} trigger={<button id={'snapshot_update_trigger'}>Snapshot Settings</button>}
+            <Popup id={'update_snapshot'} trigger={<button style={{marginLeft:'0rem'}} id={'snapshot_update_trigger'}>Snapshot Settings</button>}
                    position={'right center'}>
-                <form method="post" onSubmit={handleSnapshotUpdate}>
-                    <br/>
-                    <label>
-                        <h3>Update Description</h3>
-                        <textarea className="edit_input_1" name="Description" type="text" id="new_description"
-                                  placeholder="Description"/>
-                    </label>
-                    <br/>
-                    <input className="update_button" type="submit" value="Update"/>
-                </form>
-                <button onClick={handleDelete}>Delete</button>
+                <div className="snapshot_popup1">
+                    <form method="post" onSubmit={handleSnapshotUpdate}>
+                        <label>
+                            <h3>Update Description</h3>
+                            <textarea className="edit_snapshot_input" name="Description" type="text" id="new_description"
+                                    placeholder="Description"/>
+                        </label>
+                        <input className="update_button" type="submit" value="Update"/>
+                    </form>
+                    <button className="update_button1" onClick={handleDelete}>Delete</button>
+                </div>
             </Popup>
 
             {<LoadingFiles

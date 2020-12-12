@@ -134,7 +134,7 @@ export function RepositoryInfo(props) {
     }
 
     return(
-        <div>
+        <div style={{marginLeft:'3rem', marginRight:'3rem'}}>
             <div className="left_element">
                 <img className="repo_thumbnail"
                      id="repo_thumbnail"
@@ -156,36 +156,45 @@ export function RepositoryInfo(props) {
                         <button>{tag}</button>
                     )}
                 </div>
-                <br/>
-                {(visitor_id === repo.user_id) ?
-                    <Popup trigger={<button>Settings</button>} position={'right center'}>
-                        <form method="post" onSubmit={handleRepoInfoUpdate}>
+                { /*<button onClick={handleShare}>Share</button>*/ }
+            </div>
+            <div className="repo_buttons_class">
+            {(visitor_id === repo.user_id) ?
+                    <Popup trigger={<button style={{marginLeft:'0rem', marginRight:'0.5rem'}} className="update_button1">Settings</button>} position={'right center'}>
+                        <div className="snapshot_popup1">
+                        <form style={{width:'100%',display:'inline-block'}} method="post" onSubmit={handleRepoInfoUpdate}>
                             <label>
                                 <h3>Update Tags</h3>
 
                                 <input className="edit_input_1" name="tags" type="text" id="new_tags"
                                        placeholder="Tags" defaultValue={repo.tags}/>
                             </label>
-                            <br/>
                             <label>
                                 <h3>Update Description</h3>
                                 <textarea className="edit_input_2" name="description" type="text" id="new_description"
                                           placeholder="Description"/>
                             </label>
-                            <br/>
+                            
                             <input className="update_button" type="submit" value="Update"/>
                         </form>
+                        <br/>
+                        <div className="line"/>
                         <form method="post" onSubmit={handleRepoInfoUpdate}>
                             <label>
                                 <h3>Delete Repository</h3>
-                                <br/>
-                                <p>*Delete the repository. This will delete all aspects of the repository</p>
+                                <h5>*Delete the repository. This will delete all aspects of the repository</h5>
                             </label>
-                            {<button onClick={handleDelete}><h2>Delete</h2></button>}
+                            {<button className='update_button1' onClick={handleDelete}>Delete</button>}
                         </form>
+                        </div>
                     </Popup>
                     : <></>}
-                { /*<button onClick={handleShare}>Share</button>*/ }
+            <div className='repo_likes'>
+                {(repo.likes && IncludeId(repo.likes, visitor_id)) ?
+                    <button style={{marginLeft:'0rem'}} className="update_button1" onClick={handleLike}>Liked</button> :
+                    <button style={{marginLeft:'0rem'}} className="update_button1" onClick={handleLike}>Like</button>}
+                <LikedListDisplayComponent likes={repo.likes} />
+            </div>
             </div>
 
             <div className="repo_description">
@@ -193,21 +202,17 @@ export function RepositoryInfo(props) {
                 <p id={'repo_description'}>{ repo.description }</p>
             </div>
 
-            <div className='repo_likes'>
-                {(repo.likes && IncludeId(repo.likes, visitor_id)) ?
-                    <button onClick={handleLike}>Liked</button> :
-                    <button onClick={handleLike}>Like</button>}
-                <LikedListDisplayComponent likes={repo.likes} />
-            </div>
+            
 
             {/*TODO: Make comment component below the description*/}
             <div className='add_repo_comments'>
-                <form method="post" onSubmit={handleComment}>
+                <form style={{width:'100%',display:'inline-block'}} method="post" onSubmit={handleComment}>
                     <label>
                         <h3>Leave a comment</h3>
-                        <textarea className="edit_input_2" name="description" type="text" id="new_comment"
+                        <textarea style={{maxWidth:'100%', padding:'0', height:'5rem'}} className="edit_input_2" name="description" type="text" id="new_comment"
                                   placeholder="Show some love, give some feedback, and keep things nice!"/>
                     </label>
+                    <br/>
                     <input className="comment_button" type="submit" value="Comment"/>
                 </form>
             </div>
@@ -215,6 +220,7 @@ export function RepositoryInfo(props) {
             <div className='display_repo_comments'>
                 {(comments) ? <CommentsDisplayComponent comments={comments} /> : <h3>No Comment Yet</h3>}
             </div>
+    
         </div>
     );
 }

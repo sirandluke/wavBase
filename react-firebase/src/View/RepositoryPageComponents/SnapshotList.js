@@ -58,10 +58,10 @@ export function SnapshotList(props) {
 
 
     return (
-        <div>
+        <div style={{marginLeft:'3rem', marginRight:'3rem'}}>
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
-                <button className="upload_pop_up" onClick={toggle}>Take a Snapshot</button>
+                <button style={{width:'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
             </div>
 
             <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
