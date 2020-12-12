@@ -13,7 +13,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="" />
+    <list default="true" id="b3158667-cac9-4a80-a71b-f614f49f7c84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp_file/f.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +55,6 @@
   <component name="PropertiesComponent">
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/react-firebase" />
@@ -58,13 +62,6 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/react-firebase/src/Controller" />
-      <recent name="$PROJECT_DIR$/react-firebase/src/View" />
-      <recent name="$PROJECT_DIR$/react-firebase/src/server" />
-      <recent name="$PROJECT_DIR$/react-firebase/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/react-firebase" />
       <recent name="$PROJECT_DIR$" />
@@ -72,19 +69,15 @@
       <recent name="$PROJECT_DIR$/react-firebase/src/View/SearchComponents" />
       <recent name="$PROJECT_DIR$/react-firebase/src/Controller" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/Controller" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/View" />
+      <recent name="$PROJECT_DIR$/react-firebase/src/server" />
+      <recent name="$PROJECT_DIR$/react-firebase/src" />
+    </key>
   </component>
   <component name="RunManager" selected="Node.js.RepositoryList.js">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="NewRepo.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/View/routes/NewRepo.js" working-dir="$PROJECT_DIR$/src/View/routes">
       <method v="2" />
     </configuration>
@@ -138,6 +131,7 @@
       <workItem from="1607672141047" duration="1512000" />
       <workItem from="1607676185105" duration="1909000" />
       <workItem from="1607717512936" duration="5177000" />
+      <workItem from="1607746177736" duration="303000" />
     </task>
     <servers />
   </component>
@@ -173,38 +167,38 @@
     </state>
     <state x="1540" y="100" width="1720" height="880" key="DiffContextDialog/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1606086417521" />
     <state x="1540" y="100" width="1720" height="880" key="DiffContextDialog/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607325512191" />
-    <state width="1878" height="407" key="GridCell.Tab.0.bottom" timestamp="1607725883122">
+    <state width="1878" height="407" key="GridCell.Tab.0.bottom" timestamp="1607746146873">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="339" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445531" />
-    <state width="1878" height="407" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883122" />
+    <state width="1878" height="407" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607746146873" />
     <state width="1398" height="2" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1607594914487" />
     <state width="1878" height="300" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351584" />
     <state width="1878" height="329" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322137" />
     <state width="1878" height="299" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1606868675684" />
-    <state width="1878" height="407" key="GridCell.Tab.0.center" timestamp="1607725883121">
+    <state width="1878" height="407" key="GridCell.Tab.0.center" timestamp="1607746146872">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="339" key="GridCell.Tab.0.center/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445530" />
-    <state width="1878" height="407" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883121" />
+    <state width="1878" height="407" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607746146872" />
     <state width="1398" height="2" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1607594914486" />
     <state width="1878" height="300" key="GridCell.Tab.0.center/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351582" />
     <state width="1878" height="329" key="GridCell.Tab.0.center/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322133" />
     <state width="1878" height="299" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1606868675682" />
-    <state width="1878" height="407" key="GridCell.Tab.0.left" timestamp="1607725883120">
+    <state width="1878" height="407" key="GridCell.Tab.0.left" timestamp="1607746146871">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="339" key="GridCell.Tab.0.left/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445528" />
-    <state width="1878" height="407" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883120" />
+    <state width="1878" height="407" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607746146871" />
     <state width="1398" height="2" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1607594914485" />
     <state width="1878" height="300" key="GridCell.Tab.0.left/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351579" />
     <state width="1878" height="329" key="GridCell.Tab.0.left/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322132" />
     <state width="1878" height="299" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1606868675680" />
-    <state width="1878" height="407" key="GridCell.Tab.0.right" timestamp="1607725883122">
+    <state width="1878" height="407" key="GridCell.Tab.0.right" timestamp="1607746146872">
       <screen x="1440" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="339" key="GridCell.Tab.0.right/0.0.1440.900/-1920.0.1920.1200@-1920.0.1920.1200" timestamp="1606630445531" />
-    <state width="1878" height="407" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607725883122" />
+    <state width="1878" height="407" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1607746146872" />
     <state width="1398" height="2" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1607594914487" />
     <state width="1878" height="300" key="GridCell.Tab.0.right/0.23.1440.877/1440.0.1920.1080@1440.0.1920.1080" timestamp="1605936351583" />
     <state width="1878" height="329" key="GridCell.Tab.0.right/0.23.1440.877/1440.23.1920.1057@1440.23.1920.1057" timestamp="1607676322134" />
