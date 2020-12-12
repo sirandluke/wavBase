@@ -3,6 +3,7 @@ import React, {useEffect, useState, useHistory} from "react";
 import {FindUsers} from "../../BackendFunctions";
 import UserDisplayComponent from "../SearchResultsComponents/UserDisplayComponent";
 import db from "../../Model/base";
+import "./SearchResult.css";
 
 function UserSearchResult(props) {
 
@@ -42,8 +43,8 @@ function UserSearchResult(props) {
         } )
     }*/
     return (
-        <div>
-            <h2>User Search Result</h2>
+        <div className="searchResult">
+            <h2 className="searchTitle">User Search Result</h2>
             {users && users.map((user, key) => (
                 (user.username && user.username.toLowerCase().includes(search_input.toLowerCase()) && (user.key !== uid)) ?
                     <UserDisplayComponent id={key} uid={user.key} username={user.username}/> : <></>

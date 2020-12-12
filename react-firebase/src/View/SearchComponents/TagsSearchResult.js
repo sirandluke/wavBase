@@ -56,9 +56,9 @@ function TagsSearchResult(props) {
     }
 
     return (
-        <div>
-            <h2>Tags Search Result</h2>
-            <ul>
+        <div className="searchResult">
+            <h2 className="searchTitle">Tags Search Result</h2>
+            <ul className="repo_list_div" style={ {width: '90%'}}>
                 {/*{repos && repos.map((repo, key) => (
                     (ParseTags(repo.tags).includes(search_input)) && ((repo.user_id === uid) || (repo.is_private !== 'T' && repo.user_id !== uid)) ?
                         <RepoDisplayComponent key={key} id={repo.repo_id} name={repo.name}/> : <></>
@@ -66,6 +66,7 @@ function TagsSearchResult(props) {
                 {repoElement}
             </ul>
         </div>
+
     );
 }
 export default TagsSearchResult;

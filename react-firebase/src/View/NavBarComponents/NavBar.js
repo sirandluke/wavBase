@@ -73,17 +73,18 @@ function NavBar(props) {
     const handleSearch = (event) => {
         event.preventDefault();
         if (document.getElementById('search_input').value !== '') {
-            history.push('/search_result');
+            history.push('/search_result/repositories');
         }
     }
     return (
         <div className="nav_bar">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
             <form className="search_bar" onSubmit={handleSearch}>
                 <label>
                     <input id='search_input' type="text" placeholder={'Search'}></input>
                 </label>
-                <button className="search_btn" type="submit">Search</button>
+                <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
             </form>
 
             <img id="profile_picture2" className="top_icon" src={image_url}/>

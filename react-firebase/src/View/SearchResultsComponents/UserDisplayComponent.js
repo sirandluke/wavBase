@@ -4,6 +4,8 @@ import {AddId, DeleteId, getIdCount, IncludeId} from "../GlobalComponent/ParseId
 import {GetProfileImageUrl, GetUserRef, UpdateFollow} from "../../BackendFunctions";
 //import db from "../../Database_config";
 import db from "../../Model/base";
+import "../SearchComponents/SearchResult.css";
+import "../HomePageComponents/RepositoryList.css"
 
 function UserDisplayComponent(props) {
     const username = props.username;
@@ -80,15 +82,20 @@ function UserDisplayComponent(props) {
 
     return (
         <div>
-            <ul>
-                <img id={uid + 'profile_picture'} width={30} height={30}/>
+            <ul className="userList" >
+                <img id={uid + 'profile_picture'} className="profilePic"/>
+
                 {(uid == current_uid) ? <p id={'user_username'}><Link to={'/'}>{username}</Link></p> :
-                <p id={'user_username'}><Link to={'/user/' + uid}>{username}</Link></p>}
+                <p id={'user_username'}><Link to={'/user/' + uid} className="searchUsername">{username}</Link></p>}
+
                 {((uid !== current_uid) && (!IncludeId(user.followers, current_uid))) ?
-                    <button onClick={handleFollow}>Follow</button> : <></>}
+                    <button className="followBtn" onClick={handleFollow}>Follow</button> : <></>}
+
                 {((uid !== current_uid) && (IncludeId(user.followers, current_uid))) ?
-                    <button onClick={handleUnfollow}>Unfollow</button> : <></>}
+                    <button className="followBtn" onClick={handleUnfollow}>Unfollow</button> : <></>}
             </ul>
+            <hr/>
+            <br/>
         </div>
     );
 }

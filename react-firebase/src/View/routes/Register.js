@@ -11,6 +11,7 @@ import * as FirebaseHandler from  "../../Model/FirebaseHandler.js";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
 import {CreateUser} from "../../BackendFunctions";
 
+
 const Register = ({ history }) => {
 
     const handleRegister = (event) => {
@@ -59,13 +60,17 @@ const Register = ({ history }) => {
         history.push("/login");
     }
 
+    const signInPrompt = () => {
+        alert('Please register or sign in your account :)');
+    }
+
     return(
         <div>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
             <div className="nav_bar">
                 <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
                 <button className="signIn_btn" type="submit" onClick={redirectLogIn}>Sign In</button>
-                <form className="search_bar">
+                <form onSubmit={signInPrompt} className="search_bar">
                     <input className="search_input" type="text" placeholder=" Search"
                            name="search"/>
                     <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>

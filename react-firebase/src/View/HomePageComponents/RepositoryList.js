@@ -53,8 +53,8 @@ function RepositoryList(props) {
     if (repos) {
         repoElement = repos.map((repo, key) => (
             (repo.user_id === uid) && ((uid === current_uid) || (repo.is_private !== 'T' && uid !== current_uid)) ?
-                <tr key={ repo.repo_id }>
-                    <td style={ {width: '200px', textAlign: 'left'} }>
+                <tr style={ {width: '100%'}} key={ repo.repo_id }>
+                    <td style={ {width: '100%', textAlign: 'left'} }>
                         <button className="repo_button" name="repo_links"
                                 onClick={ () => redirectToRepo(repo) }>
                             { repo.name }
@@ -69,14 +69,14 @@ function RepositoryList(props) {
             <ProfileInfo uid={uid}/>
             <div className="col_2">
             {(uid === current_uid) ? <button className="create_repository"><Link to={'/newrepo'}>Create Repository</Link></button> : <></>}
-            <div className="repo_list_div">
-                {/* <table style={{border: '1px solid blue'}}> */}
-                <table>
-                    <tbody>
-                    { repoElement }
-                    </tbody>
-                </table>
-            </div>
+                <div className="repo_list_div">
+                    {/* <table style={{border: '1px solid blue'}}> */}
+                    <table style={ {width: '100%'}}>
+                        <tbody style={ {width: '100%'}}>
+                        { repoElement }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {FindRepos} from "../../BackendFunctions";
 import db from "../../Model/base";
 import {useHistory} from "react-router";
+import "./SearchResult.css"
 
 function RepoSearchResult(props) {
 
@@ -12,6 +13,8 @@ function RepoSearchResult(props) {
 
     const uid = db.auth().currentUser.uid;
     const [repos, setRepos] = useState(0);
+
+
 
     useEffect(() => {
         console.log('listen to repo list');
@@ -43,9 +46,9 @@ function RepoSearchResult(props) {
     if (repos) {
         repoElement = repos.map((repo, key) => (
             (repo.name.toLowerCase().includes(search_input.toLowerCase())) && ((repo.user_id === uid) || (repo.is_private !== 'T' && repo.user_id !== uid)) ?
-                <tr key={ repo.repo_id }>
-                    <td style={ {width: '200px', textAlign: 'left'} }>
-                        <button className="repo_button" name="repo_links"
+                <tr style={ {width: '100%'}} key={ repo.repo_id }>
+                    <td style={ {width: '100%'}} style={ {textAlign: 'left'} }>
+                        <button style={ {width: '100%'}} className="repo_button" name="repo_links"
                                 onClick={ () => redirectToRepo(repo) }>
                             { repo.name }
                         </button>
@@ -55,9 +58,9 @@ function RepoSearchResult(props) {
     }
 
     return (
-        <div>
-            <h2>Repo Search Result</h2>
-            <ul>
+        <div className="searchResult">
+            <h2 className="searchTitle">Repo Search Result</h2>
+            <ul className="repo_list_div" style={ {width: '90%'}}>
                 {/*{repos && repos.map((repo, key) => (
                     (repo.name.toLowerCase().includes(search_input.toLowerCase())) && ((repo.user_id === uid) || (repo.is_private !== 'T' && repo.user_id !== uid)) ?
                         <RepoDisplayComponent key={key} id={repo.repo_id} name={repo.name}/> : <></>
