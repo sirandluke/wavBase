@@ -37,13 +37,13 @@ function App() {
                         <Route exact path="/register" component={Register}/>
                         <PrivateRoute path="/" component={PersonalHome}/>
                     </Switch>
-                    <img src={sine_wave_1} style={{
-                        width: "100%",
-                        float: 'bottom',
-                        zIndex: "-99",
-                        position: "relative",
-                        marginTop: '1rem'
-                    }}/>
+                    {/*<img src={sine_wave_1} style={{*/}
+                    {/*    width: "100%",*/}
+                    {/*    float: 'bottom',*/}
+                    {/*    zIndex: "-99",*/}
+                    {/*    position: "relative",*/}
+                    {/*    marginTop: '1rem'*/}
+                    {/*}}/>*/}
                 </div>
             </Router>
         </AuthProvider>
