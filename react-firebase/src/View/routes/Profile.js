@@ -131,8 +131,8 @@ function Profile(props) {
             picture.append('file', picture_object, uid + '.' + extension);
             console.log(picture);
             UpdateProfileImage(picture);
-            UpdateUserInfo('', '', '', picture_path);
-            let reader = new FileReader();
+            UpdateUserInfo(uid, '', '', picture_path);
+            let reader = new  FileReader();
             reader.onload = function () {
                 let img = document.getElementById('profile_picture2');
                 if (img != null) {
