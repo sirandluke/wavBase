@@ -1,6 +1,5 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 import {useParams, useRouteMatch, withRouter} from "react-router-dom";
-//import {findRepositories} from "../../Model/FirebaseHandler";
 import loading from "../../Images/loader.gif";
 import repo_thumbnail from '../../Images/default_repo_thumbnail.png';
 import './RepositoryInfo.css'
@@ -13,12 +12,14 @@ import CommentsDisplayComponent from "./CommentsDisplayComponent";
 import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
 import LikedListDisplayComponent from "./LikedListDisplayComponent";
 import ShareButtons from "../ShareRepoComponent/ShareButtons";
+import {AuthContext} from "../auth/Auth";
 
 export function RepositoryInfo(props) {
 
     const history = useHistory();
     const {repo_id} = useParams();
-    const visitor_id = db.auth().currentUser.uid;
+    const {currentUser} = useContext(AuthContext);
+    const visitor_id = currentUser ? currentUser.uid : '';
 
     //const [repo, setRepo] = useState(0);
     const [repo, setRepo] = useState(0);

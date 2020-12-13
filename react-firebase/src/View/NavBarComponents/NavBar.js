@@ -22,8 +22,6 @@ function NavBar(props) {
     if (currentUser) {
         console.log(currentUser.uid);
         current_uid = currentUser.uid;
-    } else {
-        history.push('/login');
     }
 
     useEffect(

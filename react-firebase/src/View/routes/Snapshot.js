@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 import "../../App.css";
 
 import * as K from '../../Constants';
@@ -15,6 +15,7 @@ import LoadingFiles from "../SnapshotComponents/LoadingFiles";
 import {DeleteSnapshot, GetRepoInfo, GetSnapshotInfo, GetUserRef, UpdateSnapshotInfo} from "../../BackendFunctions";
 import Popup from "reactjs-popup";
 import './Snapshot.css';
+import {AuthContext} from "../auth/Auth";
 
 function Snapshot(props) {
     const history = useHistory();
@@ -22,6 +23,8 @@ function Snapshot(props) {
     const [snapshot, setSnapshot] = useState(0);
     const [repo, setRepo] = useState(0);
     const [owner, setOwner] = useState(0);
+    const {currentUser} = useContext(AuthContext);
+    const visitor_id = (currentUser) ? currentUser.uid : '';
 
     useEffect(() => {
         console.log('Listening to snapshot info snap_id:', snap_id);
@@ -30,7 +33,7 @@ function Snapshot(props) {
                 setSnapshot(snap_snapshot);
             })
         }
-        /*if (!repo) {
+        if (!repo) {
             GetRepoInfo(repo_id).then(repo_snapshot => {
                 repo_snapshot = {...repo_snapshot, repo_id: repo_id};
                 setRepo(repo_snapshot);
@@ -40,7 +43,7 @@ function Snapshot(props) {
                     })
                 }
             })
-        }*/
+        }
         return () => {
             console.log('Stop listening to snapshot info snap_id:', snap_id);
         }
@@ -75,20 +78,22 @@ function Snapshot(props) {
                 datetime={snapshot.upload_date}
             />
 
-            <Popup id={'update_snapshot'} trigger={<button style={{marginLeft:'0rem'}} id={'snapshot_update_trigger'}>Snapshot Settings</button>}
-                   position={'right center'}>
-                <div className="snapshot_popup1">
-                    <form method="post" onSubmit={handleSnapshotUpdate}>
-                        <label>
-                            <h3>Update Description</h3>
-                            <textarea className="edit_snapshot_input" name="Description" type="text" id="new_description"
-                                    placeholder="Description"/>
-                        </label>
-                        <input className="update_button" type="submit" value="Update"/>
-                    </form>
-                    <button className="update_button1" onClick={handleDelete}>Delete</button>
-                </div>
-            </Popup>
+            {(visitor_id === repo.user_id) ?
+                <Popup id={'update_snapshot'} trigger={<button style={{marginLeft:'0rem'}} id={'snapshot_update_trigger'}>Snapshot Settings</button>}
+                       position={'right center'}>
+                    <div className="snapshot_popup1">
+                        <form method="post" onSubmit={handleSnapshotUpdate}>
+                            <label>
+                                <h3>Update Description</h3>
+                                <textarea className="edit_snapshot_input" name="Description" type="text" id="new_description"
+                                          placeholder="Description"/>
+                            </label>
+                            <input className="update_button" type="submit" value="Update"/>
+                        </form>
+                        <button className="update_button1" onClick={handleDelete}>Delete</button>
+                    </div>
+                </Popup> : <></>}
+
 
             {<LoadingFiles
                 snapshot_paths={snapshot.files}

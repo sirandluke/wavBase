@@ -43,7 +43,7 @@ function App() {
                     <PrivateRoute exact path="/" component={RepositoryList}/>
                     <PrivateRoute exact path="/newrepo" component={NewRepo}/>
                     {/*<PrivateRoute exact path="/profile" component={Profile}/>*/}
-                    <Route exact path="/profile" component={Profile}/>
+                    <PrivateRoute exact path="/profile" component={Profile}/>
                     <PrivateRoute path='/search_result' component={ResultsInterface}/>
                     <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
                     <PrivateRoute exact path='/search_result/repositories'
@@ -51,9 +51,9 @@ function App() {
                     <PrivateRoute exact path='/search_result/tags'
                                   component={TagsSearchResult}/>
                     <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
-                    <PrivateRoute path={"/repo/:repo_id"} component={Repository}/>
-                    <PrivateRoute exact path={'/repo/:repo_id'} component={SnapshotList} />
-                    <PrivateRoute exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
+                    <Route path={"/repo/:repo_id"} component={Repository}/>
+                    <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
+                    <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
                     {/*<img src={sine_wave_1} style={{*/}
                     {/*    width: "100%",*/}
                     {/*    float: 'bottom',*/}
