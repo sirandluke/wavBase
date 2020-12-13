@@ -1,0 +1,23 @@
+
+.line{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.upload_pop_up{
+    /* width: 10rem; */
+    border: 1px solid black;
+}
+.upload_pop_up:hover{
+    filter:invert(100%);
+    transition: .25s;
+}
+
+.redirect_home{
+    border: 1px solid black;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+.redirect_home:hover{
+    filter:invert(100%);
+    transition: .25s;
+}

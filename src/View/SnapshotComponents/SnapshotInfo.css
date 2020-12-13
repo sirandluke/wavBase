@@ -1,0 +1,15 @@
+.snapshot_info{
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+.snapshot_buttons{
+    /* width: 33%; */
+    border: 1px solid black;
+    margin-left: 0rem;
+    background-color: white;
+}
+
+.snapshot_buttons:hover{
+    transition: 0.25s;
+    filter: invert(100%);
+}

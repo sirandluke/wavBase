@@ -1,0 +1,92 @@
+/* CSS for Top Nav Bar below */
+.nav_bar {
+    position: relative;
+    height: 10%;
+    width: 100%;
+    background-color: #355070;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.nav_bar_logo {
+    border-radius: 80%;
+    height: 45px;
+    width: 45px;
+    /* margin-left: 20px; */
+    /* margin-top: 8px; */
+    margin-right: 2rem;
+    background-color: transparent;
+}
+
+.search_bar {
+    z-index:2;
+    /* float: right; */
+    /* position: absolute; */
+    width: 50%;
+    /* left: 90px; */
+    /* top: 12px; */
+}
+
+#search_input {
+    border: none;
+    border-radius: 5px;
+    height: 28px;
+    max-width: 50%;
+    position: relative;
+    /* top: 0px; */
+    font-size: 20px;
+}
+
+.search_btn {
+    position: relative;
+    border-radius: 5px;
+    height: 30px;
+    background-color: white;
+}
+
+.top_icon {
+    float: right;
+    position: absolute;
+    margin-right: 18%;
+    border-radius: 100%;
+    right: 0px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+#dropdown-item-button {
+    position: absolute;
+    top: 10px;
+    outline: none;
+    right: 3%;
+    height: 40px;
+    width: 14%;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0px;
+    z-index: 99;
+}
+#dropdown-item-button:hover{
+    filter: invert(100%);
+}
+.dropdown-item{
+    /* height: 1000px; */
+    width: 100%;
+    z-index: 99;
+    display: flex;
+}
+.dropdown-item:hover{
+    /* height: 1000px; */
+    filter:invert(100%);
+    transition: 0.25s;
+}
+
+#dropdown-item-button:hover {
+    filter:invert(100%);
+    transition: 0.25s;
+}

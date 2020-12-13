@@ -1,0 +1,109 @@
+/*body {*/
+/*    background-color: rgba(152, 193, 217, 0.15);*/
+/*}*/
+
+.login_left {
+    width: 60%;
+    height: 100vh;
+    float: left;
+    background-color: white;
+}
+
+.login_right {
+    width: 40%;
+    height: 100vh;
+    float: right;
+    background-color: rgba(152, 193, 217, 0.15);
+}
+
+.login_logo {
+    margin-left: 15%;
+    margin-top: 20vh;
+}
+
+.separator {
+    margin: 3% 15% 0% 15%;
+}
+
+.login_quote {
+    margin: 0% 15% 0% 15%;
+    width: 75%;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 42px;
+}
+
+.signIn_header {
+    margin: 15% 0% 10% 15%;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+    /* identical to box height */
+}
+
+.signIn_form {
+    margin: 0% 0% 5% 15%;
+    height: 6vh;
+    width: 55vh;
+    border-radius: 8px;
+    border-color: white;
+}
+
+.button {
+    margin: 0% 0% 5% 15%;
+    height: 6vh;
+    width: 55vh;
+    border-radius: 8px;
+    border-color: #00A3E7;
+    background-color: #00A3E7;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    color: white;
+    font-size: 16px;
+    /*border: none;*/
+    /*border-radius: 6px;*/
+    /*background-color: #00A3E7;*/
+    /*color: white;*/
+    /*padding: 5px 55px;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*display: inline-block;*/
+    /*font-size: 16px;*/
+    /*margin: 4px 2px;*/
+    /*transition-duration: 0.4s;*/
+    /*cursor: pointer;*/
+}
+
+.signUp_button {
+    margin: 5% 0% 5% 35%;
+    height: 6vh;
+    width: 25vh;
+    border-radius: 8px;
+    border-color: #00A3E7;
+    background-color: #00A3E7;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    color: white;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: lightskyblue;
+    /*color: black;*/
+}
+
+.signUp_button:hover {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.link_button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

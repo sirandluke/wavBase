@@ -1,0 +1,21 @@
+.snaps_ico
+{
+    margin-right: 1rem;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.upload_description{
+    padding-right: 0px !important;
+}
+
+.upload_button_1{
+    margin-top: 1rem;
+    margin-left: 0rem;
+    border: 1px solid black;
+}
+
+.upload_button_1:hover{
+    filter: invert(100%);
+    transition: 0.25s;
+}

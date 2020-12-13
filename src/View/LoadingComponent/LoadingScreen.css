@@ -1,0 +1,35 @@
+@keyframes glow {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.content-dir-item img.mail {
+    display: inline-block;
+}
+.load_text {
+    animation-name: glow;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.loading_msg {
+    position: relative;
+    color: black;
+}
+
+.loading_icon {
+    position: relative;
+    top: 10px;
+}

@@ -1,0 +1,12 @@
+.popUp {
+    background-color: white;
+    padding: 10px 50px 10px 30px;
+    border-radius: 10px;
+    height: 300px;
+    overflow: auto;
+}
+
+.follow-title {
+    font-size: 20px;
+    font-style: italic;
+}

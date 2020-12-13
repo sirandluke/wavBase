@@ -1,0 +1,18 @@
+#ProfileInfoContainer {
+    width: 308px;
+    margin-left: 32px;
+}
+
+.user_profile_picture{
+    /*max-width: 60%;*/
+    width: 167px;
+    height: 167px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2.5rem;
+    border-radius: 100%;
+}
+
+/* .profile_info */
+

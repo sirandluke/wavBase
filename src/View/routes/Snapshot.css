@@ -1,0 +1,30 @@
+.snapshot_buttons{
+    /* width: 33%; */
+    border: 1px solid black;
+    background-color: white;
+}
+
+.snapshot_buttons:hover{
+    transition: 0.25s;
+    filter: invert(100%);
+}
+
+#snapshot_update_trigger{
+    border: 1px solid black;
+    background-color: white;
+}
+
+#snapshot_update_trigger:hover{
+    transition: 0.25s;
+    filter: invert(100%);
+}
+.edit_snapshot_input{
+    width: 100%;
+}
+.snapshot_popup1{
+    background-color:white;
+    display: inline-block;
+    padding: 1rem;
+    padding-right: 1.5rem;
+    border: 1px solid black;
+}

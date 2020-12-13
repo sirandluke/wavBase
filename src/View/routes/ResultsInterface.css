@@ -1,0 +1,32 @@
+#sideNav {
+    /*margin: 50px 0px 0px 5%;*/
+    margin: 40px 0 0 30px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 30%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    border-radius: 10px;
+    float: left;
+}
+
+.searchOption {
+    color: black;
+    padding: 12px;
+    font-size: 20px;
+    display: inline-block;
+    width: 90%;
+    border-bottom: solid;
+
+}
+
+.searchOption:hover{
+    background-color: #355070;
+    color: white;
+}
+
+.active {
+    background-color: #355070;
+    color: white;
+}
+

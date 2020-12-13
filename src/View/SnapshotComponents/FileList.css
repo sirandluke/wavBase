@@ -1,0 +1,39 @@
+.download_file_btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+/* Darker background on mouse-over */
+.download_file_btn:hover {
+    background-color: RoyalBlue;
+}
+
+.download_all_btn {
+    background-color: DodgerBlue;
+    border: none;
+    margin:0;
+    margin-top: 1rem;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Darker background on mouse-over */
+.download_all_btn:hover {
+    background-color: RoyalBlue;
+}
+
+a {
+    color: white; text-decoration: none;
+}
+.audio_ico{
+    /* margin-left: 2rem; */
+}
