@@ -20,7 +20,10 @@ function NavBar(props) {
     const {currentUser} = useContext(AuthContext);
     let current_uid = '';
     if (currentUser) {
+        console.log(currentUser.uid);
         current_uid = currentUser.uid;
+    } else {
+        history.push('/login');
     }
 
     useEffect(
@@ -74,6 +77,7 @@ function NavBar(props) {
 
     const handleSignOut = () => {
         localStorage.clear();
+        history.push('/login');
         db.auth().signOut().then(r => {
             console.log('Successfully signed out');
         });
