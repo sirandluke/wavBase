@@ -1,14 +1,15 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 
 import db from "../../Model/base";
 import {Route, useHistory, useParams, useRouteMatch, withRouter} from "react-router-dom";
 
 import folder_icon from "../../Images/folder.png";
 import "./SnapshotList.css"
-import {GetSnapshotListByRepoId} from "../../BackendFunctions";
+import {GetRepoInfo, GetSnapshotListByRepoId, GetUserRef} from "../../BackendFunctions";
 import SnapshotModal from "../RepositoryModals/SnapshotModal";
 import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
 import {SnapshotListManager} from "./SnapshotListManager";
+import {AuthContext} from "../auth/Auth";
 
 export function SnapshotList(props) {
 
@@ -16,9 +17,18 @@ export function SnapshotList(props) {
     const {repo_id} = useParams();
     const {isShowing, toggle} = UseSnapshotModal();
     const [snapshot_list, setSnapshotList] = useState(0);
+    const [repo, setRepo] = useState(0);
+    const {currentUser} = useContext(AuthContext);
+    const visitor_id = currentUser ? currentUser.uid : '';
 
     useEffect(() => {
         console.log('Listening to snapshot list of repo_id:', repo_id);
+        if (!repo) {
+            GetRepoInfo(repo_id).then(repo_snapshot => {
+                repo_snapshot = {...repo_snapshot, repo_id: repo_id};
+                setRepo(repo_snapshot);
+            })
+        }
         if (!snapshot_list) {
             GetSnapshotListByRepoId(repo_id).then(snapshot_list_snapshot => {
                 let tmp_list = [];
@@ -31,7 +41,7 @@ export function SnapshotList(props) {
         return () => {
             console.log('Stop listening to snapshot list of repo_id:', repo_id);
         }
-    }, [snapshot_list, localStorage.getItem(`${repo_id} snapshots`)])
+    }, [snapshot_list, repo])
     // TODO: Map snapshot elements to SnapshotObject
     // Element displays folder icon + desc + datetime
 
@@ -63,7 +73,9 @@ export function SnapshotList(props) {
         <div style={{marginLeft: '3rem', marginRight: '3rem'}}>
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
-                <button style={{width: 'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
+                {visitor_id === repo.user_id ?
+                    <button style={{width: 'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button> : <></>}
+                {/*<button style={{width: 'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>*/}
             </div>
 
             <SnapshotListManager.Provider value={{setSnapshotList}}>
