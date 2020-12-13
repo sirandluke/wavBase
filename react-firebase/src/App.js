@@ -24,6 +24,7 @@ import UserSearchResult from "./View/SearchComponents/UserSearchResult";
 import RepoSearchResult from "./View/SearchComponents/RepoSearchResult";
 import TagsSearchResult from "./View/SearchComponents/TagsSearchResult";
 import {SnapshotList} from "./View/RepositoryPageComponents/SnapshotList";
+import ResetPassword from './View/routes/ResetPassword';
 
 //import RepositoryListContainer from "./View/routes/RepositoryListContainer";
 
@@ -36,6 +37,7 @@ function App() {
                     <Switch>
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
+                        <Route exact path="/reset_password" component={ResetPassword}/>
                         <PrivateRoute path="/" component={PersonalHome}/>
                     </Switch>
                     <PrivateRoute exact path="/" component={RepositoryList}/>

@@ -80,28 +80,8 @@ const Login = ({history}) => {
         history.push("/register");
     }
 
-    window.onload = function () {
-        const resetPW = document.getElementById('resetPW');
-        const idField = document.getElementById('identity');
-
-        // alert(resetPW);
-        const resetPWFunction = () => {
-            alert('resetPTFunc called')
-            if (isEmail(idField.value)) {
-                alert('is email');
-                db.auth().sendPasswordResetEmail(idField.value)
-                    .then(() => {
-                        alert('Password Reset Email Sent Successfully!');
-                        console.log('Password Reset Email Sent Successfully!');
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    })
-            }
-        }
-
-        if (resetPW)
-            resetPW.addEventListener('click', resetPWFunction);
+    const redirectReset = () => {
+        history.push("/reset_password");
     }
 
     return (
@@ -132,7 +112,7 @@ const Login = ({history}) => {
                     <br/>
                     <button className="button" type="submit">Sign in</button>
                     <br/>
-                    <button className="button" id="resetPW">Forgot Password / Username?</button>
+                    <button className="button" id="resetPW" onClick={redirectReset}>Forgot Password / Username?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
                 </form>
