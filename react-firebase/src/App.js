@@ -50,9 +50,9 @@ function App() {
                     <PrivateRoute exact path='/search_result/tags'
                                   component={TagsSearchResult}/>
                     <PrivateRoute path={'/user/:user_id'} component={RepositoryList}/>
-                    <Route path={"/repo/:repo_id"} component={Repository}/>
-                    <Route exact path={'/repo/:repo_id'} component={SnapshotList} />
-                    <Route exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
+                    <PrivateRoute path={"/repo/:repo_id"} component={Repository}/>
+                    <PrivateRoute exact path={'/repo/:repo_id'} component={SnapshotList} />
+                    <PrivateRoute exact path={"/repo/:repo_id/snapshot/:snap_id"} component={Snapshot}/>
                     {/*<img src={sine_wave_1} style={{*/}
                     {/*    width: "100%",*/}
                     {/*    float: 'bottom',*/}
