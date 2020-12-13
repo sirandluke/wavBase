@@ -259,12 +259,12 @@ export const SignIn = (email, password) => {
         .catch(error => console.log(error));
 }
 
-export const CreateSnapshotRef = (a, b) => {
+export const CreateSnapshotRef = (des, files, repo_id, date) => {
     let config = {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
     };
-    return fetch('http://localhost:8000/snapshot_info/create_snapshot_ref?a=' + a + '&b=' + b, config)
+    return fetch('http://localhost:8000/snapshot_info/create_snapshot_ref?des=' + des + '&files=' + files + '&repo_id=' + repo_id + '&date=' + date, config)
         .then(response => response.json())
         .catch(error => console.log(error));
 }

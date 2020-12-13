@@ -11,7 +11,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from "axios";
 import {CreateSnapshot, CreateSnapshotRef, GetFileMetadata} from "../../BackendFunctions";
 import {useParams} from "react-router";
-import {SnapshotList} from "./SnapshotListManager";
+import {SnapshotListManager} from "./SnapshotListManager";
 
 // todo: .DS_Store is uploaded.
 // WE WILL USE THIS FUNCTION FOR UPLOAD SNAPSHOT
@@ -20,9 +20,9 @@ const UploadSnapshot = (props) => {
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
-    const {repo_id} = useParams();
+    //const {repo_id} = useParams();
 
-    const {setSnapshotList} = useContext(SnapshotList);
+    const {setSnapshotList} = useContext(SnapshotListManager);
 
     const [folder, setFolder] = useState(null);
 
@@ -87,36 +87,6 @@ const UploadSnapshot = (props) => {
             updateProgressBar(total, count);
             count++;
             const file = files[i];
-            /*let storageSnapRef = db.storage()
-                .ref('/snapshots/' + props.repo_id + '/' + time_stamp + '/' + file.name)
-            await storageSnapRef.put(file).then(async () => {
-                updateProgressBar(total, count);
-                count++;
-                const storageRef = db.storage().ref('/snapshots/' + props.repo_id + '/' + time_stamp);
-                await storageRef.child(file.name).getMetadata().then( async metaData => {
-                    updateProgressBar(total, count);
-                    count++;
-                    await filePaths.push(metaData.fullPath)  // Add URLs to files array.
-                    console.log("Pushed: " + metaData.fullPath);
-                });
-            });*/
-            /*let destination = 'snapshots/' + props.repo_id + '/' + time_stamp + '/' + file.name;
-            UploadSnapshotFile(file, destination);
-            updateProgressBar(total, count);
-            count++;
-            GetFileMetadata(destination).then(metaData => {
-                updateProgressBar(total, count);
-                count++;
-                let data;
-                console.log(metaData);
-                metaData.map((d, key) => {
-                    if (key === 0) {
-                        data = d;
-                    }
-                })
-                filePaths.push(data.fullPath)  // Add URLs to files array.
-                console.log("Pushed: " + data.fullPath);
-            });*/
             console.log(file);
             setUploadFileName(file.name);
             let destination = 'snapshots/' + props.repo_id + '/' + time_stamp + '/' + file.name;
@@ -167,7 +137,15 @@ const UploadSnapshot = (props) => {
             repo_id: props.repo_id,
             upload_date: datetime
         });*/
-        CreateSnapshot(snapshotDesc, files.toString(), props.repo_id, datetime);
+        //CreateSnapshot(snapshotDesc, files.toString(), props.repo_id, datetime);
+        CreateSnapshotRef(snapshotDesc, files.toString(), props.repo_id, datetime).then(r => {
+            console.log(r);
+            let tmp_list = [];
+            for (let snapshot in r) {
+                tmp_list.push({...r[snapshot], snap_id: snapshot});
+            }
+            setSnapshotList(tmp_list);
+        });
     }
 
     const handleChange = e => {
@@ -178,14 +156,14 @@ const UploadSnapshot = (props) => {
 
     const handleTest = (e) => {
         e.preventDefault();
-        CreateSnapshotRef(repo_id, 'Hey ya').then(r => {
+        /*CreateSnapshotRef('Hey Yellow', 'JJJJJ', repo_id, '20202020').then(r => {
             console.log(r);
             let tmp_list = [];
             for (let snapshot in r) {
                 tmp_list.push({...r[snapshot], snap_id: snapshot});
             }
             setSnapshotList(tmp_list);
-        });
+        });*/
     }
 
     return (
@@ -194,7 +172,7 @@ const UploadSnapshot = (props) => {
                 <img className="snaps_ico" src={folder_icon} alt="snaps_ico" align="left" width="30" height="30"/>
                 <h2>Take a Snapshot!</h2>
             </div>
-            <button onClick={handleTest}>Test</button>
+            {/*<button onClick={handleTest}>Test</button>*/}
             <p className="upload_description">Choose a project folder that you want to upload</p>
             <p className="upload_description">You can include anything from Ableton files, FL Studio files, midi's,
                 wav's, mp3's, and more</p>

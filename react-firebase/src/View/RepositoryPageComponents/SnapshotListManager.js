@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const SnapshotList = React.createContext(null);
+export const SnapshotListManager = React.createContext(null);

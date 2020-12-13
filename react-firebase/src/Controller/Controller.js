@@ -77,7 +77,7 @@ router.get('/file_url', (req, res) => {
 })
 
 router.get('/snapshot_info/create_snapshot_ref', (req, res) => {
-    CreateSnapshotRef(req.query.a, req.query.b)
+    CreateSnapshotRef(req.query.des, req.query.files, req.query.repo_id, req.query.date)
         .then(doc => res.send(doc));
 })
 

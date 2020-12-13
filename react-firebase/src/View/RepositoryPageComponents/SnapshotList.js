@@ -8,6 +8,7 @@ import "./SnapshotList.css"
 import {GetSnapshotListByRepoId} from "../../BackendFunctions";
 import SnapshotModal from "../RepositoryModals/SnapshotModal";
 import UseSnapshotModal from "../RepositoryModals/UseSnapshotModal";
+import {SnapshotListManager} from "./SnapshotListManager";
 
 export function SnapshotList(props) {
 
@@ -60,17 +61,15 @@ export function SnapshotList(props) {
     return (
 
         <div style={{marginLeft:'3rem', marginRight:'3rem'}}>
-            {/*<SnapshotList.Provider value={{ setSnapshotList }}>
-            </SnapshotList.Provider>*/}
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
                 <button style={{width:'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
             </div>
 
-           {/* <SnapshotList.Provider value={{ setSnapshotList }}>
+            <SnapshotListManager.Provider value={{ setSnapshotList }}>
                 <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
-            </SnapshotList.Provider>*/}
-            <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
+            </SnapshotListManager.Provider>
+
             <table className="snapshot_table">
                 <tbody className="snapshot_body">
                 {snapshotElement}
