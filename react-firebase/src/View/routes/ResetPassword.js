@@ -32,6 +32,10 @@ const ResetPassword = ({history}) => {
         return exp.test(s);
     }
 
+    const redirectLogin = () => {
+        history.push("/login");
+    }
+
     const resetPWFunction = () => {
         const idField = document.getElementById('identity');
         
@@ -74,6 +78,7 @@ const ResetPassword = ({history}) => {
                     <br/>
                     <button className="button" type="submit">Confirm</button>
                     <br/>
+                    <button className="button" onClick={redirectLogin}>Go Back</button>
                 </form>
             </div>
         </div>
