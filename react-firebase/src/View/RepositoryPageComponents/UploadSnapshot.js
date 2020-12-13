@@ -9,7 +9,7 @@ import "./UploadSnapshot.css"
 
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from "axios";
-import {CreateSnapshot, GetFileMetadata} from "../../BackendFunctions";
+import {CreateSnapshot, CreateSnapshotRef, GetFileMetadata} from "../../BackendFunctions";
 
 // todo: .DS_Store is uploaded.
 // WE WILL USE THIS FUNCTION FOR UPLOAD SNAPSHOT
@@ -170,12 +170,20 @@ const UploadSnapshot = (props) => {
         }
     };
 
+    const handleTest = (e) => {
+        e.preventDefault();
+        CreateSnapshotRef('test1', 'test2').then(r => {
+           console.log(r.a);
+        });
+    }
+
     return (
         <div>
             <div className="upload_title_1">
                 <img className="snaps_ico" src={folder_icon} alt="snaps_ico" align="left" width="30" height="30"/>
                 <h2>Take a Snapshot!</h2>
             </div>
+            <button onClick={handleTest}>Test</button>
             <p className="upload_description">Choose a project folder that you want to upload</p>
             <p className="upload_description">You can include anything from Ableton files, FL Studio files, midi's,
                 wav's, mp3's, and more</p>

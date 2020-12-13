@@ -13,6 +13,7 @@ const GetSnapshotInfo = require('../Model/GetSnapshotInfo');
 const GetFileMetaData = require('../Model/GetFileMetadata');
 const GetFileUrl = require('../Model/GetFileUrl');
 const SignIn = require('../Model/SignIn');
+const CreateSnapshotRef = require('../Model/CreateSnapshotRef');
 
 const CreateUser = require('../Model/CreateUser');
 const CreateRepo = require('../Model/CreateRepo');
@@ -75,13 +76,18 @@ router.get('/file_url', (req, res) => {
         .then(doc => res.send(doc));
 })
 
-router.post('/sign_in', (req, res) => {
-    SignIn(req.body.email, req.body.password)
+router.get('/snapshot_info/create_snapshot_ref', (req, res) => {
+    CreateSnapshotRef(req.query.a, req.query.b)
         .then(doc => res.send(doc));
 })
 
 
 //Post Functions
+router.post('/sign_in', (req, res) => {
+    SignIn(req.body.email, req.body.password)
+        .then(doc => res.send(doc));
+})
+
 router.post('/user_info/create_user', (req, res) => {
     CreateUser(req.body.username, req.body.password, req.body.email);
 })

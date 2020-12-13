@@ -258,3 +258,13 @@ export const SignIn = (email, password) => {
         .then(response => response.json())
         .catch(error => console.log(error));
 }
+
+export const CreateSnapshotRef = (a, b) => {
+    let config = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    };
+    return fetch('http://localhost:8000/snapshot_info/create_snapshot_ref?a=' + a + '&b=' + b, config)
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}
