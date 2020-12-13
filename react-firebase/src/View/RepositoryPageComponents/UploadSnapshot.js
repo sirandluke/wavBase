@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import db from "../../Model/base";
 import folder_icon from "../../Images/folder@3x.png";
 import {DateToString, TimeStampToString} from "../GlobalComponent/Date";
@@ -10,6 +10,8 @@ import "./UploadSnapshot.css"
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from "axios";
 import {CreateSnapshot, CreateSnapshotRef, GetFileMetadata} from "../../BackendFunctions";
+import {useParams} from "react-router";
+import {SnapshotList} from "./SnapshotListManager";
 
 // todo: .DS_Store is uploaded.
 // WE WILL USE THIS FUNCTION FOR UPLOAD SNAPSHOT
@@ -17,6 +19,10 @@ import {CreateSnapshot, CreateSnapshotRef, GetFileMetadata} from "../../BackendF
 const UploadSnapshot = (props) => {
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
+
+    const {repo_id} = useParams();
+
+    const {setSnapshotList} = useContext(SnapshotList);
 
     const [folder, setFolder] = useState(null);
 
@@ -172,8 +178,13 @@ const UploadSnapshot = (props) => {
 
     const handleTest = (e) => {
         e.preventDefault();
-        CreateSnapshotRef('test1', 'test2').then(r => {
-           console.log(r.a);
+        CreateSnapshotRef(repo_id, 'Hey ya').then(r => {
+            console.log(r);
+            let tmp_list = [];
+            for (let snapshot in r) {
+                tmp_list.push({...r[snapshot], snap_id: snapshot});
+            }
+            setSnapshotList(tmp_list);
         });
     }
 

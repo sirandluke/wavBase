@@ -1,4 +1,5 @@
 const db = require('../Database_config');
+const GetSnapshotListByRepoId = require('./GetSnapshotListByRepoId');
 
 module.exports = function CreateSnapshotRef(a, b) {
     console.log('Creating new snapshot reference');
@@ -10,8 +11,9 @@ module.exports = function CreateSnapshotRef(a, b) {
     let ref = firebaseRef.push();
     console.log(ref.key);
     ref.set({
-        a: a,
-        b: b
+        repo_id: a,
+        description: b
     }).then(r => {})
-    return ref.once('value').then(r => r.val())
+    //return ref.once('value').then(r => r.val())
+    return GetSnapshotListByRepoId(a).then(r => r);
 }

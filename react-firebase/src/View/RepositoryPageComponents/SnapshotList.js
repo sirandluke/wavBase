@@ -30,7 +30,7 @@ export function SnapshotList(props) {
         return () => {
             console.log('Stop listening to snapshot list of repo_id:', repo_id);
         }
-    }, [snapshot_list])
+    }, [snapshot_list, localStorage.getItem(`${repo_id} snapshots`)])
     // TODO: Map snapshot elements to SnapshotObject
     // Element displays folder icon + desc + datetime
 
@@ -58,12 +58,18 @@ export function SnapshotList(props) {
 
 
     return (
+
         <div style={{marginLeft:'3rem', marginRight:'3rem'}}>
+            {/*<SnapshotList.Provider value={{ setSnapshotList }}>
+            </SnapshotList.Provider>*/}
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
                 <button style={{width:'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
             </div>
 
+           {/* <SnapshotList.Provider value={{ setSnapshotList }}>
+                <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
+            </SnapshotList.Provider>*/}
             <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
             <table className="snapshot_table">
                 <tbody className="snapshot_body">
