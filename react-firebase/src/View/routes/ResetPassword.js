@@ -43,6 +43,7 @@ const ResetPassword = ({history}) => {
                     console.log('Password Reset Email Sent Successfully!');
                 })
                 .catch(error => {
+                    alert('Invalid Email');
                     console.error(error);
                 })
         }
