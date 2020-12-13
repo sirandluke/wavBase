@@ -64,6 +64,10 @@ function NavBar(props) {
         }, [props.user, useContext(AuthContext)]
     );
 
+    const redirectLogIn = () => {
+        history.push('/login');
+    }
+
 
     const redirectRepo = () => {
         history.push("/");
@@ -83,14 +87,18 @@ function NavBar(props) {
 
     const handleSearch = (event) => {
         event.preventDefault();
+        if (!currentUser) {
+            history.push('/login');
+        }
         if (document.getElementById('search_input').value !== '') {
             history.push('/search_result/repositories');
         }
     }
     return (
         <div className="nav_bar">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-            <img src={logo} className="nav_bar_logo" alt="wavBase Logo" />
+            <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <img src={logo} className="nav_bar_logo" alt="wavBase Logo"/>
             <form className="search_bar" onSubmit={handleSearch}>
                 <label>
                     <input id='search_input' type="text" placeholder={'Search'}></input>
@@ -98,9 +106,28 @@ function NavBar(props) {
                 <button type="submit" className="search_btn"><i className="fa fa-search"></i></button>
             </form>
 
-            <img id="profile_picture2" className="top_icon" src={image_url}/>
+            {/*<img id="profile_picture2" className="top_icon" src={image_url}/>*/}
 
-            <DropdownButton
+            {currentUser ?
+                <div>
+                    <img id="profile_picture2" className="top_icon" src={image_url}/>
+                    <DropdownButton
+                        id="dropdown-item-button"
+                        title={user.username}
+                        variant="success">
+
+                        <Dropdown.Item as="button" onClick={redirectProfile}>My Profile</Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={redirectRepo}>My Repositories</Dropdown.Item>
+                        <Dropdown.Item as="button" onClick={handleSignOut}>Sign Out</Dropdown.Item>
+                    </DropdownButton>
+                </div> :
+                <DropdownButton
+                    id="dropdown-item-button"
+                    title={'Sign In'}
+                    variant="success"
+                    onClick={redirectLogIn}>
+                </DropdownButton>}
+            {/*<DropdownButton
                 id="dropdown-item-button"
                 title={ user.username }
                 variant="success">
@@ -108,7 +135,7 @@ function NavBar(props) {
                 <Dropdown.Item as="button" onClick={ redirectProfile }>My Profile</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={ redirectRepo }>My Repositories</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={ handleSignOut }>Sign Out</Dropdown.Item>
-            </DropdownButton>
+            </DropdownButton>*/}
         </div>
     )
 };

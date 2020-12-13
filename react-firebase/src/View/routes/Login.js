@@ -102,7 +102,7 @@ const Login = ({history}) => {
                             name="email_or_username"
                             type="text"
                             required="required"
-                            placeholder=" Username / Email"/>
+                            placeholder=" Email"/>
                     </label>
                     <br/>
                     <label>
@@ -112,7 +112,7 @@ const Login = ({history}) => {
                     <br/>
                     <button className="button" type="submit">Sign in</button>
                     <br/>
-                    <button className="button" id="resetPW" onClick={redirectReset}>Forgot Password / Username?</button>
+                    <button className="button" id="resetPW" onClick={redirectReset}>Forgot Password?</button>
                     <hr className="separator"/>
                     <button className="signUp_button" onClick={redirectRegister}>Sign Up</button>
                 </form>
