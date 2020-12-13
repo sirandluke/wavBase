@@ -1,12 +1,11 @@
-import React, {Component, useState, useEffect} from "react";
+import React, {Component, useState, useEffect, useContext} from "react";
 import Dropdown from 'react-bootstrap/Dropdown'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import "../../App.css";
 import db from "../../Model/base";
 import Button from "react-bootstrap/Button";
 import axios from 'axios';
-//import Modal from "react-bootstrap/Modal";
-//import logo from "../../Images/wavBase_logo.png";
+
 import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import "./Profile.css";
 import sine_wave_1 from "../../Images/sine_wave_1.png";
@@ -20,6 +19,8 @@ import {
     UpdateUserInfo,
     UpdateUserPassword
 } from "../../BackendFunctions";
+
+import {AuthContext} from "../auth/Auth";
 
 
 function Profile(props) {
@@ -107,7 +108,11 @@ function Profile(props) {
     const [current_user, setUser] = useState(props.user || []);
     const [progress, setProgress] = useState(0);
 
-    const uid = db.auth().currentUser.uid;
+    let uid = '';
+    const {currentUser} = useContext(AuthContext);
+    if (currentUser) {
+        uid = currentUser.uid;
+    }
 
     const UpdateProfileImage = (picture_formData) => {
         axios.post('http://localhost:8000/user_info/update_profile_image', picture_formData, {

@@ -38,11 +38,12 @@ function App() {
                         <Route exact path="/login" component={Login}/>
                         <Route exact path="/register" component={Register}/>
                         <Route exact path="/reset_password" component={ResetPassword}/>
-                        <PrivateRoute path="/" component={PersonalHome}/>
+                        <Route path="/" component={PersonalHome}/>
                     </Switch>
                     <PrivateRoute exact path="/" component={RepositoryList}/>
                     <PrivateRoute exact path="/newrepo" component={NewRepo}/>
-                    <PrivateRoute exact path="/profile" component={Profile}/>
+                    {/*<PrivateRoute exact path="/profile" component={Profile}/>*/}
+                    <Route exact path="/profile" component={Profile}/>
                     <PrivateRoute path='/search_result' component={ResultsInterface}/>
                     <PrivateRoute exact path='/search_result' component={UserSearchResult}/>
                     <PrivateRoute exact path='/search_result/repositories'

@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 import {FollowerCount} from "./FollowerCount"
 import {NameBioFollowers} from "./NameBioFollowers";
 import db from "../../Model/base";
@@ -8,11 +8,17 @@ import "./ProfileInfo.css"
 import {useHistory, useParams} from "react-router";
 import {FindRepos, GetProfileImageUrl, GetUserRef, UpdateFollow} from "../../BackendFunctions";
 import {AddId, DeleteId, IncludeId} from "../GlobalComponent/ParseId";
+import {AuthContext} from "../auth/Auth";
 
 
 export function ProfileInfo(props) {
     const uid = props.uid;
-    const current_uid = db.auth().currentUser.uid;
+    const {currentUser} = useContext(AuthContext);
+
+    let current_uid = '';
+    if (currentUser) {
+        current_uid = currentUser.uid;
+    }
 
     const history = useHistory();
     const [user, setUser] = useState(props.user || []);
@@ -56,7 +62,7 @@ export function ProfileInfo(props) {
             console.log('stop listen to repository');
         }
 
-    }, [props.repos, props.user, useParams()]);
+    }, [props.repos, props.user, useParams(), useContext(AuthContext)]);
 
     //console.log('profileinfo', user.username);
     const handleFollow = () => {

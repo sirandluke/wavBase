@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import db from "../../Model/base";
@@ -9,13 +9,19 @@ import {ProfileInfo} from "../HomePageComponents/ProfileInfo";
 import {Link} from "react-router-dom";
 import "./NavBar.css"
 import {GetProfileImageUrl, GetUserRef} from "../../BackendFunctions";
+import {AuthContext} from "../auth/Auth";
 
 function NavBar(props) {
 
-    let current_uid = db.auth().currentUser.uid;
     const history = useHistory();
     const [user, setUser] = useState(props.user || []);
     const [image_url, setImageUrl] = useState(0);
+
+    const {currentUser} = useContext(AuthContext);
+    let current_uid = '';
+    if (currentUser) {
+        current_uid = currentUser.uid;
+    }
 
     useEffect(
         () => {
@@ -41,8 +47,11 @@ function NavBar(props) {
                             });
                         }
                         //console.log(image_url);
-                        let img = document.getElementById('profile_picture2');
-                        img.src = image_url;
+                        let img;
+                        if (document.getElementById('profile_picture2')) {
+                            img = document.getElementById('profile_picture2');
+                            img.src = image_url;
+                        }
                         localStorage.setItem('current_uid', current_uid);
                         localStorage.setItem('username', user_snapshot.username);
                         localStorage.setItem('following', user_snapshot.following);
@@ -51,7 +60,7 @@ function NavBar(props) {
             return () => {
                 console.log('stop listen to home');
             }
-        }, [props.user]
+        }, [props.user, useContext(AuthContext)]
     );
 
 
