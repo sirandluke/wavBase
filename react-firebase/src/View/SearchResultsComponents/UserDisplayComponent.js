@@ -63,8 +63,8 @@ function UserDisplayComponent(props) {
         let tmp_user = user;
         tmp_user = {...tmp_user, followers: AddId(tmp_user.followers, current_uid)}
         localStorage.setItem('following', AddId(localStorage.getItem('following'), uid));
-        if (document.getElementById(current_uid + 'following')) {
-            document.getElementById(current_uid + 'following').innerText = getIdCount(localStorage.getItem('following')) + ' following';
+        if (document.getElementById(current_uid + 'following button')) {
+            document.getElementById(current_uid + 'following button').innerText = getIdCount(localStorage.getItem('following')) + ' following';
         }
         setUser(tmp_user);
     }
@@ -74,8 +74,8 @@ function UserDisplayComponent(props) {
         let tmp_user = user;
         tmp_user = {...tmp_user, followers: DeleteId(tmp_user.followers, current_uid)}
         localStorage.setItem('following', DeleteId(localStorage.getItem('following'), uid));
-        if (document.getElementById(current_uid + 'following')) {
-            document.getElementById(current_uid + 'following').innerText = getIdCount(localStorage.getItem('following')) + ' following';
+        if (document.getElementById(current_uid + 'following button')) {
+            document.getElementById(current_uid + 'following button').innerText = getIdCount(localStorage.getItem('following')) + ' following';
         }
         setUser(tmp_user);
     }
