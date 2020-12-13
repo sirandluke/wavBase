@@ -198,15 +198,13 @@ export const GetFileUrl = (file_path) => {
         .catch(error => console.log(error));
 }
 
-export const DeleteSnapshot = (snap_id) => {
+export const DeleteSnapshot = (snap_id, repo_id) => {
     let config = {
-        method: 'POST',
+        method: 'GET',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            snap_id
-        })
     };
-    fetch('http://localhost:8000/snapshot_info/delete_snapshot', config)
+     return fetch('http://localhost:8000/snapshot_info/delete_snapshot?snap_id=' + snap_id + '&repo_id=' + repo_id, config)
+        .then(response => response.json())
         .catch(error => console.log(error));
 }
 

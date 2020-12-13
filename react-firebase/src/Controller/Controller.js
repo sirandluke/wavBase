@@ -81,6 +81,11 @@ router.get('/snapshot_info/create_snapshot_ref', (req, res) => {
         .then(doc => res.send(doc));
 })
 
+router.get('/snapshot_info/delete_snapshot', (req, res) => {
+    DeleteSnapshot(req.query.snap_id, req.query.repo_id)
+        .then(doc => res.send(doc));
+})
+
 
 //Post Functions
 router.post('/sign_in', (req, res) => {
@@ -160,9 +165,9 @@ router.post('/snapshot_info/upload_file', (req, res) => {
     });
 })
 
-router.post('/snapshot_info/delete_snapshot', (req, res) => {
+/*router.post('/snapshot_info/delete_snapshot', (req, res) => {
     DeleteSnapshot(req.body.snap_id);
-})
+})*/
 
 router.post('/repo_info/delete_repo', (req, res) => {
     DeleteRepo(req.body.repo_id);

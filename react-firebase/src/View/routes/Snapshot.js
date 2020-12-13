@@ -58,8 +58,12 @@ function Snapshot(props) {
 
     const handleDelete = (event) => {
         event.preventDefault();
-        DeleteSnapshot(snap_id);
-        history.push('/repo/' + repo_id);
+        //DeleteSnapshot(snap_id);
+        DeleteSnapshot(snap_id, repo_id).then(r => {
+            console.log(r);
+            history.push('/repo/' + repo_id);
+        });
+        //history.push('/repo/' + repo_id);
     }
 
     return (

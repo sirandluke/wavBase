@@ -60,21 +60,23 @@ export function SnapshotList(props) {
 
     return (
 
-        <div style={{marginLeft:'3rem', marginRight:'3rem'}}>
+        <div style={{marginLeft: '3rem', marginRight: '3rem'}}>
             <div className="info_upload_row">
                 <h3>Snapshots</h3>
-                <button style={{width:'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
+                <button style={{width: 'inherit'}} className="update_button" onClick={toggle}>Take a Snapshot</button>
             </div>
 
-            <SnapshotListManager.Provider value={{ setSnapshotList }}>
-                <SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
-            </SnapshotListManager.Provider>
+            <SnapshotListManager.Provider value={{setSnapshotList}}>
+                <div><SnapshotModal isShowing={isShowing} hide={toggle} repo_id={repo_id}/>
 
-            <table className="snapshot_table">
-                <tbody className="snapshot_body">
-                {snapshotElement}
-                </tbody>
-            </table>
+
+                    <table className="snapshot_table">
+                        <tbody className="snapshot_body">
+                        {snapshotElement}
+                        </tbody>
+                    </table>
+                </div>
+            </SnapshotListManager.Provider>
         </div>
     );
 
