@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "wavbasedb-9a679"
+  },
+  "targets": {
+    "wavbasedb-9a679": {
+      "hosting": {
+        "app": [
+          "wavbase"
+        ]
+      }
+    }
+  }
+}
